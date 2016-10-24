@@ -6,7 +6,7 @@ GroupDocs.Text for .NET is a convenient text extractor API that permits users to
 
 <p align="center">
 
-  <a title="Download complete GroupDocs.Text for .NET source code" href="https://codeload.github.com/atirtahirgroupdocs/GroupDocs.Text-for-.NET/zip/master">
+  <a title="Download complete GroupDocs.Text for .NET source code" href="https://codeload.github.com/groupdocs-text/GroupDocs.Text-for-.NET/zip/master">
 	<img src="https://raw.github.com/AsposeExamples/java-examples-dashboard/master/images/downloadZip-Button-Large.png" />
   </a>
 </p>
