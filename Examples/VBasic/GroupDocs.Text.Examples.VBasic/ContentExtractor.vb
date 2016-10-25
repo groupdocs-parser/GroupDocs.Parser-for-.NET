@@ -2,9 +2,35 @@
 Imports GroupDocs.Text.Formatters.Html
 Imports GroupDocs.Text.Formatters.Plain
 Imports GroupDocs.Text.Formatters.Markdown
+Imports System.IO
 
 Public Class ContentExtractor
 
+    Public Class EmailsExtractor
+
+
+        Public Shared Sub ExtractEmailAttachments(fileName As String)
+            'ExStart:ExtractEmailAttachments
+            'get file actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            Dim extractor As New EmailTextExtractor(filePath)
+            Dim factory As New ExtractorFactory()
+            For i As Integer = 0 To extractor.AttachmentCount - 1
+                Console.WriteLine(extractor.GetContentType(i).Name)
+                Dim stream As Stream = extractor.GetStream(i)
+                Dim attachmentExtractor As TextExtractor = factory.CreateTextExtractor(filePath)
+                Try
+                    Console.WriteLine(If(attachmentExtractor Is Nothing, "Document format is not supported", attachmentExtractor.ExtractAll()))
+                Finally
+                    If attachmentExtractor IsNot Nothing Then
+                        attachmentExtractor.Dispose()
+                    End If
+                End Try
+            Next
+            'ExEnd:ExtractEmailAttachments
+        End Sub
+
+    End Class
 
     Public Class OneNoteDocument
         ''' <summary>
@@ -143,14 +169,14 @@ Public Class ContentExtractor
         ''' </summary>
         ''' <param name="fileName"></param>
         Public Shared Sub FormattingTable(fileName As String)
-            'ExStart:ExtractEntireWordPage
+            'ExStart:FormattingTable
             'get file actual path
             Dim filePath As [String] = Common.getFilePath(fileName)
             Dim extractor As New WordsFormattedTextExtractor(filePath)
             Dim frame As New PlainTableFrame(PlainTableFrameAngle.ASCII, PlainTableFrameEdge.ASCII, PlainTableFrameIntersection.ASCII, New PlainTableFrameConfig(True, True, True, False))
             extractor.DocumentFormatter = New PlainDocumentFormatter(frame)
             Console.WriteLine(extractor.ExtractAll())
-            'ExEnd:ExtractEntireWordPage
+            'ExEnd:FormattingTable
         End Sub
         ''' <summary>
         ''' Extract text with markdown text format
