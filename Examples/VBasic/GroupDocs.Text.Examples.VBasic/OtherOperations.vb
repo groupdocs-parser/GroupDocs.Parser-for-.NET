@@ -11,7 +11,7 @@ Public Class OtherOperations
     Public Shared Sub ConcreteExtractor(fileName As String)
         'ExStart:ConcreteExtractor
         'get file actual path
-        Dim filePath As String = Utilities.getFilePath(fileName)
+        Dim filePath As String = Common.getFilePath(fileName)
         Using stream As Stream = File.OpenRead(filePath)
             Using extractor As New CellsTextExtractor(stream)
                 Console.WriteLine(extractor.ExtractAll())
@@ -27,7 +27,7 @@ Public Class OtherOperations
     Public Shared Sub ExtractAllFromCells(fileName As String)
         'ExStart:ExtractAllFromCells
         'get file actual path
-        Dim filePath As String = Utilities.getFilePath(fileName)
+        Dim filePath As String = Common.getFilePath(fileName)
         Using extractor As New CellsTextExtractor(filePath)
             Console.WriteLine(extractor.ExtractAll())
         End Using
@@ -37,7 +37,7 @@ Public Class OtherOperations
     Public Shared Sub PassEncodingToCreatedExtractor(fileName As String)
         'ExStart:PassEncodingToCreatedExtractor
         'get file actual path
-        Dim filePath As String = Utilities.getFilePath(fileName)
+        Dim filePath As String = Common.getFilePath(fileName)
         Dim loadOptions As New LoadOptions("text/plain", Encoding.UTF8)
         Dim factory As New ExtractorFactory()
         Using extractor As TextExtractor = factory.CreateTextExtractor(filePath, loadOptions)

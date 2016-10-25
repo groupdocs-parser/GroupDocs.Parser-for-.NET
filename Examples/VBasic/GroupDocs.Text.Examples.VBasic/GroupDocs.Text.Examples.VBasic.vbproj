@@ -90,7 +90,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="OtherOperations.vb" />
-    <Compile Include="Utilities.vb" />
+    <Compile Include="Utilities\Common.vb" />
+    <Compile Include="Utilities\ExtractText.vb" />
+    <Compile Include="Utilities\WordStatistic.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

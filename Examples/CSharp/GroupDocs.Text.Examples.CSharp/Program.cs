@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GroupDocs.Text_for_.NET.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace GroupDocs.Text_for_.NET
         static void Main(string[] args)
         {
             //Un-comment to apply license 
-            Utilities.ApplyLicense();
+            Common.ApplyLicense();
 
             #region TextExtractors
 
@@ -75,6 +76,14 @@ namespace GroupDocs.Text_for_.NET
             //OtherOperations.ExtractAllFromCells("The butterfly effect.xlsx");
             //Pass media type and encoding to the created extractor
             //OtherOperations.PassEncodingToCreatedExtractor("The butterfly effect.xlsx");
+            #endregion
+
+            #region BusinessCases
+
+            //count the statistic of word's occurrences in the document
+            //WordStatistic.FindMaxWordLength("The butterfly effect.xlsx", "The butterfly effect.pptx");
+            // view the content of the file in Console
+            //ExtractText.ViewContentInConsole("The butterfly effect.xlsx");
             #endregion
         }
     }

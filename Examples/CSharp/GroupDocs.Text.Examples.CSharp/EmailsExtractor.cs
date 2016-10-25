@@ -15,7 +15,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:ExtractEmailAttachments
             //get file actual path
-            String filePath = Utilities.getFilePath(fileName);
+            String filePath = Common.getFilePath(fileName);
             EmailTextExtractor extractor = new EmailTextExtractor(filePath);
             ExtractorFactory factory = new ExtractorFactory();
             for (int i = 0; i < extractor.AttachmentCount; i++)

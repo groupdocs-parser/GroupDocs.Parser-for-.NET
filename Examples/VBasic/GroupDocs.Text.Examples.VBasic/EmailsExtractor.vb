@@ -7,7 +7,7 @@ Public Class EmailsExtractor
     Public Shared Sub ExtractEmailAttachments(fileName As String)
         'ExStart:ExtractEmailAttachments
         'get file actual path
-        Dim filePath As [String] = Utilities.getFilePath(fileName)
+        Dim filePath As [String] = Common.getFilePath(fileName)
         Dim extractor As New EmailTextExtractor(filePath)
         Dim factory As New ExtractorFactory()
         For i As Integer = 0 To extractor.AttachmentCount - 1

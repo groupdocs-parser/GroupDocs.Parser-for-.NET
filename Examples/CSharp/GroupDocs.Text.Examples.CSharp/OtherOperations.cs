@@ -19,7 +19,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:ConcreteExtractor
             //get file actual path
-            string filePath = Utilities.getFilePath(fileName);
+            string filePath = Common.getFilePath(fileName);
             using (Stream stream = File.OpenRead(filePath))
             {
                 using (CellsTextExtractor extractor = new CellsTextExtractor(stream))
@@ -38,7 +38,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:ExtractAllFromCells
             //get file actual path
-            string filePath = Utilities.getFilePath(fileName);
+            string filePath = Common.getFilePath(fileName);
             using (CellsTextExtractor extractor = new CellsTextExtractor(filePath))
             {
                 Console.WriteLine(extractor.ExtractAll());
@@ -50,7 +50,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:PassEncodingToCreatedExtractor
             //get file actual path
-            string filePath = Utilities.getFilePath(fileName);
+            string filePath = Common.getFilePath(fileName);
             LoadOptions loadOptions = new LoadOptions("text/plain", Encoding.UTF8);
             ExtractorFactory factory = new ExtractorFactory();
             using (TextExtractor extractor = factory.CreateTextExtractor(filePath, loadOptions))
