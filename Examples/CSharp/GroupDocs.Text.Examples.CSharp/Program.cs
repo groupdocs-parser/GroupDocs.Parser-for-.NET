@@ -17,7 +17,7 @@ namespace GroupDocs.Text_for_.NET
             #region TextExtractors
 
             //Extracting email attachments
-            //EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
+            ContentExtractor.EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
 
             //Extracting onenote text
             //ContentExtractor.OneNoteDocument.ExtractOneNoteDocument("The butterfly effect.one");
@@ -81,7 +81,7 @@ namespace GroupDocs.Text_for_.NET
             #region BusinessCases
 
             //count the statistic of word's occurrences in the document
-            //WordStatistic.FindMaxWordLength("The butterfly effect.xlsx", "The butterfly effect.pptx");
+            WordStatistic.FindMaxWordLength("The butterfly effect.xlsx", "The butterfly effect.pptx");
             // view the content of the file in Console
             //ExtractText.ViewContentInConsole("The butterfly effect.xlsx");
             #endregion

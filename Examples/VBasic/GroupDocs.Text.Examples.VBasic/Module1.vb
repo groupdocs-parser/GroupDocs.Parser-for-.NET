@@ -8,7 +8,7 @@
         'Region "TextExtractors"
 
         'Extracting email attachments
-        'EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
+        'ContentExtractor.EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
 
         'Extracting onenote text
         'ContentExtractor.OneNoteDocument.ExtractOneNoteDocument("The butterfly effect.one");
