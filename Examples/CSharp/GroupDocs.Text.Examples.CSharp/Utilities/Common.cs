@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GroupDocs.Text_for_.NET
 {
-    public class Utilities
+    public class Common
     {
         //ExStart:commonutilities
         public const string sourcePath = "../../../../Data/Storage/";

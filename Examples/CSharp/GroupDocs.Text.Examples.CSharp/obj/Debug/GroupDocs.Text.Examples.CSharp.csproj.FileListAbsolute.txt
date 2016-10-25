@@ -14,3 +14,11 @@ C:\Users\atir\Desktop\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Exa
 C:\Users\atir\Desktop\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text.dll
 C:\Users\atir\Desktop\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text.xml
 C:\Users\atir\Desktop\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\obj\Debug\GroupDocs.Text.Examples.CSharp.csprojResolveAssemblyReference.cache
+D:\GitRepos\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text-for-.NET.exe.config
+D:\GitRepos\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\obj\Debug\GroupDocs.Text-for-.NET.exe
+D:\GitRepos\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\obj\Debug\GroupDocs.Text-for-.NET.pdb
+D:\GitRepos\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text-for-.NET.exe
+D:\GitRepos\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text-for-.NET.pdb
+D:\GitRepos\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text.dll
+D:\GitRepos\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text.xml
+D:\GitRepos\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\obj\Debug\GroupDocs.Text.Examples.CSharp.csprojResolveAssemblyReference.cache

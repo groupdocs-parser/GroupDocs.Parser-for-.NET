@@ -1,4 +1,4 @@
-﻿Public Class Utilities
+﻿Public Class Common
 
     'ExStart:commonutilities
     Public Const sourcePath As String = "../../../../Data/Storage/"

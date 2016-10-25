@@ -6,7 +6,7 @@ GroupDocs.Text.Examples.CSharp
 </name>
 </assembly>
 <members>
-<member name="M:GroupDocs.Text.Examples.CSharp.Utilities.ApplyLicense">
+<member name="M:GroupDocs.Text.Examples.CSharp.Common.ApplyLicense">
 	<summary>
  Apply license
  </summary>
@@ -28,6 +28,44 @@ GroupDocs.Text.Examples.CSharp
 	<summary>
  For enumerating all the entities of the group of containers ContainerEnumerator class is used
  </summary>
+</member><member name="P:GroupDocs.Text.Examples.CSharp.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:GroupDocs.Text.Examples.CSharp.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:GroupDocs.Text.Examples.CSharp.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.CellsMetadata.ExtractMetadataFromCells(System.String)">
+	<summary>
+ Extract metadata from cells
+ </summary>
+	<param name="fileName"></param>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.SlidesMetadata.ExtractMetadataFromSlides(System.String)">
+	<summary>
+ Extract metadata from slides
+ </summary>
+	<param name="fileName"></param>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.WordsMetaData.ExtractMetadataFromWords(System.String)">
+	<summary>
+ Extract metadata from word documents
+ </summary>
+	<param name="fileName"></param>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.PdfMetaData.ExtractMetadataFromPdf(System.String)">
+	<summary>
+ Extract metadata from pdf documents
+ </summary>
+	<param name="fileName"></param>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.EmailMetaData.ExtractMetadataFromEmails(System.String)">
+	<summary>
+ Extract metadata from emails
+ </summary>
+	<param name="fileName"></param>
 </member><member name="M:GroupDocs.Text.Examples.CSharp.ContentExtractor.OneNoteDocument.ExtractOneNoteDocument(System.String)">
 	<summary>
  Extract text from onenote file/document
@@ -81,44 +119,6 @@ GroupDocs.Text.Examples.CSharp
  Extract a text with HTML text formatter
  </summary>
 	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.CellsMetadata.ExtractMetadataFromCells(System.String)">
-	<summary>
- Extract metadata from cells
- </summary>
-	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.SlidesMetadata.ExtractMetadataFromSlides(System.String)">
-	<summary>
- Extract metadata from slides
- </summary>
-	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.WordsMetaData.ExtractMetadataFromWords(System.String)">
-	<summary>
- Extract metadata from word documents
- </summary>
-	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.PdfMetaData.ExtractMetadataFromPdf(System.String)">
-	<summary>
- Extract metadata from pdf documents
- </summary>
-	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.EmailMetaData.ExtractMetadataFromEmails(System.String)">
-	<summary>
- Extract metadata from emails
- </summary>
-	<param name="fileName"></param>
-</member><member name="P:GroupDocs.Text.Examples.CSharp.My.Resources.Resources.ResourceManager">
-	<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member><member name="P:GroupDocs.Text.Examples.CSharp.My.Resources.Resources.Culture">
-	<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member><member name="T:GroupDocs.Text.Examples.CSharp.My.Resources.Resources">
-	<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
 </member>
 </members>
 </doc>

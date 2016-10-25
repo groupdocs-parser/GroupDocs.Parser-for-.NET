@@ -14,7 +14,7 @@ Public Class ContentExtractor
         Public Shared Sub ExtractOneNoteDocument(fileName As String)
             'ExStart:ExtractOneNoteDocument
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             'Set page index
             Dim pageIndex As Integer = 1
             Dim extractor As New NoteTextExtractor(filePath)
@@ -32,7 +32,7 @@ Public Class ContentExtractor
         Public Shared Sub ExtractPdfDocument(fileName As String)
             'ExStart:ExtractPdfDocument
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             'Set page index
             Dim pageIndex As Integer = 1
             Dim extractor As New PdfTextExtractor(filePath)
@@ -50,7 +50,7 @@ Public Class ContentExtractor
         Public Shared Sub ExtractPresentationDocument(fileName As String)
             'ExStart:ExtractPresentationDocument
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             'Set slide index
             Dim slideIndex As Integer = 1
             Dim extractor As New SlidesTextExtractor(filePath)
@@ -67,7 +67,7 @@ Public Class ContentExtractor
         Public Shared Sub ExtractEntireSheet(fileName As String)
             'ExStart:ExtractEntireSheet
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             'Set slide index
             Dim slideIndex As Integer = 1
             Dim extractor As New CellsTextExtractor(filePath)
@@ -82,7 +82,7 @@ Public Class ContentExtractor
         Public Shared Sub ExtractSheetByRows(fileName As String)
             'ExStart:ExtractSheetByRows
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             Dim extractor As New CellsTextExtractor(filePath)
             Dim sheetIndex As Integer = 0
             Dim sheetInfo As CellsSheetInfo = extractor.GetSheetInfo(sheetIndex)
@@ -99,7 +99,7 @@ Public Class ContentExtractor
         Public Shared Sub ExtractSelectedColumns(fileName As String)
             'ExStart:ExtractSelectedColumns
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             Dim extractor As New CellsTextExtractor(filePath)
             Dim sheetIndex As Integer = 0
             Dim sheetInfo As CellsSheetInfo = extractor.GetSheetInfo(sheetIndex)
@@ -112,7 +112,7 @@ Public Class ContentExtractor
         Public Shared Sub ExtractSelectedColumnsAndRows(fileName As String)
             'ExStart:ExtractSelectedColumnsAndRows
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             Dim extractor As New CellsTextExtractor(filePath)
             Dim sheetIndex As Integer = 0
             Dim sheetInfo As CellsSheetInfo = extractor.GetSheetInfo(sheetIndex)
@@ -132,7 +132,7 @@ Public Class ContentExtractor
         Public Shared Sub ExtractEntireWordPage(fileName As String)
             'ExStart:ExtractEntireWordPage
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             Dim pageIndex As Integer = 0
             Dim extractor As New WordsFormattedTextExtractor(filePath)
             Console.WriteLine(extractor.ExtractPage(pageIndex))
@@ -145,7 +145,7 @@ Public Class ContentExtractor
         Public Shared Sub FormattingTable(fileName As String)
             'ExStart:ExtractEntireWordPage
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             Dim extractor As New WordsFormattedTextExtractor(filePath)
             Dim frame As New PlainTableFrame(PlainTableFrameAngle.ASCII, PlainTableFrameEdge.ASCII, PlainTableFrameIntersection.ASCII, New PlainTableFrameConfig(True, True, True, False))
             extractor.DocumentFormatter = New PlainDocumentFormatter(frame)
@@ -159,7 +159,7 @@ Public Class ContentExtractor
         Public Shared Sub ExtractingWithMarkdown(fileName As String)
             'ExStart:ExtractingWithMarkdown
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             Dim extractor As New WordsFormattedTextExtractor(filePath)
             extractor.DocumentFormatter = New MarkdownDocumentFormatter()
             Console.WriteLine(extractor.ExtractAll())
@@ -173,7 +173,7 @@ Public Class ContentExtractor
         Public Shared Sub HtmlTextFormating(fileName As String)
             'ExStart:HtmlTextFormating
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             Dim extractor As New WordsFormattedTextExtractor(filePath)
             extractor.DocumentFormatter = New HtmlDocumentFormatter()
             Console.WriteLine(extractor.ExtractAll())

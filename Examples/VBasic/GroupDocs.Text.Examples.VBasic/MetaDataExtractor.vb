@@ -11,7 +11,7 @@ Public Class MetaDataExtractor
         Public Shared Sub ExtractMetadataFromCells(fileName As String)
             'ExStart:ExtractMetadataFromCells
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             Dim extractor As New CellsMetadataExtractor()
             Dim metadata As MetadataCollection = extractor.ExtractMetadata(filePath)
             For Each key As String In metadata.Keys
@@ -29,7 +29,7 @@ Public Class MetaDataExtractor
         Public Shared Sub ExtractMetadataFromSlides(fileName As String)
             'ExStart:ExtractMetadataFromSlides
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             Dim extractor As New SlidesMetadataExtractor()
             Dim metadata As MetadataCollection = extractor.ExtractMetadata(filePath)
             For Each key As String In metadata.Keys
@@ -47,7 +47,7 @@ Public Class MetaDataExtractor
         Public Shared Sub ExtractMetadataFromWords(fileName As String)
             'ExStart:ExtractMetadataFromWords
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             Dim extractor As New WordsMetadataExtractor()
             Dim metadata As MetadataCollection = extractor.ExtractMetadata(filePath)
             For Each key As String In metadata.Keys
@@ -65,7 +65,7 @@ Public Class MetaDataExtractor
         Public Shared Sub ExtractMetadataFromPdf(fileName As String)
             'ExStart:ExtractMetadataFromPdf
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             Dim extractor As New PdfMetadataExtractor()
             Dim metadata As MetadataCollection = extractor.ExtractMetadata(filePath)
             For Each key As String In metadata.Keys
@@ -83,7 +83,7 @@ Public Class MetaDataExtractor
         Public Shared Sub ExtractMetadataFromEmails(fileName As String)
             'ExStart:ExtractMetadataFromEmails
             'get file actual path
-            Dim filePath As [String] = Utilities.getFilePath(fileName)
+            Dim filePath As [String] = Common.getFilePath(fileName)
             Dim extractor As New EmailMetadataExtractor()
             Dim metadata As MetadataCollection = extractor.ExtractMetadata(filePath)
             For Each key As String In metadata.Keys
@@ -96,7 +96,7 @@ Public Class MetaDataExtractor
     Public Shared Sub UsingExtractorFactory(fileName As String)
         'ExStart:UsingExtractorFactory
         'get file actual path
-        Dim filePath As [String] = Utilities.getFilePath(fileName)
+        Dim filePath As [String] = Common.getFilePath(fileName)
         Dim factory As New ExtractorFactory()
         Dim metadata As MetadataCollection = factory.ExtractMetadata(filePath)
         If metadata Is Nothing Then

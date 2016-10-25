@@ -20,7 +20,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractMetadataFromCells
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 CellsMetadataExtractor extractor = new CellsMetadataExtractor();
                 MetadataCollection metadata = extractor.ExtractMetadata(filePath);
                 foreach (string key in metadata.Keys)
@@ -41,7 +41,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractMetadataFromSlides
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 SlidesMetadataExtractor extractor = new SlidesMetadataExtractor();
                 MetadataCollection metadata = extractor.ExtractMetadata(filePath);
                 foreach (string key in metadata.Keys)
@@ -62,7 +62,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractMetadataFromWords
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 WordsMetadataExtractor extractor = new WordsMetadataExtractor();
                 MetadataCollection metadata = extractor.ExtractMetadata(filePath);
                 foreach (string key in metadata.Keys)
@@ -83,7 +83,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractMetadataFromPdf
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 PdfMetadataExtractor extractor = new PdfMetadataExtractor();
                 MetadataCollection metadata = extractor.ExtractMetadata(filePath);
                 foreach (string key in metadata.Keys)
@@ -104,7 +104,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractMetadataFromEmails
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 EmailMetadataExtractor extractor = new EmailMetadataExtractor();
                 MetadataCollection metadata = extractor.ExtractMetadata(filePath);
                 foreach (string key in metadata.Keys)
@@ -119,7 +119,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:UsingExtractorFactory
             //get file actual path
-            String filePath = Utilities.getFilePath(fileName);
+            String filePath = Common.getFilePath(fileName);
             ExtractorFactory factory = new ExtractorFactory();
             MetadataCollection metadata = factory.ExtractMetadata(filePath);
             if (metadata == null)

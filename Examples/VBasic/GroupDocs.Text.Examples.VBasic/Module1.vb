@@ -69,6 +69,15 @@
         'OtherOperations.PassEncodingToCreatedExtractor("The butterfly effect.xlsx");
         'End Region
 
+
+        'Region "BusinessCases"
+        'count the statistic of word's occurrences in the document
+        'WordStatistic.FindMaxWordLength("The butterfly effect.xlsx", "The butterfly effect.pptx");
+        'view the content of the file in Console
+        'ExtractText.ViewContentInConsole("The butterfly effect.xlsx");
+        'End Region
+
+
     End Sub
 
 End Module

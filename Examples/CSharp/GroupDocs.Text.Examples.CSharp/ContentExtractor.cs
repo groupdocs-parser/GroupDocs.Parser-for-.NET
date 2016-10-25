@@ -23,7 +23,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractOneNoteDocument
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 //Set page index
                 int pageIndex = 1;
                 NoteTextExtractor extractor = new NoteTextExtractor(filePath);
@@ -43,7 +43,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractPdfDocument
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 //Set page index
                 int pageIndex = 1;
                 PdfTextExtractor extractor = new PdfTextExtractor(filePath);
@@ -63,7 +63,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractPresentationDocument
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 //Set slide index
                 int slideIndex = 1;
                 SlidesTextExtractor extractor = new SlidesTextExtractor(filePath);
@@ -82,7 +82,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractEntireSheet
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 //Set slide index
                 int slideIndex = 1;
                 CellsTextExtractor extractor = new CellsTextExtractor(filePath);
@@ -98,7 +98,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractSheetByRows
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 CellsTextExtractor extractor = new CellsTextExtractor(filePath);
                 int sheetIndex = 0;
                 CellsSheetInfo sheetInfo = extractor.GetSheetInfo(sheetIndex);
@@ -117,7 +117,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractSelectedColumns
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 CellsTextExtractor extractor = new CellsTextExtractor(filePath);
                 int sheetIndex = 0;
                 CellsSheetInfo sheetInfo = extractor.GetSheetInfo(sheetIndex);
@@ -131,7 +131,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractSelectedColumnsAndRows
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 CellsTextExtractor extractor = new CellsTextExtractor(filePath);
                 int sheetIndex = 0;
                 CellsSheetInfo sheetInfo = extractor.GetSheetInfo(sheetIndex);
@@ -154,7 +154,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractEntireWordPage
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 int pageIndex = 0;
                 WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath);
                 Console.WriteLine(extractor.ExtractPage(pageIndex));
@@ -168,7 +168,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractEntireWordPage
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath);
                 PlainTableFrame frame = new PlainTableFrame(
                     PlainTableFrameAngle.ASCII,
@@ -187,7 +187,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractingWithMarkdown
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath);
                 extractor.DocumentFormatter = new MarkdownDocumentFormatter();
                 Console.WriteLine(extractor.ExtractAll());
@@ -202,7 +202,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:HtmlTextFormating
                 //get file actual path
-                String filePath = Utilities.getFilePath(fileName);
+                String filePath = Common.getFilePath(fileName);
                 WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath);
                 extractor.DocumentFormatter = new HtmlDocumentFormatter();
                 Console.WriteLine(extractor.ExtractAll());
