@@ -17,34 +17,34 @@ namespace GroupDocs.Text_for_.NET
             #region TextExtractors
 
             //Extracting email attachments
-            ContentExtractor.EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
+            DocumentTextExtractor.EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
 
             //Extracting onenote text
-            //ContentExtractor.OneNoteDocument.ExtractOneNoteDocument("The butterfly effect.one");
+            //DocumentTextExtractor.OneNoteDocument.ExtractOneNoteDocument("The butterfly effect.one");
 
             //Extracting pdf text
-            //ContentExtractor.PdfDocument.ExtractPdfDocument("The butterfly effect.pdf");
+            //DocumentTextExtractor.PdfDocument.ExtractPdfDocument("The butterfly effect.pdf");
 
             //Extracting slides text
-            //ContentExtractor.PresentationDocument.ExtractPresentationDocument("The butterfly effect.pptx");
+            //DocumentTextExtractor.PresentationDocument.ExtractPresentationDocument("The butterfly effect.pptx");
 
             //Extracting the entire sheet
-            //ContentExtractor.SpreadsheetDocument.ExtractEntireSheet("The butterfly effect.xlsx");
+            //DocumentTextExtractor.SpreadsheetDocument.ExtractEntireSheet("The butterfly effect.xlsx");
             //Extracting the sheet by the rows
-            //ContentExtractor.SpreadsheetDocument.ExtractSheetByRows("The butterfly effect.xlsx");
+            //DocumentTextExtractor.SpreadsheetDocument.ExtractSheetByRows("The butterfly effect.xlsx");
             //Extracting the selected columns
-            //ContentExtractor.SpreadsheetDocument.ExtractSelectedColumns("The butterfly effect.xlsx");
+            //DocumentTextExtractor.SpreadsheetDocument.ExtractSelectedColumns("The butterfly effect.xlsx");
             //Extracting selected rows and columns
-            //ContentExtractor.SpreadsheetDocument.ExtractSelectedColumnsAndRows("The butterfly effect.xlsx"); 
+            //DocumentTextExtractor.SpreadsheetDocument.ExtractSelectedColumnsAndRows("The butterfly effect.xlsx"); 
 
             //Extracting text from word page (formatted)
-            //ContentExtractor.TextDocument.ExtractEntireWordPage("The butterfly effect.docx");
+            //DocumentTextExtractor.TextDocument.ExtractEntireWordPage("The butterfly effect.docx");
             //Extracting formatted/tabled text from word
-            //ContentExtractor.TextDocument.FormattingTable("The butterfly effect.docx");
+            //DocumentTextExtractor.TextDocument.FormattingTable("The butterfly effect.docx");
             //Extracting text with markdown text format, at the moment bullets are supported
-            //ContentExtractor.TextDocument.ExtractingWithMarkdown("The butterfly effect.docx");
+            //DocumentTextExtractor.TextDocument.ExtractingWithMarkdown("The butterfly effect.docx");
             //Extracting text with html text format
-            //ContentExtractor.TextDocument.HtmlTextFormating("The butterfly effect.docx");
+            //DocumentTextExtractor.TextDocument.HtmlTextFormating("The butterfly effect.docx");
             #endregion
 
             #region MetadataExtractors
@@ -71,17 +71,17 @@ namespace GroupDocs.Text_for_.NET
 
             #region OtherOperations
             //Creating a concrete extractor
-            //OtherOperations.ConcreteExtractor("The butterfly effect.xlsx");
+            //DocumentTextExtractor.SpreadsheetDocument.ConcreteExtractor("The butterfly effect.xlsx");
             //Extract all
             //OtherOperations.ExtractAllFromCells("The butterfly effect.xlsx");
             //Pass media type and encoding to the created extractor
-            //OtherOperations.PassEncodingToCreatedExtractor("The butterfly effect.xlsx");
+            //DocumentTextExtractor.PassEncodingToCreatedExtractor("The butterfly effect.xlsx");
             #endregion
 
             #region BusinessCases
 
             //count the statistic of word's occurrences in the document
-            WordStatistic.FindMaxWordLength("The butterfly effect.xlsx", "The butterfly effect.pptx");
+            //WordStatistic.FindMaxWordLength("The butterfly effect.xlsx", "The butterfly effect.pptx");
             // view the content of the file in Console
             //ExtractText.ViewContentInConsole("The butterfly effect.xlsx");
             #endregion
