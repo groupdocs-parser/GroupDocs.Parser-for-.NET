@@ -6,14 +6,62 @@ GroupDocs.Text.Examples.CSharp
 </name>
 </assembly>
 <members>
-<member name="M:GroupDocs.Text.Examples.CSharp.OtherOperations.ConcreteExtractor(System.String)">
+<member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.OneNoteDocument.ExtractOneNoteDocument(System.String)">
+	<summary>
+ Extract text from onenote file/document
+ </summary>
+	<param name="fileName"></param>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.PdfDocument.ExtractPdfDocument(System.String)">
+	<summary>
+ Extract text from pdf documents
+ </summary>
+	<param name="fileName"></param>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.PresentationDocument.ExtractPresentationDocument(System.String)">
+	<summary>
+ Extract text from presentatoin documents
+ </summary>
+	<param name="fileName"></param>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.SpreadsheetDocument.ExtractEntireSheet(System.String)">
+	<summary>
+ Extract text from spreadsheet documents
+ </summary>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.SpreadsheetDocument.ExtractSheetByRows(System.String)">
+	<summary>
+ Extracting the sheet by the rows
+ </summary>
+	<param name="fileName"></param>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.SpreadsheetDocument.ExtractSelectedColumns(System.String)">
+	<summary>
+ Extracting the selected columns
+ </summary>
+	<param name="fileName"></param>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.SpreadsheetDocument.ExtractSelectedColumnsAndRows(System.String)">
+	<summary>
+ Extracting the selected columns from selected rows
+ </summary>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.SpreadsheetDocument.ConcreteExtractor(System.String)">
 	<summary>
  Create the concrete extractor by hand
  </summary>
 	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.OtherOperations.ExtractAllFromCells(System.String)">
+</member><member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.TextDocument.ExtractEntireWordPage(System.String)">
 	<summary>
- Extract all from cells
+ Extract formatted text from word
+ </summary>
+	<param name="fileName"></param>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.TextDocument.FormattingTable(System.String)">
+	<summary>
+ Extract text from word by defining a table format
+ </summary>
+	<param name="fileName"></param>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.TextDocument.ExtractingWithMarkdown(System.String)">
+	<summary>
+ Extract text with markdown text format
+ </summary>
+	<param name="fileName"></param>
+</member><member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.TextDocument.HtmlTextFormating(System.String)">
+	<summary>
+ Extract a text with HTML text formatter
  </summary>
 	<param name="fileName"></param>
 </member><member name="M:GroupDocs.Text.Examples.CSharp.ContainerExtractor.ExtractFromOstContainer">
@@ -66,59 +114,6 @@ GroupDocs.Text.Examples.CSharp
 	<summary>
  Apply license
  </summary>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.ContentExtractor.OneNoteDocument.ExtractOneNoteDocument(System.String)">
-	<summary>
- Extract text from onenote file/document
- </summary>
-	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.ContentExtractor.PdfDocument.ExtractPdfDocument(System.String)">
-	<summary>
- Extract text from pdf documents
- </summary>
-	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.ContentExtractor.PresentationDocument.ExtractPresentationDocument(System.String)">
-	<summary>
- Extract text from presentatoin documents
- </summary>
-	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.ContentExtractor.SpreadsheetDocument.ExtractEntireSheet(System.String)">
-	<summary>
- Extract text from spreadsheet documents
- </summary>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.ContentExtractor.SpreadsheetDocument.ExtractSheetByRows(System.String)">
-	<summary>
- Extracting the sheet by the rows
- </summary>
-	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.ContentExtractor.SpreadsheetDocument.ExtractSelectedColumns(System.String)">
-	<summary>
- Extracting the selected columns
- </summary>
-	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.ContentExtractor.SpreadsheetDocument.ExtractSelectedColumnsAndRows(System.String)">
-	<summary>
- Extracting the selected columns from selected rows
- </summary>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.ContentExtractor.TextDocument.ExtractEntireWordPage(System.String)">
-	<summary>
- Extract formatted text from word
- </summary>
-	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.ContentExtractor.TextDocument.FormattingTable(System.String)">
-	<summary>
- Extract text from word by defining a table format
- </summary>
-	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.ContentExtractor.TextDocument.ExtractingWithMarkdown(System.String)">
-	<summary>
- Extract text with markdown text format
- </summary>
-	<param name="fileName"></param>
-</member><member name="M:GroupDocs.Text.Examples.CSharp.ContentExtractor.TextDocument.HtmlTextFormating(System.String)">
-	<summary>
- Extract a text with HTML text formatter
- </summary>
-	<param name="fileName"></param>
 </member>
 </members>
 </doc>

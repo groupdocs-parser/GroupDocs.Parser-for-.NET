@@ -8,10 +8,11 @@ using GroupDocs.Text.Formatters.Plain;
 using GroupDocs.Text.Formatters.Markdown;
 using GroupDocs.Text.Formatters.Html;
 using System.IO;
+using GroupDocs.Text;
 
 namespace GroupDocs.Text_for_.NET
 {
-    public class ContentExtractor
+    public class DocumentTextExtractor
     {
 
         public class EmailsExtractor
@@ -115,9 +116,9 @@ namespace GroupDocs.Text_for_.NET
                 //get file actual path
                 String filePath = Common.getFilePath(fileName);
                 //Set slide index
-                int slideIndex = 1;
+                int sheetIndex = 1;
                 CellsTextExtractor extractor = new CellsTextExtractor(filePath);
-                Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSheet(slideIndex), extractor.SheetCount);
+                Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSheet(sheetIndex), extractor.SheetCount);
                 //Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.SheetCount);
                 //ExEnd:ExtractEntireSheet
             }
@@ -173,6 +174,25 @@ namespace GroupDocs.Text_for_.NET
                 }
                 //ExEnd:ExtractSelectedColumnsAndRows
             }
+
+            /// <summary>
+            /// Create the concrete extractor by hand
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ConcreteExtractor(string fileName)
+            {
+                //ExStart:ConcreteExtractor
+                //get file actual path
+                string filePath = Common.getFilePath(fileName);
+                using (Stream stream = File.OpenRead(filePath))
+                {
+                    using (CellsTextExtractor extractor = new CellsTextExtractor(stream))
+                    {
+                        Console.WriteLine(extractor.ExtractAll());
+                    }
+                }
+                //ExEnd:ConcreteExtractor
+            }
         }
 
         public class TextDocument
@@ -197,7 +217,7 @@ namespace GroupDocs.Text_for_.NET
             /// <param name="fileName"></param>
             public static void FormattingTable(string fileName)
             {
-                //ExStart:ExtractEntireWordPage
+                //ExStart:FormattingTable
                 //get file actual path
                 String filePath = Common.getFilePath(fileName);
                 WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath);
@@ -208,7 +228,7 @@ namespace GroupDocs.Text_for_.NET
                     new PlainTableFrameConfig(true, true, true, false));
                 extractor.DocumentFormatter = new PlainDocumentFormatter(frame);
                 Console.WriteLine(extractor.ExtractAll());
-                //ExEnd:ExtractEntireWordPage
+                //ExEnd:FormattingTable
             }
             /// <summary>
             /// Extract text with markdown text format
@@ -241,5 +261,18 @@ namespace GroupDocs.Text_for_.NET
             }
         }
 
+        public static void PassEncodingToCreatedExtractor(string fileName)
+        {
+            //ExStart:PassEncodingToCreatedExtractor
+            //get file actual path
+            string filePath = Common.getFilePath(fileName);
+            LoadOptions loadOptions = new LoadOptions("text/plain", Encoding.UTF8);
+            ExtractorFactory factory = new ExtractorFactory();
+            using (TextExtractor extractor = factory.CreateTextExtractor(filePath, loadOptions))
+            {
+                Console.WriteLine(extractor != null ? extractor.ExtractAll() : "The document format is not supported");
+            }
+            //ExEnd:PassEncodingToCreatedExtractor
+        }
     }
 }

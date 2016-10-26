@@ -3,8 +3,9 @@ Imports GroupDocs.Text.Formatters.Html
 Imports GroupDocs.Text.Formatters.Plain
 Imports GroupDocs.Text.Formatters.Markdown
 Imports System.IO
+Imports System.Text
 
-Public Class ContentExtractor
+Public Class DocumentTextExtractor
 
     Public Class EmailsExtractor
 
@@ -95,9 +96,9 @@ Public Class ContentExtractor
             'get file actual path
             Dim filePath As [String] = Common.getFilePath(fileName)
             'Set slide index
-            Dim slideIndex As Integer = 1
+            Dim sheetIndex As Integer = 1
             Dim extractor As New CellsTextExtractor(filePath)
-            Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSheet(slideIndex), extractor.SheetCount)
+            Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSheet(sheetIndex), extractor.SheetCount)
             'Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.SheetCount);
             'ExEnd:ExtractEntireSheet
         End Sub
@@ -148,6 +149,24 @@ Public Class ContentExtractor
             Next
             'ExEnd:ExtractSelectedColumnsAndRows
         End Sub
+
+        ''' <summary>
+        ''' Create the concrete extractor by hand
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ConcreteExtractor(fileName As String)
+            'ExStart:ConcreteExtractor
+            'get file actual path
+            Dim filePath As String = Common.getFilePath(fileName)
+            Using stream As Stream = File.OpenRead(filePath)
+                Using extractor As New CellsTextExtractor(stream)
+                    Console.WriteLine(extractor.ExtractAll())
+                End Using
+            End Using
+            'ExEnd:ConcreteExtractor
+        End Sub
+
+
     End Class
 
     Public Class TextDocument
@@ -206,5 +225,17 @@ Public Class ContentExtractor
             'ExEnd:HtmlTextFormating
         End Sub
     End Class
+
+    Public Shared Sub PassEncodingToCreatedExtractor(fileName As String)
+        'ExStart:PassEncodingToCreatedExtractor
+        'get file actual path
+        Dim filePath As String = Common.getFilePath(fileName)
+        Dim loadOptions As New LoadOptions("text/plain", Encoding.UTF8)
+        Dim factory As New ExtractorFactory()
+        Using extractor As TextExtractor = factory.CreateTextExtractor(filePath, loadOptions)
+            Console.WriteLine(If(extractor IsNot Nothing, extractor.ExtractAll(), "The document format is not supported"))
+        End Using
+        'ExEnd:PassEncodingToCreatedExtractor
+    End Sub
 
 End Class
