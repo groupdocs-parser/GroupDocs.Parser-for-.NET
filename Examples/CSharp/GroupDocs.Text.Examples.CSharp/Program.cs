@@ -85,6 +85,7 @@ namespace GroupDocs.Text_for_.NET
             // view the content of the file in Console
             //ExtractText.ViewContentInConsole("The butterfly effect.xlsx");
             #endregion
+            Console.ReadKey();
         }
     }
 }

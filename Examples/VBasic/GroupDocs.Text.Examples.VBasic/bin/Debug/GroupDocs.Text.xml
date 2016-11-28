@@ -4,6 +4,149 @@
     <name>GroupDocs.Text</name>
   </assembly>
   <members>
+    <member name="T:GroupDocs.Text.CompositeNotificationReceiver">
+      <summary>
+             Provides the functionality to combine notification receivers.
+             </summary>
+      <example>
+        <para>This code shows how to create CompositeNotificationReceiver and send a message:</para>
+        <code lang="c#">
+             var receiver1 = new MockNotificationReceiver();
+             var receiver2 = new MockNotificationReceiver();
+             var message = NotificationMessage.CreateInformationMessage("test");
+            
+             var compositeReceiver = new CompositeNotificationReceiver(receiver1, receiver2);
+             compositeReceiver.ProcessMessage(message); // message sends to receiver1 AND receiver2   
+             </code>
+      </example>
+    </member>
+    <member name="T:GroupDocs.Text.INotificationReceiver">
+      <summary>
+            Provides the functionality of processing notifications.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.INotificationReceiver.ProcessMessage(GroupDocs.Text.NotificationMessage)">
+      <summary>
+            Processes the <paramref name="message" />.
+            </summary>
+      <param name="message">The message to process.</param>
+    </member>
+    <member name="M:GroupDocs.Text.CompositeNotificationReceiver.#ctor(GroupDocs.Text.INotificationReceiver[])">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.CompositeNotificationReceiver" /> class.
+            </summary>
+      <param name="receivers">A collection of notification receivers to combine.</param>
+    </member>
+    <member name="M:GroupDocs.Text.CompositeNotificationReceiver.ProcessMessage(GroupDocs.Text.NotificationMessage)">
+      <summary>
+            Processes the <paramref name="message" />.
+            </summary>
+      <param name="message">The message to process.</param>
+    </member>
+    <member name="T:GroupDocs.Text.InvalidPasswordException">
+      <summary>
+            Represents the error that occur ...
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Text.GroupDocsTextException">
+      <summary>
+            Represents the errors that occur during application execution.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.GroupDocsTextException.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.GroupDocsTextException" /> class.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.GroupDocsTextException.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.GroupDocsTextException" /> class.
+            </summary>
+      <param name="message">The message that describes the error.</param>
+    </member>
+    <member name="M:GroupDocs.Text.InvalidPasswordException.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.InvalidPasswordException" /> class.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.InvalidPasswordException.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.InvalidPasswordException" /> class.
+            </summary>
+      <param name="message">The message that describes the error.</param>
+    </member>
+    <member name="T:GroupDocs.Text.NotificationLevel">
+      <summary>
+            Provides information about a level of the notification.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Text.NotificationLevel.Error">
+      <summary>
+            Error notification.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Text.NotificationLevel.Warning">
+      <summary>
+            Warning notification.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Text.NotificationLevel.Information">
+      <summary>
+            Information notification.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Text.NotificationMessage">
+      <summary>
+            Provides a notification message.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.NotificationMessage.CreateErrorMessage(System.String)">
+      <summary>
+            Creates a error notification message.
+            </summary>
+      <param name="description">The description of the error.</param>
+      <returns>An instance of the <see cref="T:GroupDocs.Text.NotificationMessage" />.</returns>
+    </member>
+    <member name="M:GroupDocs.Text.NotificationMessage.CreateErrorMessage(System.String,System.Exception)">
+      <summary>
+            Creates a error notification message.
+            </summary>
+      <param name="description">The description of the error.</param>
+      <param name="exception">The instance of exception.</param>
+      <returns>An instance of the <see cref="T:GroupDocs.Text.NotificationMessage" />.</returns>
+    </member>
+    <member name="M:GroupDocs.Text.NotificationMessage.CreateWarningMessage(System.String)">
+      <summary>
+            Creates a warning notification message.
+            </summary>
+      <param name="description">The description of the warning.</param>
+      <returns>An instance of the <see cref="T:GroupDocs.Text.NotificationMessage" />.</returns>
+    </member>
+    <member name="M:GroupDocs.Text.NotificationMessage.CreateInformationMessage(System.String)">
+      <summary>
+            Creates a information notification message.
+            </summary>
+      <param name="description">The description of the information.</param>
+      <returns>An instance of the <see cref="T:GroupDocs.Text.NotificationMessage" />.</returns>
+    </member>
+    <member name="P:GroupDocs.Text.NotificationMessage.NotificationLevel">
+      <summary>
+            Gets a level of the notification.
+            </summary>
+      <value>A level of the notification.</value>
+    </member>
+    <member name="P:GroupDocs.Text.NotificationMessage.Description">
+      <summary>
+            Gets a description of the notification.
+            </summary>
+      <value>A string with description of the notification.</value>
+    </member>
+    <member name="P:GroupDocs.Text.NotificationMessage.Exception">
+      <summary>
+            Gets an exception of the error notification.
+            </summary>
+      <value>An instance of the exception or null (if not presented).</value>
+    </member>
     <member name="T:GroupDocs.Text.Containers.NamespaceDoc">
       <summary>
             The namespace provides the classes for working with containers.
@@ -203,6 +346,12 @@
             A string that contains all characters from the current position to the end of the text extractor.
             </returns>
     </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.SendNotificationMessage(GroupDocs.Text.NotificationMessage)">
+      <summary>
+            Sends notification message to notification receiver (if presented).
+            </summary>
+      <param name="notificationMessage">The message with a notification.</param>
+    </member>
     <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.Dispose(System.Boolean)">
       <summary>
             Releases the unmanaged resources used by the extractor.
@@ -214,6 +363,21 @@
             Checks whether the extractor is disposed.
             </summary>
       <exception cref="T:System.ObjectDisposedException">The extractor is disposed.</exception>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.ExtractText">
+      <summary>
+            Extracts all characters from the current position to the end of the text extractor
+            and returns them as one string.
+            </summary>
+      <returns>
+            A string that contains all characters from the current position to the end of the text extractor.
+            </returns>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.ExtractTextLine">
+      <summary>
+            Extracts a line of characters from the text extractor and returns the data as a string.
+            </summary>
+      <returns>The next line from the extractor, or null if all characters have been extracted.</returns>
     </member>
     <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.PrepareLine">
       <summary>
@@ -238,6 +402,12 @@
             Gets or sets an encoding for the document.
             </summary>
       <value>A encoding for the document, or null if encoding is not specified.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.Text.TextExtractor.Password">
+      <summary>
+            Gets a password of the document.
+            </summary>
+      <value>A string that represents a password of the document.</value>
     </member>
     <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.#ctor(System.IO.Stream,GroupDocs.Text.LoadOptions)">
       <summary>
@@ -266,40 +436,6 @@
     </member>
     <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.Reset">
       <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.ExtractLine">
-      <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.ExtractAll">
-      <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.Dispose(System.Boolean)">
-      <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.CheckDocument">
-      <summary>
-            Checks that document is loaded.
-            </summary>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.LoadDocument">
-      <summary>
-            Loads the spreadsheet from <see cref="P:GroupDocs.Text.Extractors.Text.TextExtractor.DocumentStream" />.
-            </summary>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.PrepareLine">
-      <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.NextRow">
-      <summary>
-            Moves the cursor to the next row or sheet.
-            </summary>
-      <returns>true if it isn't reached the end of the workbook; otherwise, false.</returns>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.CreateTextReader">
-      <summary>
-            Creates a reader for the current row.
-            </summary>
-      <returns>An instance of the <see cref="T:System.IO.TextReader" />.</returns>
     </member>
     <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.LoadHeader(System.IO.Stream,System.Int32,System.Boolean)">
       <summary>
@@ -331,6 +467,40 @@
       <param name="sheetIndex">The index of the sheet.</param>
       <param name="columns">A collection of the columns to read.</param>
       <returns>A total count of written bytes.</returns>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.Dispose(System.Boolean)">
+      <inheritdoc />
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.ExtractTextLine">
+      <inheritdoc />
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.ExtractText">
+      <inheritdoc />
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.CheckDocument">
+      <summary>
+            Checks that document is loaded.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.LoadDocument">
+      <summary>
+            Loads the spreadsheet from <see cref="P:GroupDocs.Text.Extractors.Text.TextExtractor.DocumentStream" />.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.PrepareLine">
+      <inheritdoc />
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.NextRow">
+      <summary>
+            Moves the cursor to the next row or sheet.
+            </summary>
+      <returns>true if it isn't reached the end of the workbook; otherwise, false.</returns>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.CreateTextReader">
+      <summary>
+            Creates a reader for the current row.
+            </summary>
+      <returns>An instance of the <see cref="T:System.IO.TextReader" />.</returns>
     </member>
     <member name="P:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.SheetCount">
       <summary>
@@ -369,9 +539,6 @@
             </summary>
       <param name="stream">The stream of the document.</param>
       <param name="loadOptions">The options of loading the file.</param>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractor.ExtractAll">
-      <inheritdoc />
     </member>
     <member name="P:GroupDocs.Text.Extractors.Text.CellsTextExtractor.IsRawMode">
       <summary>
@@ -484,12 +651,32 @@
             Initializes a new instance of the <see cref="T:GroupDocs.Text.LoadOptions" /> class.
             </summary>
     </member>
+    <member name="M:GroupDocs.Text.LoadOptions.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.LoadOptions" /> class.
+            </summary>
+      <param name="mediaType">A media type of the file.</param>
+    </member>
     <member name="M:GroupDocs.Text.LoadOptions.#ctor(System.String,System.Text.Encoding)">
       <summary>
             Initializes a new instance of the <see cref="T:GroupDocs.Text.LoadOptions" /> class.
             </summary>
       <param name="mediaType">A media type of the file.</param>
       <param name="encoding">An encoding of the file.</param>
+    </member>
+    <member name="M:GroupDocs.Text.LoadOptions.#ctor(System.String,System.Text.Encoding,System.String)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.LoadOptions" /> class.
+            </summary>
+      <param name="mediaType">A media type of the file.</param>
+      <param name="encoding">An encoding of the file.</param>
+      <param name="password">A password of the file.</param>
+    </member>
+    <member name="M:GroupDocs.Text.LoadOptions.Clone">
+      <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+      <returns>A new object that is a copy of this instance.</returns>
     </member>
     <member name="P:GroupDocs.Text.LoadOptions.MediaType">
       <summary>
@@ -502,6 +689,18 @@
             Gets or sets an encoding for the file.
             </summary>
       <value>An encoding for the file.</value>
+    </member>
+    <member name="P:GroupDocs.Text.LoadOptions.Password">
+      <summary>
+            Gets or sets a password for the file.
+            </summary>
+      <value>An string with the password for the file.</value>
+    </member>
+    <member name="P:GroupDocs.Text.LoadOptions.NotificationReceiver">
+      <summary>
+            Gets or sets a NotificationReceiver.
+            </summary>
+      <value>The object which implemented <see cref="T:GroupDocs.Text.INotificationReceiver" /> interface.</value>
     </member>
     <member name="T:GroupDocs.Text.NamespaceDoc">
       <summary>
@@ -1889,15 +2088,32 @@
     </member>
     <member name="M:GroupDocs.Text.Formatters.TableCellComparer.Compare(GroupDocs.Text.Formatters.TableCell,GroupDocs.Text.Formatters.TableCell)">
       <summary>
-            Compares two objects and returns a value indicating whether one is less than,
+            Compares two objects and returns a value indicating whether one is less than, 
             equal to, or greater than the other.
             </summary>
       <param name="x">The first object to compare.</param>
       <param name="y">The second object to compare.</param>
       <returns>
-            Value Condition Less than zerox is less than y. Zerox equals y. Greater than zerox
-            is greater than y.
-            </returns>
+        <para>A signed integer that indicates the relative values of x and y, as shown in the following table.</para>
+        <list type="table">
+          <listheader>
+            <term>Value</term>
+            <description>Meaning</description>
+          </listheader>
+          <item>
+            <term>Less than zero</term>
+            <description>x is less than y.</description>
+          </item>
+          <item>
+            <term>Zero</term>
+            <description>x equals y.</description>
+          </item>
+          <item>
+            <term>Greater than zero</term>
+            <description>x is greater than y.</description>
+          </item>
+        </list>
+      </returns>
     </member>
     <member name="T:GroupDocs.Text.Formatters.TableCellText">
       <summary>
@@ -2202,22 +2418,6 @@
             Gets a value indicating whether text is italic.
             </summary>
       <value>A boolean if text is italic; otherwise, false.</value>
-    </member>
-    <member name="T:GroupDocs.Text.GroupDocsTextException">
-      <summary>
-            Represents the errors that occur during application execution.
-            </summary>
-    </member>
-    <member name="M:GroupDocs.Text.GroupDocsTextException.#ctor">
-      <summary>
-            Initializes a new instance of the <see cref="T:GroupDocs.Text.GroupDocsTextException" /> class.
-            </summary>
-    </member>
-    <member name="M:GroupDocs.Text.GroupDocsTextException.#ctor(System.String)">
-      <summary>
-            Initializes a new instance of the <see cref="T:GroupDocs.Text.GroupDocsTextException" /> class.
-            </summary>
-      <param name="message">The message that describes the error.</param>
     </member>
     <member name="T:GroupDocs.Text.IContainerFactory">
       <summary>
@@ -2947,6 +3147,16 @@
       <exception cref="T:System.ArgumentNullException">
         <paramref name="stream" /> is null.</exception>
     </member>
+    <member name="M:GroupDocs.Text.Extractors.Metadata.MetadataExtractor.ExtractMetadata(System.IO.Stream,GroupDocs.Text.LoadOptions)">
+      <summary>
+            Extracts the metadata from the <paramref name="stream" />.
+            </summary>
+      <param name="stream">The stream of the document.</param>
+      <param name="loadOptions">The options of loading the file.</param>
+      <returns>A collection of the metadata.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="stream" /> is null.</exception>
+    </member>
     <member name="M:GroupDocs.Text.Extractors.Metadata.MetadataExtractor.ExtractMetadata(System.String)">
       <summary>
             Extracts the metadata from the <paramref name="fileName" />.
@@ -2956,11 +3166,22 @@
       <exception cref="T:System.ArgumentNullException">
         <paramref name="fileName" /> is null.</exception>
     </member>
-    <member name="M:GroupDocs.Text.Extractors.Metadata.MetadataExtractor.ExtractMetadataFromStream(System.IO.Stream)">
+    <member name="M:GroupDocs.Text.Extractors.Metadata.MetadataExtractor.ExtractMetadata(System.String,GroupDocs.Text.LoadOptions)">
+      <summary>
+            Extracts the metadata from the <paramref name="fileName" />.
+            </summary>
+      <param name="fileName">The path to the file.</param>
+      <param name="loadOptions">The options of loading the file.</param>
+      <returns>A collection of the metadata.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="fileName" /> is null.</exception>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Metadata.MetadataExtractor.ExtractMetadataFromStream(System.IO.Stream,GroupDocs.Text.LoadOptions)">
       <summary>
             Extracts the metadata from the <paramref name="stream" />.
             </summary>
       <param name="stream">The stream of the document.</param>
+      <param name="loadOptions">The options of loading the file.</param>
       <returns>A collection of the metadata.</returns>
       <remarks>This method must be override in the inherited classes.</remarks>
     </member>
@@ -3735,9 +3956,6 @@
       <param name="stream">The stream of the document.</param>
       <param name="loadOptions">The options of loading the file.</param>
     </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.SlidesTextExtractor.ExtractAll">
-      <inheritdoc />
-    </member>
     <member name="P:GroupDocs.Text.Extractors.Text.SlidesTextExtractor.IsRawMode">
       <summary>
             Gets or sets a value indicating whether the reader extracts a text without any formatting.
@@ -3942,9 +4160,6 @@
             </summary>
       <param name="stream">The stream of the document.</param>
       <param name="loadOptions">The options of loading the file.</param>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.WordsTextExtractor.ExtractAll">
-      <inheritdoc />
     </member>
     <member name="M:GroupDocs.Text.Extractors.Text.WordsTextExtractor.Reset">
       <inheritdoc />
@@ -4190,6 +4405,23 @@
             An instance of the <see cref="T:GroupDocs.Text.Detectors.Encoding.EncodingDetector" />.
             </param>
     </member>
+    <member name="M:GroupDocs.Text.ExtractorFactory.#ctor(GroupDocs.Text.Formatters.DocumentFormatter,GroupDocs.Text.Detectors.MediaType.MediaTypeDetector,GroupDocs.Text.Detectors.Encoding.EncodingDetector,GroupDocs.Text.INotificationReceiver)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.ExtractorFactory" /> class.
+            </summary>
+      <param name="documentFormatter">
+            An instance of the <see cref="T:GroupDocs.Text.Formatters.DocumentFormatter" />.
+            </param>
+      <param name="mediaTypeDetector">
+            An instance of the <see cref="T:GroupDocs.Text.Detectors.MediaType.MediaTypeDetector" />.
+            </param>
+      <param name="encodingDetector">
+            An instance of the <see cref="T:GroupDocs.Text.Detectors.Encoding.EncodingDetector" />.
+            </param>
+      <param name="notificationReceiver">
+        <see cref="T:GroupDocs.Text.INotificationReceiver" /> to process messages.
+            </param>
+    </member>
     <member name="M:GroupDocs.Text.ExtractorFactory.CreateTextExtractor(System.String)">
       <summary>
             Creates a text extractor.
@@ -4362,6 +4594,13 @@
             If <c>loadOptions.MediaType</c> is null, media type will be detected by the content of the file.
             </remarks>
     </member>
+    <member name="M:GroupDocs.Text.ExtractorFactory.SendNotificationMessage(GroupDocs.Text.INotificationReceiver,GroupDocs.Text.NotificationMessage)">
+      <summary>
+            Sends notification message to <paramref name="receiver" /> and factory receiver (if presented).
+            </summary>
+      <param name="receiver">The notification receiver.</param>
+      <param name="message">The message with a notification.</param>
+    </member>
     <member name="P:GroupDocs.Text.ExtractorFactory.DocumentFormatter">
       <summary>
             Gets a document formatter.
@@ -4379,6 +4618,11 @@
             Gets an encoding detector.
             </summary>
       <value>An instance of the <see cref="T:GroupDocs.Text.Detectors.Encoding.EncodingDetector" />.</value>
+    </member>
+    <member name="T:GroupDocs.Text.UnsupportedDocumentFormatException">
+      <summary>
+            Thrown during document load, when the document format is not recognized or not supported.
+            </summary>
     </member>
   </members>
 </doc>

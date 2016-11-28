@@ -34,3 +34,15 @@ D:\GitRepos\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBas
 D:\GitRepos\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\obj\Debug\GroupDocs.Text.Examples.VBasic.vbprojResolveAssemblyReference.cache
 D:\GitRepos\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\obj\Debug\GroupDocs.Text.Examples.CSharp.Resources.resources
 D:\GitRepos\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\obj\Debug\GroupDocs.Text.Examples.VBasic.vbproj.GenerateResource.Cache
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\bin\Debug\GroupDocs.Text.Examples.CSharp.exe.config
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\bin\Debug\GroupDocs.Text.Examples.CSharp.exe
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\bin\Debug\GroupDocs.Text.Examples.CSharp.pdb
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\bin\Debug\GroupDocs.Text.Examples.CSharp.xml
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\bin\Debug\GroupDocs.Text.dll
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\bin\Debug\GroupDocs.Text.xml
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\obj\Debug\GroupDocs.Text.Examples.VBasic.vbprojResolveAssemblyReference.cache
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\obj\Debug\GroupDocs.Text.Examples.CSharp.Resources.resources
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\obj\Debug\GroupDocs.Text.Examples.VBasic.vbproj.GenerateResource.Cache
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\obj\Debug\GroupDocs.Text.Examples.CSharp.exe
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\obj\Debug\GroupDocs.Text.Examples.CSharp.xml
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\VBasic\GroupDocs.Text.Examples.VBasic\obj\Debug\GroupDocs.Text.Examples.CSharp.pdb
