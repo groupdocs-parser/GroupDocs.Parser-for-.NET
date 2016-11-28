@@ -3,7 +3,7 @@
     Sub Main()
 
         'Un-comment to apply license 
-        'Utilities.ApplyLicense()
+        'Common.ApplyLicense()
 
         'Region "TextExtractors"
 
@@ -77,6 +77,7 @@
         'ExtractText.ViewContentInConsole("The butterfly effect.xlsx")
         'End Region
 
+        Console.ReadKey()
 
     End Sub
 

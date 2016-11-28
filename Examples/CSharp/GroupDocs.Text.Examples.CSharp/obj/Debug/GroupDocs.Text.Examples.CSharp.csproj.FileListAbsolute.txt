@@ -22,3 +22,11 @@ D:\GitRepos\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSha
 D:\GitRepos\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text.dll
 D:\GitRepos\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text.xml
 D:\GitRepos\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\obj\Debug\GroupDocs.Text.Examples.CSharp.csprojResolveAssemblyReference.cache
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text-for-.NET.exe.config
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\obj\Debug\GroupDocs.Text-for-.NET.exe
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\obj\Debug\GroupDocs.Text-for-.NET.pdb
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\obj\Debug\GroupDocs.Text.Examples.CSharp.csprojResolveAssemblyReference.cache
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text-for-.NET.exe
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text-for-.NET.pdb
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text.dll
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Examples\CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text.xml
