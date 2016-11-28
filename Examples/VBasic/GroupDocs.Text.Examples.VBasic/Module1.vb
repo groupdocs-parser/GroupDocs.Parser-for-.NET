@@ -3,9 +3,9 @@
     Sub Main()
 
         'Un-comment to apply license 
-        'Common.ApplyLicense()
+        Common.ApplyLicense()
 
-        'Region "TextExtractors"
+#Region "TextExtractors"
 
         'Extracting email attachments
         'DocumentTextExtractor.EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg")
@@ -36,9 +36,9 @@
         'DocumentTextExtractor.TextDocument.ExtractingWithMarkdown("The butterfly effect.docx")
         'Extracting text with html text format
         'DocumentTextExtractor.TextDocument.HtmlTextFormating("The butterfly effect.docx")
-        'End Region
+#End Region
 
-        'Region "MetadataExtractors"
+#Region "MetadataExtractors"
         'Extracting metadata from cells
         'MetaDataExtractor.CellsMetadata.ExtractMetadataFromCells("The butterfly effect.xlsx")
         'Extracting metadata from slides
@@ -51,31 +51,52 @@
         'MetaDataExtractor.EmailMetaData.ExtractMetadataFromEmails("The butterfly effect.msg")
         'Extract metadata of any supported file formatted document using extractor factory
         'MetaDataExtractor.UsingExtractorFactory("The butterfly effect.pptx")
-        'EndRegion
+#End Region
 
-        'Region "ContainerExtractor"
+#Region "ContainerExtractor"
         'Extracting from OST
         'ContainerExtractor.ExtractFromOstContainer();
         'Enumerating all entities 
         'ContainerExtractor.EnumeratingAllEntities();
-        'End Region
+#End Region
 
-        'Region "OtherOperations"
+#Region "OtherOperations"
         'Creating a concrete extractor
         'DocumentTextExtractor.SpreadsheetDocument.ConcreteExtractor("The butterfly effect.xlsx")
         'Extract all
         'OtherOperations.ExtractAllFromCells("The butterfly effect.xlsx")
         'Pass media type and encoding to the created extractor
         'DocumentTextExtractor.PassEncodingToCreatedExtractor("The butterfly effect.xlsx")
-        'End Region
+        'Extracting Password protected documents
+        'DocumentTextExtractor.PasswordProtectedDocumentExtractor("Password protected document.docx")
+        'Creates a container from a file or stream
+        'DocumentTextExtractor.CreatingContainerUsingExtractorFactory("The butterfly effect.xlsx")
+#End Region
 
 
-        'Region "BusinessCases"
+#Region "BusinessCases"
         'count the statistic of word's occurrences in the document
         'WordStatistic.FindMaxWordLength("The butterfly effect.xlsx", "The butterfly effect.pptx")
         'view the content of the file in Console
-        'ExtractText.ViewContentInConsole("The butterfly effect.xlsx")
-        'End Region
+        'ExtractText.ViewContentInConsole("The butterfly effect.xlsx
+        'Extract Password protected documents
+        'DocumentTextExtractor.PasswordProtectedDocumentExtractor("Password protected document.docx")
+#End Region
+
+
+#Region "Tools"
+        'Detecting encoding by BOM
+        'Tools.EncodingDetection.ExtractEncodingByBOM("Encoding detection.txt")
+        'Detecting encoding by BOM and the content (if BOM is not presented)
+        'Tools.EncodingDetection.ExtractEncodingByContentAndBOM("Encoding detection.txt")
+        'Implements INotificationReceiver for extractors and does amual exception handling, to test the notification provide an invalid file name or something that can throw an exception so that a message can be logged
+        'Tools.logger.LoggerWithManualExceptionHandling("The butterfly effect.xlsx")
+        'Implements INotificationReceiver for extractors. To test the notification provide an invalid file name or something that can throw an exception so that a message can be logged
+        'Tools.logger.LoggerWithManualExceptionHandling("The butterfly effect.xlsx")
+#End Region
+
+
+
 
         Console.ReadKey()
 

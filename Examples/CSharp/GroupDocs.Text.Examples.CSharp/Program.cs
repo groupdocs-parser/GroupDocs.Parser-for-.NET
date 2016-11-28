@@ -17,7 +17,7 @@ namespace GroupDocs.Text_for_.NET
             #region TextExtractors
 
             //Extracting email attachments
-            DocumentTextExtractor.EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
+            //DocumentTextExtractor.EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
 
             //Extracting onenote text
             //DocumentTextExtractor.OneNoteDocument.ExtractOneNoteDocument("The butterfly effect.one");
@@ -76,6 +76,21 @@ namespace GroupDocs.Text_for_.NET
             //OtherOperations.ExtractAllFromCells("The butterfly effect.xlsx");
             //Pass media type and encoding to the created extractor
             //DocumentTextExtractor.PassEncodingToCreatedExtractor("The butterfly effect.xlsx");
+            //Extracting Password protected documents
+            //DocumentTextExtractor.PasswordProtectedDocumentExtractor("Password protected document.docx");
+            //Creates a container from a file or stream
+            DocumentTextExtractor.CreatingContainerUsingExtractorFactory("The butterfly effect.xlsx");
+            #endregion
+
+            #region Tools
+            //Detecting encoding by BOM
+            //Tools.EncodingDetection.ExtractEncodingByBOM("Encoding detection.txt");
+            //Detecting encoding by BOM and the content (if BOM is not presented)
+            //Tools.EncodingDetection.ExtractEncodingByContentAndBOM("Encoding detection.txt");
+            //Implements INotificationReceiver for extractors and does amual exception handling, to test the notification provide an invalid file name or something that can throw an exception so that a message can be logged
+            //Tools.logger.LoggerWithManualExceptionHandling("The butterfly effect.xlsx");
+            //Implements INotificationReceiver for extractors. To test the notification provide an invalid file name or something that can throw an exception so that a message can be logged
+            //Tools.logger.LoggerWithManualExceptionHandling("The butterfly effect.xlsx");
             #endregion
 
             #region BusinessCases

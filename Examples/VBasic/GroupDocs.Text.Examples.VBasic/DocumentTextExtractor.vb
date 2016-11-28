@@ -4,6 +4,8 @@ Imports GroupDocs.Text.Formatters.Plain
 Imports GroupDocs.Text.Formatters.Markdown
 Imports System.IO
 Imports System.Text
+Imports GroupDocs.Text.Containers
+Imports GroupDocs.Text.Detectors.MediaType
 
 Public Class DocumentTextExtractor
 
@@ -237,5 +239,51 @@ Public Class DocumentTextExtractor
         End Using
         'ExEnd:PassEncodingToCreatedExtractor
     End Sub
+
+
+    ''' <summary>
+    ''' Extract text from a password protected document 
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    Public Shared Sub PasswordProtectedDocumentExtractor(fileName As String)
+        'ExStart:PasswordProtectedDocumentExtractor
+        'get file actual path
+        Dim filePath As String = Common.getFilePath(fileName)
+        'To open password-protected document Password property of LoadOptions must be set
+        Dim loadOptions As New LoadOptions()
+        loadOptions.Password = "test"
+
+        Dim extractor As WordsTextExtractor = Nothing
+        'If password is not set or incorrect InvalidPasswordException is thrown
+        Try
+            extractor = New WordsTextExtractor(filePath, loadOptions)
+            Console.WriteLine(extractor.ExtractAll())
+        Catch generatedExceptionName As InvalidPasswordException
+            Console.WriteLine("Invalid password.")
+        Finally
+            If extractor IsNot Nothing Then
+                extractor.Dispose()
+            End If
+        End Try
+        'ExEnd:PasswordProtectedDocumentExtractor
+    End Sub
+
+
+    ''' <summary>
+    ''' Shows how a conatiner is created using ExtractFactory
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    Public Shared Sub CreatingContainerUsingExtractorFactory(fileName As String)
+        'ExStart:PasswordProtectedDocumentExtractor
+        'get file actual path
+        Dim filePath As String = Common.getFilePath(fileName)
+        Dim factory As New ExtractorFactory(Nothing, New CellsMediaTypeDetector())
+        Using container As Container = factory.CreateContainer(filePath)
+            If container Is Nothing Then
+                Console.WriteLine("The document format is not supported")
+            End If
+        End Using
+    End Sub
+
 
 End Class
