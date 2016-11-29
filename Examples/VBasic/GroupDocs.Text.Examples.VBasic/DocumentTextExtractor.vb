@@ -274,7 +274,7 @@ Public Class DocumentTextExtractor
     ''' </summary>
     ''' <param name="fileName"></param>
     Public Shared Sub CreatingContainerUsingExtractorFactory(fileName As String)
-        'ExStart:PasswordProtectedDocumentExtractor
+        'ExStart:CreatingContainerUsingExtractorFactory
         'get file actual path
         Dim filePath As String = Common.getFilePath(fileName)
         Dim factory As New ExtractorFactory(Nothing, New CellsMediaTypeDetector())
@@ -283,6 +283,7 @@ Public Class DocumentTextExtractor
                 Console.WriteLine("The document format is not supported")
             End If
         End Using
+        'ExEnd:CreatingContainerUsingExtractorFactory
     End Sub
 
 

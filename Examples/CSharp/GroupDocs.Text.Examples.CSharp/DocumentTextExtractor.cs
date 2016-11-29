@@ -317,7 +317,7 @@ namespace GroupDocs.Text_for_.NET
         /// <param name="fileName"></param>
         public static void CreatingContainerUsingExtractorFactory(string fileName)
         {
-            //ExStart:PasswordProtectedDocumentExtractor
+            //ExStart:CreatingContainerUsingExtractorFactory
             //get file actual path
             string filePath = Common.getFilePath(fileName);
             ExtractorFactory factory = new ExtractorFactory(null, new CellsMediaTypeDetector());
@@ -328,6 +328,7 @@ namespace GroupDocs.Text_for_.NET
                     Console.WriteLine("The document format is not supported");
                 }
             }
+            //ExEnd:CreatingContainerUsingExtractorFactory
         }
     }
 }

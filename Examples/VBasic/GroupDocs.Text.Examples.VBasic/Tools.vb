@@ -52,7 +52,7 @@ Public Class Tools
         ''' </summary>
         ''' <param name="fileName"></param>
         Public Shared Sub LoggerWithManualExceptionHandling(fileName As String)
-            'ExStart:ExtractEncodingByContentAndBOM
+            'ExStart:LoggerWithManualExceptionHandling
             'get file actual path
             Dim filePath As [String] = Common.getFilePath(fileName)
             Dim receiver = New NotificationReceiver()
@@ -66,7 +66,7 @@ Public Class Tools
             Catch ex As Exception
                 receiver.ProcessMessage(NotificationMessage.CreateErrorMessage(ex.Message, ex))
             End Try
-            'ExEnd:ExtractEncodingByContentAndBOM
+            'ExEnd:LoggerWithManualExceptionHandling
         End Sub
 
         ''' <summary>
@@ -74,7 +74,7 @@ Public Class Tools
         ''' </summary>
         ''' <param name="fileName"></param>
         Public Shared Sub LoggerWithExtractorFactory(fileName As String)
-            'ExStart:ExtractEncodingByContentAndBOM
+            'ExStart:LoggerWithExtractorFactory
             'get file actual path
             Dim filePath As [String] = Common.getFilePath(fileName)
             Dim receiverForFactory = New NotificationReceiver()
@@ -87,7 +87,7 @@ Public Class Tools
             Using extractor = New CellsTextExtractor(filePath, loadOptions)
                 Console.WriteLine(extractor.ExtractAll())
             End Using
-            'ExEnd:ExtractEncodingByContentAndBOM
+            'ExEnd:LoggerWithExtractorFactory
         End Sub
     End Class
 

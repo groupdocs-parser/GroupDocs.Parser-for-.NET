@@ -65,7 +65,7 @@ namespace GroupDocs.Text_for_.NET
             /// </summary>
             /// <param name="fileName"></param>
             public static void LoggerWithManualExceptionHandling(string fileName) {
-                //ExStart:ExtractEncodingByContentAndBOM
+                //ExStart:LoggerWithManualExceptionHandling
                 //get file actual path
                 String filePath = Common.getFilePath(fileName);
                 var receiver = new NotificationReceiver();
@@ -83,7 +83,7 @@ namespace GroupDocs.Text_for_.NET
                 {
                     receiver.ProcessMessage(NotificationMessage.CreateErrorMessage(ex.Message, ex));
                 }
-                //ExEnd:ExtractEncodingByContentAndBOM
+                //ExEnd:LoggerWithManualExceptionHandling
             }
 
             /// <summary>
@@ -92,7 +92,7 @@ namespace GroupDocs.Text_for_.NET
             /// <param name="fileName"></param>
             public static void LoggerWithExtractorFactory(string fileName)
             {
-                //ExStart:ExtractEncodingByContentAndBOM
+                //ExStart:LoggerWithExtractorFactory
                 //get file actual path
                 String filePath = Common.getFilePath(fileName);
                 var receiverForFactory = new NotificationReceiver();
@@ -106,7 +106,7 @@ namespace GroupDocs.Text_for_.NET
                 {
                     Console.WriteLine(extractor.ExtractAll());
                 }
-                //ExEnd:ExtractEncodingByContentAndBOM
+                //ExEnd:LoggerWithExtractorFactory
             }
         }
 
