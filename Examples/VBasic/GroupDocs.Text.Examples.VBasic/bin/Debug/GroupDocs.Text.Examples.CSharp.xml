@@ -102,6 +102,12 @@ GroupDocs.Text.Examples.CSharp
  </summary>
  <param name="fileName"></param>
 </member>
+<member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.PasswordProtectedDocumentExtractor(System.String)">
+ <summary>
+ Extract text from a password protected document 
+ </summary>
+ <param name="fileName"></param>
+</member>
 <member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.CellsMetadata.ExtractMetadataFromCells(System.String)">
  <summary>
  Extract metadata from cells

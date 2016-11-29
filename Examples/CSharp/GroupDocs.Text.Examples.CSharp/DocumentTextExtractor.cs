@@ -9,6 +9,8 @@ using GroupDocs.Text.Formatters.Markdown;
 using GroupDocs.Text.Formatters.Html;
 using System.IO;
 using GroupDocs.Text;
+using GroupDocs.Text.Detectors.MediaType;
+using GroupDocs.Text.Containers;
 
 namespace GroupDocs.Text_for_.NET
 {
@@ -273,6 +275,60 @@ namespace GroupDocs.Text_for_.NET
                 Console.WriteLine(extractor != null ? extractor.ExtractAll() : "The document format is not supported");
             }
             //ExEnd:PassEncodingToCreatedExtractor
+        }
+
+        /// <summary>
+        /// Extract text from a password protected document 
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void PasswordProtectedDocumentExtractor(string fileName)
+        {
+            //ExStart:PasswordProtectedDocumentExtractor
+            //get file actual path
+            string filePath = Common.getFilePath(fileName);
+            //To open password-protected document Password property of LoadOptions must be set
+            LoadOptions loadOptions = new LoadOptions();
+            loadOptions.Password = "12345";
+
+            WordsTextExtractor extractor = null;
+            //If password is not set or incorrect InvalidPasswordException is thrown
+            try
+            {
+                extractor = new WordsTextExtractor(filePath, loadOptions);
+                Console.WriteLine(extractor.ExtractAll());
+            }
+            catch (InvalidPasswordException)
+            {
+                Console.WriteLine("Invalid password.");
+            }
+            finally
+            {
+                if (extractor != null)
+                {
+                    extractor.Dispose();
+                }
+            }
+            //ExEnd:PasswordProtectedDocumentExtractor
+        }
+
+        /// <summary>
+        /// Shows how a conatiner is created using ExtractFactory
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void CreatingContainerUsingExtractorFactory(string fileName)
+        {
+            //ExStart:CreatingContainerUsingExtractorFactory
+            //get file actual path
+            string filePath = Common.getFilePath(fileName);
+            ExtractorFactory factory = new ExtractorFactory(null, new CellsMediaTypeDetector());
+            using (Container container = factory.CreateContainer(filePath))
+            {
+                if (container == null)
+                {
+                    Console.WriteLine("The document format is not supported");
+                }
+            }
+            //ExEnd:CreatingContainerUsingExtractorFactory
         }
     }
 }
