@@ -12,7 +12,8 @@ namespace GroupDocs.Text_for_.NET
 {
     public class Tools
     {
-        public class EncodingDetection {
+        public class EncodingDetection
+        {
             /// <summary>
             /// Detects encoding of a filestream when BOM is present
             /// </summary>
@@ -20,7 +21,7 @@ namespace GroupDocs.Text_for_.NET
             public static void ExtractEncodingByBOM(string fileName)
             {
                 //ExStart:ExtractEncodingByBOM
-                
+
                 try
                 {
                     EncodingDetector detector = new EncodingDetector(Encoding.GetEncoding(1251));
@@ -29,7 +30,8 @@ namespace GroupDocs.Text_for_.NET
                     Stream stream = new FileStream(filePath, FileMode.Open);
                     Console.WriteLine(detector.Detect(stream));
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     Console.WriteLine(ex.Message);
                 }
                 //ExEnd:ExtractEncodingByBOM
@@ -39,7 +41,7 @@ namespace GroupDocs.Text_for_.NET
             /// Detects encoding from BOM is present or from the content if BOM is not present
             /// </summary>
             /// <param name="fileName"></param>
-            public static void ExtractEncodingByContentAndBOM (string fileName)
+            public static void ExtractEncodingByContentAndBOM(string fileName)
             {
                 //ExStart:ExtractEncodingByContentAndBOM
 
@@ -59,12 +61,14 @@ namespace GroupDocs.Text_for_.NET
             }
         }
 
-        public class logger {
+        public class logger
+        {
             /// <summary>
             /// Logs messages using NotificationReceiver 
             /// </summary>
             /// <param name="fileName"></param>
-            public static void LoggerWithManualExceptionHandling(string fileName) {
+            public static void LoggerWithManualExceptionHandling(string fileName)
+            {
                 //ExStart:LoggerWithManualExceptionHandling
                 //get file actual path
                 String filePath = Common.getFilePath(fileName);
@@ -110,15 +114,18 @@ namespace GroupDocs.Text_for_.NET
             }
         }
 
-       
 
-   
-    class NotificationReceiver : INotificationReceiver
+
+        //ExStart:SimpleLogger
+        class NotificationReceiver : INotificationReceiver
         {
             public void ProcessMessage(NotificationMessage message)
             {
                 Console.WriteLine(message.Description);
             }
         }
+        //ExEnd:SimpleLogger
+
     }
+
 }

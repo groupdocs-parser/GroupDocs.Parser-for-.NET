@@ -93,16 +93,13 @@ Public Class Tools
 
 
 
-
+    'ExStart:SimpleLogger
     Private Class NotificationReceiver
-        Implements GroupDocs.Text.INotificationReceiver
-        Public Sub ProcessMessage(message As NotificationMessage)
-            Console.WriteLine(message.Description)
-        End Sub
-
-        Private Sub INotificationReceiver_ProcessMessage(message As NotificationMessage) Implements INotificationReceiver.ProcessMessage
-            Throw New NotImplementedException()
+        Implements INotificationReceiver
+        Public Sub ProcessMessage(message As NotificationMessage) Implements INotificationReceiver.ProcessMessage
+            Console.WriteLine(message.Description)   
         End Sub
     End Class
+    'ExEnd:SimpleLogger
 End Class
 

@@ -170,7 +170,7 @@ namespace GroupDocs.Text_for_.NET
                 int sheetIndex = 0;
                 CellsSheetInfo sheetInfo = extractor.GetSheetInfo(sheetIndex);
                 Console.WriteLine(sheetInfo.ExtractSheetHeader());
-                for (int rowIndex =2; rowIndex < sheetInfo.RowCount; rowIndex++)
+                for (int rowIndex = 2; rowIndex < sheetInfo.RowCount; rowIndex++)
                 {
                     Console.WriteLine(sheetInfo.ExtractRow(rowIndex, "B1", "C1"));
                 }
@@ -178,7 +178,7 @@ namespace GroupDocs.Text_for_.NET
             }
 
             /// <summary>
-            /// Create the concrete extractor by hand
+            /// Create the concrete extractor by hand using filestream
             /// </summary>
             /// <param name="fileName"></param>
             public static void ConcreteExtractor(string fileName)
@@ -194,6 +194,24 @@ namespace GroupDocs.Text_for_.NET
                     }
                 }
                 //ExEnd:ConcreteExtractor
+            }
+
+            /// <summary>
+            /// Create the concrete extractor by hand
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ConcreteExtractorByFile(string fileName)
+            {
+                //ExStart:ConcreteExtractorByFile
+                //get file actual path
+                string filePath = Common.getFilePath(fileName);
+
+                using (CellsTextExtractor extractor = new CellsTextExtractor(filePath))
+                {
+                    Console.WriteLine(extractor.ExtractAll());
+                }
+
+                //ExEnd:ConcreteExtractorByFile
             }
         }
 
@@ -294,6 +312,7 @@ namespace GroupDocs.Text_for_.NET
             //If password is not set or incorrect InvalidPasswordException is thrown
             try
             {
+                Console.WriteLine("Able to open the password protected document");
                 extractor = new WordsTextExtractor(filePath, loadOptions);
                 Console.WriteLine(extractor.ExtractAll());
             }
@@ -329,6 +348,23 @@ namespace GroupDocs.Text_for_.NET
                 }
             }
             //ExEnd:CreatingContainerUsingExtractorFactory
+        }
+
+        /// <summary>
+        /// Shows how a conatiner is created using ExtractFactory
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ExtractorFactoryCreateFormattedExtractor(string fileName)
+        {
+            //ExStart:ExtractorFactoryCreateFormattedExtractor
+            //get file actual path
+            string filePath = Common.getFilePath(fileName);
+            ExtractorFactory factory = new ExtractorFactory(new MarkdownDocumentFormatter());
+            using (TextExtractor extractor = factory.CreateFormattedTextExtractor(fileName))
+            {
+                Console.WriteLine(extractor != null ? extractor.ExtractAll() : "The document format is not supported");
+            }
+            //ExEnd:ExtractorFactoryCreateFormattedExtractor
         }
     }
 }

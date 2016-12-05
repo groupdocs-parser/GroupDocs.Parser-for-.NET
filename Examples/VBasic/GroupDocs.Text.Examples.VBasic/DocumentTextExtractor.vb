@@ -153,7 +153,7 @@ Public Class DocumentTextExtractor
         End Sub
 
         ''' <summary>
-        ''' Create the concrete extractor by hand
+        ''' Create the concrete extractor by hand using filestream
         ''' </summary>
         ''' <param name="fileName"></param>
         Public Shared Sub ConcreteExtractor(fileName As String)
@@ -166,6 +166,20 @@ Public Class DocumentTextExtractor
                 End Using
             End Using
             'ExEnd:ConcreteExtractor
+        End Sub
+
+        ''' <summary>
+        ''' Create the concrete extractor by hand using file
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ConcreteExtractor(fileName As String)
+            'ExStart:ConcreteExtractorByFile
+            'get file actual path
+            Dim filePath As String = Common.getFilePath(fileName)
+            Using extractor As New CellsTextExtractor(filePath)                                                              )
+                    Console.WriteLine(extractor.ExtractAll())
+            End Using
+            'ExEnd:ConcreteExtractorByFile
         End Sub
 
 
@@ -285,6 +299,23 @@ Public Class DocumentTextExtractor
         End Using
         'ExEnd:CreatingContainerUsingExtractorFactory
     End Sub
+
+    ''' <summary>
+    ''' Shows how a conatiner is created using ExtractFactory
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    Public Shared Sub ExtractorFactoryCreateFormattedExtractor(fileName As String)
+        'ExStart:ExtractorFactoryCreateFormattedExtractor
+        'get file actual path
+        Dim filePath As String = Common.getFilePath(fileName)
+        Dim factory As New ExtractorFactory(New MarkdownDocumentFormatter())
+        Using extractor As TextExtractor = factory.CreateFormattedTextExtractor(fileName)
+            Console.WriteLine(If(extractor IsNot Nothing, extractor.ExtractAll(), "The document format is not supported"))
+        End Using
+        'ExEnd:ExtractorFactoryCreateFormattedExtractor
+    End Sub
+
+
 
 
 End Class
