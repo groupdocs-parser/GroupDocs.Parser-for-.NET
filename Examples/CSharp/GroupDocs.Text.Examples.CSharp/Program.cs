@@ -17,7 +17,7 @@ namespace GroupDocs.Text_for_.NET
             #region TextExtractors
 
             //Extracting email attachments
-            //DocumentTextExtractor.EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
+            DocumentTextExtractor.EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
 
             //Extracting onenote text
             //DocumentTextExtractor.OneNoteDocument.ExtractOneNoteDocument("The butterfly effect.one");
@@ -79,7 +79,7 @@ namespace GroupDocs.Text_for_.NET
             //Extracting Password protected documents
             //DocumentTextExtractor.PasswordProtectedDocumentExtractor("Password protected document.docx");
             //Creates a container from a file or stream
-            DocumentTextExtractor.CreatingContainerUsingExtractorFactory("The butterfly effect.xlsx");
+            //DocumentTextExtractor.CreatingContainerUsingExtractorFactory("The butterfly effect.xlsx");
             #endregion
 
             #region Tools

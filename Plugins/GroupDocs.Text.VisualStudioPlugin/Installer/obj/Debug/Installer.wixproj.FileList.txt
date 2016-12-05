@@ -1,0 +1,6 @@
+obj\Debug\Product.wixobj
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\out\Installer GroupDocs.Text for .NET API Examples.msi
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\out\Installer GroupDocs.Text for .NET API Examples.wixpdb
+obj\Debug\Installer.wixproj.BindContentsFileListnull.txt
+obj\Debug\Installer.wixproj.BindOutputsFileListnull.txt
+obj\Debug\Installer.wixproj.BindBuiltOutputsFileListnull.txt

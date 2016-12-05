@@ -1,0 +1,11 @@
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\GroupDocs.Text.VisualStudioPlugin\out\GroupDocsTextVisualStudioPlugin.dll.config
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\GroupDocs.Text.VisualStudioPlugin\out\GroupDocsTextVisualStudioPlugin.dll
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\GroupDocs.Text.VisualStudioPlugin\out\GroupDocsTextVisualStudioPlugin.pdb
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\GroupDocs.Text.VisualStudioPlugin\out\AsposeVisualStudioPlugin.xml
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\obj\GroupDocsVisualStudioPlugin.csproj.ResolveComReference.cache
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\obj\GroupDocsTextVisualStudioPlugin.GUI.ComponentWizardPage.resources
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\obj\GroupDocsTextVisualStudioPlugin.GUI.SampleWizardPage.resources
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\obj\GroupDocsTextVisualStudioPlugin.Properties.Resources.resources
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\obj\GroupDocsVisualStudioPlugin.csproj.GenerateResource.Cache
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\obj\GroupDocsTextVisualStudioPlugin.dll
+D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\obj\GroupDocsTextVisualStudioPlugin.pdb

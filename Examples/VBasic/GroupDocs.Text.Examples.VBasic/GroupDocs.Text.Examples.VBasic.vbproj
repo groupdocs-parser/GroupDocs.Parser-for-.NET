@@ -89,6 +89,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Tools.vb" />
     <Compile Include="Utilities\Common.vb" />
     <Compile Include="Utilities\ExtractText.vb" />
     <Compile Include="Utilities\WordStatistic.vb" />
