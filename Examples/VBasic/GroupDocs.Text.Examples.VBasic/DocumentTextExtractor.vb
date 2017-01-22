@@ -6,6 +6,7 @@ Imports System.IO
 Imports System.Text
 Imports GroupDocs.Text.Containers
 Imports GroupDocs.Text.Detectors.MediaType
+Imports GroupDocs.Text.Extractors
 
 Public Class DocumentTextExtractor
 
@@ -51,6 +52,24 @@ Public Class DocumentTextExtractor
             'Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.PageCount);
             'ExEnd:ExtractOneNoteDocument
         End Sub
+
+
+        ''' <summary>
+        ''' Opens password-protected OneNote sections
+        ''' </summary>
+        ''' <param name="fileName">Name of the password protected one note file</param>
+        Public Shared Sub OpenPasswordProtectedOneNoteSection(fileName As String)
+            'ExStart: OpenPasswordProtectedOneNoteSection
+            Dim loadOptions = New LoadOptions()
+            loadOptions.Password = "test"
+            'get file actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+
+            Using extractor = New NoteTextExtractor(filePath, loadOptions)
+                Console.WriteLine(extractor.ExtractAll())
+            End Using
+            'ExEnd:OpenPasswordProtectedOneNoteSection
+        End Sub
     End Class
 
     Public Class PdfDocument
@@ -65,6 +84,8 @@ Public Class DocumentTextExtractor
             'Set page index
             Dim pageIndex As Integer = 1
             Dim extractor As New PdfTextExtractor(filePath)
+            'set extract mode to standard
+            extractor.ExtractMode = ExtractMode.Standard
             Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractPage(pageIndex), extractor.PageCount)
             'Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.PageCount);
             'ExEnd:ExtractPdfDocument
@@ -83,6 +104,8 @@ Public Class DocumentTextExtractor
             'Set slide index
             Dim slideIndex As Integer = 1
             Dim extractor As New SlidesTextExtractor(filePath)
+            'set extract mode to standard
+            extractor.ExtractMode = ExtractMode.Standard
             Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSlide(slideIndex), extractor.SlideCount)
             'Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.SlideCount);
             'ExEnd:ExtractPresentationDocument
@@ -100,6 +123,8 @@ Public Class DocumentTextExtractor
             'Set slide index
             Dim sheetIndex As Integer = 1
             Dim extractor As New CellsTextExtractor(filePath)
+            'set extract mode to standard
+            extractor.ExtractMode = ExtractMode.Standard
             Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSheet(sheetIndex), extractor.SheetCount)
             'Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.SheetCount);
             'ExEnd:ExtractEntireSheet
@@ -172,15 +197,20 @@ Public Class DocumentTextExtractor
         ''' Create the concrete extractor by hand using file
         ''' </summary>
         ''' <param name="fileName"></param>
-        Public Shared Sub ConcreteExtractor(fileName As String)
+
+        Public Shared Sub ConcreteExtractorByFile(fileName As String)
             'ExStart:ConcreteExtractorByFile
             'get file actual path
             Dim filePath As String = Common.getFilePath(fileName)
-            Using extractor As New CellsTextExtractor(filePath)                                                              )
-                    Console.WriteLine(extractor.ExtractAll())
+
+            Using extractor As New CellsTextExtractor(filePath)
+                Console.WriteLine(extractor.ExtractAll())
             End Using
+
             'ExEnd:ConcreteExtractorByFile
         End Sub
+
+
 
 
     End Class
@@ -313,6 +343,53 @@ Public Class DocumentTextExtractor
             Console.WriteLine(If(extractor IsNot Nothing, extractor.ExtractAll(), "The document format is not supported"))
         End Using
         'ExEnd:ExtractorFactoryCreateFormattedExtractor
+    End Sub
+
+
+
+    ''' <summary>
+    ''' Extracts highight from a document
+    ''' </summary>
+    Public Shared Sub ExtractHighlight(fileName As String)
+        'ExStart:ExtractHighlight
+        'get file actual path
+        Dim filePath As String = Common.getFilePath(fileName)
+        Using extractor As New WordsTextExtractor(filePath)
+            Dim highlights As IList(Of String) = extractor.ExtractHighlights(HighlightOptions.CreateFixedLength(HighlightDirection.Left, 15, 10), HighlightOptions.CreateFixedLength(HighlightDirection.Right, 20, 10))
+
+            For i As Integer = 0 To highlights.Count - 1
+                Console.WriteLine(highlights(i))
+            Next
+        End Using
+        'ExEnd:ExtractHighlight
+    End Sub
+
+    ''' <summary>
+    ''' Searches text in documents.
+    ''' </summary>
+    ''' <param name="fileName">the name of the file to searrch text from</param>
+    Public Shared Sub SearchTextInDocuments(fileName As String)
+        'ExStart:SearchTextInDocuments
+        'get file actual path
+        Dim filePath As String = Common.getFilePath(fileName)
+        Using extractor As New WordsTextExtractor(filePath)
+            Dim handler As New ListSearchHandler()
+            extractor.Search(New SearchOptions(New SearchHighlightOptions(10)), handler, Nothing, New String() {"test text", "keyword"})
+
+            If handler.List.Count = 0 Then
+                Console.WriteLine("Not found")
+            Else
+                For i As Integer = 0 To handler.List.Count - 1
+                    Console.Write(handler.List(i).LeftText)
+                    Console.Write("_")
+                    Console.Write(handler.List(i).FoundText)
+                    Console.Write("_")
+                    Console.Write(handler.List(i).RightText)
+                    Console.WriteLine("---")
+                Next
+            End If
+        End Using
+        'ExEnd:SearchTextInDocuments
     End Sub
 
 

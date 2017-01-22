@@ -17,10 +17,13 @@ namespace GroupDocs.Text_for_.NET
             #region TextExtractors
 
             //Extracting email attachments
-            DocumentTextExtractor.EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
+            //DocumentTextExtractor.EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
 
             //Extracting onenote text
             //DocumentTextExtractor.OneNoteDocument.ExtractOneNoteDocument("The butterfly effect.one");
+
+            //Opening password protected one note sections
+            //DocumentTextExtractor.OneNoteDocument.OpenPasswordProtectedOneNoteSection("password protected note.one");
 
             //Extracting pdf text
             //DocumentTextExtractor.PdfDocument.ExtractPdfDocument("The butterfly effect.pdf");
@@ -67,6 +70,10 @@ namespace GroupDocs.Text_for_.NET
             //ContainerExtractor.ExtractFromOstContainer();
             //Enumerating all entities 
             //ContainerExtractor.EnumeratingAllEntities();
+            //Enumerate all files in archive folder
+            //ContainerExtractor.EnumerateAllArchivedFiles("zipcontainer.zip");
+            //Read concrete file in a zip archive
+            //ContainerExtractor.ReadConcreteFile("zipcontainer.zip");
             #endregion
 
             #region OtherOperations
@@ -80,6 +87,10 @@ namespace GroupDocs.Text_for_.NET
             //DocumentTextExtractor.PasswordProtectedDocumentExtractor("Password protected document.docx");
             //Creates a container from a file or stream
             //DocumentTextExtractor.CreatingContainerUsingExtractorFactory("The butterfly effect.xlsx");
+            //Extract highlights  from documents
+            //DocumentTextExtractor.ExtractHighlight("doc with highlighted text.docx");
+            //Search text in a document
+            //DocumentTextExtractor.SearchTextInDocuments("The butterfly effect.docx");
             #endregion
 
             #region Tools

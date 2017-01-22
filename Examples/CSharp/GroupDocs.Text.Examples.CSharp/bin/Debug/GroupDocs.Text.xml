@@ -43,9 +43,604 @@
             </summary>
       <param name="message">The message to process.</param>
     </member>
+    <member name="T:GroupDocs.Text.Containers.ZipContainer">
+      <summary>
+            Provides a container for zip archives.
+            </summary>
+      <example>
+        <para>Enumerate all files in the archive:</para>
+        <code lang="c#">
+            using (var container = new ZipContainer(stream))
+            {
+              for(int i = 0; i&lt;container.Entities.Count; i++)
+              {
+                Console.WriteLine("Name: " + container.Entities[i].Name);
+                Console.WriteLine("Path: " + container.Entities[i].Path.ToString());
+                Console.WriteLine("Media type: " + container.Entities[i].MediaType);
+              }
+            }   
+            </code>
+        <para>Read the concrete file:</para>
+        <code lang="c#">
+            using (var container = new ZipContainer(stream))
+            {
+              using (TextExtractor extractor = extractorFactory.CreateTextExtractor(container.Entities[index].OpenStream())
+              {
+                Console.WriteLine(extractor.ExtractAll());
+              }
+            }
+            </code>
+      </example>
+    </member>
+    <member name="T:GroupDocs.Text.Containers.Container">
+      <summary>
+            Provides the base class for containers.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.Container.#ctor(System.IO.Stream)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Containers.Container" /> class.
+            </summary>
+      <param name="containerStream">A stream of the container.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.Container.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Containers.Container" /> class.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.Container.Dispose">
+      <inheritdoc />
+    </member>
+    <member name="M:GroupDocs.Text.Containers.Container.Load">
+      <summary>
+            Loads a collection of the container's entities.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.Container.Dispose(System.Boolean)">
+      <summary>
+            Releases the unmanaged resources used by the container.
+            </summary>
+      <param name="disposing">A boolean true if invoked from Dispose; otherwise, false.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.Container.OpenStream(GroupDocs.Text.Containers.Container.Entity)">
+      <summary>
+            Returns the stream with the content of the <paramref name="entity" />.
+            </summary>
+      <param name="entity">The entity.</param>
+      <returns>An instance of the <see cref="T:System.IO.Stream" /> with the content of the entity.</returns>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.Container.LoadEntities">
+      <summary>
+            Returns a collection of the container's entities.
+            </summary>
+      <returns>A collection of the container's entities.</returns>
+    </member>
+    <member name="P:GroupDocs.Text.Containers.Container.MediaType">
+      <summary>
+            Gets or sets a media type for the container.
+            </summary>
+      <value>A media type for the document.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Containers.Container.Encoding">
+      <summary>
+            Gets or sets an encoding for the container.
+            </summary>
+      <value>An encoding for the container.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Containers.Container.Entities">
+      <summary>
+            Gets a collection of the container's entities.
+            </summary>
+      <value>A collection of the container's entities.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Containers.Container.ContainerStream">
+      <summary>
+            Gets a stream of the container.
+            </summary>
+      <value>A stream of the container.</value>
+    </member>
+    <member name="T:GroupDocs.Text.Containers.Container.Entity">
+      <summary>
+            Provides the information of the container's entity.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.Container.Entity.#ctor(GroupDocs.Text.Containers.Container,System.String)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Containers.Container.Entity" /> class.
+            </summary>
+      <param name="owner">A reference to the instance of the container.</param>
+      <param name="name">The name of the entity.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.Container.Entity.#ctor(GroupDocs.Text.Containers.Container,System.String,GroupDocs.Text.Containers.ContainerPath)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Containers.Container.Entity" /> class.
+            </summary>
+      <param name="owner">A reference to the instance of the container.</param>
+      <param name="name">The name of the entity.</param>
+      <param name="path">The path of the entity.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.Container.Entity.OpenStream">
+      <summary>
+            Returns the stream with the content of the entity.
+            </summary>
+      <returns>An instance of the <see cref="T:System.IO.Stream" /> with the content of the entity.</returns>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.Container.Entity.ToString">
+      <inheritdoc />
+    </member>
+    <member name="P:GroupDocs.Text.Containers.Container.Entity.Name">
+      <summary>
+            Gets a name of the entity.
+            </summary>
+      <value>A string that represents the name of the entity.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Containers.Container.Entity.Path">
+      <summary>
+            Gets a path of the entity.
+            </summary>
+      <value>A string that represents the path of the entity.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Containers.Container.Entity.MediaType">
+      <summary>
+            Gets a media type for the document.
+            </summary>
+      <value>A media type for the document.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Containers.Container.Entity.Keys">
+      <summary>
+            Gets a collection containing the keys in the <see cref="T:GroupDocs.Text.Containers.Container" />.
+            </summary>
+      <value>
+            A collection containing the keys in the <see cref="T:GroupDocs.Text.Containers.Container" />.
+            </value>
+    </member>
+    <member name="P:GroupDocs.Text.Containers.Container.Entity.Item(System.String)">
+      <summary>
+            Gets or sets the value associated with the specified key.
+            </summary>
+      <param name="parameterName">The key of the value to get or set.</param>
+      <returns>
+            The value associated with the specified key. If the specified key is not found, 
+            a get operation returns null. A set operation creates a new element with the specified key.
+            </returns>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.ZipContainer.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Containers.ZipContainer" /> class.
+            </summary>
+      <param name="fileName">The path to the file.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.ZipContainer.#ctor(System.String,GroupDocs.Text.LoadOptions)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Containers.ZipContainer" /> class.
+            </summary>
+      <param name="fileName">The path to the file.</param>
+      <param name="loadOptions">The options of loading the file.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.ZipContainer.#ctor(System.IO.Stream)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Containers.ZipContainer" /> class.
+            </summary>
+      <param name="stream">The stream of the document.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Containers.ZipContainer.#ctor(System.IO.Stream,GroupDocs.Text.LoadOptions)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Containers.ZipContainer" /> class.
+            </summary>
+      <param name="stream">The stream of the document.</param>
+      <param name="loadOptions">The options of loading the file.</param>
+    </member>
+    <member name="T:GroupDocs.Detectors.NamespaceDoc">
+      <summary>
+            The namespace provides the classes to support encoding and media type detecting.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Text.ExtractMode">
+      <summary>
+            Describes the mode of text extraction.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Text.ExtractMode.Simple">
+      <summary>
+            Fast text extraction. The text in this mode is extracted in not very accurate way but faster than in the standard mode. 
+            If the fast text extraction doesn't support the document format, then this parameter is ignored 
+            and the standard text extraction is used.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Text.ExtractMode.Standard">
+      <summary>
+            Standard text extraction.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.ContainsSearchHandler">
+      <summary>
+            Represents search handler for processing search event only once.
+            </summary>
+      <remarks>
+            This search handler is used to search for at least one occurrence of the search word.
+            </remarks>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.ISearchHandler">
+      <summary>
+            Represents search handler for processing search events.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.ISearchHandler.ProcessSearchResult(GroupDocs.Text.Extractors.SearchResult)">
+      <summary>
+            The next occurrence of the search word is found.
+            </summary>
+      <param name="searchResult">The search result.</param>
+      <returns>A boolean true to continue the search; otherwise false.</returns>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.ISearchHandler.Complete">
+      <summary>
+            The search is completed.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.ContainsSearchHandler.Complete">
+      <inheritdoc />
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.ContainsSearchHandler.ProcessSearchResult(GroupDocs.Text.Extractors.SearchResult)">
+      <inheritdoc />
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.ContainsSearchHandler.IsFound">
+      <summary>
+            Gets a value indicating whether the search word is found.
+            </summary>
+      <value>A boolean true if the search word is found; otherwise, false.</value>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.HighlightDirection">
+      <summary>
+            Provides the direction of highlight.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Text.Extractors.HighlightDirection.Left">
+      <summary>
+            Extract a text to the left from a position.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Text.Extractors.HighlightDirection.Right">
+      <summary>
+            Extract a text to the right from a position.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.HighlightOptions">
+      <summary>
+            Provides the options for highlight.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.HighlightOptions.CreateFixedLength(GroupDocs.Text.Extractors.HighlightDirection,System.Int32,System.Int32)">
+      <summary>
+            Creates highlight options with fixed length. 
+            </summary>
+      <param name="direction">A direction of highlight.</param>
+      <param name="position">A start position of highlight.</param>
+      <param name="length">A length of highlight.</param>
+      <returns>An instance of <see cref="T:GroupDocs.Text.Extractors.HighlightOptions" />.</returns>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.HighlightOptions.Direction">
+      <summary>
+            Gets a direction of highlight.
+            </summary>
+      <value>A direction of highlight.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.HighlightOptions.Position">
+      <summary>
+            Gets a start position of highlight.
+            </summary>
+      <value>A start position of highlight.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.HighlightOptions.Length">
+      <summary>
+            Gets a length of highlight.
+            </summary>
+      <value>A length of highlight.</value>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.NamespaceDoc">
+      <summary>
+            The namespace provides the classes to support extracting data from documents. 
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.SearchHighlightOptions">
+      <summary>
+            Provides options of highlight.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Text.Extractors.SearchHighlightOptions.Empty">
+      <summary>
+            Gets an empty instance.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.SearchHighlightOptions.#ctor(System.Int32)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.SearchHighlightOptions" /> class.
+            </summary>
+      <param name="length">A length of both highlights.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.SearchHighlightOptions.#ctor(System.Int32,System.Int32)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.SearchHighlightOptions" /> class.
+            </summary>
+      <param name="leftLength">A length of the left highlight.</param>
+      <param name="rightLength">A length of the right highlight.</param>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.SearchHighlightOptions.LeftLength">
+      <summary>
+            Gets a length of the left highlight.
+            </summary>
+      <value>A length of the left highlight.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.SearchHighlightOptions.RightLength">
+      <summary>
+            Gets a length of the right highlight.
+            </summary>
+      <value>A length of the right highlight.</value>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.IHighlightExtractor">
+      <summary>
+            Provides the functionality to extract highlights. 
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.IHighlightExtractor.ExtractHighlights(GroupDocs.Text.Extractors.HighlightOptions[])">
+      <summary>
+            Extracts highlights.
+            </summary>
+      <param name="highlightOptions">A collection of <see cref="T:GroupDocs.Text.Extractors.HighlightOptions" />.</param>
+      <returns>A collection of strings that represent highlights. If no highlight is found, a collection is empty.</returns>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.ISearchable">
+      <summary>
+            Provides the functionality to search a text.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.ISearchEngine">
+      <summary>
+            Provides the functionality to search a text.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.ListSearchHandler">
+      <summary>
+            Represents search handler for converting search events into a plain list.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.ListSearchHandler.Complete">
+      <inheritdoc />
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.ListSearchHandler.ProcessSearchResult(GroupDocs.Text.Extractors.SearchResult)">
+      <inheritdoc />
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.ListSearchHandler.List">
+      <summary>
+            Gets a list with search results.
+            </summary>
+      <value>A list with search results.</value>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.SearchOptions">
+      <summary>
+            Provides the options for search.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Text.Extractors.SearchOptions.Empty">
+      <summary>
+            Gets an empty instance.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.SearchOptions.#ctor(GroupDocs.Text.Extractors.SearchHighlightOptions)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.SearchOptions" /> class.
+            </summary>
+      <param name="highlightOptions">Options of highlight.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.SearchOptions.#ctor(GroupDocs.Text.Extractors.SearchHighlightOptions,System.Boolean)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.SearchOptions" /> class.
+            </summary>
+      <param name="highlightOptions">Options of highlight.</param>
+      <param name="isCaseSensitive">A value indicating whether search is case sensitive.</param>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.SearchOptions.HighlightOptions">
+      <summary>
+            Gets options of highlight.
+            </summary>
+      <value>A size of highlight.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.SearchOptions.IsCaseSensitive">
+      <summary>
+            Gets a value indicating whether search is case sensitive.
+            </summary>
+      <value>A boolean true if search is case sensitive; otherwise, false.</value>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.SearchResult">
+      <summary>
+            Provides the result of the search. 
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.SearchResult.#ctor(System.Int32,System.String)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.SearchResult" /> class.
+            </summary>
+      <param name="index">An index of the found text.</param>
+      <param name="foundText">A found text.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.SearchResult.#ctor(System.Int32,System.String,System.String,System.String)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.SearchResult" /> class.
+            </summary>
+      <param name="index">An index of the found text.</param>
+      <param name="foundText">A found text.</param>
+      <param name="leftText">A text on the left side of the found text.</param>
+      <param name="rightText">A text on the right side of the found text.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.SearchResult.AddPosition(System.Int32)">
+      <summary>
+            Creates a new instance of <see cref="T:GroupDocs.Text.Extractors.SearchResult" /> with a new position.
+            </summary>
+      <param name="position">An increment to the current position.</param>
+      <returns>An instance of <see cref="T:GroupDocs.Text.Extractors.SearchResult" /> with a new position.</returns>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.SearchResult.LeftText">
+      <summary>
+            Gets a text on the left side of the found text.
+            </summary>
+      <value>A text on the left side of the found text.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.SearchResult.RightText">
+      <summary>
+            Gets a text on the right side of the found text.
+            </summary>
+      <value>A text on the right side of the found text.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.SearchResult.FoundText">
+      <summary>
+            Gets a found text.
+            </summary>
+      <value>A found text.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.SearchResult.Index">
+      <summary>
+            Gets an index of the found text.
+            </summary>
+      <value>An index of the found text.</value>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.Text.EmailTextExtractorBase">
+      <summary>
+            Provides the base class for text extractors for emails.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Text.Extractors.Text.TextExtractor">
+      <summary>
+            Provides the base class for text extractors.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.#ctor(System.IO.Stream,GroupDocs.Text.LoadOptions)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.Text.TextExtractor" /> class.
+            </summary>
+      <param name="stream">A stream of the document.</param>
+      <param name="loadOptions">The options of loading the file.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.Dispose">
+      <summary>
+            Releases the unmanaged resources used by the extractor.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.Reset">
+      <summary>
+            Resets the current document.
+            </summary>
+      <remarks>
+            Resets the cursor's position. <see cref="M:GroupDocs.Text.Extractors.Text.TextExtractor.ExtractLine" /> method will return the first line of the document.
+            </remarks>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.ExtractLine">
+      <summary>
+            Extracts a line of characters from the text extractor and returns the data as a string.
+            </summary>
+      <returns>The next line from the extractor, or null if all characters have been extracted.</returns>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.ExtractAll">
+      <summary>
+            Extracts all characters from the current position to the end of the text extractor
+            and returns them as one string.
+            </summary>
+      <returns>
+            A string that contains all characters from the current position to the end of the text extractor.
+            </returns>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.Dispose(System.Boolean)">
+      <summary>
+            Releases the unmanaged resources used by the extractor.
+            </summary>
+      <param name="disposing">A boolean true if invoked from Dispose; otherwise, false.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.CheckDisposed">
+      <summary>
+            Checks whether the extractor is disposed.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">The extractor is disposed.</exception>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.ExtractText">
+      <summary>
+            Extracts all characters from the current position to the end of the text extractor
+            and returns them as one string.
+            </summary>
+      <returns>
+            A string that contains all characters from the current position to the end of the text extractor.
+            </returns>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.ExtractTextLine">
+      <summary>
+            Extracts a line of characters from the text extractor and returns the data as a string.
+            </summary>
+      <returns>The next line from the extractor, or null if all characters have been extracted.</returns>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.PrepareLine">
+      <summary>
+            Returns a line of the text.
+            </summary>
+      <returns>A string that represents a line of the text, or null if all characters have been read.</returns>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.Text.TextExtractor.IsDisposed">
+      <summary>
+            Gets a value indicating whether the extractor is disposed.
+            </summary>
+      <value>A boolean true if reader is disposed; otherwise, false.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.Text.TextExtractor.MediaType">
+      <summary>
+            Gets or sets a media type for the document.
+            </summary>
+      <value>A media type for the document, or null if media type is not specified.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.Text.TextExtractor.Encoding">
+      <summary>
+            Gets or sets an encoding for the document.
+            </summary>
+      <value>A encoding for the document, or null if encoding is not specified.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.Text.TextExtractor.Password">
+      <summary>
+            Gets a password of the document.
+            </summary>
+      <value>A string that represents a password of the document.</value>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.EmailTextExtractorBase.#ctor(System.IO.Stream,GroupDocs.Text.LoadOptions)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.Text.EmailTextExtractorBase" /> class.
+            </summary>
+      <param name="stream">The stream of the document.</param>
+      <param name="loadOptions">The options of loading the file.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.EmailTextExtractorBase.GetContentType(System.Int32)">
+      <summary>
+            Returns a <see cref="T:System.Net.Mime.ContentType" /> of the attachment.
+            </summary>
+      <param name="attachment">An index of the attachment.</param>
+      <returns>A <see cref="T:System.Net.Mime.ContentType" /> of the attachment.</returns>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.EmailTextExtractorBase.GetStream(System.Int32)">
+      <summary>
+            Returns a <see cref="T:System.IO.Stream" /> with a content of the attachment.
+            </summary>
+      <param name="attachment">An index of the attachment.</param>
+      <returns>A <see cref="T:System.IO.Stream" /> with a content of the attachment.</returns>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.EmailTextExtractorBase.Reset">
+      <inheritdoc />
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.EmailTextExtractorBase.PrepareLine">
+      <inheritdoc />
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.Text.EmailTextExtractorBase.AttachmentCount">
+      <summary>
+            Gets a total count of the attachments.
+            </summary>
+      <value>A total count of the attachments.</value>
+    </member>
     <member name="T:GroupDocs.Text.InvalidPasswordException">
       <summary>
-            Represents the error that occur ...
+            Thrown if a document is encrypted with a password and the password specified
+            when opening the document is incorrect or missing.
             </summary>
     </member>
     <member name="T:GroupDocs.Text.GroupDocsTextException">
@@ -306,109 +901,6 @@
             Provides the base class of text extractors for spreadsheets.
             </summary>
     </member>
-    <member name="T:GroupDocs.Text.Extractors.Text.TextExtractor">
-      <summary>
-            Provides the base class for text extractors.
-            </summary>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.#ctor(System.IO.Stream,GroupDocs.Text.LoadOptions)">
-      <summary>
-            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.Text.TextExtractor" /> class.
-            </summary>
-      <param name="stream">A stream of the document.</param>
-      <param name="loadOptions">The options of loading the file.</param>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.Dispose">
-      <summary>
-            Releases the unmanaged resources used by the extractor.
-            </summary>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.Reset">
-      <summary>
-            Resets the current document.
-            </summary>
-      <remarks>
-            Resets the cursor's position. <see cref="M:GroupDocs.Text.Extractors.Text.TextExtractor.ExtractLine" /> method will return the first line of the document.
-            </remarks>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.ExtractLine">
-      <summary>
-            Extracts a line of characters from the text extractor and returns the data as a string.
-            </summary>
-      <returns>The next line from the extractor, or null if all characters have been extracted.</returns>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.ExtractAll">
-      <summary>
-            Extracts all characters from the current position to the end of the text extractor
-            and returns them as one string.
-            </summary>
-      <returns>
-            A string that contains all characters from the current position to the end of the text extractor.
-            </returns>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.SendNotificationMessage(GroupDocs.Text.NotificationMessage)">
-      <summary>
-            Sends notification message to notification receiver (if presented).
-            </summary>
-      <param name="notificationMessage">The message with a notification.</param>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.Dispose(System.Boolean)">
-      <summary>
-            Releases the unmanaged resources used by the extractor.
-            </summary>
-      <param name="disposing">A boolean true if invoked from Dispose; otherwise, false.</param>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.CheckDisposed">
-      <summary>
-            Checks whether the extractor is disposed.
-            </summary>
-      <exception cref="T:System.ObjectDisposedException">The extractor is disposed.</exception>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.ExtractText">
-      <summary>
-            Extracts all characters from the current position to the end of the text extractor
-            and returns them as one string.
-            </summary>
-      <returns>
-            A string that contains all characters from the current position to the end of the text extractor.
-            </returns>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.ExtractTextLine">
-      <summary>
-            Extracts a line of characters from the text extractor and returns the data as a string.
-            </summary>
-      <returns>The next line from the extractor, or null if all characters have been extracted.</returns>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.TextExtractor.PrepareLine">
-      <summary>
-            Returns a line of the text.
-            </summary>
-      <returns>A string that represents a line of the text, or null if all characters have been read.</returns>
-    </member>
-    <member name="P:GroupDocs.Text.Extractors.Text.TextExtractor.IsDisposed">
-      <summary>
-            Gets a value indicating whether the extractor is disposed.
-            </summary>
-      <value>A boolean true if reader is disposed; otherwise, false.</value>
-    </member>
-    <member name="P:GroupDocs.Text.Extractors.Text.TextExtractor.MediaType">
-      <summary>
-            Gets or sets a media type for the document.
-            </summary>
-      <value>A media type for the document, or null if media type is not specified.</value>
-    </member>
-    <member name="P:GroupDocs.Text.Extractors.Text.TextExtractor.Encoding">
-      <summary>
-            Gets or sets an encoding for the document.
-            </summary>
-      <value>A encoding for the document, or null if encoding is not specified.</value>
-    </member>
-    <member name="P:GroupDocs.Text.Extractors.Text.TextExtractor.Password">
-      <summary>
-            Gets a password of the document.
-            </summary>
-      <value>A string that represents a password of the document.</value>
-    </member>
     <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.#ctor(System.IO.Stream,GroupDocs.Text.LoadOptions)">
       <summary>
             Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase" /> class.
@@ -437,37 +929,6 @@
     <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.Reset">
       <inheritdoc />
     </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.LoadHeader(System.IO.Stream,System.Int32,System.Boolean)">
-      <summary>
-            Loads the header of the sheet.
-            </summary>
-      <param name="outStream">The stream to write data.</param>
-      <param name="sheetIndex">The index of the sheet.</param>
-      <param name="insertSpace">
-            A value indicating whether to write blank line before the name of the sheet.
-            </param>
-      <returns>A total count of written bytes.</returns>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.LoadRow(System.IO.Stream,System.Int32,System.Int32,System.Boolean,System.String[])">
-      <summary>
-            Loads the row.
-            </summary>
-      <param name="outStream">The stream to write data.</param>
-      <param name="sheetIndex">The index of the sheet.</param>
-      <param name="rowIndex">The index of the row.</param>
-      <param name="isLastRow">A value indicating whether to write bottom line.</param>
-      <param name="columns">A collection of the columns to read.</param>
-      <returns>A total count of written bytes.</returns>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.LoadRows(System.IO.Stream,System.Int32,System.String[])">
-      <summary>
-            Loads the all rows of the <paramref name="sheetIndex" />.
-            </summary>
-      <param name="outStream">The stream to write data.</param>
-      <param name="sheetIndex">The index of the sheet.</param>
-      <param name="columns">A collection of the columns to read.</param>
-      <returns>A total count of written bytes.</returns>
-    </member>
     <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.Dispose(System.Boolean)">
       <inheritdoc />
     </member>
@@ -477,42 +938,14 @@
     <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.ExtractText">
       <inheritdoc />
     </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.CheckDocument">
-      <summary>
-            Checks that document is loaded.
-            </summary>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.LoadDocument">
-      <summary>
-            Loads the spreadsheet from <see cref="P:GroupDocs.Text.Extractors.Text.TextExtractor.DocumentStream" />.
-            </summary>
-    </member>
     <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.PrepareLine">
       <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.NextRow">
-      <summary>
-            Moves the cursor to the next row or sheet.
-            </summary>
-      <returns>true if it isn't reached the end of the workbook; otherwise, false.</returns>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.CreateTextReader">
-      <summary>
-            Creates a reader for the current row.
-            </summary>
-      <returns>An instance of the <see cref="T:System.IO.TextReader" />.</returns>
     </member>
     <member name="P:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.SheetCount">
       <summary>
             Gets or sets a total count of the sheets.
             </summary>
       <value>A total count of the sheets.</value>
-    </member>
-    <member name="P:GroupDocs.Text.Extractors.Text.CellsTextExtractorBase.TextReader">
-      <summary>
-            Gets or sets a <see cref="T:System.IO.TextReader" /> for the current row.
-            </summary>
-      <value>An instance of the <see cref="T:System.IO.TextReader" /> or null if a row is not loaded.</value>
     </member>
     <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractor.#ctor(System.String)">
       <summary>
@@ -540,6 +973,12 @@
       <param name="stream">The stream of the document.</param>
       <param name="loadOptions">The options of loading the file.</param>
     </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractor.ExtractSheet(System.Int32)">
+      <inheritdoc />
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.CellsTextExtractor.ExtractHighlights(GroupDocs.Text.Extractors.HighlightOptions[])">
+      <inheritdoc />
+    </member>
     <member name="P:GroupDocs.Text.Extractors.Text.CellsTextExtractor.IsRawMode">
       <summary>
             Gets or sets a value indicating whether the reader extracts a text without any formatting.
@@ -550,6 +989,12 @@
             then this parameter is ignored and the standard text extraction is used.
             </remarks>
       <value>A value is false if the reader extracts a text without any formatting; otherwise, true.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.Text.CellsTextExtractor.ExtractMode">
+      <summary>
+            Gets or sets a value indicating the mode of text extraction.
+            </summary>
+      <value>The mode of text extraction.</value>
     </member>
     <member name="T:GroupDocs.Text.Extractors.Text.NamespaceDoc">
       <summary>
@@ -583,43 +1028,14 @@
     <member name="M:GroupDocs.Text.Extractors.Text.SlidesTextExtractorBase.Dispose(System.Boolean)">
       <inheritdoc />
     </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.SlidesTextExtractorBase.CheckDocument">
-      <summary>
-            Checks that document is loaded.
-            </summary>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.SlidesTextExtractorBase.CreateTextReader(System.Int32)">
-      <summary>
-            Creates the <see cref="T:System.IO.TextReader" /> for the slide with <paramref name="slideIndex" />.
-            </summary>
-      <param name="slideIndex">The index of the slide.</param>
-      <returns>An instance of the <see cref="T:System.IO.TextReader" />.</returns>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.SlidesTextExtractorBase.LoadPresentation">
-      <summary>
-            Loads the text and formatting from presentation.
-            </summary>
-    </member>
     <member name="M:GroupDocs.Text.Extractors.Text.SlidesTextExtractorBase.PrepareLine">
       <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.SlidesTextExtractorBase.NextSlide">
-      <summary>
-            Moves the cursor to the next slide.
-            </summary>
-      <returns>true if isn't reached the end of the presentation; otherwise, false.</returns>
     </member>
     <member name="P:GroupDocs.Text.Extractors.Text.SlidesTextExtractorBase.SlideCount">
       <summary>
             Gets a total count of the slides.
             </summary>
       <value>A total count of the slides.</value>
-    </member>
-    <member name="P:GroupDocs.Text.Extractors.Text.SlidesTextExtractorBase.TextReader">
-      <summary>
-            Gets a <see cref="T:System.IO.TextReader" /> for the current slide.
-            </summary>
-      <value>An instance of the <see cref="T:System.IO.TextReader" /> or null if a slide is not loaded.</value>
     </member>
     <member name="T:GroupDocs.Text.Formatters.Html.NamespaceDoc">
       <summary>
@@ -1279,9 +1695,6 @@
     <member name="M:GroupDocs.Text.Formatters.Html.HtmlListFormatter.CloseList">
       <inheritdoc />
     </member>
-    <member name="M:GroupDocs.Text.Formatters.Html.HtmlListFormatter.FormatText(GroupDocs.Text.Formatters.ListItem,GroupDocs.Text.Formatters.DocumentPartOptions)">
-      <inheritdoc />
-    </member>
     <member name="T:GroupDocs.Text.Formatters.Html.HtmlTableFormatter">
       <summary>
             Provides the functionality to format the table as HTML formatting.
@@ -1305,9 +1718,6 @@
       <value>A collection of the columns' widths.</value>
     </member>
     <member name="M:GroupDocs.Text.Formatters.Html.HtmlTableFormatter.CloseTable">
-      <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Formatters.Html.HtmlTableFormatter.FormatText(GroupDocs.Text.Formatters.TableRow,GroupDocs.Text.Formatters.DocumentPartOptions)">
       <inheritdoc />
     </member>
     <member name="T:GroupDocs.Text.Formatters.Html.HtmlTextFormatter">
@@ -1334,9 +1744,6 @@
             </summary>
       <param name="texts">A collection of the text to formatting.</param>
       <returns>A string that represents formatted <paramref name="texts" />.</returns>
-    </member>
-    <member name="M:GroupDocs.Text.Formatters.Html.HtmlTextFormatter.FormatText(GroupDocs.Text.Formatters.TextItem,GroupDocs.Text.Formatters.DocumentPartOptions)">
-      <inheritdoc />
     </member>
     <member name="T:GroupDocs.Text.Formatters.ListItem">
       <summary>
@@ -1505,18 +1912,12 @@
     <member name="M:GroupDocs.Text.Formatters.Markdown.MarkdownListFormatter.CloseList">
       <inheritdoc />
     </member>
-    <member name="M:GroupDocs.Text.Formatters.Markdown.MarkdownListFormatter.FormatText(GroupDocs.Text.Formatters.ListItem,GroupDocs.Text.Formatters.DocumentPartOptions)">
-      <inheritdoc />
-    </member>
     <member name="T:GroupDocs.Text.Formatters.Markdown.MarkdownTableFormatter">
       <summary>
             Provides the functionality to format the table as Markdown formatting.
             </summary>
     </member>
     <member name="M:GroupDocs.Text.Formatters.Markdown.MarkdownTableFormatter.CloseTable">
-      <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Formatters.Markdown.MarkdownTableFormatter.FormatText(GroupDocs.Text.Formatters.TableRow,GroupDocs.Text.Formatters.DocumentPartOptions)">
       <inheritdoc />
     </member>
     <member name="T:GroupDocs.Text.Formatters.Markdown.MarkdownTextFormatter">
@@ -1529,9 +1930,6 @@
             Initializes a new instance 
             of the <see cref="T:GroupDocs.Text.Formatters.Markdown.MarkdownTextFormatter" /> class.
             </summary>
-    </member>
-    <member name="M:GroupDocs.Text.Formatters.Markdown.MarkdownTextFormatter.FormatText(GroupDocs.Text.Formatters.TextItem,GroupDocs.Text.Formatters.DocumentPartOptions)">
-      <inheritdoc />
     </member>
     <member name="T:GroupDocs.Text.Formatters.Plain.PlainDocumentFormatter">
       <summary>
@@ -1576,9 +1974,6 @@
     <member name="M:GroupDocs.Text.Formatters.Plain.PlainListFormatter.GetItemMaxWidth(GroupDocs.Text.Formatters.ListItemOptions,GroupDocs.Text.Formatters.DocumentPartOptions)">
       <inheritdoc />
     </member>
-    <member name="M:GroupDocs.Text.Formatters.Plain.PlainListFormatter.FormatText(GroupDocs.Text.Formatters.ListItem,GroupDocs.Text.Formatters.DocumentPartOptions)">
-      <inheritdoc />
-    </member>
     <member name="T:GroupDocs.Text.Formatters.Plain.PlainTableFormatter">
       <summary>
             Provides the functionality to format the table as a plain text formatting.
@@ -1600,9 +1995,6 @@
             </param>
     </member>
     <member name="M:GroupDocs.Text.Formatters.Plain.PlainTableFormatter.CloseTable">
-      <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Formatters.Plain.PlainTableFormatter.FormatText(GroupDocs.Text.Formatters.TableRow,GroupDocs.Text.Formatters.DocumentPartOptions)">
       <inheritdoc />
     </member>
     <member name="T:GroupDocs.Text.Formatters.Plain.PlainTableFrame">
@@ -1911,9 +2303,6 @@
       <summary>
             Provides the functionality to format the text as a plain text formatting.
             </summary>
-    </member>
-    <member name="M:GroupDocs.Text.Formatters.Plain.PlainTextFormatter.FormatText(GroupDocs.Text.Formatters.TextItem,GroupDocs.Text.Formatters.DocumentPartOptions)">
-      <inheritdoc />
     </member>
     <member name="T:GroupDocs.Text.Formatters.StyleNames">
       <summary>
@@ -2701,133 +3090,6 @@
       <param name="depth">A depth of the path's part.</param>
       <returns>A string that represents the part of the path.</returns>
     </member>
-    <member name="T:GroupDocs.Text.Containers.Container">
-      <summary>
-            Provides the base class for containers.
-            </summary>
-    </member>
-    <member name="M:GroupDocs.Text.Containers.Container.#ctor(System.IO.Stream)">
-      <summary>
-            Initializes a new instance of the <see cref="T:GroupDocs.Text.Containers.Container" /> class.
-            </summary>
-      <param name="containerStream">A stream of the container.</param>
-    </member>
-    <member name="M:GroupDocs.Text.Containers.Container.#ctor">
-      <summary>
-            Initializes a new instance of the <see cref="T:GroupDocs.Text.Containers.Container" /> class.
-            </summary>
-    </member>
-    <member name="M:GroupDocs.Text.Containers.Container.Dispose">
-      <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Containers.Container.Dispose(System.Boolean)">
-      <summary>
-            Releases the unmanaged resources used by the container.
-            </summary>
-      <param name="disposing">A boolean true if invoked from Dispose; otherwise, false.</param>
-    </member>
-    <member name="M:GroupDocs.Text.Containers.Container.OpenStream(GroupDocs.Text.Containers.Container.Entity)">
-      <summary>
-            Returns the stream with the content of the <paramref name="entity" />.
-            </summary>
-      <param name="entity">The entity.</param>
-      <returns>An instance of the <see cref="T:System.IO.Stream" /> with the content of the entity.</returns>
-    </member>
-    <member name="M:GroupDocs.Text.Containers.Container.LoadEntities">
-      <summary>
-            Returns a collection of the container's entities.
-            </summary>
-      <returns>A collection of the container's entities.</returns>
-    </member>
-    <member name="P:GroupDocs.Text.Containers.Container.MediaType">
-      <summary>
-            Gets or sets a media type for the container.
-            </summary>
-      <value>A media type for the document.</value>
-    </member>
-    <member name="P:GroupDocs.Text.Containers.Container.Encoding">
-      <summary>
-            Gets or sets an encoding for the container.
-            </summary>
-      <value>An encoding for the container.</value>
-    </member>
-    <member name="P:GroupDocs.Text.Containers.Container.Entities">
-      <summary>
-            Gets a collection of the container's entities.
-            </summary>
-      <value>A collection of the container's entities.</value>
-    </member>
-    <member name="P:GroupDocs.Text.Containers.Container.ContainerStream">
-      <summary>
-            Gets a stream of the container.
-            </summary>
-      <value>A stream of the container.</value>
-    </member>
-    <member name="T:GroupDocs.Text.Containers.Container.Entity">
-      <summary>
-            Provides the information of the container's entity.
-            </summary>
-    </member>
-    <member name="M:GroupDocs.Text.Containers.Container.Entity.#ctor(GroupDocs.Text.Containers.Container,System.String)">
-      <summary>
-            Initializes a new instance of the <see cref="T:GroupDocs.Text.Containers.Container.Entity" /> class.
-            </summary>
-      <param name="owner">A reference to the instance of the container.</param>
-      <param name="name">The name of the entity.</param>
-    </member>
-    <member name="M:GroupDocs.Text.Containers.Container.Entity.#ctor(GroupDocs.Text.Containers.Container,System.String,GroupDocs.Text.Containers.ContainerPath)">
-      <summary>
-            Initializes a new instance of the <see cref="T:GroupDocs.Text.Containers.Container.Entity" /> class.
-            </summary>
-      <param name="owner">A reference to the instance of the container.</param>
-      <param name="name">The name of the entity.</param>
-      <param name="path">The path of the entity.</param>
-    </member>
-    <member name="M:GroupDocs.Text.Containers.Container.Entity.OpenStream">
-      <summary>
-            Returns the stream with the content of the entity.
-            </summary>
-      <returns>An instance of the <see cref="T:System.IO.Stream" /> with the content of the entity.</returns>
-    </member>
-    <member name="M:GroupDocs.Text.Containers.Container.Entity.ToString">
-      <inheritdoc />
-    </member>
-    <member name="P:GroupDocs.Text.Containers.Container.Entity.Name">
-      <summary>
-            Gets a name of the entity.
-            </summary>
-      <value>A string that represents the name of the entity.</value>
-    </member>
-    <member name="P:GroupDocs.Text.Containers.Container.Entity.Path">
-      <summary>
-            Gets a path of the entity.
-            </summary>
-      <value>A string that represents the path of the entity.</value>
-    </member>
-    <member name="P:GroupDocs.Text.Containers.Container.Entity.MediaType">
-      <summary>
-            Gets a media type for the document.
-            </summary>
-      <value>A media type for the document.</value>
-    </member>
-    <member name="P:GroupDocs.Text.Containers.Container.Entity.Keys">
-      <summary>
-            Gets a collection containing the keys in the <see cref="T:GroupDocs.Text.Containers.Container" />.
-            </summary>
-      <value>
-            A collection containing the keys in the <see cref="T:GroupDocs.Text.Containers.Container" />.
-            </value>
-    </member>
-    <member name="P:GroupDocs.Text.Containers.Container.Entity.Item(System.String)">
-      <summary>
-            Gets or sets the value associated with the specified key.
-            </summary>
-      <param name="parameterName">The key of the value to get or set.</param>
-      <returns>
-            The value associated with the specified key. If the specified key is not found, 
-            a get operation returns null. A set operation creates a new element with the specified key.
-            </returns>
-    </member>
     <member name="T:GroupDocs.Text.Containers.FolderContainer">
       <summary>
             Provides a container for the directory.
@@ -3490,6 +3752,42 @@
             </para>
       </example>
     </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor" /> class.
+            </summary>
+      <param name="fileName">The path to the file.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor.#ctor(System.String,GroupDocs.Text.LoadOptions)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor" /> class.
+            </summary>
+      <param name="fileName">The path to the file.</param>
+      <param name="loadOptions">The options of loading the file.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor.#ctor(System.IO.Stream)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor" /> class.
+            </summary>
+      <param name="stream">The stream of the document.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor.#ctor(System.IO.Stream,GroupDocs.Text.LoadOptions)">
+      <summary>
+            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor" /> class.
+            </summary>
+      <param name="stream">The stream of the document.</param>
+      <param name="loadOptions">The options of loading the file.</param>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor.DocumentFormatter">
+      <summary>
+            Gets or sets a <see cref="T:GroupDocs.Text.Formatters.DocumentFormatter" />.
+            </summary>
+      <value>An instance of the <see cref="T:GroupDocs.Text.Formatters.DocumentFormatter" />.</value>
+      <remarks>
+            By default the value is an instance of <see cref="T:GroupDocs.Text.Formatters.Plain.PlainDocumentFormatter" /> class. You can
+            set any other formatter or null, if you want to use default formatter.
+            </remarks>
+    </member>
     <member name="T:GroupDocs.Text.Extractors.Text.EmailTextExtractor">
       <summary>
             Provides the text extractor for email messages.
@@ -3564,79 +3862,8 @@
       <param name="stream">The stream of the document.</param>
       <param name="loadOptions">The options of loading the file.</param>
     </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.EmailTextExtractor.GetContentType(System.Int32)">
-      <summary>
-            Returns a <see cref="T:System.Net.Mime.ContentType" /> of the attachment.
-            </summary>
-      <param name="attachment">An index of the attachment.</param>
-      <returns>A <see cref="T:System.Net.Mime.ContentType" /> of the attachment.</returns>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.EmailTextExtractor.GetStream(System.Int32)">
-      <summary>
-            Returns a <see cref="T:System.IO.Stream" /> with a content of the attachment.
-            </summary>
-      <param name="attachment">An index of the attachment.</param>
-      <returns>A <see cref="T:System.IO.Stream" /> with a content of the attachment.</returns>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.EmailTextExtractor.Reset">
+    <member name="M:GroupDocs.Text.Extractors.Text.EmailTextExtractor.ExtractHighlights(GroupDocs.Text.Extractors.HighlightOptions[])">
       <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.EmailTextExtractor.PrepareLine">
-      <inheritdoc />
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.EmailTextExtractor.CreateTextReader">
-      <summary>
-            Creates a reader for the email's body.
-            </summary>
-      <returns>An instance of the <see cref="T:System.IO.TextReader" />.</returns>
-    </member>
-    <member name="P:GroupDocs.Text.Extractors.Text.EmailTextExtractor.AttachmentCount">
-      <summary>
-            Gets a total count of the attachments.
-            </summary>
-      <value>A total count of the attachments.</value>
-    </member>
-    <member name="P:GroupDocs.Text.Extractors.Text.EmailTextExtractor.TextReader">
-      <summary>
-            Gets or sets a <see cref="T:System.IO.TextReader" /> for the current document.
-            </summary>
-      <value>An instance of the <see cref="T:System.IO.TextReader" /> or null if a document is not loaded.</value>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor.#ctor(System.String)">
-      <summary>
-            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor" /> class.
-            </summary>
-      <param name="fileName">The path to the file.</param>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor.#ctor(System.String,GroupDocs.Text.LoadOptions)">
-      <summary>
-            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor" /> class.
-            </summary>
-      <param name="fileName">The path to the file.</param>
-      <param name="loadOptions">The options of loading the file.</param>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor.#ctor(System.IO.Stream)">
-      <summary>
-            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor" /> class.
-            </summary>
-      <param name="stream">The stream of the document.</param>
-    </member>
-    <member name="M:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor.#ctor(System.IO.Stream,GroupDocs.Text.LoadOptions)">
-      <summary>
-            Initializes a new instance of the <see cref="T:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor" /> class.
-            </summary>
-      <param name="stream">The stream of the document.</param>
-      <param name="loadOptions">The options of loading the file.</param>
-    </member>
-    <member name="P:GroupDocs.Text.Extractors.Text.EmailFormattedTextExtractor.DocumentFormatter">
-      <summary>
-            Gets or sets a <see cref="T:GroupDocs.Text.Formatters.DocumentFormatter" />.
-            </summary>
-      <value>An instance of the <see cref="T:GroupDocs.Text.Formatters.DocumentFormatter" />.</value>
-      <remarks>
-            By default the value is an instance of <see cref="T:GroupDocs.Text.Formatters.Plain.PlainDocumentFormatter" /> class. You can
-            set any other formatter or null, if you want to use default formatter.
-            </remarks>
     </member>
     <member name="T:GroupDocs.Text.Extractors.Text.NoteTextExtractor">
       <summary>
@@ -3683,6 +3910,9 @@
             </summary>
       <param name="stream">The stream of the document.</param>
       <param name="loadOptions">The options of loading the file.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.NoteTextExtractor.ExtractHighlights(GroupDocs.Text.Extractors.HighlightOptions[])">
+      <inheritdoc />
     </member>
     <member name="M:GroupDocs.Text.Extractors.Text.NoteTextExtractor.Reset">
       <inheritdoc />
@@ -3752,6 +3982,9 @@
       <param name="stream">The stream of the document.</param>
       <param name="loadOptions">The options of loading the file.</param>
     </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.PdfTextExtractor.ExtractHighlights(GroupDocs.Text.Extractors.HighlightOptions[])">
+      <inheritdoc />
+    </member>
     <member name="M:GroupDocs.Text.Extractors.Text.PdfTextExtractor.ExtractPage(System.Int32)">
       <summary>
             Reads all characters from the page with <paramref name="pageIndex" /> and returns the data as a string.
@@ -3773,6 +4006,12 @@
             way but faster than in the standard mode.
             </remarks>
       <value>A value is false if the reader extracts a text without any formatting; otherwise, true.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.Text.PdfTextExtractor.ExtractMode">
+      <summary>
+            Gets or sets a value indicating the mode of text extraction.
+            </summary>
+      <value>The mode of text extraction.</value>
     </member>
     <member name="P:GroupDocs.Text.Extractors.Text.PdfTextExtractor.PageCount">
       <summary>
@@ -3956,6 +4195,9 @@
       <param name="stream">The stream of the document.</param>
       <param name="loadOptions">The options of loading the file.</param>
     </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.SlidesTextExtractor.ExtractHighlights(GroupDocs.Text.Extractors.HighlightOptions[])">
+      <inheritdoc />
+    </member>
     <member name="P:GroupDocs.Text.Extractors.Text.SlidesTextExtractor.IsRawMode">
       <summary>
             Gets or sets a value indicating whether the reader extracts a text without any formatting.
@@ -3966,6 +4208,12 @@
             then this parameter is ignored and the standard text extraction is used.
             </remarks>
       <value>A value is false if the reader extracts a text without any formatting; otherwise, true.</value>
+    </member>
+    <member name="P:GroupDocs.Text.Extractors.Text.SlidesTextExtractor.ExtractMode">
+      <summary>
+            Gets or sets a value indicating the mode of text extraction.
+            </summary>
+      <value>The mode of text extraction.</value>
     </member>
     <member name="T:GroupDocs.Text.Extractors.Text.WordsFormattedTextExtractor">
       <summary>
@@ -4160,6 +4408,9 @@
             </summary>
       <param name="stream">The stream of the document.</param>
       <param name="loadOptions">The options of loading the file.</param>
+    </member>
+    <member name="M:GroupDocs.Text.Extractors.Text.WordsTextExtractor.ExtractHighlights(GroupDocs.Text.Extractors.HighlightOptions[])">
+      <inheritdoc />
     </member>
     <member name="M:GroupDocs.Text.Extractors.Text.WordsTextExtractor.Reset">
       <inheritdoc />

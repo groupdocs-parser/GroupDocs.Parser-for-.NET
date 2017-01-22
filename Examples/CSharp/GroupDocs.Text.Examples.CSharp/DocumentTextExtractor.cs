@@ -11,6 +11,7 @@ using System.IO;
 using GroupDocs.Text;
 using GroupDocs.Text.Detectors.MediaType;
 using GroupDocs.Text.Containers;
+using GroupDocs.Text.Extractors;
 
 namespace GroupDocs.Text_for_.NET
 {
@@ -65,6 +66,25 @@ namespace GroupDocs.Text_for_.NET
                 //Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.PageCount);
                 //ExEnd:ExtractOneNoteDocument
             }
+
+            /// <summary>
+            /// Opens password-protected OneNote sections
+            /// </summary>
+            /// <param name="fileName">Name of the password protected one note file</param>
+            public static void OpenPasswordProtectedOneNoteSection(string fileName)
+            {
+                //ExStart: OpenPasswordProtectedOneNoteSection
+                var loadOptions = new LoadOptions();
+                loadOptions.Password = "test";
+                //get file actual path
+                String filePath = Common.getFilePath(fileName);
+
+                using (var extractor = new NoteTextExtractor(filePath, loadOptions))
+                {
+                    Console.WriteLine(extractor.ExtractAll());
+                }
+                //ExEnd:OpenPasswordProtectedOneNoteSection
+            }
         }
 
         public class PdfDocument
@@ -81,6 +101,8 @@ namespace GroupDocs.Text_for_.NET
                 //Set page index
                 int pageIndex = 1;
                 PdfTextExtractor extractor = new PdfTextExtractor(filePath);
+                //set extract mode to standard
+                extractor.ExtractMode = ExtractMode.Standard;
                 Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractPage(pageIndex), extractor.PageCount);
                 //Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.PageCount);
                 //ExEnd:ExtractPdfDocument
@@ -101,6 +123,8 @@ namespace GroupDocs.Text_for_.NET
                 //Set slide index
                 int slideIndex = 1;
                 SlidesTextExtractor extractor = new SlidesTextExtractor(filePath);
+                //set extract mode to standard
+                extractor.ExtractMode = ExtractMode.Standard;
                 Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSlide(slideIndex), extractor.SlideCount);
                 //Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.SlideCount);
                 //ExEnd:ExtractPresentationDocument
@@ -120,6 +144,8 @@ namespace GroupDocs.Text_for_.NET
                 //Set slide index
                 int sheetIndex = 1;
                 CellsTextExtractor extractor = new CellsTextExtractor(filePath);
+                //set extract mode to standard
+                extractor.ExtractMode = ExtractMode.Standard;
                 Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSheet(sheetIndex), extractor.SheetCount);
                 //Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.SheetCount);
                 //ExEnd:ExtractEntireSheet
@@ -190,6 +216,8 @@ namespace GroupDocs.Text_for_.NET
                 {
                     using (CellsTextExtractor extractor = new CellsTextExtractor(stream))
                     {
+                        //set extract mode to standard
+                        extractor.ExtractMode = ExtractMode.Standard;
                         Console.WriteLine(extractor.ExtractAll());
                     }
                 }
@@ -366,5 +394,62 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:ExtractorFactoryCreateFormattedExtractor
         }
+
+        /// <summary>
+        /// Extracts highight from a document
+        /// </summary>
+        public static void ExtractHighlight(string fileName)
+        {
+            //ExStart:ExtractHighlight
+            //get file actual path
+            string filePath = Common.getFilePath(fileName);
+            using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
+            {
+                IList<string> highlights = extractor.ExtractHighlights(
+                HighlightOptions.CreateFixedLength(HighlightDirection.Left, 15, 10),
+                HighlightOptions.CreateFixedLength(HighlightDirection.Right, 20, 10));
+
+                for (int i = 0; i < highlights.Count; i++)
+                {
+                    Console.WriteLine(highlights[i]);
+                }
+            }
+            //ExEnd:ExtractHighlight
+        }
+
+        /// <summary>
+        /// Searches text in documents.
+        /// </summary>
+        /// <param name="fileName">the name of the file to searrch text from</param>
+        public static void SearchTextInDocuments(string fileName)
+        {
+            //ExStart:SearchTextInDocuments
+            //get file actual path
+            string filePath = Common.getFilePath(fileName);
+            using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
+            {
+                ListSearchHandler handler = new ListSearchHandler();
+                extractor.Search(new SearchOptions(new SearchHighlightOptions(10)), handler, null, new string[] { "test text", "keyword" });
+
+                if (handler.List.Count == 0)
+                {
+                    Console.WriteLine("Not found");
+                }
+                else
+                {
+                    for (int i = 0; i < handler.List.Count; i++)
+                    {
+                        Console.Write(handler.List[i].LeftText);
+                        Console.Write("_");
+                        Console.Write(handler.List[i].FoundText);
+                        Console.Write("_");
+                        Console.Write(handler.List[i].RightText);
+                        Console.WriteLine("---");
+                    }
+                }
+            }
+            //ExEnd:SearchTextInDocuments
+        }
+
     }
 }
