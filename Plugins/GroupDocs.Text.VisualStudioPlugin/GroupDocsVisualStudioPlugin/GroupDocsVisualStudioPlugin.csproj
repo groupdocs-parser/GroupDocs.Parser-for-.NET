@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -12,7 +12,7 @@
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>GroupDocsTextVisualStudioPlugin</AssemblyName>
     <DeploymentDirectory>.\bin\</DeploymentDirectory>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -71,7 +71,10 @@
     <Reference Include="Ionic.Zip">
       <HintPath>..\libs\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.ComponentModelHost, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.ComponentModelHost, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.ComponentModelHost.15.0.25824-RC\lib\net45\Microsoft.VisualStudio.ComponentModelHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NGit, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\GIT\NGit.dll</HintPath>
@@ -120,12 +123,6 @@
     </Compile>
     <Compile Include="GUI\ComponentWizardPage.Designer.cs">
       <DependentUpon>ComponentWizardPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\SampleWizardPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\SampleWizardPage.Designer.cs">
-      <DependentUpon>SampleWizardPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -195,6 +192,7 @@
     <Content Include="Resources\groupdocs-text.png" />
     <Content Include="Resources\long_banner1.png" />
     <Content Include="Resources\groupdocs.ico" />
+    <None Include="packages.config" />
     <None Include="Resources\pnglogosmall.bmp" />
     <Content Include="Resources\vbs-file.ico" />
     <None Include="app.config">
@@ -210,10 +208,6 @@
   <ItemGroup>
     <EmbeddedResource Include="GUI\ComponentWizardPage.resx">
       <DependentUpon>ComponentWizardPage.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\SampleWizardPage.resx">
-      <DependentUpon>SampleWizardPage.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

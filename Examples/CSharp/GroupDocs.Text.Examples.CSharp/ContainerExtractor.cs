@@ -63,5 +63,51 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:EnumeratingAllEntities
         }
+
+        /// <summary>
+        /// Enumerates all files in an archived folder
+        /// </summary>
+        /// <param name="folderName">name of the zip archive</param>
+        public static void EnumerateAllArchivedFiles(string folderName)
+        {
+            //ExStart:EnumerateAllArchivedFiles
+            //get zip folder's path
+            string folderPath = Common.getFilePath(folderName);
+
+            using (var container = new ZipContainer(folderPath))
+            {
+                for (int i = 0; i < container.Entities.Count; i++)
+                {
+                    Console.WriteLine("Name: " + container.Entities[i].Name);
+                    Console.WriteLine("Path: " + container.Entities[i].Path.ToString());
+                    Console.WriteLine("Media type: " + container.Entities[i].MediaType);
+                }
+            }
+            //ExEnd:EnumerateAllArchivedFiles
+        }
+
+        /// <summary>
+        /// Reads concrete files from a zip folder
+        /// </summary>
+        /// <param name="folderName">Name of the zipped folder</param>
+        public static void ReadConcreteFile(string folderName)
+        {
+            //ExStart:ReadConcreteFile
+            //get zip folder's path
+            string folderPath = Common.getFilePath(folderName);
+            ExtractorFactory extractorFactory = new ExtractorFactory();
+
+            using (var container = new ZipContainer(folderPath))
+            {
+                for (int i = 0; i < container.Entities.Count; i++)
+                {
+                    using (TextExtractor extractor = extractorFactory.CreateTextExtractor(container.Entities[i].OpenStream()))
+                    {
+                        Console.WriteLine(extractor.ExtractAll());
+                    }
+                }
+            }
+            //ExEnd:ReadConcreteFile
+        }
     }
 }

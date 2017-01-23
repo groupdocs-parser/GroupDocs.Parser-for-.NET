@@ -2,7 +2,7 @@
 
     'ExStart:commonutilities
     Public Const sourcePath As String = "../../../../Data/Storage/"
-    Public Const licensePath As String = "../../../../Data/Storage/GroupDocs.Total.lic"
+    Public Const licensePath As String = "D:/Aspose Projects/License/GroupDocs.Total.lic"
     'ExEnd:commonutilities
 
     ''' <summary>

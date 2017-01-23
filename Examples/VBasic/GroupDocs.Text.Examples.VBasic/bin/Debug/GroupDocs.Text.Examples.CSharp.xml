@@ -74,7 +74,13 @@ GroupDocs.Text.Examples.CSharp
 </member>
 <member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.SpreadsheetDocument.ConcreteExtractor(System.String)">
  <summary>
- Create the concrete extractor by hand
+ Create the concrete extractor by hand using filestream
+ </summary>
+ <param name="fileName"></param>
+</member>
+<member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.SpreadsheetDocument.ConcreteExtractorByFile(System.String)">
+ <summary>
+ Create the concrete extractor by hand using file
  </summary>
  <param name="fileName"></param>
 </member>
@@ -108,6 +114,18 @@ GroupDocs.Text.Examples.CSharp
  </summary>
  <param name="fileName"></param>
 </member>
+<member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.CreatingContainerUsingExtractorFactory(System.String)">
+ <summary>
+ Shows how a conatiner is created using ExtractFactory
+ </summary>
+ <param name="fileName"></param>
+</member>
+<member name="M:GroupDocs.Text.Examples.CSharp.DocumentTextExtractor.ExtractorFactoryCreateFormattedExtractor(System.String)">
+ <summary>
+ Shows how a conatiner is created using ExtractFactory
+ </summary>
+ <param name="fileName"></param>
+</member>
 <member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.CellsMetadata.ExtractMetadataFromCells(System.String)">
  <summary>
  Extract metadata from cells
@@ -135,6 +153,30 @@ GroupDocs.Text.Examples.CSharp
 <member name="M:GroupDocs.Text.Examples.CSharp.MetaDataExtractor.EmailMetaData.ExtractMetadataFromEmails(System.String)">
  <summary>
  Extract metadata from emails
+ </summary>
+ <param name="fileName"></param>
+</member>
+<member name="M:GroupDocs.Text.Examples.CSharp.Tools.EncodingDetection.ExtractEncodingByBOM(System.String)">
+ <summary>
+ Detects encoding of a filestream when BOM is present
+ </summary>
+ <param name="fileName"></param>
+</member>
+<member name="M:GroupDocs.Text.Examples.CSharp.Tools.EncodingDetection.ExtractEncodingByContentAndBOM(System.String)">
+ <summary>
+ Detects encoding from BOM is present or from the content if BOM is not present
+ </summary>
+ <param name="fileName"></param>
+</member>
+<member name="M:GroupDocs.Text.Examples.CSharp.Tools.logger.LoggerWithManualExceptionHandling(System.String)">
+ <summary>
+ Logs messages using NotificationReceiver 
+ </summary>
+ <param name="fileName"></param>
+</member>
+<member name="M:GroupDocs.Text.Examples.CSharp.Tools.logger.LoggerWithExtractorFactory(System.String)">
+ <summary>
+ Logs messages using NotificationReceiver 
  </summary>
  <param name="fileName"></param>
 </member>

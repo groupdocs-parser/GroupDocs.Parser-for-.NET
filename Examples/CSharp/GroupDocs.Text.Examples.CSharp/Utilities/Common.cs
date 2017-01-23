@@ -12,7 +12,7 @@ namespace GroupDocs.Text_for_.NET
     {
         //ExStart:commonutilities
         public const string sourcePath = "../../../../Data/Storage/";
-        public const string licensePath = "../../../../Data/Storage/GroupDocs.Total.lic";
+        public const string licensePath = "D:/Aspose Projects/License/GroupDocs.Total.lic";
         //ExEnd:commonutilities
 
         /// <summary>

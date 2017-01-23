@@ -13,6 +13,9 @@
         'Extracting onenote text
         'DocumentTextExtractor.OneNoteDocument.ExtractOneNoteDocument("The butterfly effect.one")
 
+        'Opening password protected one note sections
+        'DocumentTextExtractor.OneNoteDocument.OpenPasswordProtectedOneNoteSection("password protected note.one")
+
         'Extracting pdf text
         'DocumentTextExtractor.PdfDocument.ExtractPdfDocument("The butterfly effect.pdf")
 
@@ -55,9 +58,13 @@
 
 #Region "ContainerExtractor"
         'Extracting from OST
-        'ContainerExtractor.ExtractFromOstContainer();
+        'ContainerExtractor.ExtractFromOstContainer()
         'Enumerating all entities 
-        'ContainerExtractor.EnumeratingAllEntities();
+        'ContainerExtractor.EnumeratingAllEntities()
+        'Enumerate all files in archive folder
+        'ContainerExtractor.EnumerateAllArchivedFiles("zipcontainer.zip")
+        'Read concrete file in a zip archive
+        'ContainerExtractor.ReadConcreteFile("zipcontainer.zip")
 #End Region
 
 #Region "OtherOperations"
@@ -71,6 +78,10 @@
         'DocumentTextExtractor.PasswordProtectedDocumentExtractor("Password protected document.docx")
         'Creates a container from a file or stream
         'DocumentTextExtractor.CreatingContainerUsingExtractorFactory("The butterfly effect.xlsx")
+        'Extract highlights  from documents
+        'DocumentTextExtractor.ExtractHighlight("doc with highlighted text.docx")
+        'Search text in a document
+        'DocumentTextExtractor.SearchTextInDocuments("The butterfly effect.docx")
 #End Region
 
 
