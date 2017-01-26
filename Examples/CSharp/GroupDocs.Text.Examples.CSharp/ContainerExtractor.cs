@@ -74,10 +74,13 @@ namespace GroupDocs.Text_for_.NET
             //get zip folder's path
             string folderPath = Common.getFilePath(folderName);
 
+            //initialize zip container
             using (var container = new ZipContainer(folderPath))
             {
+                //loop through all the entities in the folder
                 for (int i = 0; i < container.Entities.Count; i++)
                 {
+                    //display each entity's information
                     Console.WriteLine("Name: " + container.Entities[i].Name);
                     Console.WriteLine("Path: " + container.Entities[i].Path.ToString());
                     Console.WriteLine("Media type: " + container.Entities[i].MediaType);
@@ -97,12 +100,16 @@ namespace GroupDocs.Text_for_.NET
             string folderPath = Common.getFilePath(folderName);
             ExtractorFactory extractorFactory = new ExtractorFactory();
 
+            //initialize zip container
             using (var container = new ZipContainer(folderPath))
             {
+                //loop through all the entities in the folder
                 for (int i = 0; i < container.Entities.Count; i++)
                 {
+                    //extract content of each entity by creating a textextractor using extractfactory's CreateTextExtractor function
                     using (TextExtractor extractor = extractorFactory.CreateTextExtractor(container.Entities[i].OpenStream()))
                     {
+                        //display the extracted text
                         Console.WriteLine(extractor.ExtractAll());
                     }
                 }
