@@ -1,1 +1,0 @@
-c:\users\atir\documents\visual studio 2013\Projects\GroupDocs.Text-for-.NET\GroupDocs.Text-for-.NET\bin\Debug\GroupDocs.Text-for-.NET.exe.config
