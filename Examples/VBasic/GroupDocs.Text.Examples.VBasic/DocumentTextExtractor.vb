@@ -295,7 +295,7 @@ Public Class DocumentTextExtractor
         Dim filePath As String = Common.getFilePath(fileName)
         'To open password-protected document Password property of LoadOptions must be set
         Dim loadOptions As New LoadOptions()
-        loadOptions.Password = "test"
+        loadOptions.Password = "invalidpwd"
 
         Dim extractor As WordsTextExtractor = Nothing
         'If password is not set or incorrect InvalidPasswordException is thrown
