@@ -74,13 +74,17 @@ namespace GroupDocs.Text_for_.NET
             public static void OpenPasswordProtectedOneNoteSection(string fileName)
             {
                 //ExStart: OpenPasswordProtectedOneNoteSection
-                var loadOptions = new LoadOptions();
-                loadOptions.Password = "test";
                 //get file actual path
                 String filePath = Common.getFilePath(fileName);
+                //set password in the load options
+                var loadOptions = new LoadOptions();
+                loadOptions.Password = "test";
+                
 
+                //initialize Note text extractor using the load options to open password protected sections
                 using (var extractor = new NoteTextExtractor(filePath, loadOptions))
                 {
+                    //display the extracted text
                     Console.WriteLine(extractor.ExtractAll());
                 }
                 //ExEnd:OpenPasswordProtectedOneNoteSection
@@ -401,14 +405,18 @@ namespace GroupDocs.Text_for_.NET
         public static void ExtractHighlight(string fileName)
         {
             //ExStart:ExtractHighlight
-            //get file actual path
+            //get file path
             string filePath = Common.getFilePath(fileName);
+            //initialize words text extractor
             using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
             {
+                //extract hightlights from the document
                 IList<string> highlights = extractor.ExtractHighlights(
+                //set highlight options to get fixed length text from the highlighted portion
                 HighlightOptions.CreateFixedLength(HighlightDirection.Left, 15, 10),
                 HighlightOptions.CreateFixedLength(HighlightDirection.Right, 20, 10));
 
+                //write the result on console
                 for (int i = 0; i < highlights.Count; i++)
                 {
                     Console.WriteLine(highlights[i]);
@@ -426,17 +434,22 @@ namespace GroupDocs.Text_for_.NET
             //ExStart:SearchTextInDocuments
             //get file actual path
             string filePath = Common.getFilePath(fileName);
+            //initialize words text extractor
             using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
             {
+                //initialize search handler
                 ListSearchHandler handler = new ListSearchHandler();
+                //search for the text
                 extractor.Search(new SearchOptions(new SearchHighlightOptions(10)), handler, null, new string[] { "test text", "keyword" });
 
+                //Results count is none
                 if (handler.List.Count == 0)
                 {
                     Console.WriteLine("Not found");
                 }
                 else
                 {
+                    //loop through the list and display the results
                     for (int i = 0; i < handler.List.Count; i++)
                     {
                         Console.Write(handler.List[i].LeftText);

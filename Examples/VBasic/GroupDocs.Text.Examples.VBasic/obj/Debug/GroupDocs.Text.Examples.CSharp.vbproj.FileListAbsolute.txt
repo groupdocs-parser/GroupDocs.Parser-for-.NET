@@ -1,1 +1,0 @@
-C:\Users\atir\Desktop\vb\GroupDocs.Text.Examples.CSharp\GroupDocs.Text.Examples.CSharp\bin\Debug\GroupDocs.Text.Examples.CSharp.exe.config
