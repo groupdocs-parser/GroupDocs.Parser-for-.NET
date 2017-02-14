@@ -12,7 +12,10 @@ app.controller('homeController', ['$scope', '$http', '$uibModal', '$rootScope', 
     $scope.wordsEnabled = 'false';
     $scope.statisticsEnabled = 'false';
     $scope.encodingEnabled = 'false';
+    $scope.searchEnabled = 'false';
+    $scope.highlightEnabled = 'false';
     $scope.myFileName = "";
+    $scope.keyWord = "";
    
     //Upload File
     $scope.uploadFile = function (element) {
@@ -55,10 +58,14 @@ app.controller('homeController', ['$scope', '$http', '$uibModal', '$rootScope', 
         if (fileType == "docx" || fileType == "doc")
         {
             $scope.wordsEnabled = 'true';
+            $scope.searchEnabled = 'true';
+            $scope.highlightEnabled = 'true';
         }
         else
         {
             $scope.wordsEnabled = 'false';
+            $scope.searchEnabled = 'false';
+            $scope.highlightEnabled = 'false';
 
         }
           
@@ -150,6 +157,19 @@ app.controller('homeController', ['$scope', '$http', '$uibModal', '$rootScope', 
         });
     }
    
+    //Extract Extract Highlight
+    $scope.extractExtractHighlight = function () {
+        $http({
+            url: "/Home/ExtractHighlight",
+            method: "GET",
+            params: { fileName: fileName }
+        }).then(function successCallback(response) {
+            $scope.text.lines = response.data;
+        }, function errorCallback(response) {
+
+        });
+    }
+
     //open rows modal
     $scope.open = function () {
         var modalInstance = $uibModal.open({
@@ -173,6 +193,14 @@ app.controller('homeController', ['$scope', '$http', '$uibModal', '$rootScope', 
         var modalInstance = $uibModal.open({
             templateUrl: '/Content/Modal/RowAndColumnPopup.html',
             controller: 'cellsController',
+            scope: $scope
+        });
+    }
+    //open search modal
+    $scope.openSearchPopup = function () {
+        var modalInstance = $uibModal.open({
+            templateUrl: '/Content/Modal/SearchPopup.html',
+            controller: 'searchController',
             scope: $scope
         });
     }

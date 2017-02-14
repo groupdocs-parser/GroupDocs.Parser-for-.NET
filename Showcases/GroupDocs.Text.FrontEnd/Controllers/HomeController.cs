@@ -10,6 +10,8 @@ using GroupDocs.Text.Formatters.Markdown;
 using GroupDocs.Text.Detectors.Encoding;
 using System.IO;
 using System.Text;
+using GroupDocs.Text.Extractors;
+using GroupDocs.Text.Containers;
 
 namespace GroupDocs.Text.FrontEnd.Controllers
 {
@@ -57,54 +59,123 @@ namespace GroupDocs.Text.FrontEnd.Controllers
             //ExStart:ExtractText
             ExtractorFactory factory = new ExtractorFactory();
             string path = Server.MapPath("../App_Data//Uploads//"+fileName);
-            
-           
+            string ext = Path.GetExtension(path);
             List<string> extractedText = new List<string>();
             try
             {
+                
                 string line = null;
+                //If file password procted
                 if (!string.IsNullOrWhiteSpace(password))
                 {
-                    LoadOptions loadOptions = new LoadOptions();
-                    loadOptions.Password = password;
-                    WordsTextExtractor protectedDocument = new WordsTextExtractor(path, loadOptions);
-
-                    
-                    do
+                    if(ext == ".one")
                     {
-                        int lineNumber = 0;
+                        var loadOptions = new LoadOptions();
+                        loadOptions.Password = password;
+
+                        using (var extractor = new NoteTextExtractor(path, loadOptions))
+                        {
+                            do
+                            {
+                                int lineNumber = 0;
+                                do
+                                {
+                                    line = extractor.ExtractLine();
+                                    lineNumber++;
+                                    if (line != null)
+                                    {
+                                        extractedText.Add(line);
+                                    }
+                                }
+                                while (line != null);
+                            }
+                            while (line != null);
+                        }
+                    }
+                    else
+                    {
+                        LoadOptions loadOptions = new LoadOptions();
+                        loadOptions.Password = password;
+                        WordsTextExtractor protectedDocument = new WordsTextExtractor(path, loadOptions);
                         do
                         {
-                            line = protectedDocument.ExtractLine();
-                            lineNumber++;
-                            if (line != null)
+                            int lineNumber = 0;
+                            do
                             {
-                                extractedText.Add(line);
+                                line = protectedDocument.ExtractLine();
+                                lineNumber++;
+                                if (line != null)
+                                {
+                                    extractedText.Add(line);
+                                }
                             }
+                            while (line != null);
                         }
                         while (line != null);
                     }
-                    while (line != null);
+
+
                 }
                 else
                 {
-                    TextExtractor extractor = factory.CreateTextExtractor(path);
-
-                    do
+                    
+                    //if file type is zip
+                    if (ext == ".zip")
                     {
-                        int lineNumber = 0;
+                        using (var container = new ZipContainer(path))
+                        {
+                            for (int i = 0; i < container.Entities.Count; i++)
+                            {
+                                using (TextExtractor extractor = factory.CreateTextExtractor(container.Entities[i].OpenStream()))
+                                {
+                                    
+                                    int lineNumber = 0;
+                                    do
+                                    {
+                                        line = extractor.ExtractLine();
+                                        lineNumber++;
+                                        if (line != null)
+                                        {
+                                            extractedText.Add(line);
+                                        }
+                                    }
+                                    while (line != null);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        TextExtractor extractor = factory.CreateTextExtractor(path);
                         do
                         {
-                            line = extractor.ExtractLine();
-                            lineNumber++;
-                            if (line != null)
+                            int lineNumber = 0;
+                            do
                             {
-                                extractedText.Add(line);
+                                try
+                                {
+                                    line = extractor.ExtractLine();
+                                }
+                                catch (Exception)
+                                {
+                                    if(ext == ".one")
+                                    {
+                                        extractedText.Add("Invalid password");
+                                        break;
+                                    }
+                                }
+                                
+                                lineNumber++;
+                                if (line != null)
+                                {
+                                    extractedText.Add(line);
+                                }
                             }
+                            while (line != null);
                         }
                         while (line != null);
                     }
-                    while (line != null);
+                   
                 }  
                 
                 //extractedText.Add(extractor.ExtractAll());
@@ -357,6 +428,39 @@ namespace GroupDocs.Text.FrontEnd.Controllers
             catch (Exception ex)
             {
                 extractedText.Add(ex.Message);
+            }
+            return Json(extractedText, JsonRequestBehavior.AllowGet);
+
+        }
+        /// <summary>
+        /// Action Method to ExtractDocumentEndocing
+        /// </summary>
+        /// <param name="fileName"></param>
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("ExtractHighlight")]
+        public ActionResult ExtractHighlight([FromBody] string fileName)
+        {
+            List<string> extractedText = new List<string>();
+            ExtractorFactory factory = new ExtractorFactory();
+            string filePath = Server.MapPath("../App_Data//Uploads//" + fileName);
+            try
+            {
+
+                using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
+                {
+                    IList<string> highlights = extractor.ExtractHighlights(
+                    HighlightOptions.CreateFixedLength(HighlightDirection.Left, 15, 10),
+                    HighlightOptions.CreateFixedLength(HighlightDirection.Right, 20, 10));
+
+                    for (int i = 0; i < highlights.Count; i++)
+                    {
+                        extractedText.Add(highlights[i]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                extractedText.Add("File Format not supported");
             }
             return Json(extractedText, JsonRequestBehavior.AllowGet);
 
