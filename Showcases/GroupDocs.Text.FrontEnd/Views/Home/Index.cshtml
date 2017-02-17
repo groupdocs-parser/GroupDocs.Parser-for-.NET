@@ -10,6 +10,7 @@
     <script src="~/Scripts/angular-upload.min.js"></script>
     <script src="~/Scripts/App/homeController.js"></script>
     <script src="~/Scripts/App/cellsController.js"></script>
+    <script src="~/Scripts/App/searchController.js"></script>
     <script src="~/Scripts/App/passwordController.js"></script>
     <script src="~/Scripts/angular-sanitize.min.js"></script>
     
@@ -59,6 +60,12 @@
                 </div>
                 <div class="col-md-1" style="text-align:left">
                     <button ng-click="countStatistics()" ng-disabled="statisticsEnabled != 'true' " style="background: url(../Content/Images/CountStatistics.png) left center no-repeat; height:32px; width:32px; padding-left: 15px" title="Count Statistics"></button>
+                </div>
+                <div class="col-md-1" style="text-align:left">
+                    <button ng-click="openSearchPopup()" ng-disabled="searchEnabled != 'true' " style="background: url(../Content/Images/search-text.png) left center no-repeat; height:32px; width:32px; padding-left: 15px" title="Srearch Text"></button>
+                </div>
+                <div class="col-md-1" style="text-align:left">
+                    <button ng-click="extractExtractHighlight()" ng-disabled="highlightEnabled != 'true' " style="background: url(../Content/Images/extract-text.png) left center no-repeat; height:32px; width:32px; padding-left: 15px" title="Extract Highlighted Text"></button>
                 </div>
             </div>
         </div>

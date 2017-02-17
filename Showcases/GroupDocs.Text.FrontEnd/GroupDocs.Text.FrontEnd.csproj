@@ -141,6 +141,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\CountStatistics.png" />
     <Content Include="Content\Images\default.svg" />
+    <Content Include="Content\Images\extract-text.png" />
     <Content Include="Content\Images\ExtractEncoding.png" />
     <Content Include="Content\Images\ExtractCells.png" />
     <Content Include="Content\Images\ExtractColumns.png" />
@@ -153,7 +154,9 @@
     <Content Include="Content\Images\GroupDocs-Text-theme-32x32.ico" />
     <Content Include="Content\Images\groupdocs-text.png" />
     <Content Include="Content\Images\header1.png" />
+    <Content Include="Content\Images\search-text.png" />
     <Content Include="Content\Modal\PasswordPopup.html" />
+    <Content Include="Content\Modal\SearchPopup.html" />
     <Content Include="Content\Modal\RowAndColumnPopup.html" />
     <Content Include="Content\Modal\ColumnsPopup.html" />
     <Content Include="Content\Modal\Popup.html" />
@@ -165,6 +168,7 @@
     <Content Include="Scripts\angular-upload.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\App\searchController.js" />
     <Content Include="Scripts\App\passwordController.js" />
     <Content Include="Scripts\App\cellsController.js" />
     <Content Include="Scripts\App\homeController.js" />
@@ -187,6 +191,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CellsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -212,6 +217,7 @@
     <Folder Include="App_Data\Uploads\" />
     <Folder Include="Helpers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

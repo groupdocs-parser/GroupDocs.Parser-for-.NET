@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using GroupDocs.Text;
-using GroupDocs.Text.Extractors.Text;
 using GroupDocs.Text.Formatters.Html;
 using Newtonsoft.Json;
 using GroupDocs.Text.Extractors.Metadata;
