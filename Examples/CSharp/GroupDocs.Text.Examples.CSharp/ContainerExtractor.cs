@@ -15,11 +15,13 @@ namespace GroupDocs.Text_for_.NET
         /// <summary>
         /// Extract from OST container
         /// </summary>
-        public static void ExtractFromOstContainer()
+        public static void ExtractFromOstContainer(string fileName)
         {
             //ExStart:ExtractFromOstContainer
             ExtractorFactory factory = new ExtractorFactory();
-            using (var container = new PersonalStorageContainer("default.ost"))
+            //get OST file's path
+            string filePath = Common.getFilePath(fileName);
+            using (var container = new PersonalStorageContainer(filePath))
             {
                 for (int i = 0; i < container.Entities.Count; i++)
                 {
@@ -71,10 +73,10 @@ namespace GroupDocs.Text_for_.NET
         public static void EnumerateAllArchivedFiles(string folderName)
         {
             //ExStart:EnumerateAllArchivedFiles
-            //get zip folder's path
+            //get ZIP folder's path
             string folderPath = Common.getFilePath(folderName);
 
-            //initialize zip container
+            //initialize ZIP container
             using (var container = new ZipContainer(folderPath))
             {
                 //loop through all the entities in the folder
@@ -90,17 +92,17 @@ namespace GroupDocs.Text_for_.NET
         }
 
         /// <summary>
-        /// Reads concrete files from a zip folder
+        /// Reads concrete files from a ZIP folder
         /// </summary>
         /// <param name="folderName">Name of the zipped folder</param>
         public static void ReadConcreteFile(string folderName)
         {
             //ExStart:ReadConcreteFile
-            //get zip folder's path
+            //get ZIP folder's path
             string folderPath = Common.getFilePath(folderName);
             ExtractorFactory extractorFactory = new ExtractorFactory();
 
-            //initialize zip container
+            //initialize ZIP container
             using (var container = new ZipContainer(folderPath))
             {
                 //loop through all the entities in the folder

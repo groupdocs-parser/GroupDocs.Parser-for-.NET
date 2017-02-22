@@ -39,6 +39,13 @@
         'DocumentTextExtractor.TextDocument.ExtractingWithMarkdown("The butterfly effect.docx")
         'Extracting text with html text format
         'DocumentTextExtractor.TextDocument.HtmlTextFormating("The butterfly effect.docx")
+
+        'Extracting text from epub file(feature supported by version 17.02 or greater)
+        'Extracts a line of characters from epub document
+        'DocumentTextExtractor.Epub.ExtractALine("sample.epub")
+        'Extracts all characters from epub document
+        'DocumentTextExtractor.Epub.ExtractAllCharacters("sample.epub")
+
 #End Region
 
 #Region "MetadataExtractors"
@@ -80,8 +87,15 @@
         'DocumentTextExtractor.CreatingContainerUsingExtractorFactory("The butterfly effect.xlsx")
         'Extract highlights  from documents
         'DocumentTextExtractor.ExtractHighlight("doc with highlighted text.docx")
+        'DocumentTextExtractor.ExtractHighlightWithLimitedWordsCount("doc with highlighted text.docx",5)
+        'DocumentTextExtractor.ExtractHighlightTillStartOrEndOfLine("doc with highlighted text.docx")
         'Search text in a document
         'DocumentTextExtractor.SearchTextInDocuments("The butterfly effect.docx")
+        'Search whole word in documents
+        'DocumentTextExtractor.SearchWholeWord("The butterfly effect.docx")
+        'Use all highlight extraction modes with search functionality
+        'DocumentTextExtractor.UseExtractionModesWithSearch("doc with highlighted text.docx")
+
 #End Region
 
 
