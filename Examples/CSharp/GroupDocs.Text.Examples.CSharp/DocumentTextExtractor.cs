@@ -79,7 +79,7 @@ namespace GroupDocs.Text_for_.NET
                 //set password in the load options
                 var loadOptions = new LoadOptions();
                 loadOptions.Password = "test";
-                
+
 
                 //initialize Note text extractor using the load options to open password protected sections
                 using (var extractor = new NoteTextExtractor(filePath, loadOptions))
@@ -145,13 +145,12 @@ namespace GroupDocs.Text_for_.NET
                 //ExStart:ExtractEntireSheet
                 //get file actual path
                 String filePath = Common.getFilePath(fileName);
-                //Set slide index
-                int sheetIndex = 1;
                 CellsTextExtractor extractor = new CellsTextExtractor(filePath);
                 //set extract mode to standard
                 extractor.ExtractMode = ExtractMode.Standard;
-                Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSheet(sheetIndex), extractor.SheetCount);
-                //Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.SheetCount);
+                //display all the sheets present in the excel file
+                for (int sheetIndex = 0; sheetIndex < extractor.SheetCount; sheetIndex++)
+                    Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSheet(sheetIndex), extractor.SheetCount);
                 //ExEnd:ExtractEntireSheet
             }
             /// <summary>
@@ -313,6 +312,60 @@ namespace GroupDocs.Text_for_.NET
             }
         }
 
+        public class Epub
+        {
+            /// <summary>
+            /// Extracts a line of characters from a document
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractALine(string fileName)
+            {
+                //ExStart:ExtractALine
+                //get file's actual path
+                String filePath = Common.getFilePath(fileName);
+                using (var extractor = new EpubTextExtractor(filePath))
+                {
+                    string line = extractor.ExtractLine();
+                    while (line != null)
+                    {
+                        Console.WriteLine(line);
+                        line = extractor.ExtractLine();
+                    }
+                }
+                //ExEnd:ExtractALine
+            }
+
+            /// <summary>
+            /// Extracts all characters from a document
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractAllCharacters(string fileName)
+            {
+                //ExStart:ExtractAllCharacters
+                //get file's actual path
+                String filePath = Common.getFilePath(fileName);
+                using (var extractor = new EpubTextExtractor(filePath))
+                {
+                    Console.WriteLine(extractor.ExtractAll());
+                }
+                //ExEnd:ExtractAllCharacters
+            }
+
+            //public static void ExtractTextUsingTextReader(string fileName) {
+            //    //get file's actual path
+            //    string filePath = Common.getFilePath(fileName);
+            //    using (TextReader reader = package.GetTextReader(0))
+            //    {
+            //        string line = reader.ReadLine();
+            //        while (line != null)
+            //        {
+            //            Console.WriteLine(line);
+            //            line = reader.ReadLine();
+            //        }
+            //    }
+            //}
+        }
+
         public static void PassEncodingToCreatedExtractor(string fileName)
         {
             //ExStart:PassEncodingToCreatedExtractor
@@ -426,6 +479,52 @@ namespace GroupDocs.Text_for_.NET
         }
 
         /// <summary>
+        /// Shows highlight extraction with defined words from the position
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="wordsCount">count of words from the position from where to extract highlight</param>
+        public static void ExtractHighlightWithLimitedWordsCount(string fileName, int wordsCount)
+        {
+            //ExStart:ExtractHighlightWithLimitedWordsCount
+            //get file path
+            string filePath = Common.getFilePath(fileName);
+            using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
+            {
+                IList<string> highlights = extractor.ExtractHighlights(
+                  HighlightOptions.CreateWordsCountOptions(HighlightDirection.Left, 15, wordsCount),
+                  HighlightOptions.CreateWordsCountOptions(HighlightDirection.Right, 20, wordsCount));
+
+                for (int i = 0; i < highlights.Count; i++)
+                {
+                    Console.WriteLine(highlights[i]);
+                }
+            }
+            //ExEnd:ExtractHighlightWithLimitedWordsCount
+        }
+
+        /// <summary>
+        /// Extracts highlight to the start or end of line
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ExtractHighlightTillStartOrEndOfLine(string fileName)
+        {
+            //ExStart:ExtractHighlightTillStartOrEndOfLine
+            //get file path
+            string filePath = Common.getFilePath(fileName);
+            using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
+            {
+                IList<string> highlights = extractor.ExtractHighlights(
+                  HighlightOptions.CreateLineOptions(HighlightDirection.Left, 15),
+                  HighlightOptions.CreateLineOptions(HighlightDirection.Right, 20));
+
+                for (int i = 0; i < highlights.Count; i++)
+                {
+                    Console.WriteLine(highlights[i]);
+                }
+            }
+            //ExEnd:ExtractHighlightTillStartOrEndOfLine
+        }
+        /// <summary>
         /// Searches text in documents.
         /// </summary>
         /// <param name="fileName">the name of the file to searrch text from</param>
@@ -462,6 +561,108 @@ namespace GroupDocs.Text_for_.NET
                 }
             }
             //ExEnd:SearchTextInDocuments
+        }
+
+        /// <summary>
+        /// Searches whole word in documents.
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void SearchWholeWord(string fileName)
+        {
+            //ExStart:SearchWholeWord
+            //get file path
+            string filePath = Common.getFilePath(fileName);
+            using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
+            {
+                SearchOptions searchOptions = new SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(15), true, true);
+                ListSearchHandler handler = new ListSearchHandler();
+                extractor.Search(searchOptions, handler, null, new string[] { "mark", "down" });
+
+                if (handler.List.Count == 0)
+                {
+                    Console.WriteLine("Not found");
+                }
+                else
+                {
+                    for (int i = 0; i < handler.List.Count; i++)
+                    {
+                        Console.Write(handler.List[i].LeftText);
+                        Console.Write("_");
+                        Console.Write(handler.List[i].FoundText);
+                        Console.Write("_");
+                        Console.Write(handler.List[i].RightText);
+                        Console.WriteLine("---");
+                    }
+                }
+            }
+            //ExEnd:SearchWholeWord
+        }
+
+        /// <summary>
+        /// Search text in documents using regular expression
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void SearchTextWithRegex(string fileName) {
+            //ExStart:SearchTextWithRegex
+            //get file path
+            string filePath = Common.getFilePath(fileName);
+            using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
+            {
+                ListSearchHandler handler = new ListSearchHandler();
+                extractor.SearchWithRegex("19[0-9]{2}", handler, new RegexSearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(10)));
+
+                if (handler.List.Count == 0)
+                {
+                    Console.WriteLine("Not found");
+                }
+                else
+                {
+                    for (int i = 0; i < handler.List.Count; i++)
+                    {
+                        Console.Write(handler.List[i].LeftText);
+                        Console.Write("_");
+                        Console.Write(handler.List[i].FoundText);
+                        Console.Write("_");
+                        Console.Write(handler.List[i].RightText);
+                        Console.WriteLine("---");
+                    }
+                }
+            }
+            //ExEnd:SearchTextWithRegex
+        }
+
+        /// <summary>
+        /// Shows searching a text with highlights limited by line's start/end
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void UseExtractionModesWithSearch(string fileName) {
+            //ExStart:UseExtractionModesWithSearch
+            //get file path
+            string filePath = Common.getFilePath(fileName);
+            using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
+            {
+                ListSearchHandler handler = new ListSearchHandler();
+                SearchHighlightOptions highlightOptions = SearchHighlightOptions.CreateLineOptions(100, 100);
+                extractor.Search(new SearchOptions(highlightOptions), handler, null, new string[] { "text", "extraction" });
+
+                if (handler.List.Count == 0)
+                {
+                    Console.WriteLine("Not found");
+                }
+                else
+                {
+                    for (int i = 0; i < handler.List.Count; i++)
+                    {
+                        Console.Write(handler.List[i].LeftText);
+                        Console.Write("_");
+                        Console.Write(handler.List[i].FoundText);
+                        Console.Write("_");
+                        Console.Write(handler.List[i].RightText);
+                        Console.WriteLine("---");
+                    }
+                }
+            }
+            //ExEnd:UseExtractionModesWithSearch
         }
 
     }

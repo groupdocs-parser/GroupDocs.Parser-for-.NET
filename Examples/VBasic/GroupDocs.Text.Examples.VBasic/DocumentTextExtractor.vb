@@ -272,6 +272,56 @@ Public Class DocumentTextExtractor
         End Sub
     End Class
 
+
+    Public Class Epub
+        ''' <summary>
+        ''' Extracts a line of characters from a document
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractALine(fileName As String)
+            'ExStart:ExtractALine
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            Using extractor = New EpubTextExtractor(filePath)
+                Dim line As String = extractor.ExtractLine()
+                While line IsNot Nothing
+                    Console.WriteLine(line)
+                    line = extractor.ExtractLine()
+                End While
+            End Using
+            'ExEnd:ExtractALine
+        End Sub
+
+        ''' <summary>
+        ''' Extracts all characters from a document
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractAllCharacters(fileName As String)
+            'ExStart:ExtractAllCharacters
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            Using extractor = New EpubTextExtractor(filePath)
+                Console.WriteLine(extractor.ExtractAll())
+            End Using
+            'ExEnd:ExtractAllCharacters
+        End Sub
+
+        'public static void ExtractTextUsingTextReader(string fileName) {
+        '    //get file's actual path
+        '    string filePath = Common.getFilePath(fileName);
+        '    using (TextReader reader = package.GetTextReader(0))
+        '    {
+        '        string line = reader.ReadLine();
+        '        while (line != null)
+        '        {
+        '            Console.WriteLine(line);
+        '            line = reader.ReadLine();
+        '        }
+        '    }
+        '}
+    End Class
+
+
     Public Shared Sub PassEncodingToCreatedExtractor(fileName As String)
         'ExStart:PassEncodingToCreatedExtractor
         'get file actual path
@@ -365,6 +415,42 @@ Public Class DocumentTextExtractor
     End Sub
 
     ''' <summary>
+    ''' Shows highlight extraction with defined words from the position
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    ''' <param name="wordsCount">count of words from the position from where to extract highlight</param>
+    Public Shared Sub ExtractHighlightWithLimitedWordsCount(fileName As String, wordsCount As Integer)
+        'ExStart:ExtractHighlightWithLimitedWordsCount
+        'get file path
+        Dim filePath As String = Common.getFilePath(fileName)
+        Using extractor As New WordsTextExtractor(filePath)
+            Dim highlights As IList(Of String) = extractor.ExtractHighlights(HighlightOptions.CreateWordsCountOptions(HighlightDirection.Left, 15, wordsCount), HighlightOptions.CreateWordsCountOptions(HighlightDirection.Right, 20, wordsCount))
+
+            For i As Integer = 0 To highlights.Count - 1
+                Console.WriteLine(highlights(i))
+            Next
+        End Using
+        'ExEnd:ExtractHighlightWithLimitedWordsCount
+    End Sub
+
+    ''' <summary>
+    ''' Extracts highlight to the start or end of line
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    Public Shared Sub ExtractHighlightTillStartOrEndOfLine(fileName As String)
+        'ExStart:ExtractHighlightTillStartOrEndOfLine
+        'get file path
+        Dim filePath As String = Common.getFilePath(fileName)
+        Using extractor As New WordsTextExtractor(filePath)
+            Dim highlights As IList(Of String) = extractor.ExtractHighlights(HighlightOptions.CreateLineOptions(HighlightDirection.Left, 15), HighlightOptions.CreateLineOptions(HighlightDirection.Right, 20))
+
+            For i As Integer = 0 To highlights.Count - 1
+                Console.WriteLine(highlights(i))
+            Next
+        End Using
+        'ExEnd:ExtractHighlightTillStartOrEndOfLine
+    End Sub
+    ''' <summary>
     ''' Searches text in documents.
     ''' </summary>
     ''' <param name="fileName">the name of the file to searrch text from</param>
@@ -372,9 +458,43 @@ Public Class DocumentTextExtractor
         'ExStart:SearchTextInDocuments
         'get file actual path
         Dim filePath As String = Common.getFilePath(fileName)
+        'initialize words text extractor
         Using extractor As New WordsTextExtractor(filePath)
+            'initialize search handler
             Dim handler As New ListSearchHandler()
+            'search for the text
             extractor.Search(New SearchOptions(New SearchHighlightOptions(10)), handler, Nothing, New String() {"test text", "keyword"})
+
+            'Results count is none
+            If handler.List.Count = 0 Then
+                Console.WriteLine("Not found")
+            Else
+                'loop through the list and display the results
+                For i As Integer = 0 To handler.List.Count - 1
+                    Console.Write(handler.List(i).LeftText)
+                    Console.Write("_")
+                    Console.Write(handler.List(i).FoundText)
+                    Console.Write("_")
+                    Console.Write(handler.List(i).RightText)
+                    Console.WriteLine("---")
+                Next
+            End If
+        End Using
+        'ExEnd:SearchTextInDocuments
+    End Sub
+
+    ''' <summary>
+    ''' Searches whole word in documents.
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    Public Shared Sub SearchWholeWord(fileName As String)
+        'ExStart:SearchWholeWord
+        'get file path
+        Dim filePath As String = Common.getFilePath(fileName)
+        Using extractor As New WordsTextExtractor(filePath)
+            Dim searchOptions As New SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(15), True, True)
+            Dim handler As New ListSearchHandler()
+            extractor.Search(searchOptions, handler, Nothing, New String() {"mark", "down"})
 
             If handler.List.Count = 0 Then
                 Console.WriteLine("Not found")
@@ -389,9 +509,65 @@ Public Class DocumentTextExtractor
                 Next
             End If
         End Using
-        'ExEnd:SearchTextInDocuments
+        'ExEnd:SearchWholeWord
     End Sub
 
+    ''' <summary>
+    ''' Search text in documents using regular expression
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    Public Shared Sub SearchTextWithRegex(fileName As String)
+        'ExStart:SearchTextWithRegex
+        'get file path
+        Dim filePath As String = Common.getFilePath(fileName)
+        Using extractor As New WordsTextExtractor(filePath)
+            Dim handler As New ListSearchHandler()
+            extractor.SearchWithRegex("19[0-9]{2}", handler, New RegexSearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(10)))
+
+            If handler.List.Count = 0 Then
+                Console.WriteLine("Not found")
+            Else
+                For i As Integer = 0 To handler.List.Count - 1
+                    Console.Write(handler.List(i).LeftText)
+                    Console.Write("_")
+                    Console.Write(handler.List(i).FoundText)
+                    Console.Write("_")
+                    Console.Write(handler.List(i).RightText)
+                    Console.WriteLine("---")
+                Next
+            End If
+        End Using
+        'ExEnd:SearchTextWithRegex
+    End Sub
+
+    ''' <summary>
+    ''' Shows searching a text with highlights limited by line's start/end
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    Public Shared Sub UseExtractionModesWithSearch(fileName As String)
+        'ExStart:UseExtractionModesWithSearch
+        'get file path
+        Dim filePath As String = Common.getFilePath(fileName)
+        Using extractor As New WordsTextExtractor(filePath)
+            Dim handler As New ListSearchHandler()
+            Dim highlightOptions As SearchHighlightOptions = SearchHighlightOptions.CreateLineOptions(100, 100)
+            extractor.Search(New SearchOptions(highlightOptions), handler, Nothing, New String() {"text", "extraction"})
+
+            If handler.List.Count = 0 Then
+                Console.WriteLine("Not found")
+            Else
+                For i As Integer = 0 To handler.List.Count - 1
+                    Console.Write(handler.List(i).LeftText)
+                    Console.Write("_")
+                    Console.Write(handler.List(i).FoundText)
+                    Console.Write("_")
+                    Console.Write(handler.List(i).RightText)
+                    Console.WriteLine("---")
+                Next
+            End If
+        End Using
+        'ExEnd:UseExtractionModesWithSearch
+    End Sub
 
 
 
