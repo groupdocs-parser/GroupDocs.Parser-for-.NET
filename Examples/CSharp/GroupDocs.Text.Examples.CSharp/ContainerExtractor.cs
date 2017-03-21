@@ -118,5 +118,17 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:ReadConcreteFile
         }
+
+        public static void DetectZipMediaType(string folderName) {
+            //ExStart:DetectZipMediaType
+            //get ZIP folder's path
+            string folderPath = Common.getFilePath(folderName);
+            var detector = new ZipMediaTypeDetector();
+            var mediaType = detector.Detect(folderPath);
+
+            // APPLICATION/ZIP or null if stream is not ZIP container.
+            Console.WriteLine(mediaType);
+            //ExEnd:DetectZipMediaType
+        }
     }
 }

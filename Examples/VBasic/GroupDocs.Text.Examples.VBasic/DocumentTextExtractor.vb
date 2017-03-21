@@ -306,6 +306,100 @@ Public Class DocumentTextExtractor
             'ExEnd:ExtractAllCharacters
         End Sub
 
+
+        ''' <summary>
+        ''' Searches for a text in an epub file using regular expression
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub SearchTextUsingRegex(fileName As String)
+            'ExStart:SearchTextInEpubUsingRegex
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            Using extractor As New EpubTextExtractor(filePath)
+                Dim searchOptions = New RegexSearchOptions()
+                Dim handler = New ListSearchHandler()
+                extractor.SearchWithRegex("On[a-z]", handler, searchOptions)
+
+                If handler.List.Count = 0 Then
+                    Console.WriteLine("Not found")
+                Else
+                    For i As Integer = 0 To handler.List.Count - 1
+                        Console.Write(handler.List(i).LeftText)
+                        Console.Write("_")
+                        Console.Write(handler.List(i).FoundText)
+                        Console.Write("_")
+                        Console.Write(handler.List(i).RightText)
+                        Console.WriteLine("---")
+                    Next
+                End If
+            End Using
+            'ExEnd:SearchTextInEpubUsingRegex
+        End Sub
+
+        ''' <summary>
+        ''' Searches some text in an epub file
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub SearchText(fileName As String)
+            'ExStart:SearchTextInEpub
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            Using extractor As New EpubTextExtractor(filePath)
+                Dim options = New SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(0))
+                Dim handler = New ListSearchHandler()
+                Dim keywords = New String() {"Name"}
+                extractor.Search(options, handler, keywords)
+
+                If handler.List.Count = 0 Then
+                    Console.WriteLine("Not found")
+                Else
+                    For i As Integer = 0 To handler.List.Count - 1
+                        Console.Write(handler.List(i).LeftText)
+                        Console.Write("_")
+                        Console.Write(handler.List(i).FoundText)
+                        Console.Write("_")
+                        Console.Write(handler.List(i).RightText)
+                        Console.WriteLine("---")
+                    Next
+                End If
+            End Using
+            'ExEnd:SearchTextInEpub
+        End Sub
+
+        ''' <summary>
+        ''' Extracts highlighted text in epub file
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractHighlight(fileName As String)
+            'ExStart:ExtractHighlightInEpub
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            Using extractor As New EpubTextExtractor(filePath)
+                Dim highlights As IList(Of String) = extractor.ExtractHighlights(HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Left, 9, 3))
+                For i As Integer = 0 To highlights.Count - 1
+                    Console.WriteLine(highlights(i))
+                Next
+            End Using
+            'ExEnd:ExtractHighlightInEpub
+        End Sub
+
+        ''' <summary>
+        ''' Detects Epub Media type
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub DetectEpubMediaType(fileName As String)
+            'ExStart:DetectEpubMediaType
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            Dim detector = New EpubMediaTypeDetector()
+            Dim mediaType = detector.Detect(filePath)
+
+            ' APPLICATION/EPUB+ZIP or null if stream is not EPUB document.
+            Console.WriteLine(mediaType)
+            'ExEnd:DetectEpubMediaType
+        End Sub
+
+
         'public static void ExtractTextUsingTextReader(string fileName) {
         '    //get file's actual path
         '    string filePath = Common.getFilePath(fileName);
@@ -569,6 +663,17 @@ Public Class DocumentTextExtractor
         'ExEnd:UseExtractionModesWithSearch
     End Sub
 
-
+    ''' <summary>
+    ''' Detects any supported media type using CompositeMediaTypeDetector class
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    Public Shared Sub MediaTypeDetection(fileName As String)
+        'ExStart:MediaTypeDetection
+        'get file actual path
+        Dim filePath As [String] = Common.getFilePath(fileName)
+        Dim mediaType = CompositeMediaTypeDetector.[Default].Detect(filePath)
+        Console.WriteLine(mediaType)
+        'ExEnd:MediaTypeDetection
+    End Sub
 
 End Class

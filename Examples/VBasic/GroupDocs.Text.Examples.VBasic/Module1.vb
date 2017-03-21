@@ -45,7 +45,14 @@
         'DocumentTextExtractor.Epub.ExtractALine("sample.epub")
         'Extracts all characters from epub document
         'DocumentTextExtractor.Epub.ExtractAllCharacters("sample.epub")
-
+        'searches text in an epub file using regex
+        'DocumentTextExtractor.Epub.SearchTextUsingRegex("sample.epub")
+        'searches text in an epub document
+        'DocumentTextExtractor.Epub.SearchText("sample.epub")
+        'extracts highlight in epub file
+        'DocumentTextExtractor.Epub.ExtractHighlight("Epub_file_with_highlighted_text.epub")
+        'Detect EPUB document
+        'DocumentTextExtractor.Epub.DetectEpubMediaType("sample.epub")
 #End Region
 
 #Region "MetadataExtractors"
@@ -61,6 +68,12 @@
         'MetaDataExtractor.EmailMetaData.ExtractMetadataFromEmails("The butterfly effect.msg")
         'Extract metadata of any supported file formatted document using extractor factory
         'MetaDataExtractor.UsingExtractorFactory("The butterfly effect.pptx")
+        'Extracts metadata from an epub file
+        'MetaDataExtractor.EpubMetaData.ExtractMetadata("sample.epub")
+        'Extracts Metadata Using Complex Metadata Extractor
+        'MetaDataExtractor.EpubMetaData.ExtractMetadataUsingComplexMetadataExtractor("sample.epub")
+        'Shows usage of extractor class
+        'MetaDataExtractor.ExtractClassUsage("The butterfly effect.docx")        
 #End Region
 
 #Region "ContainerExtractor"
@@ -72,6 +85,8 @@
         'ContainerExtractor.EnumerateAllArchivedFiles("zipcontainer.zip")
         'Read concrete file in a zip archive
         'ContainerExtractor.ReadConcreteFile("zipcontainer.zip")
+        'Detect Zip Media Type
+        'ContainerExtractor.DetectZipMediaType("zipcontainer.zip")
 #End Region
 
 #Region "OtherOperations"
@@ -95,7 +110,7 @@
         'DocumentTextExtractor.SearchWholeWord("The butterfly effect.docx")
         'Use all highlight extraction modes with search functionality
         'DocumentTextExtractor.UseExtractionModesWithSearch("doc with highlighted text.docx")
-
+        
 #End Region
 
 
@@ -119,9 +134,6 @@
         'Implements INotificationReceiver for extractors. To test the notification provide an invalid file name or something that can throw an exception so that a message can be logged
         'Tools.logger.LoggerWithManualExceptionHandling("The butterfly effect.xlsx")
 #End Region
-
-
-
 
         Console.ReadKey()
 

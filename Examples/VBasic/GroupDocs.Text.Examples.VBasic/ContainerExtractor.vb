@@ -89,4 +89,16 @@ Public Class ContainerExtractor
     End Sub
 
 
+    Public Shared Sub DetectZipMediaType(folderName As String)
+        'ExStart:DetectZipMediaType
+        'get ZIP folder's path
+        Dim folderPath As String = Common.getFilePath(folderName)
+        Dim detector = New ZipMediaTypeDetector()
+        Dim mediaType = detector.Detect(folderPath)
+
+        ' APPLICATION/ZIP or null if stream is not ZIP container.
+        Console.WriteLine(mediaType)
+        'ExEnd:DetectZipMediaType
+    End Sub
+
 End Class

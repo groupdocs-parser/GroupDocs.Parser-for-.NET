@@ -54,6 +54,14 @@ namespace GroupDocs.Text_for_.NET
             //DocumentTextExtractor.Epub.ExtractALine("sample.epub");
             //Extracts all characters from epub document
             //DocumentTextExtractor.Epub.ExtractAllCharacters("sample.epub");
+            //searches text in an epub file using regex
+            //DocumentTextExtractor.Epub.SearchTextUsingRegex("sample.epub");
+            //searches text in an epub document
+            //DocumentTextExtractor.Epub.SearchText("sample.epub");
+            //extracts highlight in epub file
+            //DocumentTextExtractor.Epub.ExtractHighlight("Epub_file_with_highlighted_text.epub");
+            //Detects epub media type
+            //DocumentTextExtractor.Epub.DetectEpubMediaType("sample.epub");
 
             #endregion
 
@@ -70,6 +78,12 @@ namespace GroupDocs.Text_for_.NET
             //MetaDataExtractor.EmailMetaData.ExtractMetadataFromEmails("The butterfly effect.msg");
             //Extract metadata of any supported file formatted document using extractor factory
             //MetaDataExtractor.UsingExtractorFactory("The butterfly effect.pptx");
+            //Extracts metadata from an epub file
+            //MetaDataExtractor.EpubMetaData.ExtractMetadata("sample.epub");
+            //Extracts Metadata Using Complex Metadata Extractor
+            //MetaDataExtractor.EpubMetaData.ExtractMetadataUsingComplexMetadataExtractor("sample.epub");
+            //Shows usage of extractor class
+            //MetaDataExtractor.ExtractClassUsage("The butterfly effect.docx");
             #endregion
 
             #region ContainerExtractor
@@ -81,6 +95,8 @@ namespace GroupDocs.Text_for_.NET
             //ContainerExtractor.EnumerateAllArchivedFiles("zipcontainer.zip");
             //Read concrete file in a zip archive
             //ContainerExtractor.ReadConcreteFile("zipcontainer.zip");
+            //Detect Zip Media Type
+            //ContainerExtractor.DetectZipMediaType("zipcontainer.zip");
             #endregion
 
             #region OtherOperations
@@ -104,6 +120,7 @@ namespace GroupDocs.Text_for_.NET
             //DocumentTextExtractor.SearchWholeWord("The butterfly effect.docx");
             //Use all highlight extraction modes with search functionality
             //DocumentTextExtractor.UseExtractionModesWithSearch("doc with highlighted text.docx");
+            
             #endregion
 
             #region Tools
@@ -123,6 +140,7 @@ namespace GroupDocs.Text_for_.NET
             //WordStatistic.FindMaxWordLength("The butterfly effect.xlsx", "The butterfly effect.pptx");
             // view the content of the file in Console
             //ExtractText.ViewContentInConsole("The butterfly effect.xlsx");
+
             #endregion
             Console.ReadKey();
         }
