@@ -1,5 +1,6 @@
 ﻿using GroupDocs.Text;
 using GroupDocs.Text.Detectors.Encoding;
+using GroupDocs.Text.Detectors.MediaType;
 using GroupDocs.Text.Extractors.Text;
 using System;
 using System.Collections.Generic;
@@ -126,6 +127,7 @@ namespace GroupDocs.Text_for_.NET
         }
         //ExEnd:SimpleLogger
 
+     
     }
 
 }

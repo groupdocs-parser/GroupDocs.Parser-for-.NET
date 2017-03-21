@@ -12,6 +12,7 @@ using GroupDocs.Text;
 using GroupDocs.Text.Detectors.MediaType;
 using GroupDocs.Text.Containers;
 using GroupDocs.Text.Extractors;
+using GroupDocs.Text.Extractors.Metadata;
 
 namespace GroupDocs.Text_for_.NET
 {
@@ -351,19 +352,115 @@ namespace GroupDocs.Text_for_.NET
                 //ExEnd:ExtractAllCharacters
             }
 
-            //public static void ExtractTextUsingTextReader(string fileName) {
-            //    //get file's actual path
-            //    string filePath = Common.getFilePath(fileName);
-            //    using (TextReader reader = package.GetTextReader(0))
-            //    {
-            //        string line = reader.ReadLine();
-            //        while (line != null)
-            //        {
-            //            Console.WriteLine(line);
-            //            line = reader.ReadLine();
-            //        }
-            //    }
-            //}
+
+            /// <summary>
+            /// Searches for a text in an epub file using regular expression
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void SearchTextUsingRegex(string fileName)
+            {
+                //ExStart:SearchTextInEpubUsingRegex
+                //get file's actual path
+                String filePath = Common.getFilePath(fileName);
+                using (EpubTextExtractor extractor = new EpubTextExtractor(filePath))
+                {
+                    var searchOptions = new RegexSearchOptions();
+                    var handler = new ListSearchHandler();
+                    extractor.SearchWithRegex("On[a-z]", handler, searchOptions);
+
+                    if (handler.List.Count == 0)
+                    {
+                        Console.WriteLine("Not found");
+                    }
+                    else
+                    {
+                        for (int i = 0; i < handler.List.Count; i++)
+                        {
+                            Console.Write(handler.List[i].LeftText);
+                            Console.Write("_");
+                            Console.Write(handler.List[i].FoundText);
+                            Console.Write("_");
+                            Console.Write(handler.List[i].RightText);
+                            Console.WriteLine("---");
+                        }
+                    }
+                }
+                //ExEnd:SearchTextInEpubUsingRegex
+            }
+
+            /// <summary>
+            /// Searches some text in an epub file
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void SearchText(string fileName)
+            {
+                //ExStart:SearchTextInEpub
+                //get file's actual path
+                String filePath = Common.getFilePath(fileName);
+                using (EpubTextExtractor extractor = new EpubTextExtractor(filePath))
+                {
+                    var options = new SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(0));
+                    var handler = new ListSearchHandler();
+                    var keywords = new string[] { "Name" };
+                    extractor.Search(options, handler, keywords);
+
+                    if (handler.List.Count == 0)
+                    {
+                        Console.WriteLine("Not found");
+                    }
+                    else
+                    {
+                        for (int i = 0; i < handler.List.Count; i++)
+                        {
+                            Console.Write(handler.List[i].LeftText);
+                            Console.Write("_");
+                            Console.Write(handler.List[i].FoundText);
+                            Console.Write("_");
+                            Console.Write(handler.List[i].RightText);
+                            Console.WriteLine("---");
+                        }
+                    }
+                }
+                //ExEnd:SearchTextInEpub
+            }
+
+            /// <summary>
+            /// Extracts highlighted text in epub file
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractHighlight(string fileName)
+            {
+                //ExStart:ExtractHighlightInEpub
+                //get file's actual path
+                String filePath = Common.getFilePath(fileName);
+                using (EpubTextExtractor extractor = new EpubTextExtractor(filePath))
+                {
+                    IList<string> highlights = extractor.ExtractHighlights(HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Left, 9, 3));
+                    for (int i = 0; i < highlights.Count; i++)
+                    {
+                        Console.WriteLine(highlights[i]);
+                    }
+                }
+                //ExEnd:ExtractHighlightInEpub
+            }
+
+            /// <summary>
+            /// Detects Epub Media type
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void DetectEpubMediaType(string fileName) {
+                //ExStart:DetectEpubMediaType
+                //get file's actual path
+                String filePath = Common.getFilePath(fileName);
+                var detector = new EpubMediaTypeDetector();
+                var mediaType = detector.Detect(filePath);
+
+                // APPLICATION/EPUB+ZIP or null if stream is not EPUB document.
+                Console.WriteLine(mediaType);
+                //ExEnd:DetectEpubMediaType
+            }
+
+
         }
 
         public static void PassEncodingToCreatedExtractor(string fileName)
@@ -602,7 +699,8 @@ namespace GroupDocs.Text_for_.NET
         /// Search text in documents using regular expression
         /// </summary>
         /// <param name="fileName"></param>
-        public static void SearchTextWithRegex(string fileName) {
+        public static void SearchTextWithRegex(string fileName)
+        {
             //ExStart:SearchTextWithRegex
             //get file path
             string filePath = Common.getFilePath(fileName);
@@ -635,7 +733,8 @@ namespace GroupDocs.Text_for_.NET
         /// Shows searching a text with highlights limited by line's start/end
         /// </summary>
         /// <param name="fileName"></param>
-        public static void UseExtractionModesWithSearch(string fileName) {
+        public static void UseExtractionModesWithSearch(string fileName)
+        {
             //ExStart:UseExtractionModesWithSearch
             //get file path
             string filePath = Common.getFilePath(fileName);
@@ -663,6 +762,20 @@ namespace GroupDocs.Text_for_.NET
                 }
             }
             //ExEnd:UseExtractionModesWithSearch
+        }
+
+        /// <summary>
+        /// Detects any supported media type using CompositeMediaTypeDetector class
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void MediaTypeDetection(string fileName)
+        {
+            //ExStart:MediaTypeDetection
+            //get file actual path
+            String filePath = Common.getFilePath(fileName);
+            var mediaType = CompositeMediaTypeDetector.Default.Detect(filePath);
+            Console.WriteLine(mediaType);
+            //ExEnd:MediaTypeDetection
         }
 
     }

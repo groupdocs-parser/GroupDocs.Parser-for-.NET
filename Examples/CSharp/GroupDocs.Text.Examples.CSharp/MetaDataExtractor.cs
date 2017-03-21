@@ -115,12 +115,58 @@ namespace GroupDocs.Text_for_.NET
             }
         }
 
+        public class EpubMetaData
+        {
+            /// <summary>
+            /// Extracts metadata from an epub file
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractMetadata(string fileName)
+            {
+                //ExStart:ExtractMetadataInEpub
+                //get file's actual path
+                String filePath = Common.getFilePath(fileName);
+                var metadataExtractor = new EpubMetadataExtractor();
+                var metadata = metadataExtractor.ExtractMetadata(filePath);
+                foreach (string key in metadata.Keys)
+                {
+                    Console.WriteLine(string.Format("{0} = {1}", key, metadata[key]));
+                }
+                //ExEnd:ExtractMetadataInEpub
+            }
+
+            /// <summary>
+            /// Extracts metadata using complex metadata extractor class
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractMetadataUsingComplexMetadataExtractor(string fileName)
+            {
+                //ExStart:ExtractMetadataUsingComplexMetadataExtractorInEpub
+                //get file's actual path
+                String filePath = Common.getFilePath(fileName);
+                var metadataExtractor = new EpubMetadataExtractor();
+                using (var enumerator = metadataExtractor.ExtractComplexMetadata(filePath))
+                {
+                    while (enumerator.MoveNext())
+                    {
+                        var metadata = enumerator.Current;
+                        foreach (string key in metadata.Keys)
+                        {
+                            Console.WriteLine(string.Format("{0} = {1}", key, metadata[key]));
+                        }
+                    }
+                }
+                //ExEnd:ExtractMetadataUsingComplexMetadataExtractorInEpub
+            }
+        }
+
         public static void UsingExtractorFactory(string fileName)
         {
             //ExStart:UsingExtractorFactory
             //get file actual path
             String filePath = Common.getFilePath(fileName);
             ExtractorFactory factory = new ExtractorFactory();
+            //ExtractMetadata methods in ExtractorFactory class are marked as Obsolete from version 17.03 onwards(use Extractor class instead).
             MetadataCollection metadata = factory.ExtractMetadata(filePath);
             if (metadata == null)
             {
@@ -132,6 +178,45 @@ namespace GroupDocs.Text_for_.NET
                 Console.WriteLine(string.Format("{0} = {1}", key, metadata[key]));
             }
             //ExEnd:UsingExtractorFactory
+        }
+
+        /// <summary>
+        /// shows how extractor class is used to extract metadata, this feature is supported ni version 17.03 or greater
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ExtractClassUsage(string fileName)
+        {
+            //ExStart:ExtractClassUsage
+            //get file actual path
+            String filePath = Common.getFilePath(fileName);
+            var extractor = new Extractor();
+            var metadata = extractor.ExtractMetadata(filePath);
+
+            foreach (string key in metadata.Keys)
+            {
+                Console.WriteLine(string.Format("{0} = {1}", key, metadata[key]));
+            }
+            //ExEnd:ExtractClassUsage
+        }
+
+        /// <summary>
+        /// Shows the usage of CreateMetadataExtractor method, the method is supported in version 17.03 or greater
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void CreateMetadataExtractorMethodUsage(string fileName)
+        {
+            //ExStart:CreateMetadataExtractorMethodUsage
+            //get file actual path
+            String filePath = Common.getFilePath(fileName);
+            var factory = new ExtractorFactory();
+            var extractor = factory.CreateMetadataExtractor(filePath);
+            var metadata = extractor.ExtractMetadata(filePath);
+
+            foreach (string key in metadata.Keys)
+            {
+                Console.WriteLine(string.Format("{0} = {1}", key, metadata[key]));
+            }
+            //ExEnd:CreateMetadataExtractorMethodUsage
         }
     }
 }
