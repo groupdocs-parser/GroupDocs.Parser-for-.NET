@@ -21,6 +21,6 @@ Directory | Description
 + **Website:** [www.groupdocs.com](http://www.groupdocs.com)
 + **Product Home:** [GroupDocs.Text for .NET](https://www.groupdocs.com/products/text)
 + **Download:** [Download GroupDocs.Text for .NET](https://downloads.groupdocs.com/text)
-+ **Documentation:** [GroupDocs.Text for .NET Documentation](https://docs.asposeptyltd.com/display/textnet/Home)
++ **Documentation:** [GroupDocs.Text for .NET Documentation](https://docs.groupdocs.com/display/textnet/Home)
 + **Forum:** [GroupDocs.Text for .NET Forum](http://groupdocs.com/Community/forums/default.aspx)
 + **Blog:** [GroupDocs.Text for .NET Blog](https://blog.groupdocs.com/category/groupdocs-text-product-family/)
