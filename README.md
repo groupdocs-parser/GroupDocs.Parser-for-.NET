@@ -1,6 +1,6 @@
 ##GroupDocs.Text for .NET
 
-This package contains [Examples](https://github.com/groupdocs-text/GroupDocs.Text-for-.NET/tree/master/Examples) and [Showcases](https://github.com/groupdocs-text/GroupDocs.Text-for-.NET/tree/master/Showcases) for [GroupDocs.Text for .NET](https://www.groupdocs.com/products/text) that will help you in understanding the API's working and writing your own applications.
+This package contains [Examples](https://github.com/groupdocs-text/GroupDocs.Text-for-.NET/tree/master/Examples) and [Showcases](https://github.com/groupdocs-text/GroupDocs.Text-for-.NET/tree/master/Showcases) for [GroupDocs.Text for .NET](https://www.groupdocs.com/products/text/net) that will help you in understanding the API's working and writing your own applications.
 
 GroupDocs.Text for .NET is a convenient text extractor API that permits users to extract raw or formatted text from different document formats. Beside, it is not only a text extractor API, user can extract metadata of the document as well. This document text extraction API allows user to read document content or metadata properties in console.
 
@@ -19,8 +19,8 @@ Directory | Description
 ## Resources
 
 + **Website:** [www.groupdocs.com](http://www.groupdocs.com)
-+ **Product Home:** [GroupDocs.Text for .NET](https://www.groupdocs.com/products/text)
-+ **Download:** [Download GroupDocs.Text for .NET](https://downloads.groupdocs.com/text)
++ **Product Home:** [GroupDocs.Text for .NET](https://www.groupdocs.com/products/text/net)
++ **Download:** [Download GroupDocs.Text for .NET](https://downloads.groupdocs.com/text/net)
 + **Documentation:** [GroupDocs.Text for .NET Documentation](https://docs.groupdocs.com/display/textnet/Home)
 + **Forum:** [GroupDocs.Text for .NET Forum](http://groupdocs.com/Community/forums/default.aspx)
 + **Blog:** [GroupDocs.Text for .NET Blog](https://blog.groupdocs.com/category/groupdocs-text-product-family/)
