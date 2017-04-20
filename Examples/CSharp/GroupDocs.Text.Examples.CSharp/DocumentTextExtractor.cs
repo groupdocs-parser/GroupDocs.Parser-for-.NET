@@ -47,6 +47,64 @@ namespace GroupDocs.Text_for_.NET
                 }
                 //ExEnd:ExtractEmailAttachments
             }
+
+            /// <summary>
+            /// Shows how to extract structured text from emails
+            /// Here as a sample usage where we are showing how to extract hyperlinks from an email
+            /// Feature is supported by version 17.04 or greater
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractEmailHyperlinks(string fileName)
+            {
+                //ExStart:ExtractEmailHyperlinks
+                //get file actual path
+                String filePath = Common.getFilePath(fileName);
+                List<string> hyperlinks = new List<string>();
+                StringBuilder sb = null;
+                string currentLink = null;
+                IStructuredExtractor extractor = new EmailTextExtractor(filePath);
+                StructuredHandler handler = new StructuredHandler();
+
+                // Handle Hyperlink event to process a starting of a hyperlink
+                handler.Hyperlink += (sender, e) =>
+                {
+                    sb = new StringBuilder();
+                    currentLink = e.Properties.Link;
+                };
+
+                // Handle ElementClose event to process a closing of a hyperlink
+                handler.ElementClosed += (sender, e) =>
+                {
+                    StructuredHandler h = sender as StructuredHandler;
+                    if (h != null && h[0] is HyperlinkProperties) // closing of hyperlink
+                    {
+                        if (sb != null)
+                        {
+                            hyperlinks.Add(string.Format("{0} ({1})", sb.ToString(), currentLink));
+                        }
+                        sb = null;
+                        currentLink = null;
+                    }
+                };
+
+                // Handle ElementText event to process a text
+                handler.ElementText += (sender, e) =>
+                {
+                    if (sb != null) // if hyperlink is open
+                    {
+                        sb.Append(e.Text);
+                    }
+                };
+
+                // Extract a text with its structure
+                extractor.ExtractStructured(handler);
+
+                foreach (string hl in hyperlinks)
+                {
+                    Console.WriteLine(hl);
+                }
+                //ExEnd:ExtractEmailHyperlinks
+            }
         }
 
         public class OneNoteDocument
@@ -133,6 +191,66 @@ namespace GroupDocs.Text_for_.NET
                 Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSlide(slideIndex), extractor.SlideCount);
                 //Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.SlideCount);
                 //ExEnd:ExtractPresentationDocument
+            }
+
+            /// <summary>
+            /// Shows how to extract structured text from presentation documents
+            /// Here as a sample usage where we are showing how to extract top-level lists from ppt
+            /// Feature is supported by version 17.04 or greater
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractTopLevelLists(string fileName)
+            {
+                //ExStart:ExtractTopLevelLists
+                //get file actual path
+                String filePath = Common.getFilePath(fileName);
+                StringBuilder sb = new StringBuilder();
+                IStructuredExtractor extractor = new SlidesTextExtractor(filePath);
+                StructuredHandler handler = new StructuredHandler();
+
+                bool isList = false;
+
+                // Handle Hyperlink event to process a starting of a list
+                handler.List += (sender, e) =>
+                {
+                    e.Properties.SkipElement = e.Properties.Depth > 0; // process only top-level lists
+                    if (!e.Properties.SkipElement)
+                    {
+                        isList = true;
+                    }
+                };
+
+                // Handle ElementClose event to process a closing of a list
+                handler.ElementClosed += (sender, e) =>
+                {
+                    StructuredHandler h = sender as StructuredHandler;
+                    if (h != null && h[0] is ListProperties)
+                    {
+                        isList = false;
+                    }
+                };
+
+                // Handle ElementText event to process a text
+                handler.ElementText += (sender, e) =>
+                {
+                    if (!isList)
+                    {
+                        return;
+                    }
+
+                    if (sb.Length > 0)
+                    {
+                        sb.AppendLine();
+                    }
+
+                    sb.Append(e.Text);
+                };
+
+                // Extract a text with its structure
+                extractor.ExtractStructured(handler);
+
+                Console.WriteLine(sb.ToString());
+                //ExEnd:ExtractTopLevelLists
             }
         }
 
@@ -245,6 +363,61 @@ namespace GroupDocs.Text_for_.NET
 
                 //ExEnd:ConcreteExtractorByFile
             }
+
+            /// <summary>
+            /// Shows how to read a structured text from spreadsheets
+            /// Feature is supported by version 17.04 or greater
+            /// </summary>
+            public static void ExtractStructuredText(string fileName)
+            {
+                //ExStart:ExtractStructuredText
+                //get file's complete path 
+                string filePath = Common.getFilePath(fileName);
+                StringBuilder sb = new StringBuilder();
+                IStructuredExtractor extractor = new CellsTextExtractor(filePath);
+                StructuredHandler handler = new StructuredHandler();
+
+                // Handle Table event to process a table
+                handler.Table += (sender, e) =>
+                {
+                    e.Properties.SkipElement = e.Properties.Name != "Sheet2"; // process only the sheet which name is Sheet2
+                    if (!e.Properties.SkipElement)
+                    {
+                        if (sb.Length > 0)
+                        {
+                            sb.AppendLine();
+                        }
+
+                        sb.Append(e.Properties.Name);
+                    }
+                };
+
+                // Handle TableRow event to process a table row
+                handler.TableRow += (sender, e) =>
+                {
+                    sb.AppendLine();
+                };
+
+                // Handle TableCell event to process a table cell
+                handler.TableCell += (sender, e) =>
+                {
+                    if (e.Properties.Column > 0)
+                    {
+                        sb.Append(" ");
+                    }
+                };
+
+                // Handle ElementText event to process a text
+                handler.ElementText += (sender, e) =>
+                {
+                    sb.Append(e.Text);
+                };
+
+                // Extract a text with its structure
+                extractor.ExtractStructured(handler);
+                Console.WriteLine(sb.ToString());
+                //ExEnd:ExtractStructuredText
+            }
         }
 
         public class TextDocument
@@ -310,6 +483,113 @@ namespace GroupDocs.Text_for_.NET
                 extractor.DocumentFormatter = new HtmlDocumentFormatter();
                 Console.WriteLine(extractor.ExtractAll());
                 //ExEnd:HtmlTextFormating
+            }
+
+            /// <summary>
+            /// Shows how to read structured text from text documents
+            /// here we show how to extract header from a document
+            /// Feature is supported by version 17.04 or greater
+            /// </summary>
+            public static void ExtractHeadersFromDocument(string fileName)
+            {
+                //ExStart:ExtractHeadersFromDocument
+                //get file's complete path 
+                string filePath = Common.getFilePath(fileName);
+                StringBuilder sb = new StringBuilder();
+                IStructuredExtractor extractor = new WordsTextExtractor(filePath);
+                StructuredHandler handler = new StructuredHandler();
+
+                // Handle List event to prevent processing of lists
+                handler.List += (sender, e) => e.Properties.SkipElement = true; // ignore lists
+                                                                                // Handle Table event to prevent processing of tables
+                handler.Table += (sender, e) => e.Properties.SkipElement = true; // ignore tables
+                                                                                 // Handle Paragraph event to process a paragraph
+                handler.Paragraph += (sender, e) =>
+                {
+                    int h1 = (int)ParagraphStyle.Heading1;
+                    int h6 = (int)ParagraphStyle.Heading6;
+
+                    int style = (int)e.Properties.Style;
+                    if (h1 <= style && style <= h6)
+                    {
+                        if (sb.Length > 0)
+                        {
+                            sb.AppendLine();
+                        }
+
+                        sb.Append(' ', style - h1); // make an indention for the header (h1 - no indention)
+                    }
+                    else
+                    {
+                        e.Properties.SkipElement = e.Properties.Style != ParagraphStyle.Title; // skip paragraph if it's not a header or a title
+                    }
+                };
+
+                // Handle ElementText event to process a text
+                handler.ElementText += (sender, e) => sb.Append(e.Text);
+
+                // Extract a text with its structure
+                extractor.ExtractStructured(handler);
+
+                Console.WriteLine(sb.ToString());
+                //ExEnd:ExtractHeadersFromDocument
+            }
+
+            /// <summary>
+            /// Extracts hyperlinks from a document
+            /// feature supported in version 17.04 or greater
+            /// </summary>
+            /// <param name="fileName">Name of the source file</param>
+            public static void ExtractHyperlinksFromDocument(string fileName)
+            {
+                //ExStart:ExtractHyperlinksFromDocument
+                //get file path
+                string filePath = Common.getFilePath(fileName);
+                List<string> hyperlinks = new List<string>();
+                StringBuilder sb = null;
+                string currentLink = null;
+                IStructuredExtractor extractor = new WordsTextExtractor(filePath);
+                StructuredHandler handler = new StructuredHandler();
+
+                // Handle Hyperlink event to process a starting of a hyperlink
+                handler.Hyperlink += (sender, e) =>
+                {
+                    sb = new StringBuilder();
+                    currentLink = e.Properties.Link;
+                };
+
+                // Handle ElementClose event to process a closing of a hyperlink
+                handler.ElementClosed += (sender, e) =>
+                {
+                    StructuredHandler h = sender as StructuredHandler;
+                    if (h != null && h[0] is HyperlinkProperties) // closing of hyperlink
+                    {
+                        if (sb != null)
+                        {
+                            hyperlinks.Add(string.Format("{0} ({1})", sb.ToString(), currentLink));
+                        }
+                        sb = null;
+                        currentLink = null;
+                    }
+                };
+
+                // Handle ElementText event to process a text
+                handler.ElementText += (sender, e) =>
+                {
+                    if (sb != null) // if hyperlink is open
+                    {
+                        sb.Append(e.Text);
+                    }
+                };
+
+                // Extract a text with its structure
+                extractor.ExtractStructured(handler);
+
+                foreach (string hl in hyperlinks)
+                {
+                    Console.WriteLine(hl);
+                }
+                //ExEnd:ExtractHyperlinksFromDocument
             }
         }
 
@@ -448,7 +728,8 @@ namespace GroupDocs.Text_for_.NET
             /// Detects Epub Media type
             /// </summary>
             /// <param name="fileName"></param>
-            public static void DetectEpubMediaType(string fileName) {
+            public static void DetectEpubMediaType(string fileName)
+            {
                 //ExStart:DetectEpubMediaType
                 //get file's actual path
                 String filePath = Common.getFilePath(fileName);
@@ -777,6 +1058,8 @@ namespace GroupDocs.Text_for_.NET
             Console.WriteLine(mediaType);
             //ExEnd:MediaTypeDetection
         }
+
+
 
     }
 }

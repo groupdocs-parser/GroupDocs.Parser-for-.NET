@@ -12,7 +12,7 @@ namespace GroupDocs.Text_for_.NET
         static void Main(string[] args)
         {
             //Un-comment to apply license 
-            Common.ApplyLicense();
+            //Common.ApplyLicense();
 
             #region TextExtractors
 
@@ -120,7 +120,7 @@ namespace GroupDocs.Text_for_.NET
             //DocumentTextExtractor.SearchWholeWord("The butterfly effect.docx");
             //Use all highlight extraction modes with search functionality
             //DocumentTextExtractor.UseExtractionModesWithSearch("doc with highlighted text.docx");
-            
+
             #endregion
 
             #region Tools
@@ -141,6 +141,18 @@ namespace GroupDocs.Text_for_.NET
             // view the content of the file in Console
             //ExtractText.ViewContentInConsole("The butterfly effect.xlsx");
 
+            #endregion
+            #region Structured Text Extraction
+            //Extracting hyperlinks from document(feature supported by version 17.04 or greater)
+            //DocumentTextExtractor.TextDocument.ExtractHyperlinksFromDocument("The butterfly effect.docx");
+            //Extracting structured text from a spread sheet(feature supported by version 17.04 or greater)
+            //DocumentTextExtractor.SpreadsheetDocument.ExtractStructuredText("The butterfly effect.xlsx");
+            //Extracting top-level lists from presentation document(feature supported by version 17.04 or greater)
+            //DocumentTextExtractor.PresentationDocument.ExtractTopLevelLists("The butterfly effect.pptx");
+            //Extracting headers from document(feature supported by version 17.04 or greater)
+            //DocumentTextExtractor.TextDocument.ExtractHeadersFromDocument("The butterfly effect.docx");
+            //Extracting hyperlinks from emails(feature supported by version 17.04 or greater)
+            //DocumentTextExtractor.EmailsExtractor.ExtractEmailHyperlinks("The butterfly effect.msg");
             #endregion
             Console.ReadKey();
         }

@@ -34,6 +34,62 @@ Public Class DocumentTextExtractor
             'ExEnd:ExtractEmailAttachments
         End Sub
 
+
+        ''' <summary>
+        ''' Shows how to extract structured text from emails
+        ''' Here as a sample usage where we are showing how to extract hyperlinks from an email
+        ''' Feature is supported by version 17.04 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractEmailHyperlinks(fileName As String)
+            'ExStart:ExtractEmailHyperlinks
+            'get file actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            Dim hyperlinks As New List(Of String)()
+            Dim sb As StringBuilder = Nothing
+            Dim currentLink As String = Nothing
+            Dim extractor As IStructuredExtractor = New EmailTextExtractor(filePath)
+            Dim handler As New StructuredHandler()
+
+            ' Handle Hyperlink event to process a starting of a hyperlink
+            AddHandler handler.Hyperlink, Function(sender, e)
+                                              sb = New StringBuilder()
+                                              currentLink = e.Properties.Link
+                                          End Function
+
+            ' Handle ElementClose event to process a closing of a hyperlink
+            AddHandler handler.ElementClosed, Function(sender, e)
+                                                  Dim h As StructuredHandler = TryCast(sender, StructuredHandler)
+                                                  If h IsNot Nothing AndAlso TypeOf h(0) Is HyperlinkProperties Then
+                                                      ' closing of hyperlink
+                                                      If sb IsNot Nothing Then
+                                                          hyperlinks.Add(String.Format("{0} ({1})", sb.ToString(), currentLink))
+                                                      End If
+                                                      sb = Nothing
+                                                      currentLink = Nothing
+                                                  End If
+
+                                              End Function
+
+            ' Handle ElementText event to process a text
+            AddHandler handler.ElementText, Function(sender, e)
+                                                If sb IsNot Nothing Then
+                                                    ' if hyperlink is open
+                                                    sb.Append(e.Text)
+                                                End If
+
+                                            End Function
+
+            ' Extract a text with its structure
+            extractor.ExtractStructured(handler)
+
+            For Each hl As String In hyperlinks
+                Console.WriteLine(hl)
+            Next
+            'ExEnd:ExtractEmailHyperlinks
+        End Sub
+
+
     End Class
 
     Public Class OneNoteDocument
@@ -110,6 +166,64 @@ Public Class DocumentTextExtractor
             'Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.SlideCount);
             'ExEnd:ExtractPresentationDocument
         End Sub
+
+
+        ''' <summary>
+        ''' Shows how to extract structured text from presentation documents
+        ''' Here as a sample usage where we are showing how to extract top-level lists from ppt
+        ''' Feature is supported by version 17.04 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractTopLevelLists(fileName As String)
+            'ExStart:ExtractTopLevelLists
+            'get file actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            Dim sb As New StringBuilder()
+            Dim extractor As IStructuredExtractor = New SlidesTextExtractor(filePath)
+            Dim handler As New StructuredHandler()
+
+            Dim isList As Boolean = False
+
+            ' Handle Hyperlink event to process a starting of a list
+            AddHandler handler.List, Function(sender, e)
+                                         e.Properties.SkipElement = e.Properties.Depth > 0
+                                         ' process only top-level lists
+                                         If Not e.Properties.SkipElement Then
+                                             isList = True
+                                         End If
+
+                                     End Function
+
+            ' Handle ElementClose event to process a closing of a list
+            AddHandler handler.ElementClosed, Function(sender, e)
+                                                  Dim h As StructuredHandler = TryCast(sender, StructuredHandler)
+                                                  If h IsNot Nothing AndAlso TypeOf h(0) Is ListProperties Then
+                                                      isList = False
+                                                  End If
+
+                                              End Function
+
+            ' Handle ElementText event to process a text
+            AddHandler handler.ElementText, Function(sender, e)
+                                                If Not isList Then
+                                                    Exit Function
+                                                End If
+
+                                                If sb.Length > 0 Then
+                                                    sb.AppendLine()
+                                                End If
+
+                                                sb.Append(e.Text)
+
+                                            End Function
+
+            ' Extract a text with its structure
+            extractor.ExtractStructured(handler)
+
+            Console.WriteLine(sb.ToString())
+            'ExEnd:ExtractTopLevelLists
+        End Sub
+
     End Class
 
     Public Class SpreadsheetDocument
@@ -211,6 +325,58 @@ Public Class DocumentTextExtractor
         End Sub
 
 
+        ''' <summary>
+        ''' Shows how to read a structured text from spreadsheets
+        ''' Feature is supported by version 17.04 or greater
+        ''' </summary>
+        Public Shared Sub ExtractStructuredText(fileName As String)
+            'ExStart:ExtractStructuredText
+            'get file's complete path 
+            Dim filePath As String = Common.getFilePath(fileName)
+            Dim sb As New StringBuilder()
+            Dim extractor As IStructuredExtractor = New CellsTextExtractor(filePath)
+            Dim handler As New StructuredHandler()
+
+            ' Handle Table event to process a table
+            AddHandler handler.Table, Function(sender, e)
+                                          e.Properties.SkipElement = e.Properties.Name <> "Sheet2"
+                                          ' process only the sheet which name is Sheet2
+                                          If Not e.Properties.SkipElement Then
+                                              If sb.Length > 0 Then
+                                                  sb.AppendLine()
+                                              End If
+
+                                              sb.Append(e.Properties.Name)
+                                          End If
+
+                                      End Function
+
+            ' Handle TableRow event to process a table row
+            AddHandler handler.TableRow, Function(sender, e)
+                                             sb.AppendLine()
+
+                                         End Function
+
+            ' Handle TableCell event to process a table cell
+            AddHandler handler.TableCell, Function(sender, e)
+                                              If e.Properties.Column > 0 Then
+                                                  sb.Append(" ")
+                                              End If
+
+                                          End Function
+
+            ' Handle ElementText event to process a text
+            AddHandler handler.ElementText, Function(sender, e)
+                                                sb.Append(e.Text)
+
+                                            End Function
+
+            ' Extract a text with its structure
+            extractor.ExtractStructured(handler)
+            Console.WriteLine(sb.ToString())
+            'ExEnd:ExtractStructuredText
+        End Sub
+
 
 
     End Class
@@ -270,6 +436,111 @@ Public Class DocumentTextExtractor
             Console.WriteLine(extractor.ExtractAll())
             'ExEnd:HtmlTextFormating
         End Sub
+
+
+        ''' <summary>
+        ''' Shows how to read structured text from text documents
+        ''' here we show how to extract header from a document
+        ''' Feature is supported by version 17.04 or greater
+        ''' </summary>
+        Public Shared Sub ExtractHeadersFromDocument(fileName As String)
+            'ExStart:ExtractHeadersFromDocument
+            'get file's complete path 
+            Dim filePath As String = Common.getFilePath(fileName)
+            Dim sb As New StringBuilder()
+            Dim extractor As IStructuredExtractor = New WordsTextExtractor(filePath)
+            Dim handler As New StructuredHandler()
+
+            ' Handle List event to prevent processing of lists
+            AddHandler handler.List, Function(sender, e) (e.Properties.SkipElement = True)
+            ' ignore lists
+            ' Handle Table event to prevent processing of tables
+            AddHandler handler.Table, Function(sender, e) (e.Properties.SkipElement = True)
+            ' ignore tables
+            ' Handle Paragraph event to process a paragraph
+            AddHandler handler.Paragraph, Function(sender, e)
+                                              Dim h1 As Integer = CInt(ParagraphStyle.Heading1)
+                                              Dim h6 As Integer = CInt(ParagraphStyle.Heading6)
+
+                                              Dim style As Integer = CInt(e.Properties.Style)
+                                              If h1 <= style AndAlso style <= h6 Then
+                                                  If sb.Length > 0 Then
+                                                      sb.AppendLine()
+                                                  End If
+
+                                                  ' make an indention for the header (h1 - no indention)
+                                                  sb.Append(" "c, style - h1)
+                                              Else
+                                                  ' skip paragraph if it's not a header or a title
+                                                  e.Properties.SkipElement = e.Properties.Style <> ParagraphStyle.Title
+                                              End If
+
+                                          End Function
+
+            ' Handle ElementText event to process a text
+            AddHandler handler.ElementText, Function(sender, e) sb.Append(e.Text)
+
+            ' Extract a text with its structure
+            extractor.ExtractStructured(handler)
+
+            Console.WriteLine(sb.ToString())
+            'ExEnd:ExtractHeadersFromDocument
+        End Sub
+
+        ''' <summary>
+        ''' Extracts hyperlinks from a document
+        ''' feature supported in version 17.04 or greater
+        ''' </summary>
+        ''' <param name="fileName">Name of the source file</param>
+        Public Shared Sub ExtractHyperlinksFromDocument(fileName As String)
+            'ExStart:ExtractHyperlinksFromDocument
+            'get file path
+            Dim filePath As String = Common.getFilePath(fileName)
+            Dim hyperlinks As New List(Of String)()
+            Dim sb As StringBuilder = Nothing
+            Dim currentLink As String = Nothing
+            Dim extractor As IStructuredExtractor = New WordsTextExtractor(filePath)
+            Dim handler As New StructuredHandler()
+
+            ' Handle Hyperlink event to process a starting of a hyperlink
+            AddHandler handler.Hyperlink, Function(sender, e)
+                                              sb = New StringBuilder()
+                                              currentLink = e.Properties.Link
+
+                                          End Function
+
+            ' Handle ElementClose event to process a closing of a hyperlink
+            AddHandler handler.ElementClosed, Function(sender, e)
+                                                  Dim h As StructuredHandler = TryCast(sender, StructuredHandler)
+                                                  If h IsNot Nothing AndAlso TypeOf h(0) Is HyperlinkProperties Then
+                                                      ' closing of hyperlink
+                                                      If sb IsNot Nothing Then
+                                                          hyperlinks.Add(String.Format("{0} ({1})", sb.ToString(), currentLink))
+                                                      End If
+                                                      sb = Nothing
+                                                      currentLink = Nothing
+                                                  End If
+
+                                              End Function
+
+            ' Handle ElementText event to process a text
+            AddHandler handler.ElementText, Function(sender, e)
+                                                If sb IsNot Nothing Then
+                                                    ' if hyperlink is open
+                                                    sb.Append(e.Text)
+                                                End If
+
+                                            End Function
+
+            ' Extract a text with its structure
+            extractor.ExtractStructured(handler)
+
+            For Each hl As String In hyperlinks
+                Console.WriteLine(hl)
+            Next
+            'ExEnd:ExtractHyperlinksFromDocument
+        End Sub
+
     End Class
 
 
