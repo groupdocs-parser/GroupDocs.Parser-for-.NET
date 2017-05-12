@@ -160,6 +160,29 @@ namespace GroupDocs.Text_for_.NET
             }
         }
 
+        public class Fb2Metadata {
+            /// <summary>
+            /// Shows how to extract metadata from fb2 files
+            /// Feature is supported in version 17.05 or greater
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractMetadata(string fileName) {
+                //ExStart:ExtractMetadataFb2
+                //get file's actual path
+                String filePath = Common.getFilePath(fileName);
+                // Create a metadata extractor 
+                FictionBookMetadataExtractor extractor = new FictionBookMetadataExtractor();
+                // Extract metadata
+                MetadataCollection metadata = extractor.ExtractMetadata(filePath);
+                // Iterate metadata values 
+                foreach (string key in metadata.Keys)
+                {
+                    // Print a metadata key/value pair to the console    
+                    Console.WriteLine(string.Format("{0} = {1}", key, metadata[key]));
+                }
+                //ExEnd:ExtractMetadataFb2
+            }
+        }
         public static void UsingExtractorFactory(string fileName)
         {
             //ExStart:UsingExtractorFactory

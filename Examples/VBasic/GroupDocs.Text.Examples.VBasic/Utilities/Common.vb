@@ -31,4 +31,16 @@
         'ExEnd:getfilepath
     End Function
 
+
+    ''' <summary>
+    ''' Shows how to set metered public and private key for Dynabic.Metered account
+    ''' </summary>
+    Public Shared Sub SetMeteredKey()
+        'ExStart:SetMeteredKey
+        Dim matered As New Metered()
+        matered.SetMeteredKey("PublicKey", "PrivateKey")
+        'ExEnd:SetMeteredKey
+    End Sub
+
+
 End Class

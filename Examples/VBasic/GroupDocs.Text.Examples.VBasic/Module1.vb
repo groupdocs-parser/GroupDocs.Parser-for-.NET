@@ -53,6 +53,19 @@
         'DocumentTextExtractor.Epub.ExtractHighlight("Epub_file_with_highlighted_text.epub")
         'Detect EPUB document
         'DocumentTextExtractor.Epub.DetectEpubMediaType("sample.epub")
+
+        'Extracting text from fb2 file(feature supported by version 17.05 or greater)
+        'DocumentTextExtractor.Fb2.ExtractWholeText("sample.fb2")
+        'Extracting text by line from fb2 file(feature supported by version 17.05 or greater)
+        'DocumentTextExtractor.Fb2.ExtractTextByLine("sample.fb2")
+        'extracts highlight in fb2 file(feature supported by version 17.05 or greater)
+        'DocumentTextExtractor.Fb2.ExtractHighlights("fb2_file_with_highlighted_text.fb2")
+        'search text with regular expresion(feature supported by version 17.05 or greater)
+        'DocumentTextExtractor.Fb2.SearchTextWithRegex("sample.fb2")
+        'search text in fb2 files(feature supported by version 17.05 or greater)
+        'DocumentTextExtractor.Fb2.SearchText("sample.fb2")
+        'Detect fb2 media type(feature supported by version 17.05 or greater)
+        'DocumentTextExtractor.Fb2.DetectMediaType("sample.fb2")
 #End Region
 
 #Region "MetadataExtractors"
@@ -74,6 +87,9 @@
         'MetaDataExtractor.EpubMetaData.ExtractMetadataUsingComplexMetadataExtractor("sample.epub")
         'Shows usage of extractor class
         'MetaDataExtractor.ExtractClassUsage("The butterfly effect.docx")        
+        'Extracts metadata from fb2 files
+        'MetaDataExtractor.Fb2Metadata.ExtractMetadata("sample.fb2")
+
 #End Region
 
 #Region "ContainerExtractor"
@@ -110,7 +126,7 @@
         'DocumentTextExtractor.SearchWholeWord("The butterfly effect.docx")
         'Use all highlight extraction modes with search functionality
         'DocumentTextExtractor.UseExtractionModesWithSearch("doc with highlighted text.docx")
-        
+
 #End Region
 
 
@@ -135,18 +151,24 @@
         'Tools.logger.LoggerWithManualExceptionHandling("The butterfly effect.xlsx")
 #End Region
 
-        #Region "Structured Text Extraction"
-            'Extracting hyperlinks from document(feature supported by version 17.04 or greater)
-            'DocumentTextExtractor.TextDocument.ExtractHyperlinksFromDocument("The butterfly effect.docx")
-            'Extracting structured text from a spread sheet(feature supported by version 17.04 or greater)
-            'DocumentTextExtractor.SpreadsheetDocument.ExtractStructuredText("The butterfly effect.xlsx")
-            'Extracting top-level lists from presentation document(feature supported by version 17.04 or greater)
-            'DocumentTextExtractor.PresentationDocument.ExtractTopLevelLists("The butterfly effect.pptx")
-            'Extracting headers from document(feature supported by version 17.04 or greater)
-            'DocumentTextExtractor.TextDocument.ExtractHeadersFromDocument("The butterfly effect.docx")
-            'Extracting hyperlinks from emails(feature supported by version 17.04 or greater)
-            'DocumentTextExtractor.EmailsExtractor.ExtractEmailHyperlinks("The butterfly effect.msg")
-            #End Region
+#Region "Structured Text Extraction"
+        'Extracting hyperlinks from document(feature supported by version 17.04 or greater)
+        'DocumentTextExtractor.TextDocument.ExtractHyperlinksFromDocument("The butterfly effect.docx")
+        'Extracting structured text from a spread sheet(feature supported by version 17.04 or greater)
+        'DocumentTextExtractor.SpreadsheetDocument.ExtractStructuredText("The butterfly effect.xlsx")
+        'Extracting top-level lists from presentation document(feature supported by version 17.04 or greater)
+        'DocumentTextExtractor.PresentationDocument.ExtractTopLevelLists("The butterfly effect.pptx")
+        'Extracting headers from document(feature supported by version 17.04 or greater)
+        'DocumentTextExtractor.TextDocument.ExtractHeadersFromDocument("The butterfly effect.docx")
+        'Extracting hyperlinks from emails(feature supported by version 17.04 or greater)
+        'DocumentTextExtractor.EmailsExtractor.ExtractEmailHyperlinks("The butterfly effect.msg")
+        'Extracting formatted text from Epub files(feature supported by version 17.05 or greater)
+        'DocumentTextExtractor.Epub.ExtractFormattedText("sample.epub")
+        'Extracting section title from Epub files(feature supported by version 17.05 or greater)
+        'DocumentTextExtractor.Epub.ExtractSectionTitle("sample.epub")
+        'ExtractText section title from fb2 files(feature supported by version 17.05 or greater)
+        'DocumentTextExtractor.Fb2.ExtractSectionTitle("sample.fb2")
+#End Region
 
         Console.ReadKey()
 

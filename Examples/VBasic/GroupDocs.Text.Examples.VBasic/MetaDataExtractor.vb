@@ -133,6 +133,32 @@ Public Class MetaDataExtractor
         End Sub
     End Class
 
+
+
+    Public Class Fb2Metadata
+        ''' <summary>
+        ''' Shows how to extract metadata from fb2 files
+        ''' Feature is supported in version 17.05 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractMetadata(fileName As String)
+            'ExStart:ExtractMetadataFb2
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            ' Create a metadata extractor 
+            Dim extractor As New FictionBookMetadataExtractor()
+            ' Extract metadata
+            Dim metadata As MetadataCollection = extractor.ExtractMetadata(filePath)
+            ' Iterate metadata values 
+            For Each key As String In metadata.Keys
+                ' Print a metadata key/value pair to the console    
+                Console.WriteLine(String.Format("{0} = {1}", key, metadata(key)))
+            Next
+            'ExEnd:ExtractMetadataFb2
+        End Sub
+    End Class
+
+
     Public Shared Sub UsingExtractorFactory(fileName As String)
         'ExStart:UsingExtractorFactory
         'get file actual path

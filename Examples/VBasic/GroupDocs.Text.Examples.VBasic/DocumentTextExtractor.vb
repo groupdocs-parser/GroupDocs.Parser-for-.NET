@@ -684,6 +684,324 @@ Public Class DocumentTextExtractor
         '        }
         '    }
         '}
+
+
+        ''' <summary>
+        ''' Shows how to extract section titles from EPUB document
+        ''' Feature is supported in version 17.05 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractSectionTitle(fileName As String)
+            'ExStart:ExtractSectionTitleEpub
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            ' Create a text extractor
+            Using extractor As New EpubTextExtractor(filePath)
+                Dim sb As StringBuilder = Nothing
+                Dim isSectionHasTitle As Boolean = False
+
+                ' Create a handler
+                Dim handler As New StructuredHandler()
+
+                ' Handle ElementText event to process a section
+                AddHandler handler.Section, Function(sender, e)
+                                                ' a new section doesn't have a title
+                                                isSectionHasTitle = False
+
+                                            End Function
+
+                ' Handle Paragraph event to process a paragraph
+                AddHandler handler.Paragraph, Function(sender, e)
+                                                  ' is paragraph a heading?
+                                                  Dim isHeading As Boolean = ParagraphStyle.Heading1 <= e.Properties.Style AndAlso e.Properties.Style <= ParagraphStyle.Heading6
+
+                                                  If isHeading AndAlso Not isSectionHasTitle Then
+                                                      sb = New StringBuilder()
+                                                  End If
+
+                                              End Function
+
+                ' Handle ElementClosed event to process a closing of a paragraph
+                AddHandler handler.ElementClosed, Function(sender, e)
+                                                      ' Check if closing tag is paragraph
+                                                      If sb IsNot Nothing AndAlso TypeOf e.Properties Is ParagraphProperties Then
+                                                          ' Print a title to the console
+                                                          Console.WriteLine(sb.ToString())
+                                                          ' Section has a title
+                                                          isSectionHasTitle = True
+                                                          sb = Nothing
+                                                      End If
+
+                                                  End Function
+
+                ' Handle ElementText event to process a text
+                AddHandler handler.ElementText, Function(sender, e)
+                                                    If sb IsNot Nothing Then
+                                                        ' Add a text to the title
+                                                        sb.Append(e.Text)
+                                                    End If
+
+                                                End Function
+
+                ' Extract a text with its structure
+                extractor.ExtractStructured(handler)
+            End Using
+            'ExEnd:ExtractSectionTitleEpub
+        End Sub
+
+        ''' <summary>
+        ''' Shows how to extract formatted text from Epub files
+        ''' Feature is supported in version 17.05 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractFormattedText(fileName As String)
+            'ExStart:ExtractFormattedTextEpub
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            ' Create a formatted text extractor for EPUB documents
+            Using extractor = New EpubFormattedTextExtractor(filePath)
+                ' Set a document formatter to Markdown
+                extractor.DocumentFormatter = New MarkdownDocumentFormatter()
+                ' Extact a text and print it to the console
+                Console.Write(extractor.ExtractAll())
+            End Using
+            'ExEnd:ExtractFormattedTextEpub
+        End Sub
+
+    End Class
+
+
+    Public Class Fb2
+        ''' <summary>
+        ''' Shows how to extract whole text from fb2 file
+        ''' Feature is supported in version 17.05 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractWholeText(fileName As String)
+            'ExStart:ExtractWholeTextFb2
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            Using extractor = New FictionBookTextExtractor(filePath)
+                Console.Write(extractor.ExtractAll())
+            End Using
+            'ExEnd:ExtractWholeTextFb2
+        End Sub
+
+        ''' <summary>
+        ''' Shows how to extract text line by line
+        ''' Feature is supported in version 17.05 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractTextByLine(fileName As String)
+            'ExStart:ExtractTextByLineFb2
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            Using extractor = New FictionBookTextExtractor(filePath)
+                Dim line As String = extractor.ExtractLine()
+                While line IsNot Nothing
+                    Console.Write(line)
+                    line = extractor.ExtractLine()
+                End While
+            End Using
+            'ExEnd:ExtractTextByLineFb2
+        End Sub
+
+        ''' <summary>
+        ''' Shows how to extract highlights from fb2 files
+        ''' Feature is supported in version 17.05 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractHighlights(fileName As String)
+            'ExStart:ExtractHighlightsFb2
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            ' Create a text extractor 
+            Using extractor As New FictionBookTextExtractor(filePath)
+                ' Extract two highlights with the fixed position and length     
+                Dim highlights = extractor.ExtractHighlights(HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Left, 19, 22), HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Right, 19, 10))
+
+                For i As Integer = 0 To highlights.Count - 1
+                    ' Print highlights to the console        
+                    Console.WriteLine(highlights(i))
+                Next
+            End Using
+            'ExEnd:ExtractHighlightsFb2
+        End Sub
+
+        ''' <summary>
+        ''' Shows how to search text in fb2 files with a regular expression
+        ''' Feature is supported in version 17.05 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub SearchTextWithRegex(fileName As String)
+            'ExStart:SearchTextWithRegexFb2
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            ' Create a text extractor 
+            Using extractor = New FictionBookTextExtractor(filePath)
+                ' Create search options   
+                Dim searchOptions = New RegexSearchOptions()
+                ' Create a search handler. ListSearchHandler collects search results to the list  
+                Dim handler = New ListSearchHandler()
+                ' Search with a regular expression   
+                extractor.SearchWithRegex("On[a-z]", handler, searchOptions)
+
+                ' If list doesn't contain any results   
+                If handler.List.Count = 0 Then
+                    ' Print "Not Found" to the console  
+                    Console.WriteLine("Not found")
+                Else
+                    ' Iterate search results     
+                    For i As Integer = 0 To handler.List.Count - 1
+                        ' Print a search result to the console       
+                        Console.Write(handler.List(i).LeftText)
+                        ' a text on the left side from the found text      
+                        Console.Write("_")
+                        Console.Write(handler.List(i).FoundText)
+                        ' the found text       
+                        Console.Write("_")
+                        Console.Write(handler.List(i).RightText)
+                        ' a text on the right side from the found text       
+                        Console.WriteLine("---")
+                    Next
+                End If
+            End Using
+            'ExEnd:SearchTextWithRegexFb2
+        End Sub
+
+        ''' <summary>
+        ''' Shows how to search tex tin fb2 files
+        ''' Feature is supported in version 17.05 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub SearchText(fileName As String)
+            'ExStart:SearchTextFb2
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            ' Create a text extractor 
+            Using extractor = New FictionBookTextExtractor(filePath)
+                ' Create search options   
+                Dim options = New SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(0))
+                ' Create a search handler. ListSearchHandler collects search results to the list  
+                Dim handler = New ListSearchHandler()
+                ' Create keywords to search   
+                Dim keywords = New String() {"examined"}
+                ' Search keywords   
+                extractor.Search(options, handler, keywords)
+
+                ' If list doesn't contain any results   
+                If handler.List.Count = 0 Then
+                    ' Print "Not Found" to the console   
+                    Console.WriteLine("Not found")
+                Else
+                    ' Iterate search results     
+                    For i As Integer = 0 To handler.List.Count - 1
+                        ' Print a search result to the console       
+                        Console.Write(handler.List(i).LeftText)
+                        ' a text on the left side from the found text       
+                        Console.Write("_")
+                        Console.Write(handler.List(i).FoundText)
+                        ' the found text       
+                        Console.Write("_")
+                        Console.Write(handler.List(i).RightText)
+                        ' a text on the right side from the found text       
+                        Console.WriteLine("---")
+                    Next
+                End If
+            End Using
+            'ExEnd:SearchTextFb2
+        End Sub
+
+        ''' <summary>
+        ''' Shows how to extract section titles from fb2 document
+        ''' Feature is supported in version 17.05 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractSectionTitle(fileName As String)
+            'ExStart:ExtractSectionTitleFb2
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            ' Create a text extractor 
+            Using extractor As New FictionBookTextExtractor(filePath)
+                Dim sb As StringBuilder = Nothing
+
+                ' Create a handler     
+                Dim handler As New StructuredHandler()
+
+                ' Handle Group event to process a group     
+                AddHandler handler.Group, Function(sender, e)
+                                              Dim h As StructuredHandler = TryCast(sender, StructuredHandler)
+
+                                              ' Is the group a section title?         
+                                              Dim isSectionTitleGroup As Boolean = h IsNot Nothing AndAlso h.Depth > 1 AndAlso TypeOf h(0) Is SectionProperties
+
+                                              ' If a group is the section title        
+                                              If isSectionTitleGroup Then
+                                                  sb = New StringBuilder()
+                                              End If
+
+                                          End Function
+
+                ' Handle Paragraph event to process a paragraph     
+                AddHandler handler.Paragraph, Function(sender, e)
+                                                  If sb IsNot Nothing AndAlso sb.Length > 0 Then
+                                                      sb.AppendLine()
+                                                  End If
+
+                                              End Function
+
+                ' Handle ElementClosed event to process a closing of a paragraph     
+                AddHandler handler.ElementClosed, Function(sender, e)
+                                                      If sb Is Nothing OrElse sb.Length = 0 Then
+                                                          Return 0
+                                                      End If
+
+                                                      ' Check if closing tag is paragraph         
+                                                      If TypeOf e.Properties Is ParagraphProperties Then
+                                                          sb.AppendLine()
+                                                      End If
+
+                                                      ' Check if closing tag is group of section title         
+                                                      If TypeOf e.Properties Is GroupProperties AndAlso TryCast(e.Properties, GroupProperties).Style = "title" Then
+                                                          ' Print a title to the console             
+                                                          Console.WriteLine(sb.ToString())
+                                                          sb = Nothing
+                                                      End If
+
+                                                  End Function
+
+                ' Handle ElementText event to process a text     
+                AddHandler handler.ElementText, Function(sender, e)
+                                                    If sb IsNot Nothing Then
+                                                        ' Add a text to the title             
+                                                        sb.Append(e.Text)
+                                                    End If
+
+                                                End Function
+
+                ' Extract a text with its structure     
+                extractor.ExtractStructured(handler)
+            End Using
+            'ExEnd:ExtractSectionTitleFb2
+        End Sub
+
+        ''' <summary>
+        ''' Shows how to detect media type of a fb2 file
+        ''' Feature is supported in version 17.05 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub DetectMediaType(fileName As String)
+            'ExStart:DetectMediaTypeFb2
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            ' Create a media type detector 
+            Dim detector = New FictionBookMediaTypeDetector()
+            ' Detect a media type by the file name 
+            Console.WriteLine(detector.Detect(fileName))
+            ' Detect a media type by the content 
+            Console.WriteLine(detector.Detect(filePath))
+            ''ExEnd:DetectMediaTypeFb2
+        End Sub
     End Class
 
 
