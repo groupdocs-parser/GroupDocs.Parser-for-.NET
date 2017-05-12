@@ -44,6 +44,17 @@ namespace GroupDocs.Text_for_.NET
             String fileLocation = sourcePath + fileName;
             return fileLocation;
             //ExEnd:getfilepath
-        } 
+        }
+
+        /// <summary>
+        /// Shows how to set metered public and private key for Dynabic.Metered account
+        /// </summary>
+        public static void SetMeteredKey()
+        {
+            //ExStart:SetMeteredKey
+            Metered matered = new Metered();
+            matered.SetMeteredKey("PublicKey", "PrivateKey");
+            //ExEnd:SetMeteredKey
+        }
     }
 }

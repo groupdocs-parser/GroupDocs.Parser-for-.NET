@@ -63,6 +63,18 @@ namespace GroupDocs.Text_for_.NET
             //Detects epub media type
             //DocumentTextExtractor.Epub.DetectEpubMediaType("sample.epub");
 
+            //Extracting text from fb2 file(feature supported by version 17.05 or greater)
+            //DocumentTextExtractor.Fb2.ExtractWholeText("sample.fb2");
+            //Extracting text by line from fb2 file(feature supported by version 17.05 or greater)
+            //DocumentTextExtractor.Fb2.ExtractTextByLine("sample.fb2");
+            //extracts highlight in fb2 file(feature supported by version 17.05 or greater)
+            //DocumentTextExtractor.Fb2.ExtractHighlights("fb2_file_with_highlighted_text.fb2");
+            //search text with regular expresion(feature supported by version 17.05 or greater)
+            //DocumentTextExtractor.Fb2.SearchTextWithRegex("sample.fb2");
+            //search text in fb2 files(feature supported by version 17.05 or greater)
+            //DocumentTextExtractor.Fb2.SearchText("sample.fb2");
+            //Detect fb2 media type(feature supported by version 17.05 or greater)
+            //DocumentTextExtractor.Fb2.DetectMediaType("sample.fb2");
             #endregion
 
             #region MetadataExtractors
@@ -84,6 +96,8 @@ namespace GroupDocs.Text_for_.NET
             //MetaDataExtractor.EpubMetaData.ExtractMetadataUsingComplexMetadataExtractor("sample.epub");
             //Shows usage of extractor class
             //MetaDataExtractor.ExtractClassUsage("The butterfly effect.docx");
+            //Extracts metadata from fb2 files
+            //MetaDataExtractor.Fb2Metadata.ExtractMetadata("sample.fb2");
             #endregion
 
             #region ContainerExtractor
@@ -153,6 +167,12 @@ namespace GroupDocs.Text_for_.NET
             //DocumentTextExtractor.TextDocument.ExtractHeadersFromDocument("The butterfly effect.docx");
             //Extracting hyperlinks from emails(feature supported by version 17.04 or greater)
             //DocumentTextExtractor.EmailsExtractor.ExtractEmailHyperlinks("The butterfly effect.msg");
+            //Extracting formatted text from Epub files(feature supported by version 17.05 or greater)
+            //DocumentTextExtractor.Epub.ExtractFormattedText("sample.epub");
+            //Extracting section title from Epub files(feature supported by version 17.05 or greater)
+            //DocumentTextExtractor.Epub.ExtractSectionTitle("sample.epub");
+            //ExtractText section title from fb2 files(feature supported by version 17.05 or greater)
+            //DocumentTextExtractor.Fb2.ExtractSectionTitle("sample.fb2");
             #endregion
             Console.ReadKey();
         }
