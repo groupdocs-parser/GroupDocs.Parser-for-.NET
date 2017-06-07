@@ -13,6 +13,7 @@ using GroupDocs.Text.Detectors.MediaType;
 using GroupDocs.Text.Containers;
 using GroupDocs.Text.Extractors;
 using GroupDocs.Text.Extractors.Metadata;
+using GroupDocs.Text.Formatters;
 
 namespace GroupDocs.Text_for_.NET
 {
@@ -996,7 +997,8 @@ namespace GroupDocs.Text_for_.NET
             /// Feature is supported in version 17.05 or greater
             /// </summary>
             /// <param name="fileName"></param>
-            public static void ExtractSectionTitle(string fileName) {
+            public static void ExtractSectionTitle(string fileName)
+            {
                 //ExStart:ExtractSectionTitleFb2
                 //get file's actual path
                 String filePath = Common.getFilePath(fileName);
@@ -1076,7 +1078,8 @@ namespace GroupDocs.Text_for_.NET
             /// Feature is supported in version 17.05 or greater
             /// </summary>
             /// <param name="fileName"></param>
-            public static void DetectMediaType(string fileName) {
+            public static void DetectMediaType(string fileName)
+            {
                 //ExStart:DetectMediaTypeFb2
                 //get file's actual path
                 String filePath = Common.getFilePath(fileName);
@@ -1087,6 +1090,27 @@ namespace GroupDocs.Text_for_.NET
                 // Detect a media type by the content 
                 Console.WriteLine(detector.Detect(filePath));
                 //ExEnd:DetectMediaTypeFb2
+            }
+
+            /// <summary>
+            /// Shows how to extract formatted text from fb2 file
+            /// Feature is supported in version 17.06 or greater
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractFormattedText(string fileName)
+            {
+                //ExStart:ExtractFormattedTextFb2
+                //get file's actual path
+                String filePath = Common.getFilePath(fileName);
+                // Create a formatted text extractor for FictionBook (fb2)documents 
+                using (var extractor = new FictionBookFormattedTextExtractor(filePath))
+                {
+                    // Set a document formatter to Markdown 
+                    //extractor.DocumentFormatter = new FictionBookFormattedTextExtractor();
+                    // Extact a text and print it to the console 
+                    Console.Write(extractor.ExtractAll());
+                }
+                //ExEnd:ExtractFormattedTextFb2
             }
         }
 
@@ -1405,7 +1429,29 @@ namespace GroupDocs.Text_for_.NET
             //ExEnd:MediaTypeDetection
         }
 
+        /// <summary>
+        /// Shows how to extract formatted highlights from documents.
+        /// Feature is supported by version 17.06 or greater
+        /// Supports all formats i-e Word,Epub,Slides,Cells,Email and fb2 docs
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ExtractFormattedHighlights(string fileName) {
+            //ExStart:ExtractFormattedHighlights
+            //get file actual path
+            String filePath = Common.getFilePath(fileName);
+            using (WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath))
+            {
+                IList<string> highlights = extractor.ExtractHighlights(
+                HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Left, 15, 10),
+                HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Right, 20, 10));
 
+                for (int i = 0; i < highlights.Count; i++)
+                {
+                    Console.WriteLine(highlights[i]);
+                }
+            }
+            //ExEnd:ExtractFormattedHighlights
+        }
 
 
 

@@ -12,7 +12,7 @@ namespace GroupDocs.Text_for_.NET
         static void Main(string[] args)
         {
             //Un-comment to apply license 
-            //Common.ApplyLicense();
+            Common.ApplyLicense();
 
             #region TextExtractors
 
@@ -75,6 +75,8 @@ namespace GroupDocs.Text_for_.NET
             //DocumentTextExtractor.Fb2.SearchText("sample.fb2");
             //Detect fb2 media type(feature supported by version 17.05 or greater)
             //DocumentTextExtractor.Fb2.DetectMediaType("sample.fb2");
+            //Extract Formatted text from fb2 files(feature supported by version 17.06 or greater)
+            //DocumentTextExtractor.Fb2.ExtractFormattedText("sample.fb2");
             #endregion
 
             #region MetadataExtractors
@@ -134,6 +136,8 @@ namespace GroupDocs.Text_for_.NET
             //DocumentTextExtractor.SearchWholeWord("The butterfly effect.docx");
             //Use all highlight extraction modes with search functionality
             //DocumentTextExtractor.UseExtractionModesWithSearch("doc with highlighted text.docx");
+            //Extract formatted highlights from word document
+            //DocumentTextExtractor.ExtractFormattedHighlights("doc with highlighted text.docx");
 
             #endregion
 

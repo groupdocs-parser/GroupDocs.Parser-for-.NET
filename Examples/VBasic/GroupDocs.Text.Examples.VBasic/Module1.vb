@@ -66,6 +66,8 @@
         'DocumentTextExtractor.Fb2.SearchText("sample.fb2")
         'Detect fb2 media type(feature supported by version 17.05 or greater)
         'DocumentTextExtractor.Fb2.DetectMediaType("sample.fb2")
+        'Extract Formatted text from fb2 files(feature supported by version 17.06 or greater)
+        'DocumentTextExtractor.Fb2.ExtractFormattedText("sample.fb2")
 #End Region
 
 #Region "MetadataExtractors"
@@ -126,6 +128,8 @@
         'DocumentTextExtractor.SearchWholeWord("The butterfly effect.docx")
         'Use all highlight extraction modes with search functionality
         'DocumentTextExtractor.UseExtractionModesWithSearch("doc with highlighted text.docx")
+        'Extract formatted highlights from word document
+        'DocumentTextExtractor.ExtractFormattedHighlights("doc with highlighted text.docx")
 
 #End Region
 

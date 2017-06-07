@@ -1002,6 +1002,27 @@ Public Class DocumentTextExtractor
             Console.WriteLine(detector.Detect(filePath))
             ''ExEnd:DetectMediaTypeFb2
         End Sub
+
+
+        ''' <summary>
+        ''' Shows how to extract formatted text from fb2 file
+        ''' Feature is supported in version 17.06 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractFormattedText(fileName As String)
+            'ExStart:ExtractFormattedTextFb2
+            'get file's actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            ' Create a formatted text extractor for FictionBook (fb2)documents 
+            Using extractor = New FictionBookFormattedTextExtractor(filePath)
+                ' Set a document formatter to Markdown 
+                'extractor.DocumentFormatter = new FictionBookFormattedTextExtractor();
+                ' Extact a text and print it to the console 
+                Console.Write(extractor.ExtractAll())
+            End Using
+            'ExEnd:ExtractFormattedTextFb2
+        End Sub
+
     End Class
 
 
@@ -1264,5 +1285,28 @@ Public Class DocumentTextExtractor
         Console.WriteLine(mediaType)
         'ExEnd:MediaTypeDetection
     End Sub
+
+
+    ''' <summary>
+    ''' Shows how to extract formatted highlights from documents.
+    ''' Feature is supported by version 17.06 or greater
+    ''' Supports all formats i-e Word,Epub,Slides,Cells,Email and fb2 docs
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    Public Shared Sub ExtractFormattedHighlights(fileName As String)
+        'ExStart:ExtractFormattedHighlights
+        'get file actual path
+        Dim filePath As [String] = Common.getFilePath(fileName)
+        Using extractor As New WordsFormattedTextExtractor(filePath)
+            Dim highlights As IList(Of String) = extractor.ExtractHighlights(HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Left, 15, 10), HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Right, 20, 10))
+
+            For i As Integer = 0 To highlights.Count - 1
+                Console.WriteLine(highlights(i))
+            Next
+        End Using
+        'ExEnd:ExtractFormattedHighlights
+    End Sub
+
+
 
 End Class
