@@ -90,6 +90,42 @@ Public Class DocumentTextExtractor
         End Sub
 
 
+        ''' <summary>
+        ''' Shows how to extract text fromE attachments of email format using container
+        ''' Feature is supported in version 17.7 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractTextFromEmailAttachmentsUsingContainer(fileName As String)
+            'ExStart:ExtractTextFromEmailAttachments
+            'get the file's path
+            Dim filePath As String = Common.getFilePath(fileName)
+            ' Create an extractor factory
+            Dim factory = New ExtractorFactory()
+            ' Create an instance of EmailTextExtractor class 
+            Dim extractor = New EmailTextExtractor(filePath)
+            ' Iterate over all attachments in the message 
+            For i As var = 0 To extractor.Entities.Count - 1
+                ' Print the name of an attachment   
+                Console.WriteLine(extractor.Entities(i).Name)
+                ' Open the stream of an attachment   
+                Using stream = extractor.Entities(i).OpenStream()
+                    ' Create the text extractor for an attachment     
+                    Dim attachmentExtractor = factory.CreateTextExtractor(stream)
+                    ' If a media type is supported     
+                    If attachmentExtractor IsNot Nothing Then
+                        Try
+                            ' Print the content of an attachment       
+                            Console.WriteLine(attachmentExtractor.ExtractAll())
+                        Finally
+                            attachmentExtractor.Dispose()
+                        End Try
+                    End If
+                End Using
+            Next
+            'ExEnd:ExtractTextFromEmailAttachments
+        End Sub
+
+
     End Class
 
     Public Class OneNoteDocument
@@ -146,6 +182,43 @@ Public Class DocumentTextExtractor
             'Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.PageCount);
             'ExEnd:ExtractPdfDocument
         End Sub
+
+
+        ''' <summary>
+        ''' Shows how to exatract text from PDF portfolios
+        ''' Feature is supported in version 17.07 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractTextFromPdfPortfolios(fileName As String)
+            'ExStart:ExtractTextFromPdfPortfolios
+            'get file actual path
+            Dim filePath As [String] = Common.getFilePath(fileName)
+            ' Create an extractor factory 
+            Dim factory = New ExtractorFactory()
+            ' Create an instance of PdfTextExtractor class 
+            Dim extractor = New PdfTextExtractor(filePath)
+            ' Iterate over all files in the portfolio 
+            For i As var = 0 To extractor.Entities.Count - 1
+                ' Print the name of a file   
+                Console.WriteLine(extractor.Entities(i).Name)
+                ' Open the stream of a file   
+                Using stream = extractor.Entities(i).OpenStream()
+                    ' Create the text extractor for a file     
+                    Dim entityExtractor = factory.CreateTextExtractor(stream)
+                    ' If a media type is supported
+                    If entityExtractor IsNot Nothing Then
+                        Try
+                            ' Print the content of a file       
+                            Console.WriteLine(entityExtractor.ExtractAll())
+                        Finally
+                            entityExtractor.Dispose()
+                        End Try
+                    End If
+                End Using
+            Next
+            'ExEnd:ExtractTextFromPdfPortfolios
+        End Sub
+
     End Class
 
     Public Class PresentationDocument
@@ -1026,6 +1099,25 @@ Public Class DocumentTextExtractor
     End Class
 
 
+    Public Class Dot
+        ''' <summary>
+        ''' Shows how to extract text from Dot file
+        ''' Feature is supported in version 17.07 or greater
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractText(fileName As String)
+            'ExStart:ExtractTextDotFiles
+            Dim filePath As String = Common.getFilePath(fileName)
+            ' Create an instance of WordsTextExtractor class 
+            Using extractor = New WordsTextExtractor(filePath)
+                ' Extract a text   
+                Console.WriteLine(extractor.ExtractAll())
+            End Using
+            'ExEnd:ExtractTextDotFiles
+        End Sub
+    End Class
+
+
     Public Shared Sub PassEncodingToCreatedExtractor(fileName As String)
         'ExStart:PassEncodingToCreatedExtractor
         'get file actual path
@@ -1307,6 +1399,34 @@ Public Class DocumentTextExtractor
         'ExEnd:ExtractFormattedHighlights
     End Sub
 
+
+
+    ''' <summary>
+    ''' Shows how to implement IPageExtractor
+    '''Feature supported in version 17.07 or greater
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    Public Shared Sub ImplementIpageExtractorInterface(fileName As String)
+        'ExStart:ImplementIpageExtractorInterface
+        Dim filePath As String = Common.getFilePath(fileName)
+        ' Create an extractor factory 
+        Dim factory = New ExtractorFactory()
+        ' Create an instance of text extractor class 
+        Using extractor = factory.CreateTextExtractor(filePath)
+            ' Check if IPageTextExtractor is supported   
+            Dim pageTextExtractor = TryCast(extractor, IPageTextExtractor)
+            If pageTextExtractor IsNot Nothing Then
+                ' Iterate over all pages     
+                For i As Integer = 0 To pageTextExtractor.PageCount - 1
+                    ' Print a page number       
+                    Console.WriteLine(String.Format("{0}/{1}", i, pageTextExtractor.PageCount))
+                    ' Extract a text from the page       
+                    Console.WriteLine(pageTextExtractor.ExtractPage(i))
+                Next
+            End If
+        End Using
+        'ExEnd:ImplementIpageExtractorInterface
+    End Sub
 
 
 End Class
