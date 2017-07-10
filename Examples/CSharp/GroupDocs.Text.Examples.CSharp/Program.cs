@@ -12,12 +12,13 @@ namespace GroupDocs.Text_for_.NET
         static void Main(string[] args)
         {
             //Un-comment to apply license 
-            Common.ApplyLicense();
+            //Common.ApplyLicense();
 
             #region TextExtractors
 
             //Extracting email attachments
             //DocumentTextExtractor.EmailsExtractor.ExtractEmailAttachments("The butterfly effect.msg");
+            //DocumentTextExtractor.EmailsExtractor.ExtractTextFromEmailAttachmentsUsingContainer("The butterfly effect.msg");
 
             //Extracting onenote text
             //DocumentTextExtractor.OneNoteDocument.ExtractOneNoteDocument("The butterfly effect.one");
@@ -27,6 +28,7 @@ namespace GroupDocs.Text_for_.NET
 
             //Extracting pdf text
             //DocumentTextExtractor.PdfDocument.ExtractPdfDocument("The butterfly effect.pdf");
+            //DocumentTextExtractor.PdfDocument.ExtractTextFromPdfPortfolios("Portfolio.pdf");
 
             //Extracting slides text
             //DocumentTextExtractor.PresentationDocument.ExtractPresentationDocument("The butterfly effect.pptx");
@@ -77,6 +79,9 @@ namespace GroupDocs.Text_for_.NET
             //DocumentTextExtractor.Fb2.DetectMediaType("sample.fb2");
             //Extract Formatted text from fb2 files(feature supported by version 17.06 or greater)
             //DocumentTextExtractor.Fb2.ExtractFormattedText("sample.fb2");
+
+            //Extract Text from DOT files(feature supported by version 17.07 or greater)
+            //DocumentTextExtractor.Dot.ExtractText("Complex.dot");
             #endregion
 
             #region MetadataExtractors
@@ -138,7 +143,8 @@ namespace GroupDocs.Text_for_.NET
             //DocumentTextExtractor.UseExtractionModesWithSearch("doc with highlighted text.docx");
             //Extract formatted highlights from word document
             //DocumentTextExtractor.ExtractFormattedHighlights("doc with highlighted text.docx");
-
+            //Implement IPageExtractor interface
+            //DocumentTextExtractor.ImplementIpageExtractorInterface("The butterfly effect.docx");
             #endregion
 
             #region Tools

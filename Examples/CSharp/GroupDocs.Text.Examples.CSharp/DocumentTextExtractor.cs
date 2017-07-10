@@ -106,6 +106,45 @@ namespace GroupDocs.Text_for_.NET
                 }
                 //ExEnd:ExtractEmailHyperlinks
             }
+
+            /// <summary>
+            /// Shows how to extract text fromE attachments of email format using container
+            /// Feature is supported in version 17.7 or greater
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractTextFromEmailAttachmentsUsingContainer(string fileName)
+            {
+                //ExStart:ExtractTextFromEmailAttachments
+                //get the file's path
+                string filePath = Common.getFilePath(fileName);
+                // Create an extractor factory
+                var factory = new ExtractorFactory();
+                // Create an instance of EmailTextExtractor class 
+                var extractor = new EmailTextExtractor(filePath);
+                // Iterate over all attachments in the message 
+                for (var i = 0; i < extractor.Entities.Count; i++)
+                {
+                    // Print the name of an attachment   
+                    Console.WriteLine(extractor.Entities[i].Name);
+                    // Open the stream of an attachment   
+                    using (var stream = extractor.Entities[i].OpenStream())
+                    {
+                        // Create the text extractor for an attachment     
+                        var attachmentExtractor = factory.CreateTextExtractor(stream);
+                        // If a media type is supported     
+                        if (attachmentExtractor != null) try
+                            {
+                                // Print the content of an attachment       
+                                Console.WriteLine(attachmentExtractor.ExtractAll());
+                            }
+                            finally
+                            {
+                                attachmentExtractor.Dispose();
+                            }
+                    }
+                }
+                //ExEnd:ExtractTextFromEmailAttachments
+            }
         }
 
         public class OneNoteDocument
@@ -170,6 +209,45 @@ namespace GroupDocs.Text_for_.NET
                 Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractPage(pageIndex), extractor.PageCount);
                 //Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.PageCount);
                 //ExEnd:ExtractPdfDocument
+            }
+
+            /// <summary>
+            /// Shows how to exatract text from PDF portfolios
+            /// Feature is supported in version 17.07 or greater
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractTextFromPdfPortfolios(string fileName)
+            {
+                //ExStart:ExtractTextFromPdfPortfolios
+                //get file actual path
+                String filePath = Common.getFilePath(fileName);
+                // Create an extractor factory 
+                var factory = new ExtractorFactory();
+                // Create an instance of PdfTextExtractor class 
+                var extractor = new PdfTextExtractor(filePath);
+                // Iterate over all files in the portfolio 
+                for (var i = 0; i < extractor.Entities.Count; i++)
+                {
+                    // Print the name of a file   
+                    Console.WriteLine(extractor.Entities[i].Name);
+                    // Open the stream of a file   
+                    using (var stream = extractor.Entities[i].OpenStream())
+                    {
+                        // Create the text extractor for a file     
+                        var entityExtractor = factory.CreateTextExtractor(stream);
+                        // If a media type is supported
+                        if (entityExtractor != null) try
+                            {
+                                // Print the content of a file       
+                                Console.WriteLine(entityExtractor.ExtractAll());
+                            }
+                            finally
+                            {
+                                entityExtractor.Dispose();
+                            }
+                    }
+                }
+                //ExEnd:ExtractTextFromPdfPortfolios
             }
         }
 
@@ -1114,6 +1192,27 @@ namespace GroupDocs.Text_for_.NET
             }
         }
 
+        public class Dot
+        {
+            /// <summary>
+            /// Shows how to extract text from Dot file
+            /// Feature is supported in version 17.07 or greater
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractText(string fileName)
+            {
+                //ExStart:ExtractTextDotFiles
+                string filePath = Common.getFilePath(fileName);
+                // Create an instance of WordsTextExtractor class 
+                using (var extractor = new WordsTextExtractor(filePath))
+                {
+                    // Extract a text   
+                    Console.WriteLine(extractor.ExtractAll());
+                }
+                //ExEnd:ExtractTextDotFiles
+            }
+        }
+
         public static void PassEncodingToCreatedExtractor(string fileName)
         {
             //ExStart:PassEncodingToCreatedExtractor
@@ -1435,7 +1534,8 @@ namespace GroupDocs.Text_for_.NET
         /// Supports all formats i-e Word,Epub,Slides,Cells,Email and fb2 docs
         /// </summary>
         /// <param name="fileName"></param>
-        public static void ExtractFormattedHighlights(string fileName) {
+        public static void ExtractFormattedHighlights(string fileName)
+        {
             //ExStart:ExtractFormattedHighlights
             //get file actual path
             String filePath = Common.getFilePath(fileName);
@@ -1453,7 +1553,36 @@ namespace GroupDocs.Text_for_.NET
             //ExEnd:ExtractFormattedHighlights
         }
 
-
+        /// <summary>
+        /// Shows how to implement IPageExtractor
+        ///Feature supported in version 17.07 or greater
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ImplementIpageExtractorInterface(string fileName)
+        {
+            //ExStart:ImplementIpageExtractorInterface
+            string filePath = Common.getFilePath(fileName);
+            // Create an extractor factory 
+            var factory = new ExtractorFactory();
+            // Create an instance of text extractor class 
+            using (var extractor = factory.CreateTextExtractor(filePath))
+            {
+                // Check if IPageTextExtractor is supported   
+                var pageTextExtractor = extractor as IPageTextExtractor;
+                if (pageTextExtractor != null)
+                {
+                    // Iterate over all pages     
+                    for (var i = 0; i < pageTextExtractor.PageCount; i++)
+                    {
+                        // Print a page number       
+                        Console.WriteLine(string.Format("{0}/{1}", i, pageTextExtractor.PageCount));
+                        // Extract a text from the page       
+                        Console.WriteLine(pageTextExtractor.ExtractPage(i));
+                    }
+                }
+            }
+            //ExEnd:ImplementIpageExtractorInterface
+        }
 
     }
 }
