@@ -1213,6 +1213,53 @@ namespace GroupDocs.Text_for_.NET
             }
         }
 
+        public class Chm
+        {
+            /// <summary>
+            /// Shows how to extract a line of text from CHM file
+            /// Feature is supported in version 17.8.0 or greater 
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractALine(string fileName)
+            {
+                //ExStart:ChmExtractALine
+                string filePath = Common.getFilePath(fileName);
+                // Create a text extractor for CHM documents
+                using (var extractor = new ChmTextExtractor(filePath))
+                {
+                    // Extract a line of the text
+                    string line = extractor.ExtractLine();
+                    // If the line is null, then the end of the file is reached
+                    while (line != null)
+                    {
+                        // Print a line to the console
+                        Console.WriteLine(line);
+                        // Extract another line
+                        line = extractor.ExtractLine();
+                    }
+                }
+                //ExEnd:ChmExtractALine
+            }
+
+            /// <summary>
+            /// Shows how to extract all characters from CHM file
+            /// Feature is supported in version 17.8.0 or greater 
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractAllCharacters(string fileName)
+            {
+                //ExStart:ChmExtractAllCharacters
+                string filePath = Common.getFilePath(fileName);
+                // Create a text extractor for CHM documents
+                using (var extractor = new ChmTextExtractor(filePath))
+                {
+                    // Extract a text
+                    Console.WriteLine(extractor.ExtractAll());
+                }
+                //ExEnd:ChmExtractAllCharacters
+            }
+        }
+
         public static void PassEncodingToCreatedExtractor(string fileName)
         {
             //ExStart:PassEncodingToCreatedExtractor
