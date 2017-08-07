@@ -82,6 +82,11 @@ namespace GroupDocs.Text_for_.NET
 
             //Extract Text from DOT files(feature supported by version 17.07 or greater)
             //DocumentTextExtractor.Dot.ExtractText("Complex.dot");
+
+            //Extract a line of Text from CHM files(feature supported by version 17.8.0 or greater)
+            //DocumentTextExtractor.Chm.ExtractALine("sample.chm");
+            //Extract all characters from CHM files(feature supported by version 17.8.0 or greater)
+            //DocumentTextExtractor.Chm.ExtractAllCharacters("sample.chm");
             #endregion
 
             #region MetadataExtractors

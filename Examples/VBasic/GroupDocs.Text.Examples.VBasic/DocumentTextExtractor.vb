@@ -1118,6 +1118,48 @@ Public Class DocumentTextExtractor
     End Class
 
 
+    Public Class Chm
+        ''' <summary>
+        ''' Shows how to extract a line of text from CHM file
+        ''' Feature is supported in version 17.8.0 or greater 
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractALine(fileName As String)
+            'ExStart:ChmExtractALine
+            Dim filePath As String = Common.getFilePath(fileName)
+            ' Create a text extractor for CHM documents
+            Using extractor = New ChmTextExtractor(filePath)
+                ' Extract a line of the text
+                Dim line As String = extractor.ExtractLine()
+                ' If the line is null, then the end of the file is reached
+                While line IsNot Nothing
+                    ' Print a line to the console
+                    Console.WriteLine(line)
+                    ' Extract another line
+                    line = extractor.ExtractLine()
+                End While
+            End Using
+            'ExEnd:ChmExtractALine
+        End Sub
+
+        ''' <summary>
+        ''' Shows how to extract all characters from CHM file
+        ''' Feature is supported in version 17.8.0 or greater 
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        Public Shared Sub ExtractAllCharacters(fileName As String)
+            'ExStart:ChmExtractAllCharacters
+            Dim filePath As String = Common.getFilePath(fileName)
+            ' Create a text extractor for CHM documents
+            Using extractor = New ChmTextExtractor(filePath)
+                ' Extract a text
+                Console.WriteLine(extractor.ExtractAll())
+            End Using
+            'ExEnd:ChmExtractAllCharacters
+        End Sub
+    End Class
+
+
     Public Shared Sub PassEncodingToCreatedExtractor(fileName As String)
         'ExStart:PassEncodingToCreatedExtractor
         'get file actual path
