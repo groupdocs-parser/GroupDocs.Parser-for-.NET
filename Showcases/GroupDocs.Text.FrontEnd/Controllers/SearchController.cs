@@ -39,7 +39,7 @@ namespace GroupDocs.Text.FrontEnd.Controllers
                 using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
                 {
                     ListSearchHandler handler = new ListSearchHandler();
-                    extractor.Search(new SearchOptions(new SearchHighlightOptions(10)), handler, null, new string[] { keyWord });
+                    extractor.Search(new SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(10)), handler, null, new string[] { keyWord });
 
                     if (handler.List.Count == 0)
                     {
