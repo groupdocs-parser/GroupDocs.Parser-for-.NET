@@ -10,7 +10,7 @@ namespace GroupDocs.Text.FrontEnd
 
     public class MvcApplication : System.Web.HttpApplication
     {
-        private string _licensePath = "D:\\GroupDocs.Total.lic";
+        private string _licensePath = "D:\\Aspose Projects\\License\\GroupDocs.Total.lic";
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
