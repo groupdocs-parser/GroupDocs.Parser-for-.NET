@@ -22,5 +22,5 @@ Directory | Description
 + **Product Home:** [GroupDocs.Text for .NET](https://www.groupdocs.com/products/text/net)
 + **Download:** [Download GroupDocs.Text for .NET](https://downloads.groupdocs.com/text/net)
 + **Documentation:** [GroupDocs.Text for .NET Documentation](https://docs.groupdocs.com/display/textnet/Home)
-+ **Forum:** [GroupDocs.Text for .NET Forum](http://groupdocs.com/Community/forums/default.aspx)
++ **Forum:** [GroupDocs.Text for .NET Forum](https://forum.groupdocs.com/c/text)
 + **Blog:** [GroupDocs.Text for .NET Blog](https://blog.groupdocs.com/category/groupdocs-text-product-family/)
