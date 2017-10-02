@@ -1,4 +1,4 @@
-##GroupDocs.Text for .NET Examples
+## GroupDocs.Text for .NET Examples
 
 This package contains C# and VB.NET Example Projects for [GroupDocs.Text for .NET](#) and sample input documents used in the examples.
 
@@ -10,7 +10,7 @@ This package contains C# and VB.NET Example Projects for [GroupDocs.Text for .NE
 
 ## How to Run the Examples?
 
-The package contains two projects, one for C# examples and other for Visual Basic examples. Follow the given steps to proceed with project build:
+The package contains projects for C# examples . Follow the given steps to proceed with project build:
 * Extract the downloaded project and open the solution file in Visual Studio
 * Right click on solution and press "Enable NuGet package Restore"
 * Build the project.
