@@ -1,4 +1,4 @@
-##GroupDocs.Text for .NET
+## GroupDocs.Text for .NET
 
 This package contains [Examples](https://github.com/groupdocs-text/GroupDocs.Text-for-.NET/tree/master/Examples) and [Showcases](https://github.com/groupdocs-text/GroupDocs.Text-for-.NET/tree/master/Showcases) for [GroupDocs.Text for .NET](https://www.groupdocs.com/products/text/net) that will help you in understanding the API's working and writing your own applications.
 
@@ -13,7 +13,7 @@ GroupDocs.Text for .NET is a convenient text extractor API that permits users to
 
 Directory | Description
 --------- | -----------
-[Examples](https://github.com/groupdocs-text/GroupDocs.Text-for-.NET/tree/master/Examples)  | Contains the package of all .NET examples (C# & VB) and sample files that will help you learn how to use product features. 
+[Examples](https://github.com/groupdocs-text/GroupDocs.Text-for-.NET/tree/master/Examples)  | Contains the package of all .NET examples (C#) and sample files that will help you learn how to use product features. 
 [Showcases](https://github.com/groupdocs-text/GroupDocs.Text-for-.NET/tree/master/Showcases)  | Contains a sample ASP.NET MVC bases sample front end to demonstrate the salient features of GroupDocs.Text.
 [Plugin](https://github.com/groupdocs-text/GroupDocs.Text-for-.NET/tree/master/Plugins)  | Contains the plugins related to GroupDocs.Text for Visual Studio. 
 ## Resources
