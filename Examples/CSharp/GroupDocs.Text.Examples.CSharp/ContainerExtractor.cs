@@ -29,9 +29,20 @@ namespace GroupDocs.Text_for_.NET
                     Console.WriteLine(container.Entities[i].Name);
                     Console.WriteLine(container.Entities[i].Path.ToString());
                     Console.WriteLine(container.Entities[i].MediaType);
+                    /**new features of release 17.10*/
+                    Console.WriteLine(container.Entities[i].Date);
+                    Console.WriteLine(container.Entities[i].Size);
+
+                    /** Get obselete from release of 17.10
+                    
                     Console.WriteLine(container.Entities[i][PersonalStorageContainer.EmailSubject]);
                     Console.WriteLine(container.Entities[i][PersonalStorageContainer.EmailSender]);
                     Console.WriteLine(container.Entities[i][PersonalStorageContainer.EmailReceiver]);
+                   **/
+
+                    Console.WriteLine(container.Entities[i][MetadataNames.Subject]);
+                    Console.WriteLine(container.Entities[i][MetadataNames.EmailFrom]);
+                    Console.WriteLine(container.Entities[i][MetadataNames.EmailTo]);
 
                     using (TextExtractor extractor = factory.CreateTextExtractor(container.Entities[i].OpenStream()))
                     {
@@ -87,8 +98,14 @@ namespace GroupDocs.Text_for_.NET
                     Console.WriteLine("Name: " + container.Entities[i].Name);
                     Console.WriteLine("Path: " + container.Entities[i].Path.ToString());
                     Console.WriteLine("Media type: " + container.Entities[i].MediaType);
+                    /** Release 17.10 changes */
+                    Console.WriteLine("Date:" + container.Entities[i].Date);
+                    Console.WriteLine("Size:" + container.Entities[i].Size);
+                    Console.WriteLine("CRC:" + container.Entities[i][MetadataNames.Crc]);
                 }
+                
             }
+
             //ExEnd:EnumerateAllArchivedFiles
         }
 
@@ -115,8 +132,9 @@ namespace GroupDocs.Text_for_.NET
                         //display the extracted text
                         Console.WriteLine(extractor.ExtractAll());
                     }
-                }
+                }         
             }
+            
             //ExEnd:ReadConcreteFile
         }
 
@@ -148,7 +166,60 @@ namespace GroupDocs.Text_for_.NET
                     Console.WriteLine("Folder: " + entity.Path.ToString()); // A folder at server
                     Console.WriteLine("Subject: " + entity[MetadataNames.Subject]); // A subject of email
                     Console.WriteLine("From: " + entity[MetadataNames.EmailFrom]); // "From" address
-                    Console.WriteLine("To: " + entity[MetadataNames.EmailTo]); // "To" addresses
+                    Console.WriteLine("To: " + entity[MetadataNames.EmailTo]); // "To" addresses     
+                    Console.WriteLine("Date: "+ entity.Date);
+                    Console.WriteLine("Size: "+ entity.Size);
+                   
+                }
+            }
+            //ExEnd:RetrieveEmailsUsingEntity
+        }
+        /// <summary>
+        /// Shows how to retrieve emails from POP3 server using Entity property
+        /// </summary>
+        public static void RetrieveEmailsUsingEntityPOP3()
+        {
+            //ExStart:RetrieveEmailsUsingEntity
+            // Create connection info
+            var info = EmailConnectionInfo.CreatePopConnectionInfo(@"pop-mail.outlook.com", 995, "username", "password");
+            // Create an email container
+            using (var container = new EmailContainer(info))
+            {
+                // Iterate over emails
+                foreach (var entity in container.Entities)
+                {
+                    Console.WriteLine("Folder: " + entity.Path.ToString()); // A folder at server
+                    Console.WriteLine("Subject: " + entity[MetadataNames.Subject]); // A subject of email
+                    Console.WriteLine("From: " + entity[MetadataNames.EmailFrom]); // "From" address
+                    Console.WriteLine("To: " + entity[MetadataNames.EmailTo]); // "To" addresses     
+                    Console.WriteLine("Date: " + entity.Date);
+                    Console.WriteLine("Size: " + entity.Size);
+
+                }
+            }
+            //ExEnd:RetrieveEmailsUsingEntity
+        }
+        /// <summary>
+        /// Shows how to retrieve emails from IMAP server using Entity property
+        /// </summary>
+        public static void RetrieveEmailsUsingEntityIMAP()
+        {
+            //ExStart:RetrieveEmailsUsingEntity
+            // Create connection info
+            var info = EmailConnectionInfo.CreateImapConnectionInfo(@"imap-mail.outlook.com", 995, "username", "password");
+            // Create an email container
+            using (var container = new EmailContainer(info))
+            {
+                // Iterate over emails
+                foreach (var entity in container.Entities)
+                {
+                    Console.WriteLine("Folder: " + entity.Path.ToString()); // A folder at server
+                    Console.WriteLine("Subject: " + entity[MetadataNames.Subject]); // A subject of email
+                    Console.WriteLine("From: " + entity[MetadataNames.EmailFrom]); // "From" address
+                    Console.WriteLine("To: " + entity[MetadataNames.EmailTo]); // "To" addresses     
+                    Console.WriteLine("Date: " + entity.Date);
+                    Console.WriteLine("Size: " + entity.Size);
+
                 }
             }
             //ExEnd:RetrieveEmailsUsingEntity
@@ -160,6 +231,7 @@ namespace GroupDocs.Text_for_.NET
         public static void RetrieveEmailUsingOpenEntityStream() {
             //ExStart:RetrieveEmailUsingOpenEntityStream
             // Create connection info
+           
             var info = EmailConnectionInfo.CreateEwsConnectionInfo(@"https://outlook.office365.com/ews/exchange.asmx", "username", "password");
             // Create an email container
             using (var container = new EmailContainer(info))
@@ -179,5 +251,60 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:RetrieveEmailUsingOpenEntityStream
         }
+        /// <summary>
+        /// Shows how to retrieve an email from POP3 server using OpenEntityStream method
+        /// </summary>
+        public static void RetrieveEmailUsingOpenEntityStreamPOP3()
+        {
+            //ExStart:RetrieveEmailUsingOpenEntityStream
+            // Create connection info
+
+            var info = EmailConnectionInfo.CreatePopConnectionInfo(@"pop-mail.outlook.com", 995, "username", "password");
+            // Create an email container
+            using (var container = new EmailContainer(info))
+            {
+                // Iterate over emails
+                foreach (var entity in container.Entities)
+                {
+                    // Create a stream with content of email
+                    var stream = container.OpenEntityStream(entity); // or var stream = entity.OpenStream();
+                    // Create a text extractor for email
+                    using (var extractor = new EmailTextExtractor(stream))
+                    {
+                        // Extract all the text from email
+                        Console.WriteLine(extractor.ExtractAll());
+                    }
+                }
+            }
+            //ExEnd:RetrieveEmailUsingOpenEntityStreamPOP3
+        }
+        /// <summary>
+        /// Shows how to retrieve an email from IMAP server using OpenEntityStream method
+        /// </summary>
+        public static void RetrieveEmailUsingOpenEntityStreamIMAP()
+        {
+            //ExStart:RetrieveEmailUsingOpenEntityStream
+            // Create connection info
+
+            var info = EmailConnectionInfo.CreateImapConnectionInfo(@"imap-mail.outlook.com", 995, "username", "password");
+           // Create an email container
+            using (var container = new EmailContainer(info))
+            {
+                // Iterate over emails
+                foreach (var entity in container.Entities)
+                {
+                    // Create a stream with content of email
+                    var stream = container.OpenEntityStream(entity); // or var stream = entity.OpenStream();
+                    // Create a text extractor for email
+                    using (var extractor = new EmailTextExtractor(stream))
+                    {
+                        // Extract all the text from email
+                        Console.WriteLine(extractor.ExtractAll());
+                    }
+                }
+            }
+            //ExEnd:RetrieveEmailUsingOpenEntityStreamPOP3
+        }
     }
 }
+

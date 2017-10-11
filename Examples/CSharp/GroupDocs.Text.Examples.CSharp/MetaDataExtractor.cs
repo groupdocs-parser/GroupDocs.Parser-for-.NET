@@ -188,9 +188,9 @@ namespace GroupDocs.Text_for_.NET
             //ExStart:UsingExtractorFactory
             //get file actual path
             String filePath = Common.getFilePath(fileName);
-            ExtractorFactory factory = new ExtractorFactory();
+            Extractor extractor = new Extractor();
             //ExtractMetadata methods in ExtractorFactory class are marked as Obsolete from version 17.03 onwards(use Extractor class instead).
-            MetadataCollection metadata = factory.ExtractMetadata(filePath);
+            MetadataCollection metadata = extractor.ExtractMetadata(filePath);
             if (metadata == null)
             {
                 Console.WriteLine("The document format is not supported");

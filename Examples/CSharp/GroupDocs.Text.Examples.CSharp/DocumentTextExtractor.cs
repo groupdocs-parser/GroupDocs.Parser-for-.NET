@@ -204,8 +204,10 @@ namespace GroupDocs.Text_for_.NET
                 //Set page index
                 int pageIndex = 1;
                 PdfTextExtractor extractor = new PdfTextExtractor(filePath);
-                //set extract mode to standard
-                extractor.ExtractMode = ExtractMode.Standard;
+                /**set extract mode to standard
+                extractor.ExtractMode = ExtractMode.Standard;**/
+                //Set extraction mode to Fast text extraction in version 17.10
+                extractor.ExtractMode = ExtractMode.Simple; 
                 Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractPage(pageIndex), extractor.PageCount);
                 //Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.PageCount);
                 //ExEnd:ExtractPdfDocument
@@ -225,6 +227,8 @@ namespace GroupDocs.Text_for_.NET
                 var factory = new ExtractorFactory();
                 // Create an instance of PdfTextExtractor class 
                 var extractor = new PdfTextExtractor(filePath);
+                //Set extraction mode to Fast text extraction
+                extractor.ExtractMode = ExtractMode.Simple; 
                 // Iterate over all files in the portfolio 
                 for (var i = 0; i < extractor.Entities.Count; i++)
                 {
@@ -1466,7 +1470,7 @@ namespace GroupDocs.Text_for_.NET
 
                 //extractor.Search(new SearchOptions(new SearchHighlightOptions(10)), handler, null, new string[] { "test text", "keyword" });
 
-                extractor.Search(new SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(10)), handler, null, new string[] { "test text", "keyword" });
+                extractor.Search(new SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(10)), handler, null, new string[] {"Butterfly", "test text", "keyword" });
 
                 //Results count is none
                 if (handler.List.Count == 0)
