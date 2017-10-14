@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GroupDocs.Text, Version=17.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\groupdocs-text-dotnet.17.9.0\lib\net2.0\GroupDocs.Text.dll</HintPath>
+    <Reference Include="GroupDocs.Text, Version=17.10.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\GroupDocs.Text.17.10\lib\net2.0\GroupDocs.Text.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
