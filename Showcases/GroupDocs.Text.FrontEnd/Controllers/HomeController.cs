@@ -449,8 +449,8 @@ namespace GroupDocs.Text.FrontEnd.Controllers
                 using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
                 {
                     IList<string> highlights = extractor.ExtractHighlights(
-                    HighlightOptions.CreateFixedLength(HighlightDirection.Left, 15, 10),
-                    HighlightOptions.CreateFixedLength(HighlightDirection.Right, 20, 10));
+                    HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Left, 15, 10),
+                    HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Right, 20, 10));
 
                     for (int i = 0; i < highlights.Count; i++)
                     {

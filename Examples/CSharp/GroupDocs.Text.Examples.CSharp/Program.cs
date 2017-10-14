@@ -12,7 +12,7 @@ namespace GroupDocs.Text_for_.NET
         static void Main(string[] args)
         {
             //Un-comment to apply license 
-            //Common.ApplyLicense();
+            Common.ApplyLicense();
 
             #region TextExtractors
 
@@ -87,10 +87,14 @@ namespace GroupDocs.Text_for_.NET
             //DocumentTextExtractor.Chm.ExtractALine("sample.chm");
             //Extract all characters from CHM files(feature supported by version 17.8.0 or greater)
             //DocumentTextExtractor.Chm.ExtractAllCharacters("sample.chm");
+            //Detect media type of CHM files(feature supported by version 17.9.0 or greater)
+            //DocumentTextExtractor.Chm.DetectChmMediaType("sample.chm");
+
             #endregion
 
             #region MetadataExtractors
             //Extracting metadata from cells
+
             //MetaDataExtractor.CellsMetadata.ExtractMetadataFromCells("The butterfly effect.xlsx");
             //Extracting metadata from slides
             //MetaDataExtractor.SlidesMetadata.ExtractMetadataFromSlides("The butterfly effect.pptx");
@@ -123,6 +127,18 @@ namespace GroupDocs.Text_for_.NET
             //ContainerExtractor.ReadConcreteFile("zipcontainer.zip");
             //Detect Zip Media Type
             //ContainerExtractor.DetectZipMediaType("zipcontainer.zip");
+            //Retrieve emails using Entity property(feature is supported in version 17.9.0)
+            //ContainerExtractor.RetrieveEmailsUsingEntity();
+            //Retrieve an email using OpenEntityStream method(feature is supported in version 17.9.0)
+            //ContainerExtractor.RetrieveEmailUsingOpenEntityStream();
+            //Retrieve emails from POP3 server using Entity property(feature is supported in version 17.10)
+            //ContainerExtractor.RetrieveEmailsUsingEntityPOP3();
+            //Retrieve an email using OpenEntityStream method POP3(feature is supported in version 17.10)
+            //ContainerExtractor.RetrieveEmailUsingOpenEntityStreamPOP3();
+            //Retrieve emails from IMAP server using Entity property(feature is supported in version 17.10)
+            //ContainerExtractor.RetrieveEmailsUsingEntityIMAP();
+            //Retrieve an email using OpenEntityStream method IMAP(feature is supported in version 17.10)
+            //ContainerExtractor.RetrieveEmailUsingOpenEntityStreamIMAP();
             #endregion
 
             #region OtherOperations
@@ -143,9 +159,9 @@ namespace GroupDocs.Text_for_.NET
             //Search text in a document
             //DocumentTextExtractor.SearchTextInDocuments("The butterfly effect.docx");
             //Search whole word in documents
-            //DocumentTextExtractor.SearchWholeWord("The butterfly effect.docx");
+            //DocumentTextExtractor.SearchWholeWord("The butterfly effect.docx");   (ask)
             //Use all highlight extraction modes with search functionality
-            //DocumentTextExtractor.UseExtractionModesWithSearch("doc with highlighted text.docx");
+            //DocumentTextExtractor.UseExtractionModesWithSearch("doc with highlighted text.docx"); check
             //Extract formatted highlights from word document
             //DocumentTextExtractor.ExtractFormattedHighlights("doc with highlighted text.docx");
             //Implement IPageExtractor interface
@@ -175,7 +191,7 @@ namespace GroupDocs.Text_for_.NET
             //Extracting hyperlinks from document(feature supported by version 17.04 or greater)
             //DocumentTextExtractor.TextDocument.ExtractHyperlinksFromDocument("The butterfly effect.docx");
             //Extracting structured text from a spread sheet(feature supported by version 17.04 or greater)
-            //DocumentTextExtractor.SpreadsheetDocument.ExtractStructuredText("The butterfly effect.xlsx");
+            DocumentTextExtractor.SpreadsheetDocument.ExtractStructuredText("The butterfly effect.xlsx");
             //Extracting top-level lists from presentation document(feature supported by version 17.04 or greater)
             //DocumentTextExtractor.PresentationDocument.ExtractTopLevelLists("The butterfly effect.pptx");
             //Extracting headers from document(feature supported by version 17.04 or greater)

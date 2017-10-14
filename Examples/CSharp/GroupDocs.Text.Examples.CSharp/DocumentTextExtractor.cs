@@ -204,8 +204,10 @@ namespace GroupDocs.Text_for_.NET
                 //Set page index
                 int pageIndex = 1;
                 PdfTextExtractor extractor = new PdfTextExtractor(filePath);
-                //set extract mode to standard
-                extractor.ExtractMode = ExtractMode.Standard;
+                /**set extract mode to standard
+                extractor.ExtractMode = ExtractMode.Standard;**/
+                //Set extraction mode to Fast text extraction in version 17.10
+                extractor.ExtractMode = ExtractMode.Simple; 
                 Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractPage(pageIndex), extractor.PageCount);
                 //Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.PageCount);
                 //ExEnd:ExtractPdfDocument
@@ -225,6 +227,8 @@ namespace GroupDocs.Text_for_.NET
                 var factory = new ExtractorFactory();
                 // Create an instance of PdfTextExtractor class 
                 var extractor = new PdfTextExtractor(filePath);
+                //Set extraction mode to Fast text extraction
+                extractor.ExtractMode = ExtractMode.Simple; 
                 // Iterate over all files in the portfolio 
                 for (var i = 0; i < extractor.Entities.Count; i++)
                 {
@@ -1258,6 +1262,28 @@ namespace GroupDocs.Text_for_.NET
                 }
                 //ExEnd:ChmExtractAllCharacters
             }
+
+            /// <summary>
+            /// Detects CHM Media type
+            /// Feature is supported in version 17.09.0 or greater 
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void DetectChmMediaType(string fileName)
+            {
+                //ExStart:DetectChmMediaType
+                //get file's actual path
+                String filePath = Common.getFilePath(fileName);
+                // Create a media type detector
+                var detector = new ChmMediaTypeDetector();
+                // Detect a media type by the file name
+                Console.WriteLine(detector.Detect(filePath));
+                // APPLICATION/VND.MS-HTMLHELP if supported or NULL otherwise
+                // Detect a media type by the content
+                // APPLICATION/VND.MS-HTMLHELP if supported or NULL otherwise
+                FileStream stream = new FileStream(filePath,FileMode.Open);
+                Console.WriteLine(detector.Detect(stream));
+                //ExEnd:DetectChmMediaType
+            }
         }
 
         public static void PassEncodingToCreatedExtractor(string fileName)
@@ -1360,8 +1386,14 @@ namespace GroupDocs.Text_for_.NET
                 //extract hightlights from the document
                 IList<string> highlights = extractor.ExtractHighlights(
                 //set highlight options to get fixed length text from the highlighted portion
-                HighlightOptions.CreateFixedLength(HighlightDirection.Left, 15, 10),
-                HighlightOptions.CreateFixedLength(HighlightDirection.Right, 20, 10));
+
+                //From version 17.9.0 onwards,CreateFixedLength method has been marked obsolete
+                //Use HighlightOptions.CreateFixedLengthOptions static method instead of HighlightOptions.CreateFixedLength
+                //HighlightOptions.CreateFixedLength(HighlightDirection.Left, 15, 10),
+                //HighlightOptions.CreateFixedLength(HighlightDirection.Right, 20, 10));
+
+                HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Left, 15, 10),
+                HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Right, 20, 10));
 
                 //write the result on console
                 for (int i = 0; i < highlights.Count; i++)
@@ -1433,7 +1465,12 @@ namespace GroupDocs.Text_for_.NET
                 //initialize search handler
                 ListSearchHandler handler = new ListSearchHandler();
                 //search for the text
-                extractor.Search(new SearchOptions(new SearchHighlightOptions(10)), handler, null, new string[] { "test text", "keyword" });
+                //From version 17.9.0 onwards,SearchHighlightOptions constructor has been marked obsolete
+                //Use SearchHighlightOptions.CreateFixedLengthOptions static methods instead of the constructor
+
+                //extractor.Search(new SearchOptions(new SearchHighlightOptions(10)), handler, null, new string[] { "test text", "keyword" });
+
+                extractor.Search(new SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(10)), handler, null, new string[] {"Butterfly", "test text", "keyword" });
 
                 //Results count is none
                 if (handler.List.Count == 0)
