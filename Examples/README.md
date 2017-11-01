@@ -1,6 +1,6 @@
 ## GroupDocs.Text for .NET Examples
 
-This package contains C# and VB.NET Example Projects for [GroupDocs.Text for .NET](#) and sample input documents used in the examples.
+This package contains C# Example Projects for [GroupDocs.Text for .NET](#) and sample input documents used in the examples.
 
 <p align="center">
   <a title="Download complete GroupDocs.Text for .NET Example source code" href="https://codeload.github.com/groupdocs-text/GroupDocs.Text-for-.NET/zip/master">
