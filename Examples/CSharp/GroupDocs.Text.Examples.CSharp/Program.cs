@@ -95,25 +95,25 @@ namespace GroupDocs.Text_for_.NET
             #region MetadataExtractors
             //Extracting metadata from cells
 
-            //MetaDataExtractor.CellsMetadata.ExtractMetadataFromCells("The butterfly effect.xlsx");
+            //MetadataExtractor.CellsMetadata.ExtractMetadataFromCells("The butterfly effect.xlsx");
             //Extracting metadata from slides
-            //MetaDataExtractor.SlidesMetadata.ExtractMetadataFromSlides("The butterfly effect.pptx");
+            //MetadataExtractor.SlidesMetadata.ExtractMetadataFromSlides("The butterfly effect.pptx");
             //Extracting metadata from words
-            //MetaDataExtractor.WordsMetaData.ExtractMetadataFromWords("The butterfly effect.docx");
+            //MetadataExtractor.WordsMetaData.ExtractMetadataFromWords("The butterfly effect.docx");
             //Extracting metadata from pdf documents
-            //MetaDataExtractor.PdfMetaData.ExtractMetadataFromPdf("The butterfly effect.pdf");
+            //MetadataExtractor.PdfMetaData.ExtractMetadataFromPdf("The butterfly effect.pdf");
             //Extracting metadata from emails
-            //MetaDataExtractor.EmailMetaData.ExtractMetadataFromEmails("The butterfly effect.msg");
+            //MetadataExtractor.EmailMetaData.ExtractMetadataFromEmails("The butterfly effect.msg");
             //Extract metadata of any supported file formatted document using extractor factory
-            //MetaDataExtractor.UsingExtractorFactory("The butterfly effect.pptx");
+            //MetadataExtractor.UsingExtractorFactory("The butterfly effect.pptx");
             //Extracts metadata from an epub file
-            //MetaDataExtractor.EpubMetaData.ExtractMetadata("sample.epub");
+            //MetadataExtractor.EpubMetaData.ExtractMetadata("sample.epub");
             //Extracts Metadata Using Complex Metadata Extractor
-            //MetaDataExtractor.EpubMetaData.ExtractMetadataUsingComplexMetadataExtractor("sample.epub");
+            //MetadataExtractor.EpubMetaData.ExtractMetadataUsingComplexMetadataExtractor("sample.epub");
             //Shows usage of extractor class
-            //MetaDataExtractor.ExtractClassUsage("The butterfly effect.docx");
+            //MetadataExtractor.ExtractClassUsage("The butterfly effect.docx");
             //Extracts metadata from fb2 files
-            //MetaDataExtractor.Fb2Metadata.ExtractMetadata("sample.fb2");
+            //MetadataExtractor.Fb2Metadata.ExtractMetadata("sample.fb2");
             #endregion
 
             #region ContainerExtractor

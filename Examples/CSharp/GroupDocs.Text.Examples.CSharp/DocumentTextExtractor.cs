@@ -188,6 +188,40 @@ namespace GroupDocs.Text_for_.NET
                 }
                 //ExEnd:OpenPasswordProtectedOneNoteSection
             }
+
+            /// <summary>
+            /// Extracts text by pages via a generic function
+            /// </summary>
+            /// <param name="fileName">Name of the password protected one note file</param>
+            public static void ExtractTextByPagesUsingGenericFunction(string fileName)
+            {
+                //ExStart: ExtractTextByPagesUsingGenericFunction
+                //get file actual path
+                String filePath = Common.getFilePath(fileName);
+                // Create a text extractor
+                NoteTextExtractor textExtractor = new NoteTextExtractor(filePath);
+                // Invoke a function to print a text by pages
+                PrintPages(textExtractor);
+                //ExEnd:ExtractTextByPagesUsingGenericFunction
+            }
+
+            // This function allows to extract a text by pages from any text extractor with IPageTextExtractor interface support
+            static void PrintPages(TextExtractor textExtractor)
+            {
+                // Check if IPageTextExtractor is supported
+                IPageTextExtractor pageTextExtractor = textExtractor as IPageTextExtractor;
+                if (pageTextExtractor != null)
+                {
+                    // Iterate over all pages
+                    for (int i = 0; i < pageTextExtractor.PageCount; i++)
+                    {
+                        // Print a page number
+                        Console.WriteLine(string.Format("{0}/{1}", i, pageTextExtractor.PageCount));
+                        // Extract a text from the page
+                        Console.WriteLine(pageTextExtractor.ExtractPage(i));
+                    }
+                }
+            }
         }
 
         public class PdfDocument
@@ -207,7 +241,7 @@ namespace GroupDocs.Text_for_.NET
                 /**set extract mode to standard
                 extractor.ExtractMode = ExtractMode.Standard;**/
                 //Set extraction mode to Fast text extraction in version 17.10
-                extractor.ExtractMode = ExtractMode.Simple; 
+                extractor.ExtractMode = ExtractMode.Simple;
                 Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractPage(pageIndex), extractor.PageCount);
                 //Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractAll(), extractor.PageCount);
                 //ExEnd:ExtractPdfDocument
@@ -228,7 +262,7 @@ namespace GroupDocs.Text_for_.NET
                 // Create an instance of PdfTextExtractor class 
                 var extractor = new PdfTextExtractor(filePath);
                 //Set extraction mode to Fast text extraction
-                extractor.ExtractMode = ExtractMode.Simple; 
+                extractor.ExtractMode = ExtractMode.Simple;
                 // Iterate over all files in the portfolio 
                 for (var i = 0; i < extractor.Entities.Count; i++)
                 {
@@ -1280,7 +1314,7 @@ namespace GroupDocs.Text_for_.NET
                 // APPLICATION/VND.MS-HTMLHELP if supported or NULL otherwise
                 // Detect a media type by the content
                 // APPLICATION/VND.MS-HTMLHELP if supported or NULL otherwise
-                FileStream stream = new FileStream(filePath,FileMode.Open);
+                FileStream stream = new FileStream(filePath, FileMode.Open);
                 Console.WriteLine(detector.Detect(stream));
                 //ExEnd:DetectChmMediaType
             }
@@ -1470,7 +1504,7 @@ namespace GroupDocs.Text_for_.NET
 
                 //extractor.Search(new SearchOptions(new SearchHighlightOptions(10)), handler, null, new string[] { "test text", "keyword" });
 
-                extractor.Search(new SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(10)), handler, null, new string[] {"Butterfly", "test text", "keyword" });
+                extractor.Search(new SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(10)), handler, null, new string[] { "Butterfly", "test text", "keyword" });
 
                 //Results count is none
                 if (handler.List.Count == 0)
@@ -1644,7 +1678,7 @@ namespace GroupDocs.Text_for_.NET
         /// <param name="fileName"></param>
         public static void ImplementIpageExtractorInterface(string fileName)
         {
-            //ExStart:ImplementIpageExtractorInterface
+            //ExStart:ImplementIpageExtractorInterface_17.12
             string filePath = Common.getFilePath(fileName);
             // Create an extractor factory 
             var factory = new ExtractorFactory();
@@ -1665,8 +1699,149 @@ namespace GroupDocs.Text_for_.NET
                     }
                 }
             }
-            //ExEnd:ImplementIpageExtractorInterface
+            //ExEnd:ImplementIpageExtractorInterface_17.12
         }
 
+        /// <summary>
+        /// Shows how to use ITextExtractorWithFormatter interface 
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void UsingITextExtractorWithFormatterInterface(string fileName)
+        {
+            //ExStart:UsingITextExtractorWithFormatterInterface_17.12
+            string filePath = Common.getFilePath(fileName);
+
+            WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath);
+
+            // If the extractor supports ITextExtractorWithFormatter interface
+            if (extractor is ITextExtractorWithFormatter)
+            {
+                // Set MarkdownDocumentFormatter formatter
+                (extractor as ITextExtractorWithFormatter).DocumentFormatter = new MarkdownDocumentFormatter();
+
+            }
+            Console.WriteLine(extractor.ExtractAll());
+            //ExEnd:UsingITextExtractorWithFormatterInterface_17.12
+        }
+
+        /// <summary>
+        /// Extracts a text from a file or stream via a simple interface
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ExtractTextUsingSimpleInterface(string fileName)
+        {
+            //ExStart:ExtractTextUsingSimpleInterface_17.12
+            string filePath = Common.getFilePath(fileName);
+
+            // Extract a text from the stream
+            using (Stream stream = File.OpenRead(filePath))
+            {
+                Console.WriteLine(Extractor.Default.ExtractText(stream));
+            }
+            // Extract a text from the file
+            Console.WriteLine(Extractor.Default.ExtractText(filePath));
+            //ExEnd:ExtractTextUsingSimpleInterface_17.12
+        }
+
+        /// <summary>
+        /// Extracts formatted text from a file or stream via a simple interface
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ExtractFormattedTextUsingSimpleInterface(string fileName)
+        {
+            //ExStart:ExtractFormattedTextUsingSimpleInterface_17.12
+            string filePath = Common.getFilePath(fileName);
+
+            // Extract a text from the stream
+            using (Stream stream = File.OpenRead(filePath))
+            {
+                Console.WriteLine(Extractor.Default.ExtractFormattedText(stream));
+            }
+            // Extract a text from the file
+            Console.WriteLine(Extractor.Default.ExtractFormattedText(filePath));
+            //ExEnd:ExtractFormattedTextUsingSimpleInterface_17.12
+        }
+
+        /// <summary>
+        /// Extracts a text from a file or stream using LoadOptions via a simple interface
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ExtractTextUsingSimpleInterfaceAndLoadOptions(string fileName)
+        {
+            //ExStart:ExtractTextUsingSimpleInterfaceAndLoadOptions_17.12
+            string filePath = Common.getFilePath(fileName);
+
+            // Create load options
+            LoadOptions loadOptions = new LoadOptions(MediaTypeNames.Application.WordOpenXml);
+
+            // Extract a text from the stream
+            using (Stream stream = File.OpenRead(filePath))
+            {
+                Console.WriteLine(Extractor.Default.ExtractText(stream, loadOptions));
+            }
+            // Extract a text from the file
+            Console.WriteLine(Extractor.Default.ExtractText(filePath, loadOptions));
+            //ExEnd:ExtractTextUsingSimpleInterfaceAndLoadOptions_17.12
+        }
+
+        /// <summary>
+        /// Extracts formatted text from a file or stream using LoadOptions via a simple interface
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ExtractFormattedTextUsingSimpleInterfaceAndLoadOptions(string fileName)
+        {
+            //ExStart:ExtractFormattedTextUsingSimpleInterfaceAndLoadOptions_17.12
+            string filePath = Common.getFilePath(fileName);
+
+            // Create load options
+            LoadOptions loadOptions = new LoadOptions(MediaTypeNames.Application.WordOpenXml);
+
+            // Extract a text from the stream
+            using (Stream stream = File.OpenRead(filePath))
+            {
+                Console.WriteLine(Extractor.Default.ExtractFormattedText(stream, loadOptions));
+            }
+            // Extract a text from the file
+            Console.WriteLine(Extractor.Default.ExtractFormattedText(filePath, loadOptions));
+            //ExEnd:ExtractFormattedTextUsingSimpleInterfaceAndLoadOptions_17.12
+        }
+
+        /// <summary>
+        /// Uses default instance of Extractor class for text extraction
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void UseDefaultInstanceOfExtractorClassForTextExtraction(string fileName)
+        {
+            //ExStart:UseDefaultInstanceOfExtractorClass_17.12
+            string filePath = Common.getFilePath(fileName);
+            // Extract a text from the stream
+            using (Stream stream = File.OpenRead(filePath))
+            {
+                // Create an instance of Extractor
+                Extractor extractor = new Extractor(null, null, null);
+                // Extract a text from the stream
+                Console.WriteLine(extractor.ExtractText(stream));
+            }
+            //ExEnd:UseDefaultInstanceOfExtractorClass_17.12
+        }
+
+        /// <summary>
+        /// Uses default instance of Extractor class for formatted text extraction
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void UseDefaultInstanceOfExtractorClassForformattedTextExtraction(string fileName)
+        {
+            //ExStart:UseDefaultInstanceOfExtractorClassForFormattedTextExtraction_17.12
+            string filePath = Common.getFilePath(fileName);
+            // Extract a text from the stream
+            using (Stream stream = File.OpenRead(filePath))
+            {
+                // Create an instance of Extractor
+                Extractor extractor = new Extractor(null, null, null, new MarkdownDocumentFormatter());
+                // Extract a text from the stream
+                Console.WriteLine(extractor.ExtractFormattedText(stream));
+            }
+            //ExEnd:UseDefaultInstanceOfExtractorClassForFormattedTextExtraction_17.12
+        }
     }
 }

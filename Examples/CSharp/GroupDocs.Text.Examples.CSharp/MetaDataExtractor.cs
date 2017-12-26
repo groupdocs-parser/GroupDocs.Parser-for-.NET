@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GroupDocs.Text_for_.NET
 {
-    public class MetaDataExtractor
+    public class MetadataExtractor
     {
         public class CellsMetadata
         {

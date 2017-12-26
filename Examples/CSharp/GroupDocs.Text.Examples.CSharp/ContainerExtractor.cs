@@ -138,6 +138,48 @@ namespace GroupDocs.Text_for_.NET
             //ExEnd:ReadConcreteFile
         }
 
+        /// <summary>
+        /// Extracts text from the entity of ZIP container:
+        /// </summary>
+        /// <param name="folderName">Name of the zipped folder</param>
+        public static void RetrieveEntity(string folderName)
+        {
+            //ExStart:RetrieveEntity_17.12
+            //get ZIP folder's path
+            string folderPath = Common.getFilePath(folderName);
+
+            ExtractorFactory extractorFactory = new ExtractorFactory();
+
+            //initialize ZIP container
+            using (var container = new ZipContainer(folderPath))
+            {
+                Container.Entity containerEntry = container.GetEntity("META-INF\\container.xml");
+                // If the entity isn't found
+                if (containerEntry == null)
+                {
+                    throw new GroupDocsTextException("File not found");
+                }
+
+                // Try to create a text extractor
+                TextExtractor extractor = extractorFactory.CreateTextExtractor(containerEntry.OpenStream());
+                try
+                {
+                    // Extract a text (if the document type is supported)
+                    Console.WriteLine(extractor == null ? "Document type isn't supported" : extractor.ExtractAll());
+                }
+                finally
+                {
+                    // Cleanup
+                    if (extractor != null)
+                    {
+                        extractor.Dispose();
+                    }
+                }
+            }
+
+            //ExEnd:RetrieveEntity_17.12
+        }
+
         public static void DetectZipMediaType(string folderName) {
             //ExStart:DetectZipMediaType
             //get ZIP folder's path
