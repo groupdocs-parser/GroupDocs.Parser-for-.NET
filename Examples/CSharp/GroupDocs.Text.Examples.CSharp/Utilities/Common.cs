@@ -11,8 +11,8 @@ namespace GroupDocs.Text_for_.NET
     public class Common
     {
         //ExStart:commonutilities
-        public const string sourcePath = "../../../../Data/Storage/";
-        public const string licensePath = "D:/Aspose Projects/License/GroupDocs.Total.lic";
+        public const string SOURCE_PATH = "../../../../Data/Storage/";
+        public const string LICENSE_PATH = "D:/GroupDocs.Total.lic";
         //ExEnd:commonutilities
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace GroupDocs.Text_for_.NET
             try
             {
                 License lic = new License();
-                lic.SetLicense(licensePath);
+                lic.SetLicense(LICENSE_PATH);
             }
             catch (Exception ex)
             {
@@ -38,10 +38,10 @@ namespace GroupDocs.Text_for_.NET
         /// </summary>
         /// <param name="emailMessage"></param>
         /// <returns></returns>
-        public static String getFilePath(string fileName)
+        public static String GetFilePath(string fileName)
         {
             //ExStart:getfilepath
-            String fileLocation = sourcePath + fileName;
+            String fileLocation = SOURCE_PATH + fileName;
             return fileLocation;
             //ExEnd:getfilepath
         }

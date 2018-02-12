@@ -60,7 +60,7 @@ namespace GroupDocs.Text_for_.NET.Utilities
         {
             //ExStart:ViewContentInConsole
             //get file actual path
-            String filePath = Common.getFilePath(fileName);
+            String filePath = Common.GetFilePath(fileName);
             ExtractText extractor = new ExtractText(filePath, filePath.Length > 1 && filePath == "/f");
             //ExEnd:ViewContentInConsole
         }

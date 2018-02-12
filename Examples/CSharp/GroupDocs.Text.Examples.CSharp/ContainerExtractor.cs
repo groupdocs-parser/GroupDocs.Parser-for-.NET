@@ -14,14 +14,14 @@ namespace GroupDocs.Text_for_.NET
     public class ContainerExtractor
     {
         /// <summary>
-        /// Extract from OST container
+        /// Extracts from OST(pst) container
         /// </summary>
         public static void ExtractFromOstContainer(string fileName)
         {
             //ExStart:ExtractFromOstContainer
             ExtractorFactory factory = new ExtractorFactory();
             //get OST file's path
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             using (var container = new PersonalStorageContainer(filePath))
             {
                 for (int i = 0; i < container.Entities.Count; i++)
@@ -55,6 +55,33 @@ namespace GroupDocs.Text_for_.NET
         }
 
         /// <summary>
+        /// Extracts from OST(pst) container with improved memory consumption
+        /// </summary>
+        public static void ExtractTextFromOstContainer2(string fileName)
+        {
+            //ExStart:ExtractTextFromOstContainer2_18.2
+            var container = new PersonalStorageContainer(Common.GetFilePath(fileName));
+            var enumerator = container.Entities.GetEnumerator();
+
+            while (enumerator.MoveNext())
+            {
+                var entity = enumerator.Current;
+                using (var entityStream = entity.OpenStream())
+                {
+                    using (var extractor = new EmailTextExtractor(entityStream))
+                    {
+                        string content = extractor.ExtractAll();
+                        Console.WriteLine(entity[PersonalStorageContainer.EmailSubject]);
+                        Console.WriteLine(entity[PersonalStorageContainer.EmailSender]);
+                        Console.WriteLine(entity[PersonalStorageContainer.EmailReceiver]);
+                        Console.WriteLine(content);
+                    }
+                }
+            }
+            //ExEnd:ExtractTextFromOstContainer2_18.2
+        }
+        
+        /// <summary>
         /// For enumerating all the entities of the group of containers ContainerEnumerator class is used
         /// </summary>
         public static void EnumeratingAllEntities()
@@ -86,7 +113,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:EnumerateAllArchivedFiles
             //get ZIP folder's path
-            string folderPath = Common.getFilePath(folderName);
+            string folderPath = Common.GetFilePath(folderName);
 
             //initialize ZIP container
             using (var container = new ZipContainer(folderPath))
@@ -103,7 +130,7 @@ namespace GroupDocs.Text_for_.NET
                     Console.WriteLine("Size:" + container.Entities[i].Size);
                     Console.WriteLine("CRC:" + container.Entities[i][MetadataNames.Crc]);
                 }
-                
+
             }
 
             //ExEnd:EnumerateAllArchivedFiles
@@ -117,7 +144,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:ReadConcreteFile
             //get ZIP folder's path
-            string folderPath = Common.getFilePath(folderName);
+            string folderPath = Common.GetFilePath(folderName);
             ExtractorFactory extractorFactory = new ExtractorFactory();
 
             //initialize ZIP container
@@ -132,9 +159,9 @@ namespace GroupDocs.Text_for_.NET
                         //display the extracted text
                         Console.WriteLine(extractor.ExtractAll());
                     }
-                }         
+                }
             }
-            
+
             //ExEnd:ReadConcreteFile
         }
 
@@ -146,7 +173,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:RetrieveEntity_17.12
             //get ZIP folder's path
-            string folderPath = Common.getFilePath(folderName);
+            string folderPath = Common.GetFilePath(folderName);
 
             ExtractorFactory extractorFactory = new ExtractorFactory();
 
@@ -180,10 +207,15 @@ namespace GroupDocs.Text_for_.NET
             //ExEnd:RetrieveEntity_17.12
         }
 
-        public static void DetectZipMediaType(string folderName) {
+        /// <summary>
+        /// Detects ZIP media type
+        /// </summary>
+        /// <param name="folderName">Name of the zipped folder</param>
+        public static void DetectZipMediaType(string folderName)
+        {
             //ExStart:DetectZipMediaType
             //get ZIP folder's path
-            string folderPath = Common.getFilePath(folderName);
+            string folderPath = Common.GetFilePath(folderName);
             var detector = new ZipMediaTypeDetector();
             var mediaType = detector.Detect(folderPath);
 
@@ -195,7 +227,8 @@ namespace GroupDocs.Text_for_.NET
         /// <summary>
         /// Shows how to retrieve emails from Microsoft exchange server using Entity property
         /// </summary>
-        public static void RetrieveEmailsUsingEntity() {
+        public static void RetrieveEmailsUsingEntity()
+        {
             //ExStart:RetrieveEmailsUsingEntity
             // Create connection info
             var info = EmailConnectionInfo.CreateEwsConnectionInfo(@"https://outlook.office365.com/ews/exchange.asmx", "username", "password");
@@ -209,13 +242,14 @@ namespace GroupDocs.Text_for_.NET
                     Console.WriteLine("Subject: " + entity[MetadataNames.Subject]); // A subject of email
                     Console.WriteLine("From: " + entity[MetadataNames.EmailFrom]); // "From" address
                     Console.WriteLine("To: " + entity[MetadataNames.EmailTo]); // "To" addresses     
-                    Console.WriteLine("Date: "+ entity.Date);
-                    Console.WriteLine("Size: "+ entity.Size);
-                   
+                    Console.WriteLine("Date: " + entity.Date);
+                    Console.WriteLine("Size: " + entity.Size);
+
                 }
             }
             //ExEnd:RetrieveEmailsUsingEntity
         }
+        
         /// <summary>
         /// Shows how to retrieve emails from POP3 server using Entity property
         /// </summary>
@@ -241,6 +275,7 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:RetrieveEmailsUsingEntity
         }
+        
         /// <summary>
         /// Shows how to retrieve emails from IMAP server using Entity property
         /// </summary>
@@ -270,10 +305,11 @@ namespace GroupDocs.Text_for_.NET
         /// <summary>
         /// Shows how to retrieve an email from Microsoft exchange server using OpenEntityStream method
         /// </summary>
-        public static void RetrieveEmailUsingOpenEntityStream() {
+        public static void RetrieveEmailUsingOpenEntityStream()
+        {
             //ExStart:RetrieveEmailUsingOpenEntityStream
             // Create connection info
-           
+
             var info = EmailConnectionInfo.CreateEwsConnectionInfo(@"https://outlook.office365.com/ews/exchange.asmx", "username", "password");
             // Create an email container
             using (var container = new EmailContainer(info))
@@ -293,6 +329,7 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:RetrieveEmailUsingOpenEntityStream
         }
+        
         /// <summary>
         /// Shows how to retrieve an email from POP3 server using OpenEntityStream method
         /// </summary>
@@ -320,6 +357,7 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:RetrieveEmailUsingOpenEntityStreamPOP3
         }
+       
         /// <summary>
         /// Shows how to retrieve an email from IMAP server using OpenEntityStream method
         /// </summary>
@@ -329,7 +367,7 @@ namespace GroupDocs.Text_for_.NET
             // Create connection info
 
             var info = EmailConnectionInfo.CreateImapConnectionInfo(@"imap-mail.outlook.com", 995, "username", "password");
-           // Create an email container
+            // Create an email container
             using (var container = new EmailContainer(info))
             {
                 // Iterate over emails

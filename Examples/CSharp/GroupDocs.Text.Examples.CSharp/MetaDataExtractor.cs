@@ -13,14 +13,14 @@ namespace GroupDocs.Text_for_.NET
         public class CellsMetadata
         {
             /// <summary>
-            /// Extract metadata from cells
+            /// Extracts metadata from cells
             /// </summary>
             /// <param name="fileName"></param>
             public static void ExtractMetadataFromCells(string fileName)
             {
                 //ExStart:ExtractMetadataFromCells
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 CellsMetadataExtractor extractor = new CellsMetadataExtractor();
                 MetadataCollection metadata = extractor.ExtractMetadata(filePath);
                 foreach (string key in metadata.Keys)
@@ -34,14 +34,14 @@ namespace GroupDocs.Text_for_.NET
         public class SlidesMetadata
         {
             /// <summary>
-            /// Extract metadata from slides
+            /// Extracts metadata from slides
             /// </summary>
             /// <param name="fileName"></param>
             public static void ExtractMetadataFromSlides(string fileName)
             {
                 //ExStart:ExtractMetadataFromSlides
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 SlidesMetadataExtractor extractor = new SlidesMetadataExtractor();
                 MetadataCollection metadata = extractor.ExtractMetadata(filePath);
                 foreach (string key in metadata.Keys)
@@ -55,14 +55,14 @@ namespace GroupDocs.Text_for_.NET
         public class WordsMetaData
         {
             /// <summary>
-            /// Extract metadata from word documents
+            /// Extracts metadata from word documents
             /// </summary>
             /// <param name="fileName"></param>
             public static void ExtractMetadataFromWords(string fileName)
             {
                 //ExStart:ExtractMetadataFromWords
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 WordsMetadataExtractor extractor = new WordsMetadataExtractor();
                 MetadataCollection metadata = extractor.ExtractMetadata(filePath);
                 foreach (string key in metadata.Keys)
@@ -76,14 +76,14 @@ namespace GroupDocs.Text_for_.NET
         public class PdfMetaData
         {
             /// <summary>
-            /// Extract metadata from pdf documents
+            /// Extracts metadata from pdf documents
             /// </summary>
             /// <param name="fileName"></param>
             public static void ExtractMetadataFromPdf(string fileName)
             {
                 //ExStart:ExtractMetadataFromPdf
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 PdfMetadataExtractor extractor = new PdfMetadataExtractor();
                 MetadataCollection metadata = extractor.ExtractMetadata(filePath);
                 foreach (string key in metadata.Keys)
@@ -97,14 +97,14 @@ namespace GroupDocs.Text_for_.NET
         public class EmailMetaData
         {
             /// <summary>
-            /// Extract metadata from emails
+            /// Extracts metadata from emails
             /// </summary>
             /// <param name="fileName"></param>
             public static void ExtractMetadataFromEmails(string fileName)
             {
                 //ExStart:ExtractMetadataFromEmails
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 EmailMetadataExtractor extractor = new EmailMetadataExtractor();
                 MetadataCollection metadata = extractor.ExtractMetadata(filePath);
                 foreach (string key in metadata.Keys)
@@ -125,7 +125,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractMetadataInEpub
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 var metadataExtractor = new EpubMetadataExtractor();
                 var metadata = metadataExtractor.ExtractMetadata(filePath);
                 foreach (string key in metadata.Keys)
@@ -143,7 +143,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractMetadataUsingComplexMetadataExtractorInEpub
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 var metadataExtractor = new EpubMetadataExtractor();
                 using (var enumerator = metadataExtractor.ExtractComplexMetadata(filePath))
                 {
@@ -169,7 +169,7 @@ namespace GroupDocs.Text_for_.NET
             public static void ExtractMetadata(string fileName) {
                 //ExStart:ExtractMetadataFb2
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 // Create a metadata extractor 
                 FictionBookMetadataExtractor extractor = new FictionBookMetadataExtractor();
                 // Extract metadata
@@ -183,11 +183,12 @@ namespace GroupDocs.Text_for_.NET
                 //ExEnd:ExtractMetadataFb2
             }
         }
+
         public static void UsingExtractorFactory(string fileName)
         {
             //ExStart:UsingExtractorFactory
             //get file actual path
-            String filePath = Common.getFilePath(fileName);
+            String filePath = Common.GetFilePath(fileName);
             Extractor extractor = new Extractor();
             //ExtractMetadata methods in ExtractorFactory class are marked as Obsolete from version 17.03 onwards(use Extractor class instead).
             MetadataCollection metadata = extractor.ExtractMetadata(filePath);
@@ -204,14 +205,14 @@ namespace GroupDocs.Text_for_.NET
         }
 
         /// <summary>
-        /// shows how extractor class is used to extract metadata, this feature is supported ni version 17.03 or greater
+        /// Shows how extractor class is used to extract metadata, this feature is supported ni version 17.03 or greater
         /// </summary>
         /// <param name="fileName"></param>
         public static void ExtractClassUsage(string fileName)
         {
             //ExStart:ExtractClassUsage
             //get file actual path
-            String filePath = Common.getFilePath(fileName);
+            String filePath = Common.GetFilePath(fileName);
             var extractor = new Extractor();
             var metadata = extractor.ExtractMetadata(filePath);
 
@@ -230,7 +231,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:CreateMetadataExtractorMethodUsage
             //get file actual path
-            String filePath = Common.getFilePath(fileName);
+            String filePath = Common.GetFilePath(fileName);
             var factory = new ExtractorFactory();
             var extractor = factory.CreateMetadataExtractor(filePath);
             var metadata = extractor.ExtractMetadata(filePath);

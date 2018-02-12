@@ -27,7 +27,7 @@ namespace GroupDocs.Text_for_.NET
                 {
                     EncodingDetector detector = new EncodingDetector(Encoding.GetEncoding(1251));
                     //get file actual path
-                    String filePath = Common.getFilePath(fileName);
+                    String filePath = Common.GetFilePath(fileName);
                     Stream stream = new FileStream(filePath, FileMode.Open);
                     Console.WriteLine(detector.Detect(stream));
                 }
@@ -50,7 +50,7 @@ namespace GroupDocs.Text_for_.NET
                 {
                     EncodingDetector detector = new EncodingDetector(Encoding.GetEncoding(1251));
                     //get file actual path
-                    String filePath = Common.getFilePath(fileName);
+                    String filePath = Common.GetFilePath(fileName);
                     Stream stream = new FileStream(filePath, FileMode.Open);
                     Console.WriteLine(detector.Detect(stream, true));
                 }
@@ -72,7 +72,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:LoggerWithManualExceptionHandling
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 var receiver = new NotificationReceiver();
                 LoadOptions loadOptions = new LoadOptions();
                 loadOptions.NotificationReceiver = receiver;
@@ -99,7 +99,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:LoggerWithExtractorFactory
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 var receiverForFactory = new NotificationReceiver();
                 var factory = new ExtractorFactory(null, null, null, receiverForFactory);
 
