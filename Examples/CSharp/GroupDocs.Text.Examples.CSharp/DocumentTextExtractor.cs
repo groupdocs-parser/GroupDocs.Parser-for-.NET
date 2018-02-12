@@ -26,7 +26,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractEmailAttachments
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 EmailTextExtractor extractor = new EmailTextExtractor(filePath);
                 ExtractorFactory factory = new ExtractorFactory();
                 for (int i = 0; i < extractor.AttachmentCount; i++)
@@ -59,7 +59,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractEmailHyperlinks
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 List<string> hyperlinks = new List<string>();
                 StringBuilder sb = null;
                 string currentLink = null;
@@ -116,7 +116,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractTextFromEmailAttachments
                 //get the file's path
-                string filePath = Common.getFilePath(fileName);
+                string filePath = Common.GetFilePath(fileName);
                 // Create an extractor factory
                 var factory = new ExtractorFactory();
                 // Create an instance of EmailTextExtractor class 
@@ -150,14 +150,14 @@ namespace GroupDocs.Text_for_.NET
         public class OneNoteDocument
         {
             /// <summary>
-            /// Extract text from onenote file/document
+            /// Extracts text from onenote file/document
             /// </summary>
             /// <param name="fileName"></param>
             public static void ExtractOneNoteDocument(string fileName)
             {
                 //ExStart:ExtractOneNoteDocument
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 //Set page index
                 int pageIndex = 1;
                 NoteTextExtractor extractor = new NoteTextExtractor(filePath);
@@ -174,7 +174,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart: OpenPasswordProtectedOneNoteSection
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 //set password in the load options
                 var loadOptions = new LoadOptions();
                 loadOptions.Password = "test";
@@ -197,7 +197,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart: ExtractTextByPagesUsingGenericFunction
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 // Create a text extractor
                 NoteTextExtractor textExtractor = new NoteTextExtractor(filePath);
                 // Invoke a function to print a text by pages
@@ -227,14 +227,14 @@ namespace GroupDocs.Text_for_.NET
         public class PdfDocument
         {
             /// <summary>
-            /// Extract text from pdf documents
+            /// Extracts text from pdf documents
             /// </summary>
             /// <param name="fileName"></param>
             public static void ExtractPdfDocument(string fileName)
             {
                 //ExStart:ExtractPdfDocument
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 //Set page index
                 int pageIndex = 1;
                 PdfTextExtractor extractor = new PdfTextExtractor(filePath);
@@ -256,7 +256,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractTextFromPdfPortfolios
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 // Create an extractor factory 
                 var factory = new ExtractorFactory();
                 // Create an instance of PdfTextExtractor class 
@@ -292,14 +292,14 @@ namespace GroupDocs.Text_for_.NET
         public class PresentationDocument
         {
             /// <summary>
-            /// Extract text from presentatoin documents
+            /// Extracts text from presentatoin documents
             /// </summary>
             /// <param name="fileName"></param>
             public static void ExtractPresentationDocument(string fileName)
             {
                 //ExStart:ExtractPresentationDocument
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 //Set slide index
                 int slideIndex = 1;
                 SlidesTextExtractor extractor = new SlidesTextExtractor(filePath);
@@ -320,7 +320,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractTopLevelLists
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 StringBuilder sb = new StringBuilder();
                 IStructuredExtractor extractor = new SlidesTextExtractor(filePath);
                 StructuredHandler handler = new StructuredHandler();
@@ -374,13 +374,13 @@ namespace GroupDocs.Text_for_.NET
         public class SpreadsheetDocument
         {
             /// <summary>
-            /// Extract text from spreadsheet documents
+            /// Extracts text from spreadsheet documents
             /// </summary>
             public static void ExtractEntireSheet(string fileName)
             {
                 //ExStart:ExtractEntireSheet
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 CellsTextExtractor extractor = new CellsTextExtractor(filePath);
                 //set extract mode to standard
                 extractor.ExtractMode = ExtractMode.Standard;
@@ -389,6 +389,7 @@ namespace GroupDocs.Text_for_.NET
                     Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSheet(sheetIndex), extractor.SheetCount);
                 //ExEnd:ExtractEntireSheet
             }
+          
             /// <summary>
             /// Extracting the sheet by the rows
             /// </summary>
@@ -397,7 +398,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractSheetByRows
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 CellsTextExtractor extractor = new CellsTextExtractor(filePath);
                 int sheetIndex = 0;
                 CellsSheetInfo sheetInfo = extractor.GetSheetInfo(sheetIndex);
@@ -408,29 +409,31 @@ namespace GroupDocs.Text_for_.NET
                 }
                 //ExEnd:ExtractSheetByRows
             }
+          
             /// <summary>
-            /// Extracting the selected columns
+            /// Extracts the selected columns
             /// </summary>
             /// <param name="fileName"></param>
             public static void ExtractSelectedColumns(string fileName)
             {
                 //ExStart:ExtractSelectedColumns
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 CellsTextExtractor extractor = new CellsTextExtractor(filePath);
                 int sheetIndex = 0;
                 CellsSheetInfo sheetInfo = extractor.GetSheetInfo(sheetIndex);
                 Console.WriteLine(sheetInfo.ExtractSheet("B1", "C1"));
                 //ExEnd:ExtractSelectedColumns
             }
+           
             /// <summary>
-            /// Extracting the selected columns from selected rows
+            /// Extracts the selected columns from selected rows
             /// </summary>
             public static void ExtractSelectedColumnsAndRows(string fileName)
             {
                 //ExStart:ExtractSelectedColumnsAndRows
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 CellsTextExtractor extractor = new CellsTextExtractor(filePath);
                 int sheetIndex = 0;
                 CellsSheetInfo sheetInfo = extractor.GetSheetInfo(sheetIndex);
@@ -443,14 +446,14 @@ namespace GroupDocs.Text_for_.NET
             }
 
             /// <summary>
-            /// Create the concrete extractor by hand using filestream
+            /// Creates the concrete extractor by hand using filestream
             /// </summary>
             /// <param name="fileName"></param>
             public static void ConcreteExtractor(string fileName)
             {
                 //ExStart:ConcreteExtractor
                 //get file actual path
-                string filePath = Common.getFilePath(fileName);
+                string filePath = Common.GetFilePath(fileName);
                 using (Stream stream = File.OpenRead(filePath))
                 {
                     using (CellsTextExtractor extractor = new CellsTextExtractor(stream))
@@ -464,14 +467,14 @@ namespace GroupDocs.Text_for_.NET
             }
 
             /// <summary>
-            /// Create the concrete extractor by hand
+            /// Creates the concrete extractor by hand
             /// </summary>
             /// <param name="fileName"></param>
             public static void ConcreteExtractorByFile(string fileName)
             {
                 //ExStart:ConcreteExtractorByFile
                 //get file actual path
-                string filePath = Common.getFilePath(fileName);
+                string filePath = Common.GetFilePath(fileName);
 
                 using (CellsTextExtractor extractor = new CellsTextExtractor(filePath))
                 {
@@ -489,7 +492,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractStructuredText
                 //get file's complete path 
-                string filePath = Common.getFilePath(fileName);
+                string filePath = Common.GetFilePath(fileName);
                 StringBuilder sb = new StringBuilder();
                 IStructuredExtractor extractor = new CellsTextExtractor(filePath);
                 StructuredHandler handler = new StructuredHandler();
@@ -540,28 +543,29 @@ namespace GroupDocs.Text_for_.NET
         public class TextDocument
         {
             /// <summary>
-            /// Extract formatted text from word
+            /// Extracts formatted text from word
             /// </summary>
             /// <param name="fileName"></param>
             public static void ExtractEntireWordPage(string fileName)
             {
                 //ExStart:ExtractEntireWordPage
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 int pageIndex = 0;
                 WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath);
                 Console.WriteLine(extractor.ExtractPage(pageIndex));
                 //ExEnd:ExtractEntireWordPage
             }
+          
             /// <summary>
-            /// Extract text from word by defining a table format
+            /// Extracts text from word by defining a table format
             /// </summary>
             /// <param name="fileName"></param>
             public static void FormattingTable(string fileName)
             {
                 //ExStart:FormattingTable
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath);
                 PlainTableFrame frame = new PlainTableFrame(
                     PlainTableFrameAngle.ASCII,
@@ -572,15 +576,16 @@ namespace GroupDocs.Text_for_.NET
                 Console.WriteLine(extractor.ExtractAll());
                 //ExEnd:FormattingTable
             }
+           
             /// <summary>
-            /// Extract text with markdown text format
+            /// Extracts text with markdown text format
             /// </summary>
             /// <param name="fileName"></param>
             public static void ExtractingWithMarkdown(string fileName)
             {
                 //ExStart:ExtractingWithMarkdown
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath);
                 extractor.DocumentFormatter = new MarkdownDocumentFormatter();
                 Console.WriteLine(extractor.ExtractAll());
@@ -588,14 +593,14 @@ namespace GroupDocs.Text_for_.NET
             }
 
             /// <summary>
-            /// Extract a text with HTML text formatter
+            /// Extracts a text with HTML text formatter
             /// </summary>
             /// <param name="fileName"></param>
             public static void HtmlTextFormating(string fileName)
             {
                 //ExStart:HtmlTextFormating
                 //get file actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath);
                 extractor.DocumentFormatter = new HtmlDocumentFormatter();
                 Console.WriteLine(extractor.ExtractAll());
@@ -611,7 +616,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractHeadersFromDocument
                 //get file's complete path 
-                string filePath = Common.getFilePath(fileName);
+                string filePath = Common.GetFilePath(fileName);
                 StringBuilder sb = new StringBuilder();
                 IStructuredExtractor extractor = new WordsTextExtractor(filePath);
                 StructuredHandler handler = new StructuredHandler();
@@ -661,7 +666,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractHyperlinksFromDocument
                 //get file path
-                string filePath = Common.getFilePath(fileName);
+                string filePath = Common.GetFilePath(fileName);
                 List<string> hyperlinks = new List<string>();
                 StringBuilder sb = null;
                 string currentLink = null;
@@ -710,6 +715,151 @@ namespace GroupDocs.Text_for_.NET
             }
         }
 
+        public class MarkdownDocument
+        {
+            /// <summary>
+            /// Extracts single line of characters as raw text from Markdown document
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractSingleLineAsRawText(string fileName)
+            {
+                //ExStart:ExtractSingleLineAsRawTextMarkdown_18.2 
+                using (var extractor = new MarkdownTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Extract a line of the text
+                    string line = extractor.ExtractLine();
+                    // If the line is null, then the end of the file is reached
+                    while (line != null)
+                    {
+                        // Print a line to the console
+                        Console.WriteLine(line);
+                        // Extract another line
+                        line = extractor.ExtractLine();
+                    }
+                }
+                //ExEnd:ExtractSingleLineAsRawTextMarkdown_18.2
+            }
+
+            /// <summary>
+            /// Extracts all characters as raw text from Markdown document
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractAllCharactersAsRawText(string fileName)
+            {
+                //ExStart:ExtractAllCharactersAsRawTextMarkdown_18.2 
+                using (var extractor = new MarkdownTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Extract a text
+                    Console.WriteLine(extractor.ExtractAll());
+                }
+                //ExEnd:ExtractAllCharactersAsRawTextMarkdown_18.2
+            }
+
+            /// <summary>
+            /// Extracts a line of characters as formatted text from Markdown document
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractSingleLineAsFormattedText(string fileName)
+            {
+                //ExStart:ExtractSingleLineAsFormattedTextMarkdown_18.2 
+                // Create a text extractor for Markdown documents
+                using (var extractor = new MarkdownFormattedTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Extract a line of the text
+                    string line = extractor.ExtractLine();
+                    // If the line is null, then the end of the file is reached
+                    while (line != null)
+                    {
+                        // Print a line to the console
+                        Console.WriteLine(line);
+                        // Extract another line
+                        line = extractor.ExtractLine();
+                    }
+                }
+                //ExEnd:ExtractSingleLineAsFormattedTextMarkdown_18.2
+            }
+
+            /// <summary>
+            /// Extracts a line of characters as formatted text from Markdown document
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractAllCharactersAsFormattedText(string fileName)
+            {
+                //ExStart:ExtractAllCharactersAsFormattedTextMarkdown_18.2 
+                // Create a text extractor for Markdown documents
+                using (var extractor = new MarkdownFormattedTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Extract a text
+                    Console.WriteLine(extractor.ExtractAll());
+                }
+                //ExEnd:ExtractAllCharactersAsFormattedTextMarkdown_18.2
+            }
+
+            /// <summary>
+            /// Extracts formatted text using DocumentFormatter from Markdown document
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractFormattedTextUsingDocumentFormatter(string fileName)
+            {
+                //ExStart:ExtractFormattedTextUsingDocumentFormatterMarkdown_18.2 
+                // Create a formatted text extractor for text documents
+                MarkdownFormattedTextExtractor extractor = new MarkdownFormattedTextExtractor(Common.GetFilePath(fileName));
+                // Set a HTML formatter for formatting
+                extractor.DocumentFormatter = new HtmlDocumentFormatter(); // all the text will be formatted as HTML
+                //ExEnd:ExtractFormattedTextUsingDocumentFormatterMarkdown_18.2
+            }
+
+            /// <summary>
+            /// Extracts structured text from Markdown document
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractStructuredText(string fileName)
+            {
+                //ExStart:ExtractStructuredTextMarkdown_18.2 
+                StringBuilder sb = new StringBuilder();
+                IStructuredExtractor extractor = new MarkdownTextExtractor(Common.GetFilePath(fileName));
+                StructuredHandler handler = new StructuredHandler();
+
+                // Handle List event to prevent processing of lists
+                handler.List += (sender, e) => e.Properties.SkipElement = true; // ignore lists
+
+                // Handle Table event to prevent processing of tables
+                handler.Table += (sender, e) => e.Properties.SkipElement = true; // ignore tables
+
+                // Handle Paragraph event to process a paragraph
+                handler.Paragraph += (sender, e) =>
+                {
+                    int h1 = (int)ParagraphStyle.Heading1;
+                    int h6 = (int)ParagraphStyle.Heading6;
+
+                    int style = (int)e.Properties.Style;
+                    if (h1 <= style && style <= h6)
+                    {
+                        if (sb.Length > 0)
+                        {
+                            sb.AppendLine();
+                        }
+
+                        sb.Append(' ', style - h1); // make an indention for the header (h1 - no indention)
+                    }
+                    else
+                    {
+                        e.Properties.SkipElement = e.Properties.Style != ParagraphStyle.Title; // skip paragraph if it's not a header or a title
+                    }
+                };
+
+                // Handle ElementText event to process a text
+                handler.ElementText += (sender, e) => sb.Append(e.Text);
+
+                // Extract a text with its structure
+                extractor.ExtractStructured(handler);
+
+                Console.WriteLine(sb.ToString());
+                //ExEnd:ExtractStructuredTextMarkdown_18.2
+            }
+
+        }
+
         public class Epub
         {
             /// <summary>
@@ -720,7 +870,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractALine
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 using (var extractor = new EpubTextExtractor(filePath))
                 {
                     string line = extractor.ExtractLine();
@@ -741,14 +891,13 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractAllCharacters
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 using (var extractor = new EpubTextExtractor(filePath))
                 {
                     Console.WriteLine(extractor.ExtractAll());
                 }
                 //ExEnd:ExtractAllCharacters
             }
-
 
             /// <summary>
             /// Searches for a text in an epub file using regular expression
@@ -758,7 +907,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:SearchTextInEpubUsingRegex
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 using (EpubTextExtractor extractor = new EpubTextExtractor(filePath))
                 {
                     var searchOptions = new RegexSearchOptions();
@@ -793,7 +942,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:SearchTextInEpub
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 using (EpubTextExtractor extractor = new EpubTextExtractor(filePath))
                 {
                     var options = new SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(0));
@@ -829,7 +978,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractHighlightInEpub
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 using (EpubTextExtractor extractor = new EpubTextExtractor(filePath))
                 {
                     IList<string> highlights = extractor.ExtractHighlights(HighlightOptions.CreateFixedLengthOptions(HighlightDirection.Left, 9, 3));
@@ -849,7 +998,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:DetectEpubMediaType
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 var detector = new EpubMediaTypeDetector();
                 var mediaType = detector.Detect(filePath);
 
@@ -867,7 +1016,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractSectionTitleEpub
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 // Create a text extractor
                 using (EpubTextExtractor extractor = new EpubTextExtractor(filePath))
                 {
@@ -934,7 +1083,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractFormattedTextEpub
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 // Create a formatted text extractor for EPUB documents
                 using (var extractor = new EpubFormattedTextExtractor(filePath))
                 {
@@ -959,7 +1108,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractWholeTextFb2
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 using (var extractor = new FictionBookTextExtractor(filePath))
                 {
                     Console.Write(extractor.ExtractAll());
@@ -976,7 +1125,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractTextByLineFb2
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 using (var extractor = new FictionBookTextExtractor(filePath))
                 {
                     string line = extractor.ExtractLine();
@@ -998,7 +1147,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractHighlightsFb2
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 // Create a text extractor 
                 using (FictionBookTextExtractor extractor = new FictionBookTextExtractor(filePath))
                 {
@@ -1025,7 +1174,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:SearchTextWithRegexFb2
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 // Create a text extractor 
                 using (var extractor = new FictionBookTextExtractor(filePath))
                 {
@@ -1068,7 +1217,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:SearchTextFb2
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 // Create a text extractor 
                 using (var extractor = new FictionBookTextExtractor(filePath))
                 {
@@ -1117,7 +1266,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractSectionTitleFb2
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 // Create a text extractor 
                 using (FictionBookTextExtractor extractor = new FictionBookTextExtractor(filePath))
                 {
@@ -1198,7 +1347,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:DetectMediaTypeFb2
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 // Create a media type detector 
                 var detector = new FictionBookMediaTypeDetector();
                 // Detect a media type by the file name 
@@ -1217,7 +1366,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:ExtractFormattedTextFb2
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 // Create a formatted text extractor for FictionBook (fb2)documents 
                 using (var extractor = new FictionBookFormattedTextExtractor(filePath))
                 {
@@ -1240,7 +1389,7 @@ namespace GroupDocs.Text_for_.NET
             public static void ExtractText(string fileName)
             {
                 //ExStart:ExtractTextDotFiles
-                string filePath = Common.getFilePath(fileName);
+                string filePath = Common.GetFilePath(fileName);
                 // Create an instance of WordsTextExtractor class 
                 using (var extractor = new WordsTextExtractor(filePath))
                 {
@@ -1261,7 +1410,7 @@ namespace GroupDocs.Text_for_.NET
             public static void ExtractALine(string fileName)
             {
                 //ExStart:ChmExtractALine
-                string filePath = Common.getFilePath(fileName);
+                string filePath = Common.GetFilePath(fileName);
                 // Create a text extractor for CHM documents
                 using (var extractor = new ChmTextExtractor(filePath))
                 {
@@ -1287,7 +1436,7 @@ namespace GroupDocs.Text_for_.NET
             public static void ExtractAllCharacters(string fileName)
             {
                 //ExStart:ChmExtractAllCharacters
-                string filePath = Common.getFilePath(fileName);
+                string filePath = Common.GetFilePath(fileName);
                 // Create a text extractor for CHM documents
                 using (var extractor = new ChmTextExtractor(filePath))
                 {
@@ -1306,7 +1455,7 @@ namespace GroupDocs.Text_for_.NET
             {
                 //ExStart:DetectChmMediaType
                 //get file's actual path
-                String filePath = Common.getFilePath(fileName);
+                String filePath = Common.GetFilePath(fileName);
                 // Create a media type detector
                 var detector = new ChmMediaTypeDetector();
                 // Detect a media type by the file name
@@ -1320,11 +1469,12 @@ namespace GroupDocs.Text_for_.NET
             }
         }
 
+
         public static void PassEncodingToCreatedExtractor(string fileName)
         {
             //ExStart:PassEncodingToCreatedExtractor
             //get file actual path
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             LoadOptions loadOptions = new LoadOptions("text/plain", Encoding.UTF8);
             ExtractorFactory factory = new ExtractorFactory();
             using (TextExtractor extractor = factory.CreateTextExtractor(filePath, loadOptions))
@@ -1335,14 +1485,14 @@ namespace GroupDocs.Text_for_.NET
         }
 
         /// <summary>
-        /// Extract text from a password protected document 
+        /// Extracts text from a password protected document 
         /// </summary>
         /// <param name="fileName"></param>
         public static void PasswordProtectedDocumentExtractor(string fileName)
         {
             //ExStart:PasswordProtectedDocumentExtractor
             //get file actual path
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             //To open password-protected document Password property of LoadOptions must be set
             LoadOptions loadOptions = new LoadOptions();
             loadOptions.Password = "12345";
@@ -1377,7 +1527,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:CreatingContainerUsingExtractorFactory
             //get file actual path
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             ExtractorFactory factory = new ExtractorFactory(null, new CellsMediaTypeDetector());
             using (Container container = factory.CreateContainer(filePath))
             {
@@ -1397,7 +1547,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:ExtractorFactoryCreateFormattedExtractor
             //get file actual path
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             ExtractorFactory factory = new ExtractorFactory(new MarkdownDocumentFormatter());
             using (TextExtractor extractor = factory.CreateFormattedTextExtractor(fileName))
             {
@@ -1413,7 +1563,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:ExtractHighlight
             //get file path
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             //initialize words text extractor
             using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
             {
@@ -1447,7 +1597,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:ExtractHighlightWithLimitedWordsCount
             //get file path
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
             {
                 IList<string> highlights = extractor.ExtractHighlights(
@@ -1470,7 +1620,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:ExtractHighlightTillStartOrEndOfLine
             //get file path
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
             {
                 IList<string> highlights = extractor.ExtractHighlights(
@@ -1484,6 +1634,7 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:ExtractHighlightTillStartOrEndOfLine
         }
+       
         /// <summary>
         /// Searches text in documents.
         /// </summary>
@@ -1492,7 +1643,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:SearchTextInDocuments
             //get file actual path
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             //initialize words text extractor
             using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
             {
@@ -1536,7 +1687,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:SearchWholeWord
             //get file path
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
             {
                 SearchOptions searchOptions = new SearchOptions(SearchHighlightOptions.CreateFixedLengthOptions(15), true, true);
@@ -1571,7 +1722,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:SearchTextWithRegex
             //get file path
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
             {
                 ListSearchHandler handler = new ListSearchHandler();
@@ -1605,7 +1756,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:UseExtractionModesWithSearch
             //get file path
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             using (WordsTextExtractor extractor = new WordsTextExtractor(filePath))
             {
                 ListSearchHandler handler = new ListSearchHandler();
@@ -1640,7 +1791,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:MediaTypeDetection
             //get file actual path
-            String filePath = Common.getFilePath(fileName);
+            String filePath = Common.GetFilePath(fileName);
             var mediaType = CompositeMediaTypeDetector.Default.Detect(filePath);
             Console.WriteLine(mediaType);
             //ExEnd:MediaTypeDetection
@@ -1656,7 +1807,7 @@ namespace GroupDocs.Text_for_.NET
         {
             //ExStart:ExtractFormattedHighlights
             //get file actual path
-            String filePath = Common.getFilePath(fileName);
+            String filePath = Common.GetFilePath(fileName);
             using (WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath))
             {
                 IList<string> highlights = extractor.ExtractHighlights(
@@ -1679,7 +1830,7 @@ namespace GroupDocs.Text_for_.NET
         public static void ImplementIpageExtractorInterface(string fileName)
         {
             //ExStart:ImplementIpageExtractorInterface_17.12
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             // Create an extractor factory 
             var factory = new ExtractorFactory();
             // Create an instance of text extractor class 
@@ -1709,7 +1860,7 @@ namespace GroupDocs.Text_for_.NET
         public static void UsingITextExtractorWithFormatterInterface(string fileName)
         {
             //ExStart:UsingITextExtractorWithFormatterInterface_17.12
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
 
             WordsFormattedTextExtractor extractor = new WordsFormattedTextExtractor(filePath);
 
@@ -1731,7 +1882,7 @@ namespace GroupDocs.Text_for_.NET
         public static void ExtractTextUsingSimpleInterface(string fileName)
         {
             //ExStart:ExtractTextUsingSimpleInterface_17.12
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
 
             // Extract a text from the stream
             using (Stream stream = File.OpenRead(filePath))
@@ -1750,7 +1901,7 @@ namespace GroupDocs.Text_for_.NET
         public static void ExtractFormattedTextUsingSimpleInterface(string fileName)
         {
             //ExStart:ExtractFormattedTextUsingSimpleInterface_17.12
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
 
             // Extract a text from the stream
             using (Stream stream = File.OpenRead(filePath))
@@ -1769,7 +1920,7 @@ namespace GroupDocs.Text_for_.NET
         public static void ExtractTextUsingSimpleInterfaceAndLoadOptions(string fileName)
         {
             //ExStart:ExtractTextUsingSimpleInterfaceAndLoadOptions_17.12
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
 
             // Create load options
             LoadOptions loadOptions = new LoadOptions(MediaTypeNames.Application.WordOpenXml);
@@ -1791,7 +1942,7 @@ namespace GroupDocs.Text_for_.NET
         public static void ExtractFormattedTextUsingSimpleInterfaceAndLoadOptions(string fileName)
         {
             //ExStart:ExtractFormattedTextUsingSimpleInterfaceAndLoadOptions_17.12
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
 
             // Create load options
             LoadOptions loadOptions = new LoadOptions(MediaTypeNames.Application.WordOpenXml);
@@ -1813,7 +1964,7 @@ namespace GroupDocs.Text_for_.NET
         public static void UseDefaultInstanceOfExtractorClassForTextExtraction(string fileName)
         {
             //ExStart:UseDefaultInstanceOfExtractorClass_17.12
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             // Extract a text from the stream
             using (Stream stream = File.OpenRead(filePath))
             {
@@ -1832,7 +1983,7 @@ namespace GroupDocs.Text_for_.NET
         public static void UseDefaultInstanceOfExtractorClassForformattedTextExtraction(string fileName)
         {
             //ExStart:UseDefaultInstanceOfExtractorClassForFormattedTextExtraction_17.12
-            string filePath = Common.getFilePath(fileName);
+            string filePath = Common.GetFilePath(fileName);
             // Extract a text from the stream
             using (Stream stream = File.OpenRead(filePath))
             {

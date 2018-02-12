@@ -82,8 +82,8 @@ namespace GroupDocs.Text_for_.NET
         public static void FindMaxWordLength(string fileOne, string fileTwo)
         {
             //ExStart:FindMaxWordLength
-            String firstFile = Common.getFilePath(fileOne);
-            String secondFile = Common.getFilePath(fileTwo);
+            String firstFile = Common.GetFilePath(fileOne);
+            String secondFile = Common.GetFilePath(fileTwo);
             string[] arguments = new string[] { firstFile, secondFile};
            
             int maxWordLength;
