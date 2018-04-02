@@ -389,7 +389,7 @@ namespace GroupDocs.Text_for_.NET
                     Console.WriteLine("{0} Page Count : {1} ", extractor.ExtractSheet(sheetIndex), extractor.SheetCount);
                 //ExEnd:ExtractEntireSheet
             }
-          
+
             /// <summary>
             /// Extracting the sheet by the rows
             /// </summary>
@@ -409,7 +409,7 @@ namespace GroupDocs.Text_for_.NET
                 }
                 //ExEnd:ExtractSheetByRows
             }
-          
+
             /// <summary>
             /// Extracts the selected columns
             /// </summary>
@@ -425,7 +425,7 @@ namespace GroupDocs.Text_for_.NET
                 Console.WriteLine(sheetInfo.ExtractSheet("B1", "C1"));
                 //ExEnd:ExtractSelectedColumns
             }
-           
+
             /// <summary>
             /// Extracts the selected columns from selected rows
             /// </summary>
@@ -556,7 +556,7 @@ namespace GroupDocs.Text_for_.NET
                 Console.WriteLine(extractor.ExtractPage(pageIndex));
                 //ExEnd:ExtractEntireWordPage
             }
-          
+
             /// <summary>
             /// Extracts text from word by defining a table format
             /// </summary>
@@ -576,7 +576,7 @@ namespace GroupDocs.Text_for_.NET
                 Console.WriteLine(extractor.ExtractAll());
                 //ExEnd:FormattingTable
             }
-           
+
             /// <summary>
             /// Extracts text with markdown text format
             /// </summary>
@@ -1467,6 +1467,153 @@ namespace GroupDocs.Text_for_.NET
                 Console.WriteLine(detector.Detect(stream));
                 //ExEnd:DetectChmMediaType
             }
+
+
+            /// <summary>
+            /// Extracts line of formatted text from chm file
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractLineOfFormattedText(string fileName)
+            {
+                //ExStart:ExtractLineOfFormattedText_18.3
+                // Create a text extractor for chm documents
+                using (var extractor = new ChmFormattedTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Extract a line of the text
+                    string line = extractor.ExtractLine();
+                    // If the line is null, then the end of the file is reached
+                    while (line != null)
+                    {
+                        // Print a line to the console
+                        Console.WriteLine(line);
+                        // Extract another line
+                        line = extractor.ExtractLine();
+                    }
+                }
+                //ExEnd:ExtractLineOfFormattedText_18.3
+            }
+
+            /// <summary>
+            /// Extracts all characters from chm file
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractAllCharactersOfFormattedText(string fileName)
+            {
+                //ExStart:ExtractAllCharactersOfFormattedText_18.3
+                // Create a text extractor for chm documents
+                using (var extractor = new ChmFormattedTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Extract a text
+                    Console.WriteLine(extractor.ExtractAll());
+                }
+                //ExEnd:ExtractAllCharactersOfFormattedText_18.3
+            }
+
+            /// <summary>
+            /// Extracts text from chm file using text formatter
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractFormattedTextUsingTextFormatter(string fileName)
+            {
+                //ExStart:ExtractFormattedTextUsingTextFormatter_18.3
+                // Create a text extractor for chm documents
+                using (var extractor = new ChmFormattedTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Set a HTML formatter for formatting
+                    extractor.DocumentFormatter = new HtmlDocumentFormatter(); // all the text will be formatted as HTML
+
+                    // Extract a text
+                    Console.WriteLine(extractor.ExtractAll());
+                }
+                //ExEnd:ExtractFormattedTextUsingTextFormatter_18.3
+            }
+
+            /// <summary>
+            /// Extracts text from chm file by pages
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractTextByPages(string fileName)
+            {
+                //ExStart:ExtractTextByPages_18.3
+                // Create a text extractor
+                ChmTextExtractor textExtractor = new ChmTextExtractor(Common.GetFilePath(fileName));
+                // Invoke a function to print a text by pages
+                // Check if IPageTextExtractor is supported
+                IPageTextExtractor pageTextExtractor = textExtractor as IPageTextExtractor;
+                if (pageTextExtractor != null)
+                {
+                    // Iterate over all pages
+                    for (int i = 0; i < pageTextExtractor.PageCount; i++)
+                    {
+                        // Print a page number
+                        Console.WriteLine(string.Format("{0}/{1}", i, pageTextExtractor.PageCount));
+                        // Extract a text from the page
+                        Console.WriteLine(pageTextExtractor.ExtractPage(i));
+                    }
+                }
+                //ExEnd:ExtractTextByPages_18.3
+            }
+
+            /// <summary>
+            /// Extracts TOC from chm file
+            /// </summary>
+            /// <param name="fileName"></param>
+            //ExStart:ExtractTableOfContent_18.3
+            public static void ExtractTableOfContent(string fileName)
+            {               
+                // Create a text extractor
+                using (ChmTextExtractor extractor = new ChmTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Print TOC on the screen
+                    PrintToc(extractor.TableOfContents, 0);
+                } 
+            }
+            private static void PrintToc(IEnumerable<TableOfContentsItem> tableOfContents, int depth)
+            {
+                // Use spaces to indicate the depth of the TOC item
+                string spaces = new string(' ', depth);
+
+                // Iterate over items
+                foreach (TableOfContentsItem item in tableOfContents)
+                {
+                    System.Console.Write(spaces);
+                    // Print the item's text
+                    System.Console.Write(item.Text);
+
+                    // If item has a text (it's not just a node)
+                    if (item.PageIndex.HasValue)
+                    {
+                        // Print the text length
+                        System.Console.Write(string.Format(" ({0})", item.ExtractPage().Length));
+                    }
+
+                    System.Console.WriteLine();
+
+                    // If the item has children
+                    if (item.Count > 0)
+                    {
+                        // Print them
+                        PrintToc(item, depth + 1);
+                    }
+                }
+            }
+            //ExEnd:ExtractTableOfContent_18.3
+
+            /// <summary>
+            /// Extracts text from the item of TOC
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractTextOfItemInTOC(string fileName)
+            {
+                //ExStart:ExtractTextOfItemInTOC_18.3
+                // Create a text extractor
+                using (ChmTextExtractor extractor = new ChmTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Print a content of the third sub-item of the second item
+                    Console.WriteLine(extractor.TableOfContents[1][1].ExtractPage());
+                }
+                //ExEnd:ExtractTextOfItemInTOC_18.3
+            }
         }
 
 
@@ -1634,7 +1781,7 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:ExtractHighlightTillStartOrEndOfLine
         }
-       
+
         /// <summary>
         /// Searches text in documents.
         /// </summary>
