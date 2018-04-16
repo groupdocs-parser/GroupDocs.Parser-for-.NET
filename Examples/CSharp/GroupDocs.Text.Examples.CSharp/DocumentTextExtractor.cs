@@ -222,6 +222,24 @@ namespace GroupDocs.Text_for_.NET
                     }
                 }
             }
+
+            /// <summary>
+            /// Shows how to detect media type of .one file 
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void DetectMediaType(string fileName)
+            {
+                //ExStart:DetectMediaTypeOne_18.4
+                //get file's actual path
+                String filePath = Common.GetFilePath(fileName);
+                // Create a media type detector
+                var detector = new NoteMediaTypeDetector();
+                // Detect a media type by the file name 
+                Console.WriteLine(detector.Detect(filePath));
+                // Detect a media type by the content using stream object
+                //Console.WriteLine(detector.Detect(stream));
+                //ExEnd:DetectMediaTypeOne_18.4
+            }
         }
 
         public class PdfDocument
@@ -1095,6 +1113,68 @@ namespace GroupDocs.Text_for_.NET
                 //ExEnd:ExtractFormattedTextEpub
             }
 
+            /// <summary>
+            /// Extracts TOC from epub file
+            /// </summary>
+            /// <param name="fileName"></param>
+            //ExStart:ExtractTableOfContentEpub_18.4
+            public static void ExtractTableOfContent(string fileName)
+            {
+                // Create a text extractor
+                using (EpubTextExtractor extractor = new EpubTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Print TOC on the screen
+                    PrintToc(extractor[0].TableOfContents, 0);
+                }
+            }
+            private static void PrintToc(IEnumerable<TableOfContentsItem> tableOfContents, int depth)
+            {
+                // Use spaces to indicate the depth of the TOC item
+                string spaces = new string(' ', depth);
+
+                // Iterate over items
+                foreach (TableOfContentsItem item in tableOfContents)
+                {
+                    System.Console.Write(spaces);
+                    // Print the item's text
+                    System.Console.Write(item.Text);
+
+                    // If item has a text (it's not just a node)
+                    if (item.PageIndex.HasValue)
+                    {
+                        // Print the text length
+                        System.Console.Write(string.Format(" ({0})", item.ExtractPage().Length));
+                    }
+
+                    System.Console.WriteLine();
+
+                    // If the item has children
+                    if (item.Count > 0)
+                    {
+                        // Print them
+                        PrintToc(item, depth + 1);
+                    }
+                }
+            }
+            //ExEnd:ExtractTableOfContentEpub_18.4
+
+            /// <summary>
+            /// Extracts text from the item of TOC
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractTextOfItemInTOC(string fileName)
+            {
+                //ExStart:ExtractTextOfItemInTOCEpub_18.4
+                // Create a text extractor
+                using (EpubTextExtractor extractor = new EpubTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Print a content of the third sub-item of the second item 
+                    Console.WriteLine(extractor[0].TableOfContents[1][2].ExtractPage());
+                }
+                //ExEnd:ExtractTextOfItemInTOCEpub_18.4
+            }
+
+            
         }
 
         public class Fb2
