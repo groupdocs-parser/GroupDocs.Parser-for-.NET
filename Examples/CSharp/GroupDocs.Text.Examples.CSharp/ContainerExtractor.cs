@@ -71,16 +71,16 @@ namespace GroupDocs.Text_for_.NET
                     using (var extractor = new EmailTextExtractor(entityStream))
                     {
                         string content = extractor.ExtractAll();
-                        Console.WriteLine(entity[PersonalStorageContainer.EmailSubject]);
-                        Console.WriteLine(entity[PersonalStorageContainer.EmailSender]);
-                        Console.WriteLine(entity[PersonalStorageContainer.EmailReceiver]);
+                        Console.WriteLine(entity[MetadataNames.Subject]);
+                        Console.WriteLine(entity[MetadataNames.EmailFrom]);
+                        Console.WriteLine(entity[MetadataNames.EmailFrom]);
                         Console.WriteLine(content);
                     }
                 }
             }
             //ExEnd:ExtractTextFromOstContainer2_18.2
         }
-        
+
         /// <summary>
         /// For enumerating all the entities of the group of containers ContainerEnumerator class is used
         /// </summary>
@@ -249,7 +249,7 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:RetrieveEmailsUsingEntity
         }
-        
+
         /// <summary>
         /// Shows how to retrieve emails from POP3 server using Entity property
         /// </summary>
@@ -275,7 +275,7 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:RetrieveEmailsUsingEntity
         }
-        
+
         /// <summary>
         /// Shows how to retrieve emails from IMAP server using Entity property
         /// </summary>
@@ -329,7 +329,7 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:RetrieveEmailUsingOpenEntityStream
         }
-        
+
         /// <summary>
         /// Shows how to retrieve an email from POP3 server using OpenEntityStream method
         /// </summary>
@@ -357,7 +357,7 @@ namespace GroupDocs.Text_for_.NET
             }
             //ExEnd:RetrieveEmailUsingOpenEntityStreamPOP3
         }
-       
+
         /// <summary>
         /// Shows how to retrieve an email from IMAP server using OpenEntityStream method
         /// </summary>
