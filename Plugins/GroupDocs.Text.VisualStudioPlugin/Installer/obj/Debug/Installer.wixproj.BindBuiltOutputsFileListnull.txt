@@ -1,2 +1,0 @@
-D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\out\Installer GroupDocs.Text for .NET API Examples.msi
-D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\out\Installer GroupDocs.Text for .NET API Examples.wixpdb
