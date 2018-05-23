@@ -184,7 +184,7 @@ namespace GroupDocs.Parser_for_.NET
                 // If the entity isn't found
                 if (containerEntry == null)
                 {
-                    throw new GroupDocsTextException("File not found");
+                    throw new GroupDocsParserException("File not found");
                 }
 
                 // Try to create a text extractor
