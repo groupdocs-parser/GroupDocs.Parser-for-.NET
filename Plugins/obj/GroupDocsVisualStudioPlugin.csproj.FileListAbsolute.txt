@@ -10,3 +10,15 @@ D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\obj\GroupDocsTextVisualStudio
 D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\obj\GroupDocsVisualStudioPlugin.csproj.GenerateResource.Cache
 D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\obj\GroupDocsTextVisualStudioPlugin.dll
 D:\Aspose Projects\GroupDocs.Text-for-.NET\Plugins\obj\GroupDocsTextVisualStudioPlugin.pdb
+D:\Aspose Works\GitRepos\GroupDocs.Parser-for-.NET\Plugins\GroupDocs.Parser.VisualStudioPlugin\out\GroupDocsParserVisualStudioPlugin.dll.config
+D:\Aspose Works\GitRepos\GroupDocs.Parser-for-.NET\Plugins\GroupDocs.Parser.VisualStudioPlugin\out\GroupDocsParserVisualStudioPlugin.dll
+D:\Aspose Works\GitRepos\GroupDocs.Parser-for-.NET\Plugins\GroupDocs.Parser.VisualStudioPlugin\out\GroupDocsParserVisualStudioPlugin.pdb
+D:\Aspose Works\GitRepos\GroupDocs.Parser-for-.NET\Plugins\GroupDocs.Parser.VisualStudioPlugin\out\AsposeVisualStudioPlugin.xml
+D:\Aspose Works\GitRepos\GroupDocs.Parser-for-.NET\Plugins\obj\GroupDocsVisualStudioPlugin.csprojResolveAssemblyReference.cache
+D:\Aspose Works\GitRepos\GroupDocs.Parser-for-.NET\Plugins\obj\GroupDocsVisualStudioPlugin.csproj.ResolveComReference.cache
+D:\Aspose Works\GitRepos\GroupDocs.Parser-for-.NET\Plugins\obj\GroupDocsParserVisualStudioPlugin.GUI.ComponentWizardPage.resources
+D:\Aspose Works\GitRepos\GroupDocs.Parser-for-.NET\Plugins\obj\GroupDocsParserVisualStudioPlugin.GUI.SampleWizardPage.resources
+D:\Aspose Works\GitRepos\GroupDocs.Parser-for-.NET\Plugins\obj\GroupDocsParserVisualStudioPlugin.Properties.Resources.resources
+D:\Aspose Works\GitRepos\GroupDocs.Parser-for-.NET\Plugins\obj\GroupDocsVisualStudioPlugin.csproj.GenerateResource.Cache
+D:\Aspose Works\GitRepos\GroupDocs.Parser-for-.NET\Plugins\obj\GroupDocsParserVisualStudioPlugin.dll
+D:\Aspose Works\GitRepos\GroupDocs.Parser-for-.NET\Plugins\obj\GroupDocsParserVisualStudioPlugin.pdb
