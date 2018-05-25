@@ -124,7 +124,10 @@ namespace GroupDocs.Parser_for_.NET
 
             //Extract structured text from Markdown document
             //DocumentTextExtractor.MarkdownDocument.ExtractStructuredText("sample.md");
-             
+
+            //Extract text with simple extract mode
+            //DocumentTextExtractor.ExtractTextUsingExtractMode("sample.xlsx");
+
             #endregion
 
             #region MetadataExtractors

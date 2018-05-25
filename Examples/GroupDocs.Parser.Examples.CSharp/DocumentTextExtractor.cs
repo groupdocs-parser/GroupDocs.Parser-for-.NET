@@ -2221,5 +2221,25 @@ namespace GroupDocs.Parser_for_.NET
             }
             //ExEnd:UseDefaultInstanceOfExtractorClassForFormattedTextExtraction_17.12
         }
+
+        /// <summary>
+        /// Extracts a text from a file or stream using extract mode
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ExtractTextUsingExtractMode(string fileName)
+        {
+            //ExStart:ExtractTextUsingExtractMode_18.5
+            string filePath = Common.GetFilePath(fileName);
+
+            // Create a text extractor
+            CellsTextExtractor extractor = new CellsTextExtractor(filePath);
+            
+            // Set ExtractMode for the faster text extraction
+            extractor.ExtractMode = ExtractMode.Simple;
+            
+            // Extract text
+            Console.WriteLine(extractor.ExtractAll());
+            //ExEnd:ExtractTextUsingExtractMode_18.5
+        }
     }
 }
