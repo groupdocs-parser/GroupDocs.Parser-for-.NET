@@ -19,8 +19,8 @@ Directory | Description
 ## Resources
 
 + **Website:** [www.groupdocs.com](http://www.groupdocs.com)
-+ **Product Home:** [GroupDocs.Pext for .NET](https://www.groupdocs.com/products/parser/net)
-+ **Download:** [Download GroupDocs.Pext for .NET](https://downloads.groupdocs.com/parser/net)
-+ **Documentation:** [GroupDocs.Pext for .NET Documentation](https://docs.groupdocs.com/display/parsernet/Home)
-+ **Forum:** [GroupDocs.Pext for .NET Forum](https://forum.groupdocs.com/c/parser)
++ **Product Home:** [GroupDocs.Parser for .NET](https://www.groupdocs.com/products/parser/net)
++ **Download:** [Download GroupDocs.Parser for .NET](https://downloads.groupdocs.com/parser/net)
++ **Documentation:** [GroupDocs.Parser for .NET Documentation](https://docs.groupdocs.com/display/parsernet/Home)
++ **Forum:** [GroupDocs.Parser for .NET Forum](https://forum.groupdocs.com/c/parser)
 + **Blog:** [GroupDocs.Parser for .NET Blog](https://blog.groupdocs.com/category/groupdocs-parser-product-family/)
