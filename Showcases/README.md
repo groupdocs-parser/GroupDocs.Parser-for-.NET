@@ -1,6 +1,6 @@
-# GroupDocs.Text MVC Front End
+# GroupDocs.Parser MVC Front End
 
-This sample front end is created to provide a user friendly interface for working with GroupDocs.Text API and nearly all functions are implemented in this front end. User can simply upload file and apply features on it using tool buttons.
+This sample front end is created to provide a user friendly interface for working with GroupDocs.Parser API and nearly all functions are implemented in this front end. User can simply upload file and apply features on it using tool buttons.
 
 # Pre-Requisites
 
