@@ -128,6 +128,8 @@ namespace GroupDocs.Parser_for_.NET
             //Extract text with simple extract mode
             //DocumentTextExtractor.ExtractTextUsingExtractMode("sample.xlsx");
 
+            //Extract a text area from a PDF document
+            //DocumentTextExtractor.ExtractTextAreaFromDocument("sample.pdf");
             #endregion
 
             #region MetadataExtractors

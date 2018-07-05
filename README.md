@@ -2,7 +2,7 @@
 
 This package contains [Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples) and [Showcases](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Showcases) for [GroupDocs.Parser for .NET](https://products.groupdocs.com/parser/net) that will help you in understanding the API's working and writing your own applications.
 
-GroupDocs.Parser for .NET is a convenient text extractor API that permits users to extract raw or formatted text from different document formats. Beside, it is not only a text extractor API, user can extract metadata of the document as well. This document text extraction API allows user to read document content or metadata properties in console.
+GroupDocs.Parser for .NET is a convenient text extractor API that permits users to extract raw or formatted text from different document formats. Beside, it is not only a text extractor API, user can extract metadata of the document as well. The API also allows the user to deal with the containers such as OST and ZIP containers.
 
 <p align="center">
 
@@ -13,7 +13,7 @@ GroupDocs.Parser for .NET is a convenient text extractor API that permits users 
 
 Directory | Description
 --------- | -----------
-[Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples)  | Contains the package of all .NET examples (C#) and sample files that will help you learn how to use product features. 
+[Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples)  | Contains the package of all examples (C#) and sample files that will help you learn how to use product features. 
 [Showcases](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Showcases)  | Contains a sample ASP.NET MVC bases sample front end to demonstrate the salient features of GroupDocs.Parser.
 [Plugin](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Plugins)  | Contains the plugins related to GroupDocs.Parser for Visual Studio. 
 ## Resources
