@@ -2241,5 +2241,35 @@ namespace GroupDocs.Parser_for_.NET
             Console.WriteLine(extractor.ExtractAll());
             //ExEnd:ExtractTextUsingExtractMode_18.5
         }
+
+        /// <summary>
+        /// Extracts a text area from a PDF document
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ExtractTextAreaFromDocument(string fileName)
+        {
+            //ExStart:ExtractTextAreaFromDocument_18.7
+            // Create a text extractor
+            PdfTextExtractor extractor = new PdfTextExtractor(Common.GetFilePath(fileName));
+
+            // Create search options
+            TextAreaSearchOptions searchOptions = new TextAreaSearchOptions();
+            // Set a regular expression to search 'Invoice # XXX' text
+            searchOptions.Expression = "\\s?INVOICE\\s?#\\s?[0-9]+";
+            // Limit the search with a rectangle
+            searchOptions.Rectangle = new GroupDocs.Parser.Rectangle(10, 10, 300, 150);
+
+            // Get text areas
+            IList<TextArea> texts = extractor.DocumentContent.GetTextAreas(0, searchOptions);
+
+            // Iterate over a list
+            foreach (TextArea area in texts)
+            {
+                // Print a text
+                Console.WriteLine(area.Text);
+            }
+            //ExEnd:ExtractTextAreaFromDocument_18.7
+        }
+
     }
 }

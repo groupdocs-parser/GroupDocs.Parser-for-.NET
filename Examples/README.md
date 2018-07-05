@@ -1,6 +1,6 @@
 ## GroupDocs.Parser for .NET Examples
 
-This package contains C# Example Projects for [GroupDocs.Parser for .NET](https://products.groupdocs.com/parser/net) and sample input documents used in the examples.
+This package contains Example Project for [GroupDocs.Parser for .NET](https://products.groupdocs.com/parser/net) and sample input documents used in the examples.
 
 <p align="center">
   <a title="Download complete GroupDocs.Parser for .NET Example source code" href="https://codeload.github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/zip/master">
