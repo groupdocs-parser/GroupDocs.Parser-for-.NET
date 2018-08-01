@@ -13,7 +13,7 @@ GroupDocs.Parser for .NET is a convenient text extractor API that permits users 
 
 Directory | Description
 --------- | -----------
-[Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples)  | Contains the package of all examples (C#) and sample files that will help you learn how to use product features. 
+[Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples)  | Contains the package of all .NET examples (C#) and sample files that will help you learn how to use product features. 
 [Showcases](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Showcases)  | Contains a sample ASP.NET MVC bases sample front end to demonstrate the salient features of GroupDocs.Parser.
 [Plugin](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Plugins)  | Contains the plugins related to GroupDocs.Parser for Visual Studio. 
 ## Resources
