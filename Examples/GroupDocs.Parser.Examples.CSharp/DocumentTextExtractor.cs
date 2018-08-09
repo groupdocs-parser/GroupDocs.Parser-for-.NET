@@ -305,6 +305,35 @@ namespace GroupDocs.Parser_for_.NET
                 }
                 //ExEnd:ExtractTextFromPdfPortfolios
             }
+
+            /// <summary>
+            /// Extracts a text area from a PDF document
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractTextAreaFromPDFDocument(string fileName)
+            {
+                //ExStart:ExtractTextAreaFromDocument_18.7
+                // Create a text extractor
+                PdfTextExtractor extractor = new PdfTextExtractor(Common.GetFilePath(fileName));
+
+                // Create search options
+                TextAreaSearchOptions searchOptions = new TextAreaSearchOptions();
+                // Set a regular expression to search 'Invoice # XXX' text
+                searchOptions.Expression = "\\s?INVOICE\\s?#\\s?[0-9]+";
+                // Limit the search with a rectangle
+                searchOptions.Rectangle = new GroupDocs.Parser.Rectangle(10, 10, 300, 150);
+
+                // Get text areas
+                IList<TextArea> texts = extractor.DocumentContent.GetTextAreas(0, searchOptions);
+
+                // Iterate over a list
+                foreach (TextArea area in texts)
+                {
+                    // Print a text
+                    Console.WriteLine(area.Text);
+                }
+                //ExEnd:ExtractTextAreaFromDocument_18.7
+            }
         }
 
         public class PresentationDocument
@@ -386,6 +415,35 @@ namespace GroupDocs.Parser_for_.NET
 
                 Console.WriteLine(sb.ToString());
                 //ExEnd:ExtractTopLevelLists
+            }
+
+            /// <summary>
+            /// Extracts a text area from a presentation document
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractTextAreaFromPresentationDocument(string fileName)
+            {
+                //ExStart:ExtractTextAreaFromPresentationDocument_18.8
+                // Create a text extractor
+                SlidesTextExtractor extractor = new SlidesTextExtractor(Common.GetFilePath(fileName));
+
+                // Create search options
+                TextAreaSearchOptions searchOptions = new TextAreaSearchOptions();
+                // Set a regular expression to search 'Invoice # XXX' text
+                searchOptions.Expression = "\\s?INVOICE\\s?#\\s?[0-9]+";
+                // Limit the search with a rectangle
+                searchOptions.Rectangle = new GroupDocs.Parser.Rectangle(10, 10, 300, 150);
+
+                // Get text areas
+                IList<TextArea> texts = extractor.DocumentContent.GetTextAreas(0, searchOptions);
+
+                // Iterate over a list
+                foreach (TextArea area in texts)
+                {
+                    // Print a text
+                    Console.WriteLine(area.Text);
+                }
+                //ExEnd:ExtractTextAreaFromPresentationDocument_18.8
             }
         }
 
@@ -555,6 +613,35 @@ namespace GroupDocs.Parser_for_.NET
                 extractor.ExtractStructured(handler);
                 Console.WriteLine(sb.ToString());
                 //ExEnd:ExtractStructuredText
+            }
+
+            /// <summary>
+            /// Extracts a text area from a spreadsheet document
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractTextAreaFromSpreadsheetDocument(string fileName)
+            {
+                //ExStart:ExtractTextAreaFromSpreadsheetDocument_18.8
+                // Create a text extractor
+                CellsTextExtractor extractor = new CellsTextExtractor(Common.GetFilePath(fileName));
+
+                // Create search options
+                TextAreaSearchOptions searchOptions = new TextAreaSearchOptions();
+                // Set a regular expression to search 'Invoice # XXX' text
+                searchOptions.Expression = "\\s?INVOICE\\s?#\\s?[0-9]+";
+                // Limit the search with a rectangle
+                searchOptions.Rectangle = new GroupDocs.Parser.Rectangle(10, 10, 300, 150);
+
+                // Get text areas
+                IList<TextArea> texts = extractor.DocumentContent.GetTextAreas(0, searchOptions);
+
+                // Iterate over a list
+                foreach (TextArea area in texts)
+                {
+                    // Print a text
+                    Console.WriteLine(area.Text);
+                }
+                //ExEnd:ExtractTextAreaFromSpreadsheetDocument_18.8
             }
         }
 
@@ -730,6 +817,35 @@ namespace GroupDocs.Parser_for_.NET
                     Console.WriteLine(hl);
                 }
                 //ExEnd:ExtractHyperlinksFromDocument
+            }
+
+            /// <summary>
+            /// Extracts a text area from a text document
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractTextAreaFromTextDocument(string fileName)
+            {
+                //ExStart:ExtractTextAreaFromTextDocument_18.8
+                // Create a text extractor
+                WordsTextExtractor extractor = new WordsTextExtractor(Common.GetFilePath(fileName));
+
+                // Create search options
+                TextAreaSearchOptions searchOptions = new TextAreaSearchOptions();
+                // Set a regular expression to search 'Invoice # XXX' text
+                searchOptions.Expression = "\\s?INVOICE\\s?#\\s?[0-9]+";
+                // Limit the search with a rectangle
+                searchOptions.Rectangle = new GroupDocs.Parser.Rectangle(10, 10, 300, 150);
+
+                // Get text areas
+                IList<TextArea> texts = extractor.DocumentContent.GetTextAreas(0, searchOptions);
+
+                // Iterate over a list
+                foreach (TextArea area in texts)
+                {
+                    // Print a text
+                    Console.WriteLine(area.Text);
+                }
+                //ExEnd:ExtractTextAreaFromTextDocument_18.8
             }
         }
 
@@ -2242,34 +2358,7 @@ namespace GroupDocs.Parser_for_.NET
             //ExEnd:ExtractTextUsingExtractMode_18.5
         }
 
-        /// <summary>
-        /// Extracts a text area from a PDF document
-        /// </summary>
-        /// <param name="fileName"></param>
-        public static void ExtractTextAreaFromDocument(string fileName)
-        {
-            //ExStart:ExtractTextAreaFromDocument_18.7
-            // Create a text extractor
-            PdfTextExtractor extractor = new PdfTextExtractor(Common.GetFilePath(fileName));
-
-            // Create search options
-            TextAreaSearchOptions searchOptions = new TextAreaSearchOptions();
-            // Set a regular expression to search 'Invoice # XXX' text
-            searchOptions.Expression = "\\s?INVOICE\\s?#\\s?[0-9]+";
-            // Limit the search with a rectangle
-            searchOptions.Rectangle = new GroupDocs.Parser.Rectangle(10, 10, 300, 150);
-
-            // Get text areas
-            IList<TextArea> texts = extractor.DocumentContent.GetTextAreas(0, searchOptions);
-
-            // Iterate over a list
-            foreach (TextArea area in texts)
-            {
-                // Print a text
-                Console.WriteLine(area.Text);
-            }
-            //ExEnd:ExtractTextAreaFromDocument_18.7
-        }
+        
 
     }
 }

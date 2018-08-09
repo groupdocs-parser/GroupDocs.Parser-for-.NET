@@ -1,4 +1,5 @@
 ﻿using GroupDocs.Parser_for_.NET.Utilities;
+using GroupDocs.Text_for_.NET.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace GroupDocs.Parser_for_.NET
         static void Main(string[] args)
         {
             //If you have the product license, un-comment following function to apply the license 
-            //Common.ApplyLicense();
+            Common.ApplyLicense();
 
             #region TextExtractors
             //Extract email attachments
@@ -129,7 +130,20 @@ namespace GroupDocs.Parser_for_.NET
             //DocumentTextExtractor.ExtractTextUsingExtractMode("sample.xlsx");
 
             //Extract a text area from a PDF document
-            //DocumentTextExtractor.ExtractTextAreaFromDocument("sample.pdf");
+            //DocumentTextExtractor.PdfDocument.ExtractTextAreaFromPDFDocument("sample.pdf");
+
+            //Extract a text area from a text document
+            //DocumentTextExtractor.TextDocument.ExtractTextAreaFromTextDocument("The butterfly effect.docx");
+
+            //Extract a text area from a presentation document
+            //DocumentTextExtractor.PresentationDocument.ExtractTextAreaFromPresentationDocument("The butterfly effect.pptx");
+
+            //Extract a text area from a spreadsheet document
+            //DocumentTextExtractor.SpreadsheetDocument.ExtractTextAreaFromSpreadsheetDocument("The butterfly effect.xlsx");
+
+            // This feature allows providing a password for protected documents on-demand
+            //Indexer indexer = new Indexer();
+            //indexer.Process(new System.IO.DirectoryInfo(Common.SOURCE_PATH));
             #endregion
 
             #region MetadataExtractors
