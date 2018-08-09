@@ -22,7 +22,6 @@ namespace GroupDocs.Parser_for_.NET
             public static void ExtractEncodingByBOM(string fileName)
             {
                 //ExStart:ExtractEncodingByBOM
-
                 try
                 {
                     EncodingDetector detector = new EncodingDetector(Encoding.GetEncoding(1251));
