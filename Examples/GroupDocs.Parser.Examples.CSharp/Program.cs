@@ -29,7 +29,8 @@ namespace GroupDocs.Parser_for_.NET
             //Extract pdf text
             //DocumentTextExtractor.PdfDocument.ExtractPdfDocument("The butterfly effect.pdf");
             //DocumentTextExtractor.PdfDocument.ExtractTextFromPdfPortfolios("Portfolio.pdf");
-
+            //DocumentTextExtractor.PdfDocument.ExtractDataFromPDFForms("Portfolio.pdf");
+            
             //Extract slides text
             //DocumentTextExtractor.PresentationDocument.ExtractPresentationDocument("The butterfly effect.pptx");
 
@@ -211,6 +212,9 @@ namespace GroupDocs.Parser_for_.NET
 
             //Retrieve an email using OpenEntityStream method IMAP(feature is supported in version 17.10)
             //ContainerExtractor.RetrieveEmailUsingOpenEntityStreamIMAP();
+
+            //Extract text from the database using DbContainer
+            //ContainerExtractor.ExtractTextFromDatabase("sample.sqlite");
             #endregion
 
             #region Structured Text Extraction

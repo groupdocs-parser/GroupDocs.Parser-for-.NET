@@ -334,6 +334,28 @@ namespace GroupDocs.Parser_for_.NET
                 }
                 //ExEnd:ExtractTextAreaFromDocument_18.7
             }
+
+            /// <summary>
+            /// Extracts data from PDF Forms
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractDataFromPDFForms(string fileName)
+            {
+                //ExStart:ExtractDataFromPDFForms_18.9
+                // Create a text extractor
+                using (var extractor = new PdfTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Extract forms data
+                    var fields = extractor.GetFormData();
+                    // Iterate over fields
+                    foreach (var f in fields)
+                    {
+                        // Print field name and value
+                        System.Console.WriteLine(string.Format("{0}: {1}", f.Key, f.Value));
+                    }
+                }
+                //ExEnd:ExtractDataFromPDFForms_18.9
+            }
         }
 
         public class PresentationDocument

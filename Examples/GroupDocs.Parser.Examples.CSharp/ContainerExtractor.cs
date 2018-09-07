@@ -5,6 +5,8 @@ using GroupDocs.Parser.Extractors.Metadata;
 using GroupDocs.Parser.Extractors.Text;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -385,6 +387,45 @@ namespace GroupDocs.Parser_for_.NET
             }
             //ExEnd:RetrieveEmailUsingOpenEntityStreamPOP3
         }
+
+        /// <summary>
+        /// Extracts text from the database using DbContainer
+        /// </summary>
+        /// <param name="FileName"></param>
+        public static void ExtractTextFromDatabase(string FileName)
+        {
+            //ExStart:ExtractTextFromDatabase_18.9
+            // Create connection string 
+            string connectionString = Common.GetConnectionString(FileName);
+            // Create a container
+            using (var container = new DbContainer(new SQLiteConnection(connectionString)))
+            {
+                // Iterate over entities 
+                foreach (var entity in container.Entities)
+                {
+                    // Print a table name
+                    System.Console.WriteLine(entity.Name);
+                    // Print a media type
+                    System.Console.WriteLine(entity.MediaType);
+                    // Create a stream reader for CSV document: OpenStream method converts a table to the CSV file and returns it as Stream
+                    using (var reader = new StreamReader(entity.OpenStream()))
+                    {
+                        // Read a line
+                        string line = reader.ReadLine();
+                        // Loop to the end of the file
+                        while (line != null)
+                        {
+                            // Print a line from the document
+                            System.Console.WriteLine(line);
+                            // Read the next line
+                            line = reader.ReadLine();
+                        }
+                    }
+                }
+            }
+            //ExEnd:ExtractTextFromDatabase_18.9
+        }
+
     }
 }
 

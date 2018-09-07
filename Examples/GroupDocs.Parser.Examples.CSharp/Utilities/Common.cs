@@ -56,5 +56,16 @@ namespace GroupDocs.Parser_for_.NET
             matered.SetMeteredKey("PublicKey", "PrivateKey");
             //ExEnd:SetMeteredKey
         }
+
+        /// <summary>
+        /// Returns connection string of the database file
+        /// </summary>
+        public static string GetConnectionString(string FileName)
+        {
+            //ExStart:GetConnectionString
+            string FilePath = Path.Combine(Path.GetFullPath(@"..\..\..\"), @"Data\Storage", FileName);
+            return @"Data Source=" + FilePath + "; Version=3; FailIfMissing=True; Foreign Keys=True;";
+            //ExEnd:GetConnectionString
+        }
     }
 }
