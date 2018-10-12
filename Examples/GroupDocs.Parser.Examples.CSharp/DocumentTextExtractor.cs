@@ -356,6 +356,35 @@ namespace GroupDocs.Parser_for_.NET
                 }
                 //ExEnd:ExtractDataFromPDFForms_18.9
             }
+
+            /// <summary>
+            /// Extracts images from the PDF document
+            /// </summary>
+            public static void ExtractImages(string fileName)
+            {
+                //ExStart:ExtractImages_PDF_18.10
+                // Create a text extractor
+                PdfTextExtractor extractor = new PdfTextExtractor(fileName);
+
+                // Create search options
+                ImageAreaSearchOptions searchOptions = new ImageAreaSearchOptions();
+                // Limit the search with the rectangle: position (0; 0), size (300; 300)
+                searchOptions.Rectangle = new Rectangle(0, 0, 300, 300);
+
+                // Get images from the first page
+                IList<ImageArea> imageAreas = extractor.DocumentContent.GetImageAreas(0, searchOptions);
+
+                // Iterate over the images
+                for (int i = 0; i < imageAreas.Count; i++)
+                {
+                    using (Stream fs = File.Create(String.Format("{0}.jpg", i)))
+                    {
+                        // Save the image to the file
+                        Common.CopyStream(imageAreas[i].GetRawStream(), fs);
+                    }
+                }
+                //ExEnd:ExtractImages_PDF_18.10
+            }
         }
 
         public class PresentationDocument
@@ -466,6 +495,35 @@ namespace GroupDocs.Parser_for_.NET
                     Console.WriteLine(area.Text);
                 }
                 //ExEnd:ExtractTextAreaFromPresentationDocument_18.8
+            }
+
+            /// <summary>
+            /// Extracts images from the presentation document
+            /// </summary>
+            public static void ExtractImages(string fileName)
+            {
+                //ExStart:ExtractImages_Presentation_18.10
+                // Create a text extractor
+                SlidesTextExtractor extractor = new SlidesTextExtractor(fileName);
+
+                // Create search options
+                ImageAreaSearchOptions searchOptions = new ImageAreaSearchOptions();
+                // Limit the search with the rectangle: position (0; 0), size (300; 300)
+                searchOptions.Rectangle = new Rectangle(0, 0, 300, 300);
+
+                // Get images from the first slide
+                IList<ImageArea> imageAreas = extractor.DocumentContent.GetImageAreas(0, searchOptions);
+
+                // Iterate over the images
+                for (int i = 0; i < imageAreas.Count; i++)
+                {
+                    using (Stream fs = File.Create(String.Format("{0}.jpg", i)))
+                    {
+                        // Save the image to the file
+                        Common.CopyStream(imageAreas[i].GetRawStream(), fs);
+                    }
+                }
+                //ExEnd:ExtractImages_Presentation_18.10
             }
         }
 
@@ -664,6 +722,35 @@ namespace GroupDocs.Parser_for_.NET
                     Console.WriteLine(area.Text);
                 }
                 //ExEnd:ExtractTextAreaFromSpreadsheetDocument_18.8
+            }
+
+            /// <summary>
+            /// Extracts images from the speardsheet document
+            /// </summary>
+            public static void ExtractImages(string fileName)
+            {
+                //ExStart:ExtractImages_Spreadsheet_18.10
+                // Create a text extractor
+                CellsTextExtractor extractor = new CellsTextExtractor(fileName);
+
+                // Create search options
+                ImageAreaSearchOptions searchOptions = new ImageAreaSearchOptions();
+                // Limit the search with the rectangle: position (0; 0), size (300; 300)
+                searchOptions.Rectangle = new Rectangle(0, 0, 300, 300);
+
+                // Get images from the first slide
+                IList<ImageArea> imageAreas = extractor.DocumentContent.GetImageAreas(0, searchOptions);
+
+                // Iterate over the images
+                for (int i = 0; i < imageAreas.Count; i++)
+                {
+                    using (Stream fs = File.Create(String.Format("{0}.jpg", i)))
+                    {
+                        // Save the image to the file
+                        Common.CopyStream(imageAreas[i].GetRawStream(), fs);
+                    }
+                }
+                //ExEnd:ExtractImages_Spreadsheet_18.10
             }
         }
 
@@ -868,6 +955,35 @@ namespace GroupDocs.Parser_for_.NET
                     Console.WriteLine(area.Text);
                 }
                 //ExEnd:ExtractTextAreaFromTextDocument_18.8
+            }
+
+            /// <summary>
+            /// Extracts images from the text document
+            /// </summary>
+            public static void ExtractImages(string fileName)
+            {
+                //ExStart:ExtractImages_TextDocument_18.10
+                // Create a text extractor
+                WordsTextExtractor extractor = new WordsTextExtractor(fileName);
+
+                // Create search options
+                ImageAreaSearchOptions searchOptions = new ImageAreaSearchOptions();
+                // Limit the search with the rectangle: position (0; 0), size (300; 300)
+                searchOptions.Rectangle = new Rectangle(0, 0, 300, 300);
+
+                // Get images from the first slide
+                IList<ImageArea> imageAreas = extractor.DocumentContent.GetImageAreas(0, searchOptions);
+
+                // Iterate over the images
+                for (int i = 0; i < imageAreas.Count; i++)
+                {
+                    using (Stream fs = File.Create(String.Format("{0}.jpg", i)))
+                    {
+                        // Save the image to the file
+                        Common.CopyStream(imageAreas[i].GetRawStream(), fs);
+                    }
+                }
+                //ExEnd:ExtractImages_TextDocument_18.10
             }
         }
 

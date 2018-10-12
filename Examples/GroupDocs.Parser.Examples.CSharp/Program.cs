@@ -30,9 +30,9 @@ namespace GroupDocs.Parser_for_.NET
             //DocumentTextExtractor.PdfDocument.ExtractPdfDocument("The butterfly effect.pdf");
             //DocumentTextExtractor.PdfDocument.ExtractTextFromPdfPortfolios("Portfolio.pdf");
             //DocumentTextExtractor.PdfDocument.ExtractDataFromPDFForms("Portfolio.pdf");
-            
+
             //Extract slides text
-            //DocumentTextExtractor.PresentationDocument.ExtractPresentationDocument("The butterfly effect.pptx");
+            //DocumentTextExtractor.PresentationDocument.ExtractPresentationDocument("The butterfly effect.pptx");            
 
             //Extract the entire sheet
             //DocumentTextExtractor.SpreadsheetDocument.ExtractEntireSheet("The butterfly effect.xlsx");
@@ -44,7 +44,7 @@ namespace GroupDocs.Parser_for_.NET
             //DocumentTextExtractor.SpreadsheetDocument.ExtractSelectedColumns("The butterfly effect.xlsx");
 
             //Extract selected rows and columns
-            //DocumentTextExtractor.SpreadsheetDocument.ExtractSelectedColumnsAndRows("The butterfly effect.xlsx"); 
+            //DocumentTextExtractor.SpreadsheetDocument.ExtractSelectedColumnsAndRows("The butterfly effect.xlsx");             
 
             //Extract text from word page (formatted)
             //DocumentTextExtractor.TextDocument.ExtractEntireWordPage("The butterfly effect.docx");
@@ -56,7 +56,7 @@ namespace GroupDocs.Parser_for_.NET
             //DocumentTextExtractor.TextDocument.ExtractingWithMarkdown("The butterfly effect.docx");
 
             //Extract text with html text format
-            //DocumentTextExtractor.TextDocument.HtmlTextFormating("The butterfly effect.docx");
+            //DocumentTextExtractor.TextDocument.HtmlTextFormating("The butterfly effect.docx");            
 
             //Extract a line of characters from epub document
             //DocumentTextExtractor.Epub.ExtractALine("sample.epub");
@@ -145,6 +145,19 @@ namespace GroupDocs.Parser_for_.NET
             // This feature allows providing a password for protected documents on-demand
             //Indexer indexer = new Indexer();
             //indexer.Process(new System.IO.DirectoryInfo(Common.SOURCE_PATH));
+
+            //Extract images from PDF document
+            //DocumentTextExtractor.PdfDocument.ExtractImages("sample.pdf");
+
+            // Extract images from presentation document
+            //DocumentTextExtractor.PresentationDocument.ExtractImages("The butterfly effect.pptx");
+
+            //Extract images from spreadsheet document
+            //DocumentTextExtractor.SpreadsheetDocument.ExtractImages("The butterfly effect.xlsx");
+
+            //Extract images from text document
+            //DocumentTextExtractor.TextDocument.ExtractImages("The butterfly effect.docx");
+
             #endregion
 
             #region MetadataExtractors

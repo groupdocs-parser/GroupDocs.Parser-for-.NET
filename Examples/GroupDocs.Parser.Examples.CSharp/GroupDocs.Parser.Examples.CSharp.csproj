@@ -42,8 +42,8 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="GroupDocs.Parser, Version=18.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\GroupDocs.Parser.18.9.0\lib\net2.0\GroupDocs.Parser.dll</HintPath>
+    <Reference Include="GroupDocs.Parser, Version=18.10.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\GroupDocs.Parser.18.10.0\lib\net2.0\GroupDocs.Parser.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

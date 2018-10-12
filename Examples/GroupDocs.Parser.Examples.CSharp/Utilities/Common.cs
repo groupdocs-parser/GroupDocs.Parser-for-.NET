@@ -67,5 +67,29 @@ namespace GroupDocs.Parser_for_.NET
             return @"Data Source=" + FilePath + "; Version=3; FailIfMissing=True; Foreign Keys=True;";
             //ExEnd:GetConnectionString
         }
+
+        //ExStart:CopyStream_18.10
+        /// <summary>
+        /// Copies the source stream into destination stream
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="dest"></param>
+        public static void CopyStream(Stream source, Stream dest)
+        {
+            byte[] buffer = new byte[4096];
+            source.Position = 0;
+
+            int r = 0;
+            do
+            {
+                r = source.Read(buffer, 0, buffer.Length);
+                if (r > 0)
+                {
+                    dest.Write(buffer, 0, r);
+                }
+            }
+            while (r > 0);
+        }
+        //ExEnd:CopyStream_18.10
     }
 }
