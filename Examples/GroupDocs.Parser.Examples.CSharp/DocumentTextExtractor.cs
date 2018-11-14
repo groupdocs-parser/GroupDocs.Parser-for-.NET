@@ -2495,8 +2495,70 @@ namespace GroupDocs.Parser_for_.NET
             Console.WriteLine(extractor.ExtractAll());
             //ExEnd:ExtractTextUsingExtractMode_18.5
         }
+       
+        /// <summary>
+        /// Extracts a text from a file or stream using IFastTextExtractor
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ExtractTextUsingIFastTextExtractor(string fileName)
+        {
+            //ExStart:ExtractTextUsingIFastTextExtractor_18.11
+            string filePath = Common.GetFilePath(fileName);
 
-        
+            // Create a text extractor
+            CellsTextExtractor extractor = new CellsTextExtractor(filePath);
+
+            IFastTextExtractor fastTextExtractor = extractor as IFastTextExtractor;
+            // Check if extractor supports IFastTextExtractor interface
+            if (fastTextExtractor != null)
+            {
+                // Set the mode of text extraction
+                fastTextExtractor.ExtractMode = ExtractMode.Simple;
+            }
+            // Extract a text
+            System.Console.WriteLine(extractor.ExtractAll());
+            //ExEnd:ExtractTextUsingIFastTextExtractor_18.11
+        }
+
+        /// <summary>
+        /// Extracts a text from a file using IDocumentContentExtractor
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void ExtractTextFromDocumentUsingIDocumentContentExtractor(string fileName)
+        {
+            //ExStart:ExtractTextFromDocumentUsingIDocumentContentExtractor_caller_18.11
+            string filePath = Common.GetFilePath(fileName);
+
+            // Create a text extractor
+            CellsTextExtractor extractor = new CellsTextExtractor(filePath);
+
+            ExtractTextUsingIDocumentContentExtractor(extractor);
+            //ExEnd:ExtractTextFromDocumentUsingIDocumentContentExtractor_caller_18.11
+        }
+
+        /// <summary>
+        /// Extracts text areas from the document using IDocumentContentExtractor
+        /// </summary>
+        /// <param name="extractor"></param>
+        static void ExtractTextUsingIDocumentContentExtractor(TextExtractor extractor)
+        {
+            //ExStart:ExtractTextUsingIDocumentContentExtractor_18.11
+            IDocumentContentExtractor contentExtractor = extractor as IDocumentContentExtractor;
+            // Check if extractor supports IDocumentContentExtractor interface
+            if (contentExtractor != null)
+            {
+                // Iterate over pages
+                for (int i = 0; i < contentExtractor.DocumentContent.PageCount; i++)
+                {
+                    // Iterate over text areas of the page
+                    foreach (TextArea textArea in contentExtractor.DocumentContent.GetTextAreas(i))
+                    {
+                        Console.WriteLine(textArea.Text);
+                    }
+                }
+            }
+            //ExEnd:ExtractTextUsingIDocumentContentExtractor_18.11
+        }
 
     }
 }

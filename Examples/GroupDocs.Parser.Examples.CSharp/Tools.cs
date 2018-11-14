@@ -126,7 +126,45 @@ namespace GroupDocs.Parser_for_.NET
         }
         //ExEnd:SimpleLogger
 
-     
+        /// <summary>
+        /// Gets supported extractors for document
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void GetDocumentInfoForSupportedExtractors(string fileName)
+        {
+            //ExStart:GetDocumentInfoForSupportedExtractors_18.11
+            ExtractorFactory factory = new ExtractorFactory();
+            String filePath = Common.GetFilePath(fileName);
+
+            // Get the document info
+            DocumentInfo info = factory.GetDocumentInfo(filePath);
+            Console.WriteLine("This document contains:");
+
+            // Check if a user can extract a plain text from a document
+            if (info.HasText)
+            {
+                Console.WriteLine("text");
+            }
+
+            // Check if a user can extract a formatted text from a document
+            if (info.HasFormattedText)
+            {
+                Console.WriteLine("formatted text");
+            }
+
+            // Check if a user can extract metadata from a document
+            if (info.HasMetadata)
+            {
+                Console.WriteLine("metadata");
+            }
+
+            // Check if the document contains other documents
+            if (info.IsContainer)
+            {
+                Console.WriteLine("other documents");
+            }
+            //ExEnd:GetDocumentInfoForSupportedExtractors_18.11
+        }
     }
 
 }
