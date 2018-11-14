@@ -46,6 +46,9 @@ namespace GroupDocs.Parser_for_.NET
             //Extract selected rows and columns
             //DocumentTextExtractor.SpreadsheetDocument.ExtractSelectedColumnsAndRows("The butterfly effect.xlsx");             
 
+            // Extract text from document using IDocumentContentExtractor
+            //DocumentTextExtractor.ExtractTextFromDocumentUsingIDocumentContentExtractor("The butterfly effect.xlsx");
+
             //Extract text from word page (formatted)
             //DocumentTextExtractor.TextDocument.ExtractEntireWordPage("The butterfly effect.docx");
 
@@ -157,6 +160,9 @@ namespace GroupDocs.Parser_for_.NET
 
             //Extract images from text document
             //DocumentTextExtractor.TextDocument.ExtractImages("The butterfly effect.docx");
+
+            // Extract test using fast text extractor
+            //DocumentTextExtractor.ExtractTextUsingIFastTextExtractor("The butterfly effect.xlsx");
 
             #endregion
 
@@ -305,6 +311,9 @@ namespace GroupDocs.Parser_for_.NET
 
             //Implement INotificationReceiver for extractors. To test the notification provide an invalid file name or something that can throw an exception so that a message can be logged
             //Tools.logger.LoggerWithManualExceptionHandling("The butterfly effect.xlsx");
+
+            // Get supported extractors for document
+            //Tools.GetDocumentInfoForSupportedExtractors("The butterfly effect.xlsx");
             #endregion
 
             #region BusinessCases
