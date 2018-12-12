@@ -1,7 +1,7 @@
 ﻿using GroupDocs.Parser_for_.NET.Utilities;
-using GroupDocs.Text_for_.NET.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -164,6 +164,11 @@ namespace GroupDocs.Parser_for_.NET
             // Extract test using fast text extractor
             //DocumentTextExtractor.ExtractTextUsingIFastTextExtractor("The butterfly effect.xlsx");
 
+            // Extract tables manually
+            //DocumentTextExtractor.PdfDocument.ExtractTablesManually("sample.pdf");
+
+            // Extract table using Table Area Detector
+            //DocumentTextExtractor.PdfDocument.ExtractTablesUsingTableAreaDetector("sample.pdf");
             #endregion
 
             #region MetadataExtractors
@@ -314,6 +319,10 @@ namespace GroupDocs.Parser_for_.NET
 
             // Get supported extractors for document
             //Tools.GetDocumentInfoForSupportedExtractors("The butterfly effect.xlsx");
+
+            // This feature allows providing a password for protected documents on-demand
+            //Detector detector = new Detector();
+            //detector.Detect(Directory.GetFiles(Common.SOURCE_PATH));
             #endregion
 
             #region BusinessCases

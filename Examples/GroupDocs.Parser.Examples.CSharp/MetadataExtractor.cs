@@ -242,5 +242,24 @@ namespace GroupDocs.Parser_for_.NET
             }
             //ExEnd:CreateMetadataExtractorMethodUsage
         }
+
+        public static void ExtractMetadataUsingDefaultExtractor(string fileName)
+        {
+            //ExStart:ExtractMetadataUsingDefaultExtractor_18.12
+            //get file actual path
+            String filePath = Common.GetFilePath(fileName);
+            // Extract metadata from the file
+            var metadata = Extractor.Default.ExtractMetadata(filePath);
+            // Print extracted metadata
+            foreach (var m in metadata)
+            {
+                // Print a metadata key
+                Console.Write(m.Key);
+                Console.Write(": ");
+                // Print a metadata value
+                Console.WriteLine(m.Value);
+            }
+            //ExEnd:ExtractMetadataUsingDefaultExtractor_18.12
+        }
     }
 }
