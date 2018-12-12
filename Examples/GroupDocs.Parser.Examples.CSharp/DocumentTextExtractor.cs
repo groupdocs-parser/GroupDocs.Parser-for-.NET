@@ -364,7 +364,7 @@ namespace GroupDocs.Parser_for_.NET
             {
                 //ExStart:ExtractImages_PDF_18.10
                 // Create a text extractor
-                PdfTextExtractor extractor = new PdfTextExtractor(fileName);
+                PdfTextExtractor extractor = new PdfTextExtractor(Common.GetFilePath(fileName));
 
                 // Create search options
                 ImageAreaSearchOptions searchOptions = new ImageAreaSearchOptions();
@@ -384,6 +384,119 @@ namespace GroupDocs.Parser_for_.NET
                     }
                 }
                 //ExEnd:ExtractImages_PDF_18.10
+            }
+
+            /// <summary>
+            /// Extracts tables manually from PDF document
+            /// </summary>
+            public static void ExtractTablesManually(string fileName)
+            {
+                //ExStart:ExtractTablesManually_PDF_18.12 
+                // Create a text extractor
+                using (var extractor = new PdfTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Get a table parser
+                    var parser = extractor.TableAreaParser;
+                    // Create a table layout
+                    var layout = new TableAreaLayout();
+                    // Add vertical separators (columns)
+                    layout.VerticalSeparators.Add(72);
+                    layout.VerticalSeparators.Add(125);
+                    layout.VerticalSeparators.Add(333);
+                    layout.VerticalSeparators.Add(454);
+                    layout.VerticalSeparators.Add(485);
+                    // Add horizontal separators (rows)
+                    layout.HorizontalSeparators.Add(390);
+                    layout.HorizontalSeparators.Add(417);
+                    layout.HorizontalSeparators.Add(440);
+                    layout.HorizontalSeparators.Add(500);
+                    layout.HorizontalSeparators.Add(521);
+                    // Extract a table area
+                    var tableArea = parser.ParseTableArea(0, layout);
+                    // Iterate over rows
+                    for (var row = 0; row < tableArea.RowCount; row++)
+                    {
+                        Console.Write("| ");
+                        // Iterate over columns
+                        for (var column = 0; column < tableArea.ColumnCount; column++)
+                        {
+                            // Get a table cell
+                            var cell = tableArea[row, column];
+                            // If a cell is empty or it continues another cell
+                            if (cell == null || cell.Column != column || cell.Row != row)
+                            {
+                                // Skip this cell
+                                continue;
+                            }
+                            // Write content of the cell
+                            Console.Write(cell == null ? " " : cell.TextArea.Text);
+                            Console.Write(" | ");
+                        }
+                        Console.WriteLine();
+                    }
+                }
+                //ExEnd:ExtractTablesManually_PDF_18.12
+            }
+
+            /// <summary>
+            /// Extracts tables from PDF document using TableAreaDetector 
+            /// </summary>
+            public static void ExtractTablesUsingTableAreaDetector(string fileName)
+            {
+                //ExStart:ExtractTablesUsingTableAreaDetector_PDF_18.12 
+                // Create a text extractor
+                using (var extractor = new PdfTextExtractor(Common.GetFilePath(fileName)))
+                {
+                    // Get a table detector
+                    var detector = extractor.TableAreaDetector;
+                    var pageIndex = 0;
+                    // Get a page object
+                    var page = extractor.DocumentContent.GetPage(pageIndex);
+                    // Create a parameter to help the detector to search a table
+                    var parameter = new TableAreaDetectorParameters();
+                    // We assume that the table is placed in a middle of the page and has a half page height
+                    parameter.Rectangle = new Rectangle(0, page.Height / 3, page.Width, page.Height / 2);
+                    // Table hasn't merged cells
+                    parameter.HasMergedCells = false;
+                    // Table contains 3 or more rows
+                    parameter.MinRowCount = 3;
+                    // Table contains 4 or more columns
+                    parameter.MinColumnCount = 4;
+                    // Detect layouts
+                    var layouts = detector.DetectLayouts(pageIndex, parameter);
+                    // If layouts collection is empty - exit
+                    if (layouts.Count == 0)
+                    {
+                        Console.WriteLine("No tables found.");
+                        return;
+                    }
+                    // Get a table parser
+                    var parser = extractor.TableAreaParser;
+                    // Extract a table area. As we pass only one parameter, there is only one layout
+                    var tableArea = parser.ParseTableArea(pageIndex, layouts[0]);
+                    // Iterate over rows
+                    for (var row = 0; row < tableArea.RowCount; row++)
+                    {
+                        Console.Write("| ");
+                        // Iterate over columns
+                        for (var column = 0; column < tableArea.ColumnCount; column++)
+                        {
+                            // Get a table cell
+                            var cell = tableArea[row, column];
+                            // If a cell is empty or it continues another cell
+                            if (cell == null || cell.Column != column || cell.Row != row)
+                            {
+                                // Skip this cell
+                                continue;
+                            }
+                            // Print content of the cell
+                            Console.Write(cell == null ? " " : cell.TextArea.Text);
+                            Console.Write(" | ");
+                        }
+                        Console.WriteLine();
+                    }
+                }
+                //ExEnd:ExtractTablesUsingTableAreaDetector_PDF_18.12
             }
         }
 
@@ -504,7 +617,7 @@ namespace GroupDocs.Parser_for_.NET
             {
                 //ExStart:ExtractImages_Presentation_18.10
                 // Create a text extractor
-                SlidesTextExtractor extractor = new SlidesTextExtractor(fileName);
+                SlidesTextExtractor extractor = new SlidesTextExtractor(Common.GetFilePath(fileName));
 
                 // Create search options
                 ImageAreaSearchOptions searchOptions = new ImageAreaSearchOptions();
@@ -731,7 +844,7 @@ namespace GroupDocs.Parser_for_.NET
             {
                 //ExStart:ExtractImages_Spreadsheet_18.10
                 // Create a text extractor
-                CellsTextExtractor extractor = new CellsTextExtractor(fileName);
+                CellsTextExtractor extractor = new CellsTextExtractor(Common.GetFilePath(fileName));
 
                 // Create search options
                 ImageAreaSearchOptions searchOptions = new ImageAreaSearchOptions();
@@ -964,7 +1077,7 @@ namespace GroupDocs.Parser_for_.NET
             {
                 //ExStart:ExtractImages_TextDocument_18.10
                 // Create a text extractor
-                WordsTextExtractor extractor = new WordsTextExtractor(fileName);
+                WordsTextExtractor extractor = new WordsTextExtractor(Common.GetFilePath(fileName));
 
                 // Create search options
                 ImageAreaSearchOptions searchOptions = new ImageAreaSearchOptions();
@@ -2276,6 +2389,30 @@ namespace GroupDocs.Parser_for_.NET
             var mediaType = CompositeMediaTypeDetector.Default.Detect(filePath);
             Console.WriteLine(mediaType);
             //ExEnd:MediaTypeDetection
+        }
+
+        /// <summary>
+        /// Detects media type of password-protected Office Open XML documents
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void DetectMediaTypeOfOfficeOpenXML(string fileName)
+        {
+            //ExStart:DetectMediaTypeOfOfficeOpenXML_18.12
+            // Create load options
+            LoadOptions loadOptions = new LoadOptions();
+            // Set a password
+            loadOptions.Password = "password";
+            // Get a default composite media type detector
+            var detector = CompositeMediaTypeDetector.Default;
+            // Create a stream to detect media type by content (not file extension)                
+            using (var stream = File.OpenRead(Common.GetFilePath(fileName)))
+            {
+                // Detect a media type
+                var mediaType = detector.Detect(stream, loadOptions);
+                // Print a detected media type
+                Console.WriteLine(mediaType);
+            } 
+            //ExEnd:DetectMediaTypeOfOfficeOpenXML_18.12
         }
 
         /// <summary>
