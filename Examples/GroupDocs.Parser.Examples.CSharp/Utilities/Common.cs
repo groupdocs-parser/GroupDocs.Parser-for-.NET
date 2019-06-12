@@ -12,7 +12,7 @@ namespace GroupDocs.Parser_for_.NET
     {
         //ExStart:commonutilities
         public const string SOURCE_PATH = "../../../Data/Storage/";
-        public const string LICENSE_PATH = "D:/GroupDocs.Total.NET.lic";
+        public const string LICENSE_PATH = "E:/GroupDocs.Total.lic";
         //ExEnd:commonutilities
 
         /// <summary>

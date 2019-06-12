@@ -13,7 +13,7 @@ namespace GroupDocs.Parser_for_.NET
         static void Main(string[] args)
         {
             //If you have the product license, un-comment following function to apply the license 
-            Common.ApplyLicense();
+            //Common.ApplyLicense();
 
             #region TextExtractors
             //Extract email attachments
@@ -30,6 +30,12 @@ namespace GroupDocs.Parser_for_.NET
             //DocumentTextExtractor.PdfDocument.ExtractPdfDocument("The butterfly effect.pdf");
             //DocumentTextExtractor.PdfDocument.ExtractTextFromPdfPortfolios("Portfolio.pdf");
             //DocumentTextExtractor.PdfDocument.ExtractDataFromPDFForms("Portfolio.pdf");
+
+            //Extract pdf Data
+            //DocumentTextExtractor.DocumentDataExtractor.ExtractDataFromDocumentByFieldName("Invoice.pdf");
+            //DocumentTextExtractor.DocumentDataExtractor.ExtractDataTableFromDocument("Invoice.pdf");
+            //DocumentTextExtractor.DocumentDataExtractor.DetectTableInRectangularAreaUsingColumnSeparators("Portfolio.pdf");
+            //DocumentTextExtractor.DocumentDataExtractor.MoveTableLayout();
 
             //Extract slides text
             //DocumentTextExtractor.PresentationDocument.ExtractPresentationDocument("The butterfly effect.pptx");            
