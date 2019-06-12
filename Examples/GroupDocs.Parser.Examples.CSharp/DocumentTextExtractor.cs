@@ -14,6 +14,7 @@ using GroupDocs.Parser.Containers;
 using GroupDocs.Parser.Extractors;
 using GroupDocs.Parser.Extractors.Metadata;
 using GroupDocs.Parser.Formatters;
+using GroupDocs.Parser.Extractors.Templates;
 
 namespace GroupDocs.Parser_for_.NET
 {
@@ -499,7 +500,6 @@ namespace GroupDocs.Parser_for_.NET
                 //ExEnd:ExtractTablesUsingTableAreaDetector_PDF_18.12
             }
         }
-
         public class PresentationDocument
         {
             /// <summary>
@@ -2697,5 +2697,258 @@ namespace GroupDocs.Parser_for_.NET
             //ExEnd:ExtractTextUsingIDocumentContentExtractor_18.11
         }
 
-    }
+        /// <summary>
+        /// Shows how to extract data from the document
+        /// </summary>
+        public class DocumentDataExtractor
+        {
+            /// <summary>
+            /// Extract Data from the Document by Field Name
+            /// Feature is supported by version 19.5 or greater
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractDataFromDocumentByFieldName(string fileName)
+            {
+                //ExStart:ExtractDataFromDocumentByFieldName
+                // Create a collection of template fields
+                TemplateField[] templateFields = new TemplateField[]
+                {
+                    new TemplateField("FromCompany", TemplateFieldPosition.CreateFixed(new Rectangle(35, 135, 100, 10))),
+                    new TemplateField("FromAddress", TemplateFieldPosition.CreateFixed(new Rectangle(35, 150, 100, 35))),
+                    new TemplateField("FromEmail", TemplateFieldPosition.CreateFixed(new Rectangle(35, 190, 150, 2))),
+                    new TemplateField("ToCompany", TemplateFieldPosition.CreateFixed(new Rectangle(35, 250, 100, 2))),
+                    new TemplateField("ToAddress", TemplateFieldPosition.CreateFixed(new Rectangle(35, 260, 100, 15))),
+                    new TemplateField("ToEmail", TemplateFieldPosition.CreateFixed(new Rectangle(35, 290, 150, 2))),
+                    new TemplateField("InvoiceNumber", TemplateFieldPosition.CreateRegex("Invoice Number")),
+                    new TemplateField("InvoiceNumberValue", TemplateFieldPosition.CreateRelated("InvoiceNumber",TemplateFieldRelatedPositionType.Right, new Size(200, 15))),
+                    new TemplateField("InvoiceOrder", TemplateFieldPosition.CreateRegex("Order Number")),
+                    new TemplateField("InvoiceOrderValue", TemplateFieldPosition.CreateRelated("InvoiceOrder",TemplateFieldRelatedPositionType.Right, new Size(200, 15))),
+                    new TemplateField("InvoiceDate", TemplateFieldPosition.CreateRegex("Invoice Date")),
+                    new TemplateField("InvoiceDateValue", TemplateFieldPosition.CreateRelated("InvoiceDate", TemplateFieldRelatedPositionType.Right, new Size(200, 15))),
+                    new TemplateField("DueDate", TemplateFieldPosition.CreateRegex("Due Date")),
+                    new TemplateField("DueDateValue", TemplateFieldPosition.CreateRelated("DueDate",TemplateFieldRelatedPositionType.Right,new Size(200, 15))),
+                    new TemplateField("TotalDue", TemplateFieldPosition.CreateRegex("Total Due")),
+                    new TemplateField("TotalDueValue", TemplateFieldPosition.CreateRelated("TotalDue",TemplateFieldRelatedPositionType.Right,new Size(200, 15))),
+                };
+
+                // Create detector parameters for "Details" table
+                TableAreaDetectorParameters detailsTableParameters = new TableAreaDetectorParameters();
+                detailsTableParameters.Rectangle = new Rectangle(35, 320, 530, 55);
+
+                // Create detector parameters for "Summary" table
+                TableAreaDetectorParameters summaryTableParameters = new TableAreaDetectorParameters();
+                summaryTableParameters.Rectangle = new Rectangle(330, 385, 220, 65);
+
+                // Create a collection of template tables
+                TemplateTable[] templateTables = new TemplateTable[]
+                {
+                    new TemplateTable("details", detailsTableParameters),
+                    new TemplateTable("summary", summaryTableParameters)
+                };
+
+                // Create a document template
+                DocumentTemplate template = new DocumentTemplate(templateFields, templateTables);
+
+                // Extract data from PDF
+                string filePath = Common.GetFilePath(fileName);
+                DocumentData data = DocumentParser.Default.ParseByTemplate(filePath, template);
+
+                // Get all the fields with "Address" name
+                IList<DocumentDataField> addressFields = data.GetDataFieldsByName("Address");
+                if (addressFields.Count == 0)
+                {
+                    Console.WriteLine("Address not found");
+                }
+                else
+                {
+                    Console.WriteLine("Address");
+                    // Iterate over the fields collection
+                    for (int i = 0; i < addressFields.Count; i++)
+                    {
+                        Console.WriteLine(addressFields[i].Value);
+                        // If it's a related field:
+                        if (addressFields[i].RelatedDataField != null)
+                        {
+                            Console.Write("Linked to ");
+                            Console.WriteLine(addressFields[i].RelatedDataField.Value);
+                        }
+                    }
+                }
+
+                //ExEnd:ExtractDataFromDocumentByFieldName
+            }
+
+            /// <summary>
+            /// Extract Data Table from the Document
+            /// Feature is supported by version 19.5 or greater
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void ExtractDataTableFromDocument(string fileName)
+            {
+                //ExStart:ExtractDataTableFromDocument
+                // Create a collection of template fields
+                TemplateField[] templateFields = new TemplateField[]
+                {
+                    new TemplateField("FromCompany", TemplateFieldPosition.CreateFixed(new Rectangle(35, 135, 100, 10))),
+                    new TemplateField("FromAddress", TemplateFieldPosition.CreateFixed(new Rectangle(35, 150, 100, 35))),
+                    new TemplateField("FromEmail", TemplateFieldPosition.CreateFixed(new Rectangle(35, 190, 150, 2))),
+                    new TemplateField("ToCompany", TemplateFieldPosition.CreateFixed(new Rectangle(35, 250, 100, 2))),
+                    new TemplateField("ToAddress", TemplateFieldPosition.CreateFixed(new Rectangle(35, 260, 100, 15))),
+                    new TemplateField("ToEmail", TemplateFieldPosition.CreateFixed(new Rectangle(35, 290, 150, 2))),
+                    new TemplateField("InvoiceNumber", TemplateFieldPosition.CreateRegex("Invoice Number")),
+                    new TemplateField("InvoiceNumberValue", TemplateFieldPosition.CreateRelated("InvoiceNumber",TemplateFieldRelatedPositionType.Right, new Size(200, 15))),
+                    new TemplateField("InvoiceOrder", TemplateFieldPosition.CreateRegex("Order Number")),
+                    new TemplateField("InvoiceOrderValue", TemplateFieldPosition.CreateRelated("InvoiceOrder",TemplateFieldRelatedPositionType.Right, new Size(200, 15))),
+                    new TemplateField("InvoiceDate", TemplateFieldPosition.CreateRegex("Invoice Date")),
+                    new TemplateField("InvoiceDateValue", TemplateFieldPosition.CreateRelated("InvoiceDate", TemplateFieldRelatedPositionType.Right, new Size(200, 15))),
+                    new TemplateField("DueDate", TemplateFieldPosition.CreateRegex("Due Date")),
+                    new TemplateField("DueDateValue", TemplateFieldPosition.CreateRelated("DueDate",TemplateFieldRelatedPositionType.Right,new Size(200, 15))),
+                    new TemplateField("TotalDue", TemplateFieldPosition.CreateRegex("Total Due")),
+                    new TemplateField("TotalDueValue", TemplateFieldPosition.CreateRelated("TotalDue",TemplateFieldRelatedPositionType.Right,new Size(200, 15))),
+                };
+
+                // Create detector parameters for "Details" table
+                TableAreaDetectorParameters detailsTableParameters = new TableAreaDetectorParameters();
+                detailsTableParameters.Rectangle = new Rectangle(35, 320, 530, 55);
+
+                // Create detector parameters for "Summary" table
+                TableAreaDetectorParameters summaryTableParameters = new TableAreaDetectorParameters();
+                summaryTableParameters.Rectangle = new Rectangle(330, 385, 220, 65);
+
+                // Create a collection of template tables
+                TemplateTable[] templateTables = new TemplateTable[]
+                {
+                    new TemplateTable("details", detailsTableParameters),
+                    new TemplateTable("summary", summaryTableParameters)
+                };
+
+                // Create a document template
+                DocumentTemplate template = new DocumentTemplate(templateFields, templateTables);
+
+                // Extract data from PDF
+                string filePath = Common.GetFilePath(fileName);
+                DocumentData data = DocumentParser.Default.ParseByTemplate(filePath, template);
+
+                // Get all the tables
+                IList<DocumentDataTable> dataTables = data.GetDataTables();
+                // Iterate over tables
+                foreach (DocumentDataTable table in dataTables)
+                {
+                    // Print a table name
+                    Console.WriteLine(table.TableName);
+                    // Iterate over rows
+                    for (int r = 0; r < table.RowCount; r++)
+                    {
+                        // Iterate over columns
+                        for (int c = 0; c < table.ColumnCount; c++)
+                        {
+                            // Print a value of the cell
+                            Console.Write(table[r, c]);
+                            Console.Write(" ");
+                        }
+
+                        Console.WriteLine();
+                    }
+                }
+
+                //ExEnd:ExtractDataTableFromDocument
+            }
+
+            /// <summary>
+            /// Ability to detect a table in a rectangular area using a collection of column separator
+            /// Feature is supported by version 19.5 or greater
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void DetectTableInRectangularAreaUsingColumnSeparators(string fileName)
+            {
+                //ExStart:DetectTableInRectangularAreaUsingColumnSeparators
+                string filePath = Common.GetFilePath(fileName);
+                IDocumentContentExtractor extractor = new PdfTextExtractor(filePath) as IDocumentContentExtractor;
+                try
+                {
+                    // Create table detector parameters
+                    TableAreaDetectorParameters parameters = new TableAreaDetectorParameters();
+
+                    // Set vertical separators
+                    parameters.VerticalSeparators = new List<double>();
+                    parameters.VerticalSeparators.Add(185.0);
+                    parameters.VerticalSeparators.Add(370.0);
+                    parameters.VerticalSeparators.Add(425.0);
+                    parameters.VerticalSeparators.Add(485.0);
+                    parameters.VerticalSeparators.Add(545.0);
+
+                    // Set a rectangular area that bounds a table
+                    parameters.Rectangle = new Rectangle(175, 350, 400, 200);
+
+                    // Create a table detector
+                    TableAreaDetector detector = new TableAreaDetector(extractor.DocumentContent);
+
+                    // Detect a table on the first page with detector parameters
+                    IList<TableAreaLayout> layout = detector.DetectLayouts(0, parameters);
+                }
+                finally
+                {
+                    // Dispose an extractor
+                    if (extractor is IDisposable)
+                    {
+                        (extractor as IDisposable).Dispose();
+                    }
+                }
+                //ExEnd:DetectTableInRectangularAreaUsingColumnSeparators
+            }
+
+            /// <summary>
+            /// Ability to move Table Layout
+            /// Feature is supported by version 19.5 or greater
+            /// </summary>
+            /// <param name="fileName"></param>
+            public static void MoveTableLayout()
+            {
+                //ExStart:MoveTableLayout
+                // Create a table layout
+                TableAreaLayout templateLayout = new TableAreaLayout();
+
+                // with 4 columns:
+                templateLayout.VerticalSeparators.Add(0);
+                templateLayout.VerticalSeparators.Add(25);
+                templateLayout.VerticalSeparators.Add(150);
+                templateLayout.VerticalSeparators.Add(180);
+                templateLayout.VerticalSeparators.Add(230);
+
+                // and with 5 rows:
+                templateLayout.HorizontalSeparators.Add(0);
+                templateLayout.HorizontalSeparators.Add(15);
+                templateLayout.HorizontalSeparators.Add(30);
+                templateLayout.HorizontalSeparators.Add(45);
+                templateLayout.HorizontalSeparators.Add(60);
+                templateLayout.HorizontalSeparators.Add(75);
+
+                // Print a rectangle
+                Rectangle rect = templateLayout.GetTableRectangle();
+
+                // Prints: pos: (0, 0) size: (230, 75)
+                Console.WriteLine(string.Format("pos: ({0}, {1}) size: ({2}, {3})", rect.Left, rect.Top, rect.Width, rect.Height));
+
+                // Move layout to the definite table location
+                TableAreaLayout movedLayout = templateLayout.MoveTo(315, 250);
+
+                // Ensure that the first separators are moved:
+                Console.WriteLine(movedLayout.VerticalSeparators[0]); // prints: 315
+                Console.WriteLine(movedLayout.HorizontalSeparators[0]); // prints: 250
+
+                Rectangle movedRect = movedLayout.GetTableRectangle();
+
+                // Prints: pos: (315, 250) size: (230, 75)
+                Console.WriteLine(string.Format("pos: ({0}, {1}) size: ({2}, {3})", movedRect.Left, movedRect.Top, movedRect.Width, movedRect.Height));
+
+                // movedLayout object is a copy of templateLayout object, thus we can tune separators without the impact on the original layout:
+                movedLayout.HorizontalSeparators.Add(90);
+
+                Console.WriteLine(movedLayout.HorizontalSeparators.Count); // prints: 7
+                Console.WriteLine(templateLayout.HorizontalSeparators.Count); // prints: 6
+
+                //ExEnd:MoveTableLayout
+            }
+        }
+    }    
 }
