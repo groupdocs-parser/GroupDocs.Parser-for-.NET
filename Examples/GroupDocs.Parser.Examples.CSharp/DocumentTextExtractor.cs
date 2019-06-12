@@ -500,7 +500,6 @@ namespace GroupDocs.Parser_for_.NET
                 //ExEnd:ExtractTablesUsingTableAreaDetector_PDF_18.12
             }
         }
-        //Sami
         public class PresentationDocument
         {
             /// <summary>
