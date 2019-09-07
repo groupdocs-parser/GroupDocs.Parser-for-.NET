@@ -15,6 +15,20 @@ Directory | Description
 --------- | -----------
 [Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples)  | Contains the package of all .NET examples (C#) and sample files that will help you learn how to use product features. 
 [Plugin](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Plugins)  | Contains the plugins related to GroupDocs.Parser for Visual Studio. 
+
+## How to Run the Examples
+
++ You can either clone the repository using your favorite GitHub client or download the ZIP file from the above button.
++ Extract the contents of the ZIP file to any folder on your computer.
++ In the extracted files and folders, you can see solution file for C# Project.
++ The project is created in Visual Studio 2013.
++ Open the solution file in Visual Studio and build the project.
++ On the first run, the dependencies will automatically be downloaded via NuGet.
++ Open Program.cs file, all the examples are called from here.
++ Uncomment the examples you want to run from within the project.
+
+Please find more details for how to run the examples [here](https://docs.groupdocs.com/display/parsernet/How+to+Run+Exampless).
+
 ## Resources
 
 + **Website:** [www.groupdocs.com](http://www.groupdocs.com)
