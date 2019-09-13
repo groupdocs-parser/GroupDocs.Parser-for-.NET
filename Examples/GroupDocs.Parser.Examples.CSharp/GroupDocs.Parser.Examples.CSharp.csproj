@@ -72,8 +72,8 @@
     <Compile Include="BasicUsage\ExtractMetadata.cs" />
     <Compile Include="BasicUsage\ParseDocumentByTemplate.cs" />
     <Compile Include="BasicUsage\ParseFormData.cs" />
-    <Compile Include="BasicUsage\ExtractText\TextSearchByKeyword.cs" />
-    <Compile Include="BasicUsage\ExtractText\TextSearchByRegex.cs" />
+    <Compile Include="BasicUsage\ExtractText\SearchTextByKeyword.cs" />
+    <Compile Include="BasicUsage\ExtractText\SearchTextByRegex.cs" />
     <Compile Include="BasicUsage\ExtractText\ExtractPlainTextFromPage.cs" />
     <Compile Include="BasicUsage\ExtractText\ExtractPlainTextWithTextOptions.cs" />
     <Compile Include="BasicUsage\ExtractText\ExtractPlainText.cs" />

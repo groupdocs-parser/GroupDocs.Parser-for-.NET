@@ -12,7 +12,7 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractText
     /// <summary>
     /// This example shows how to search with a regular expression in a document.
     /// </summary>
-    static class TextSearchByRegex
+    static class SearchTextByRegex
     {
         public static void Run()
         {

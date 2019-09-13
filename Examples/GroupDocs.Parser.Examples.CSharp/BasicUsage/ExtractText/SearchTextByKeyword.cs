@@ -11,7 +11,7 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractText
     /// <summary>
     /// This example shows how to find a keyword in a document.
     /// </summary>
-    static class TextSearchByKeyword
+    static class SearchTextByKeyword
     {
         public static void Run()
         {

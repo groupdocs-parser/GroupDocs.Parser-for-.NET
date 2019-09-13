@@ -52,8 +52,8 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             //ExtractHighlight.Run();
 
-            //TextSearchByKeyword.Run();
-            //TextSearchByRegex.Run();
+            //SearchTextByKeyword.Run();
+            //SearchTextByRegex.Run();
 
             //ExtractFormattedText.Run();
             //ExtractFormattedTextFromPage.Run();
@@ -80,7 +80,7 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #region Advanced Usage
 
-            ExtractDatabase.Run();
+            //ExtractDatabase.Run();
             //ExtractEmails.Run();
             //ExtractTextStructure.Run();
             //DetectEncoding.Run();
