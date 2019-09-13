@@ -7,19 +7,22 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.Loading
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
+    using GroupDocs.Parser.Exceptions;
     using GroupDocs.Parser.Options;
 
     /// <summary>
-    /// This example how to specify the file format when loading the document.
+    /// This example shows how to process password protected documents.
     /// </summary>
-    static class LoadDocumentsWithFileFormat
+    static class PasswordProtectedDocuments
     {
         public static void Run()
         {
-            using (Stream stream = File.OpenRead(Constants.SampleMd))
+            try
             {
-                // Create an instance of Parser class for markdown document
-                using (Parser parser = new Parser(stream, new LoadOptions(Options.FileFormat.Markup)))
+                string password = "123456";
+
+                // Create an instance of Parser class with the password:
+                using (Parser parser = new Parser(Constants.SamplePassword, new LoadOptions(password)))
                 {
                     // Check if text extraction is supported
                     if (!parser.Features.Text)
@@ -27,13 +30,17 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.Loading
                         Console.WriteLine("Text extraction isn't supported.");
                         return;
                     }
+                    // Print the document text
                     using (TextReader reader = parser.GetText())
                     {
-                        // Print the document text
-                        // Markdown is detected; text without special symbols is printed
                         Console.WriteLine(reader.ReadToEnd());
                     }
                 }
+            }
+            catch (InvalidPasswordException)
+            {
+                // Print the message if the password is incorrect or empty
+                Console.WriteLine("Invalid password");
             }
         }
     }

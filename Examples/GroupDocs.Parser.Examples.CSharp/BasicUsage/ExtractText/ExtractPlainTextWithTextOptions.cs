@@ -1,7 +1,7 @@
 ﻿// <copyright company="Aspose Pty Ltd">
 //   Copyright (C) 2011-2019 GroupDocs. All Rights Reserved.
 // </copyright>
-namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.TextExtraction
+namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractText
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.TextExtraction
     /// <summary>
     /// This example shows how to extract a raw text from a document.
     /// </summary>
-    public class ExtractRawText
+    class ExtractPlainTextWithTextOptions
     {
         public static void Run()
         {

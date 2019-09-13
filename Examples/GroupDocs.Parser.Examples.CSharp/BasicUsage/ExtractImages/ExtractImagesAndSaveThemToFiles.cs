@@ -10,9 +10,9 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractImages
     using GroupDocs.Parser.Data;
 
     /// <summary>
-    /// This example shows how to save images to files.
+    /// This example shows how to save extracted images to files.
     /// </summary>
-    static class ImageSave
+    static class ExtractImagesAndSaveThemToFiles
     {
         public static void Run()
         {

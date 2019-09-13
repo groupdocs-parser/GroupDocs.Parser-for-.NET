@@ -36,6 +36,7 @@ namespace GroupDocs.Parser.Examples.CSharp
 
         public static readonly string SampleText = GetFilePath("utf8.txt");
 
+        public static readonly string SampleDatabase = GetFilePath("sqlite.db");
 
         private static string GetFilePath(string fileName)
         {

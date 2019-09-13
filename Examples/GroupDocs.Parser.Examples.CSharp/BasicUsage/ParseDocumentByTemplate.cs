@@ -25,7 +25,7 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage
                 // Check if form extraction is supported
                 if (data == null)
                 {
-                    Console.WriteLine("Form extraction isn't supported.");
+                    Console.WriteLine("Parse Document by Template isn't supported.");
                     return;
                 }
 

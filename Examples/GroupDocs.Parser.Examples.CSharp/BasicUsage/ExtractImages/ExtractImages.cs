@@ -11,7 +11,7 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractImages
     /// <summary>
     /// This example shows how to extract all images from the whole document.
     /// </summary>
-    static class ExtractImage
+    static class ExtractImages
     {
         public static void Run()
         {

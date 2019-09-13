@@ -12,7 +12,7 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractImages
     /// <summary>
     /// This example shows how to extract images from a document page.
     /// </summary>
-    static class ExtractImagePage
+    static class ExtractImagesFromPage
     {
         public static void Run()
         {

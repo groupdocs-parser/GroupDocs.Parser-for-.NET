@@ -11,7 +11,7 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage
     /// <summary>
     /// This example shows how to get basic document info.
     /// </summary>
-    static class GetFileInfo
+    static class GetDocumentInfo
     {
         public static void Run()
         {

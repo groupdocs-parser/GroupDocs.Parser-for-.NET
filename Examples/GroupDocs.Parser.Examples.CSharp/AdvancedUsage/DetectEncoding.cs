@@ -8,7 +8,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage
     using System.Text;
     using GroupDocs.Parser.Options;
 
-    static class EncodingDetection
+    static class DetectEncoding
     {
         public static void Run()
         {

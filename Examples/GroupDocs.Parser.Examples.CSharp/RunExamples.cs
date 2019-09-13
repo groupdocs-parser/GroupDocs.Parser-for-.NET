@@ -11,7 +11,7 @@ namespace GroupDocs.Parser.Examples.CSharp
     using GroupDocs.Parser.Examples.CSharp.BasicUsage;
     using GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractContainersAndAttachments;
     using GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractImages;
-    using GroupDocs.Parser.Examples.CSharp.BasicUsage.TextExtraction;
+    using GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractText;
     using GroupDocs.Parser.Examples.CSharp.QuickStart;
 
     class RunExamples
@@ -26,16 +26,16 @@ namespace GroupDocs.Parser.Examples.CSharp
             #region Quick Start
 
             SetLicenseFromFile.Run();
-            // SetLicenseFromStream.Run();
-            // SetMeteredLicense.Run();
-            // HelloWorld.Run();
+            //SetLicenseFromStream.Run();
+            //SetMeteredLicense.Run();
+            //HelloWorld.Run();
 
             #endregion
 
             #region Basic Usage
 
             //GetSupportedFileFormats.Run();
-            //GetFileInfo.Run();
+            //GetDocumentInfo.Run();
             //GetSupportedFeatures.Run();
 
             //ExtractTableOfContents.Run();
@@ -47,8 +47,8 @@ namespace GroupDocs.Parser.Examples.CSharp
             #region Extract text
 
             //ExtractPlainText.Run();
-            //ExtractPlainTextPage.Run();
-            //ExtractRawText.Run();
+            //ExtractPlainTextFromPage.Run();
+            //ExtractPlainTextWithTextOptions.Run();
 
             //ExtractHighlight.Run();
 
@@ -56,16 +56,16 @@ namespace GroupDocs.Parser.Examples.CSharp
             //TextSearchByRegex.Run();
 
             //ExtractFormattedText.Run();
-            //ExtractFormattedTextPage.Run();
+            //ExtractFormattedTextFromPage.Run();
 
             #endregion
 
             #region Extract images
 
-            //ExtractImage.Run();
-            //ExtractImagePage.Run();
-            //ExtractImageOptions.Run();
-            //ImageSave.Run();
+            //ExtractImages.Run();
+            //ExtractImagesFromPage.Run();
+            //ExtractImagesWithOptions.Run();
+            //ExtractImagesAndSaveThemToFiles.Run();
 
             #endregion
 
@@ -80,13 +80,15 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #region Advanced Usage
 
+            ExtractDatabase.Run();
+            //ExtractEmails.Run();
             //ExtractTextStructure.Run();
-            //EncodingDetection.Run();
+            //DetectEncoding.Run();
 
             #region Loading
 
-            //AdvancedUsage.Loading.LoadPasswordProtectedDocuments.Run();
-            //AdvancedUsage.Loading.LoadDocumentsWithFileFormat.Run();
+            //AdvancedUsage.Loading.PasswordProtectedDocuments.Run();
+            //AdvancedUsage.Loading.SpecifyFileFormat.Run();
 
             #endregion
 

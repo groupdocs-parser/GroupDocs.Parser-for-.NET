@@ -12,7 +12,7 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractImages
     /// <summary>
     /// This example shows how to extract only images from the upper-right corner.
     /// </summary>
-    static class ExtractImageOptions
+    static class ExtractImagesWithOptions
     {
         public static void Run()
         {
