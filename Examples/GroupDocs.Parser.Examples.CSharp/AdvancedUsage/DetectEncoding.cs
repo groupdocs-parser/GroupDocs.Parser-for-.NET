@@ -8,6 +8,9 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage
     using System.Text;
     using GroupDocs.Parser.Options;
 
+    /// <summary>
+    /// This example shows how to detect the encoding of the document.
+    /// </summary>
     static class DetectEncoding
     {
         public static void Run()

@@ -10,7 +10,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.TextAreas
     using GroupDocs.Parser.Options;
 
     /// <summary>
-    /// This example
+    /// This example shows how to extract only text areas with digits from the upper-left corner.
     /// </summary>
     static class ExtractTextAreasOptions
     {

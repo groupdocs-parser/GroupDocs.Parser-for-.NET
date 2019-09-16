@@ -10,6 +10,9 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage
     using GroupDocs.Parser.Data;
     using GroupDocs.Parser.Options;
 
+    /// <summary>
+    /// This example shows how to extract data from Sqlite database.
+    /// </summary>
     class ExtractDatabase
     {
         public static void Run()
