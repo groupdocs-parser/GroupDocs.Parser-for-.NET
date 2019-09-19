@@ -1,7 +1,7 @@
 ﻿// <copyright company="Aspose Pty Ltd">
 //   Copyright (C) 2011-2019 GroupDocs. All Rights Reserved.
 // </copyright>
-namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractImages
+namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithImages
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractImages
     /// <summary>
     /// This example shows how to extract images from a document page.
     /// </summary>
-    static class ExtractImagesFromPage
+    static class ExtractImagesFromDocumentPage
     {
         public static void Run()
         {

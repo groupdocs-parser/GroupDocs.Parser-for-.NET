@@ -1,7 +1,7 @@
 ﻿// <copyright company="Aspose Pty Ltd">
 //   Copyright (C) 2011-2019 GroupDocs. All Rights Reserved.
 // </copyright>
-namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractText
+namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText.WorkingWithFormattedText
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractText
     /// <summary>
     /// This example shows how to extract a document text as HTML text.
     /// </summary>
-    static class ExtractFormattedText
+    static class Markdown
     {
         public static void Run()
         {
@@ -20,7 +20,7 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractText
             using (Parser parser = new Parser(Constants.SampleDocx))
             {
                 // Extract a formatted text into the reader
-                using (TextReader reader = parser.GetFormattedText(new FormattedTextOptions(FormattedTextMode.Html)))
+                using (TextReader reader = parser.GetFormattedText(new FormattedTextOptions(FormattedTextMode.Markdown)))
                 {
                     // Print a formatted text from the document
                     // If formatted text extraction isn't supported, a reader is null

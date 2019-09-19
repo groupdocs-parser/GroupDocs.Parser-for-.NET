@@ -1,7 +1,7 @@
 ﻿// <copyright company="Aspose Pty Ltd">
 //   Copyright (C) 2011-2019 GroupDocs. All Rights Reserved.
 // </copyright>
-namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractContainersAndAttachments
+namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithContainersAndAttachments
 {
     using System;
     using System.Collections.Generic;
@@ -9,9 +9,9 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractContainersAndAttach
     using GroupDocs.Parser.Data;
 
     /// <summary>
-    /// This example shows how to extract attachments from a container.
+    /// This example shows how to iterate through container items.
     /// </summary>
-    static class ExtractAttachmentList
+    static class IterateThroughContainerItems
     {
         public static void Run()
         {

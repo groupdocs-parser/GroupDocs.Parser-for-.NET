@@ -1,29 +1,25 @@
 ﻿// <copyright company="Aspose Pty Ltd">
 //   Copyright (C) 2011-2019 GroupDocs. All Rights Reserved.
 // </copyright>
-namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.TextAreas
+namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
     using GroupDocs.Parser.Data;
-    using GroupDocs.Parser.Options;
 
     /// <summary>
-    /// This example shows how to extract only text areas with digits from the upper-left corner.
+    /// This example how to extract all text areas from the whole document.
     /// </summary>
-    static class ExtractTextAreasOptions
+    static class ExtractTextAreas
     {
         public static void Run()
         {
             // Create an instance of Parser class
             using (Parser parser = new Parser(Constants.SampleImagesPdf))
             {
-                // Create the options which are used for text area extraction
-                PageTextAreaOptions options = new PageTextAreaOptions("\\s[a-z]{2}\\s", new Rectangle(new Point(0, 0), new Size(300, 100)));
-
-                // Extract text areas which contain only digits from the upper-left corner of a page:
-                IEnumerable<PageTextArea> areas = parser.GetTextAreas(options);
+                // Extract text areas
+                IEnumerable<PageTextArea> areas = parser.GetTextAreas();
                 // Check if text areas extraction is supported
                 if (areas == null)
                 {

@@ -1,7 +1,7 @@
 ﻿// <copyright company="Aspose Pty Ltd">
 //   Copyright (C) 2011-2019 GroupDocs. All Rights Reserved.
 // </copyright>
-namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractText
+namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText
 {
     using System;
     using System.Collections.Generic;
@@ -10,19 +10,19 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractText
     using GroupDocs.Parser.Options;
 
     /// <summary>
-    /// This example shows how to extract a document page text as Markdown text.
+    /// This example shows how to extract a page text from a document.
     /// </summary>
-    static class ExtractFormattedTextFromPage
+    static class ExtractTextFromPageInAccurateMode
     {
         public static void Run()
         {
             // Create an instance of Parser class
-            using (Parser parser = new Parser(Constants.SampleDocx))
+            using (Parser parser = new Parser(Constants.SamplePdf))
             {
-                // Check if the document supports formatted text extraction
-                if (!parser.Features.FormattedText)
+                // Check if the document supports text extraction
+                if (!parser.Features.Text)
                 {
-                    Console.WriteLine("Document isn't supports formatted text extraction.");
+                    Console.WriteLine("Document isn't supports text extraction.");
                     return;
                 }
 
@@ -40,11 +40,12 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractText
                 {
                     // Print a page number 
                     Console.WriteLine(string.Format("Page {0}/{1}", p + 1, documentInfo.PageCount));
-                    // Extract a formatted text into the reader
-                    using (TextReader reader = parser.GetFormattedText(p, new FormattedTextOptions(FormattedTextMode.Markdown)))
+
+                    // Extract a text into the reader
+                    using (TextReader reader = parser.GetText(p))
                     {
-                        // Print a formatted text from the document
-                        // We ignore null-checking as we have checked formatted text extraction feature support earlier
+                        // Print a text from the document
+                        // We ignore null-checking as we have checked text extraction feature support earlier
                         Console.WriteLine(reader.ReadToEnd());
                     }
                 }

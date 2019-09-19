@@ -1,7 +1,7 @@
 ﻿// <copyright company="Aspose Pty Ltd">
 //   Copyright (C) 2011-2019 GroupDocs. All Rights Reserved.
 // </copyright>
-namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractImages
+namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithImages
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractImages
     /// <summary>
     /// This example shows how to extract only images from the upper-right corner.
     /// </summary>
-    static class ExtractImagesWithOptions
+    static class ExtractImagesFormDocumentPageArea
     {
         public static void Run()
         {

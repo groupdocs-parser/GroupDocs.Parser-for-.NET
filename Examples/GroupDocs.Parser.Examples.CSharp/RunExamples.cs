@@ -4,14 +4,13 @@
 namespace GroupDocs.Parser.Examples.CSharp
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage;
-    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.TextAreas;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.Loading;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithContainersAndAttachments;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithImages;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText.WorkingWithFormattedText;
     using GroupDocs.Parser.Examples.CSharp.BasicUsage;
-    using GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractContainersAndAttachments;
-    using GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractImages;
-    using GroupDocs.Parser.Examples.CSharp.BasicUsage.ExtractText;
     using GroupDocs.Parser.Examples.CSharp.QuickStart;
 
     class RunExamples
@@ -34,47 +33,16 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #region Basic Usage
 
-            //GetSupportedFileFormats.Run();
+            //ExtractContainersAndAttachments.Run();
+            //ExtractFormattedText.Run();
+            //ExtractImages.Run();
+            //ExtractMetadata.Run();
+            //ExtractTableOfContents.Run();
+            //ExtractText.Run();
             //GetDocumentInfo.Run();
             //GetSupportedFeatures.Run();
-
-            //ExtractTableOfContents.Run();
-            //ExtractMetadata.Run();
-
+            //GetSupportedFileFormats.Run();
             //ParseDocumentByTemplate.Run();
-            //ParseFormData.Run();
-
-            #region Extract text
-
-            //ExtractPlainText.Run();
-            //ExtractPlainTextFromPage.Run();
-            //ExtractPlainTextWithTextOptions.Run();
-
-            //ExtractHighlight.Run();
-
-            //SearchTextByKeyword.Run();
-            //SearchTextByRegex.Run();
-
-            //ExtractFormattedText.Run();
-            //ExtractFormattedTextFromPage.Run();
-
-            #endregion
-
-            #region Extract images
-
-            //ExtractImages.Run();
-            //ExtractImagesFromPage.Run();
-            //ExtractImagesWithOptions.Run();
-            //ExtractImagesAndSaveThemToFiles.Run();
-
-            #endregion
-
-            #region Extract Containers and Attachments
-
-            //ExtractAttachmentList.Run();
-            //ExtractAttachmentContent.Run();
-
-            #endregion
 
             #endregion
 
@@ -82,21 +50,57 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             //ExtractDatabase.Run();
             //ExtractEmails.Run();
-            //ExtractTextStructure.Run();
-            //DetectEncoding.Run();
 
             #region Loading
 
-            //AdvancedUsage.Loading.PasswordProtectedDocuments.Run();
-            //AdvancedUsage.Loading.SpecifyFileFormat.Run();
+            //PasswordProtectedDocuments.Run();
+            //SpecifyFileFormat.Run();
 
             #endregion
 
-            #region Extract text areas
+            #region Working With Containers and Attachments
 
+            //IterateThroughContainerItems.Run();
+            //WorkWithEmailAttachments.Run();
+            //WorkWithOutlookStorage.Run();
+            //WorkWithPdfPortfolios.Run();
+            //WorkWithZipArchives.Run();
+
+            #endregion
+
+            #region Working With Images
+
+            //ExtractImagesFormDocumentPageArea.Run();
+            //ExtractImagesFromDocument.Run();
+            //ExtractImagesFromDocumentPage.Run();
+            //ExtractImagesToFiles.Run();
+
+            #endregion
+
+            #region Working With Text
+
+            //DetectEncoding.Run();
+            //ExtractHighlight.Run();
             //ExtractTextAreas.Run();
-            //ExtractTextAreasOptions.Run();
-            //ExtractTextAreasPage.Run();
+            //ExtractTextAreasFromPage.Run();
+            //ExtractTextAreasWithOptions.Run();
+            //ExtractTextFromPageInAccurateMode.Run();
+            //ExtractTextInRawMode.Run();
+            //ExtractTextInAccurateMode.Run();
+            //ExtractTextFromPageInRawMode.Run();
+            //ExtractTextStructure.Run();
+            //SearchTextByKeyword.Run();
+            //SearchTextByRegex.Run();
+
+            #region Working With Formatted Text
+
+            //ExtractFormattedTextFromDocument.Run();
+            //ExtractFormattedTextFromDocumentPage.Run();
+            //Html.Run();
+            //Markdown.Run();
+            //PlainText.Run();
+
+            #endregion
 
             #endregion
 

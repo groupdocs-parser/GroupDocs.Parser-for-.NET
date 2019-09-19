@@ -38,6 +38,12 @@ namespace GroupDocs.Parser.Examples.CSharp
 
         public static readonly string SampleDatabase = GetFilePath("sqlite.db");
 
+        public static readonly string SampleMsg = GetFilePath("The butterfly effect.msg");
+
+        public static readonly string SampleOutlook = GetFilePath("sample.ost");
+
+        public static readonly string SamplePdfPortfolio = GetFilePath("PortfolioWithFolder.pdf");             
+
         private static string GetFilePath(string fileName)
         {
             return Path.Combine(SamplesPath, fileName);

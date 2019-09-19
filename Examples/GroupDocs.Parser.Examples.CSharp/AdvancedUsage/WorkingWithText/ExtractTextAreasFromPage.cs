@@ -1,7 +1,7 @@
 ﻿// <copyright company="Aspose Pty Ltd">
 //   Copyright (C) 2011-2019 GroupDocs. All Rights Reserved.
 // </copyright>
-namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.TextAreas
+namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.TextAreas
     /// <summary>
     /// This example shows how to extract text areas from a document page.
     /// </summary>
-    static class ExtractTextAreasPage
+    static class ExtractTextAreasFromPage
     {
         public static void Run()
         {
