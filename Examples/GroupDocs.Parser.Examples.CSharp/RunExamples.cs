@@ -58,6 +58,8 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             //PasswordProtectedDocuments.Run();
             //SpecifyFileFormat.Run();
+            //LoadDocumentFromStream.Run();
+            //LoadDocumentFromLocalDisk.Run();
 
             #endregion
 
@@ -94,6 +96,7 @@ namespace GroupDocs.Parser.Examples.CSharp
             //ExtractTextStructure.Run();
             //SearchTextByKeyword.Run();
             //SearchTextByRegex.Run();
+            //SearchTextWithHighlights.Run();
 
             #region Working With Formatted Text
 

@@ -49,6 +49,8 @@
   <ItemGroup>
     <Compile Include="AdvancedUsage\ExtractDatabase.cs" />
     <Compile Include="AdvancedUsage\ExtractEmails.cs" />
+    <Compile Include="AdvancedUsage\Loading\LoadDocumentFromLocalDisk.cs" />
+    <Compile Include="AdvancedUsage\Loading\LoadDocumentFromStream.cs" />
     <Compile Include="AdvancedUsage\Loading\SpecifyFileFormat.cs" />
     <Compile Include="AdvancedUsage\Loading\PasswordProtectedDocuments.cs" />
     <Compile Include="AdvancedUsage\WorkingWithContainersAndAttachments\IterateThroughContainerItems.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="AdvancedUsage\WorkingWithText\ExtractTextStructure.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\SearchTextByKeyword.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\SearchTextByRegex.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithText\SearchTextWithHighlights.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\WorkingWithFormattedText\ExtractFormattedTextFromDocument.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\WorkingWithFormattedText\ExtractFormattedTextFromDocumentPage.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\WorkingWithFormattedText\Html.cs" />
