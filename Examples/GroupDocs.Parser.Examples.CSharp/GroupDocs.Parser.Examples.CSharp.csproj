@@ -65,9 +65,9 @@
     <Compile Include="AdvancedUsage\WorkingWithTemplates\TemplateFields\WorkingWithTemplateRegexPosition.cs" />
     <Compile Include="AdvancedUsage\WorkingWithTemplates\TemplateTables\WorkingWithTableLayout.cs" />
     <Compile Include="AdvancedUsage\WorkingWithTemplates\TemplateTables\WorkingWithTableParameters.cs" />
-    <Compile Include="AdvancedUsage\WorkingWithTemplates\WorkingWithDataExtractedByTemplate\GetFieldByName.cs" />
-    <Compile Include="AdvancedUsage\WorkingWithTemplates\WorkingWithDataExtractedByTemplate\IterateThroughFields.cs" />
-    <Compile Include="AdvancedUsage\WorkingWithTemplates\WorkingWithDataExtractedByTemplate\WorkingWithTables.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithDataExtractedByTemplate\GetFieldByName.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithDataExtractedByTemplate\IterateThroughFields.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithDataExtractedByTemplate\WorkingWithTables.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\DetectEncoding.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\ExtractHighlight.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\ExtractTextAreas.cs" />

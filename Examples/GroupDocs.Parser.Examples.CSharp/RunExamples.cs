@@ -7,10 +7,10 @@ namespace GroupDocs.Parser.Examples.CSharp
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.Loading;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithContainersAndAttachments;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithDataExtractedByTemplate;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithImages;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateFields;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateTables;
-    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.WorkingWithDataExtractedByTemplate;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText.WorkingWithFormattedText;
     using GroupDocs.Parser.Examples.CSharp.BasicUsage;

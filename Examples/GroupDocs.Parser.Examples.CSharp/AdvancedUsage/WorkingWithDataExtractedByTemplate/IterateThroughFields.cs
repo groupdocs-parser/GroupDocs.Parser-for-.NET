@@ -1,7 +1,7 @@
 ﻿// <copyright company="Aspose Pty Ltd">
 //   Copyright (C) 2011-2019 GroupDocs. All Rights Reserved.
 // </copyright>
-namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.WorkingWithDataExtractedByTemplate
+namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithDataExtractedByTemplate
 {
     using System;
     using System.Collections.Generic;
@@ -11,9 +11,9 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.Wo
     using GroupDocs.Parser.Templates;
 
     /// <summary>
-    /// This example shows how to get field data by name.
+    /// This example shows how to iterate over extracted field data.
     /// </summary>
-    static class GetFieldByName
+    static class IterateThroughFields
     {
         public static void Run()
         {
@@ -36,21 +36,15 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.Wo
                 // Parse the document by the template
                 DocumentData data = parser.ParseByTemplate(template);
 
-                // Print prices
-                Console.WriteLine("Prices:");
-                foreach(FieldData field in data.GetFieldsByName("Price"))
+                // Print all extracted data
+                for (int i = 0; i < data.Count; i++)
                 {
-                    PageTextArea area = field.PageArea as PageTextArea;
-                    Console.WriteLine(area == null ? "Not a template field" : area.Text);
-                }
+                    // Print field name
+                    Console.Write(data[i].Name + ": ");
 
-                // Print emails
-                Console.WriteLine("Emails:");
-                foreach (FieldData field in data.GetFieldsByName("Email"))
-                {
                     // As we have defined only text fields in the template,
                     // we cast PageArea property value to PageTextArea
-                    PageTextArea area = field.PageArea as PageTextArea;
+                    PageTextArea area = data[i].PageArea as PageTextArea;
                     Console.WriteLine(area == null ? "Not a template field" : area.Text);
                 }
             }
