@@ -51,6 +51,7 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #region Advanced Usage
 
+            //Logging.Run();
             //ExtractDatabase.Run();
             //ExtractEmails.Run();
 

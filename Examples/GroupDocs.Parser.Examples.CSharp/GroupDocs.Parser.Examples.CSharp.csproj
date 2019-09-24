@@ -35,8 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GroupDocs.Parser, Version=19.8.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>packages\GroupDocs.Parser.19.8.0\lib\net2.0\GroupDocs.Parser.dll</HintPath>
+    <Reference Include="GroupDocs.Parser, Version=19.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>packages\GroupDocs.Parser.19.9.0\lib\net2.0\GroupDocs.Parser.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -53,6 +53,7 @@
     <Compile Include="AdvancedUsage\Loading\LoadDocumentFromStream.cs" />
     <Compile Include="AdvancedUsage\Loading\SpecifyFileFormat.cs" />
     <Compile Include="AdvancedUsage\Loading\PasswordProtectedDocuments.cs" />
+    <Compile Include="AdvancedUsage\Logging.cs" />
     <Compile Include="AdvancedUsage\WorkingWithContainersAndAttachments\IterateThroughContainerItems.cs" />
     <Compile Include="AdvancedUsage\WorkingWithContainersAndAttachments\WorkWithEmailAttachments.cs" />
     <Compile Include="AdvancedUsage\WorkingWithContainersAndAttachments\WorkWithOutlookStorage.cs" />
