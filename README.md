@@ -1,6 +1,6 @@
 ## GroupDocs.Parser for .NET 
 
-This package contains [Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples) and [Plugins](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Plugins) for [GroupDocs.Parser for .NET](https://products.groupdocs.com/parser/net) that will help you in understanding the API's working and writing your own applications.
+This package contains [Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples) for [GroupDocs.Parser for .NET](https://products.groupdocs.com/parser/net) that will help you in understanding the API's working and writing your own applications.
 
 GroupDocs.Parser for .NET is a convenient text extractor API that permits users to extract raw or formatted text from different document formats. Beside, it is not only a text extractor API, user can extract metadata of the document as well. The API also allows the user to deal with the containers such as OST and ZIP containers.
 
@@ -14,17 +14,16 @@ GroupDocs.Parser for .NET is a convenient text extractor API that permits users 
 Directory | Description
 --------- | -----------
 [Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples)  | Contains the package of all .NET examples (C#) and sample files that will help you learn how to use product features. 
-[Plugin](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Plugins)  | Contains the plugins related to GroupDocs.Parser for Visual Studio. 
 
 ## How to Run the Examples
 
 + You can either clone the repository using your favorite GitHub client or download the ZIP file from the above button.
 + Extract the contents of the ZIP file to any folder on your computer.
 + In the extracted files and folders, you can see solution file for C# Project.
-+ The project is created in Visual Studio 2013.
++ The project is created in Visual Studio 2019.
 + Open the solution file in Visual Studio and build the project.
 + On the first run, the dependencies will automatically be downloaded via NuGet.
-+ Open Program.cs file, all the examples are called from here.
++ Open RunExamples.cs file, all the examples are called from here.
 + Uncomment the examples you want to run from within the project.
 
 Please find more details for how to run the examples [here](https://docs.groupdocs.com/display/parsernet/How+to+Run+Examples).
