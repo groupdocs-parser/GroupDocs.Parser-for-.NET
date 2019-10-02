@@ -6,7 +6,7 @@ GroupDocs.Parser is a powerful document data extraction API from over 50 documen
 
 One of the most valuable features of GroupDocs.Parser is parsing documents with predefined templates. It's easy to define template and extract data from invoices, prices or other kinds of your typical documents.
 The API allows to easily extract text in accurate and quick modes. There are several advanced methods to extract text.
-The API also provides methods to extract images, extract metadata. You can do it with regular documents and containers like ZIP archives, OST/PST mail data files and PDF portfolios
+The API also provides methods to extract images, extract metadata. You can do it with regular documents and containers like ZIP archives, OST/PST mail data files and PDF portfolios.
 If you want to extract PDF forms, GroupDocs.Parser also allows to do it.
 
 <p align="center">
