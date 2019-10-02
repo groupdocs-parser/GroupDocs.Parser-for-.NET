@@ -2,7 +2,12 @@
 
 This package contains [Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples) for [GroupDocs.Parser for .NET](https://products.groupdocs.com/parser/net) that will help you in understanding the API's working and writing your own applications.
 
-GroupDocs.Parser for .NET is a convenient text extractor API that permits users to extract raw or formatted text from different document formats. Beside, it is not only a text extractor API, user can extract metadata of the document as well. The API also allows the user to deal with the containers such as OST and ZIP containers.
+GroupDocs.Parser is a powerful document data extraction API from over 50 document types in your applications.
+
+One of the most valuable features of GroupDocs.Parser is parsing documents with predefined templates. It's easy to define template and extract data from invoices, prices or other kinds of your typical documents.
+The API allows to easily extract text in accurate and quick modes. There are several advanced methods to extract text.
+The API also provides methods to extract images, extract metadata. You can do it with regular documents and containers like ZIP archives, OST/PST mail data files and PDF portfolios
+If you want to extract PDF forms, GroupDocs.Parser also allows to do it.
 
 <p align="center">
 
