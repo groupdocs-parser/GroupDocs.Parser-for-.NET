@@ -98,6 +98,7 @@ namespace GroupDocs.Parser.Examples.CSharp
             //SearchTextByKeyword.Run();
             //SearchTextByRegex.Run();
             //SearchTextWithHighlights.Run();
+            //SearchTextByPages.Run();
 
             #region Working With Formatted Text
 

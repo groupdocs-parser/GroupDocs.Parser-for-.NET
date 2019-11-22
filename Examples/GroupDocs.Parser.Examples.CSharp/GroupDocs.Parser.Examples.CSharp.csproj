@@ -35,8 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GroupDocs.Parser, Version=19.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>packages\GroupDocs.Parser.19.9.0\lib\net2.0\GroupDocs.Parser.dll</HintPath>
+    <Reference Include="GroupDocs.Parser, Version=19.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>packages\GroupDocs.Parser.19.11.0\lib\net2.0\GroupDocs.Parser.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -82,6 +82,7 @@
     <Compile Include="AdvancedUsage\WorkingWithText\ExtractTextFromPageInRawMode.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\ExtractTextStructure.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\SearchTextByKeyword.cs" />
+    <Compile Include="AdvancedUsage\WorkingWithText\SearchTextByPages.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\SearchTextByRegex.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\SearchTextWithHighlights.cs" />
     <Compile Include="AdvancedUsage\WorkingWithText\WorkingWithFormattedText\ExtractFormattedTextFromDocument.cs" />
