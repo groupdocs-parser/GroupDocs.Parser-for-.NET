@@ -8,6 +8,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithImages
     using System.IO;
     using System.Text;
     using GroupDocs.Parser.Data;
+    using GroupDocs.Parser.Options;
 
     /// <summary>
     /// This example shows how to save extracted images to files.
@@ -29,35 +30,17 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithImages
                     return;
                 }
 
+                // Create the options to save images in PNG format
+                ImageOptions options = new ImageOptions(ImageFormat.Png);
+
                 int imageNumber = 0;
                 // Iterate over images
                 foreach (PageImageArea image in images)
                 {
-                    // Open the image stream
-                    using (Stream imageStream = image.GetImageStream())
-                    {
-                        // Create the file to save image
-                        using (Stream destStream = File.Create(imageNumber.ToString() + image.FileType.Extension))
-                        {
-                            byte[] buffer = new byte[4096];
-                            int readed = 0;
+                    // Save the image to the png file
+                    image.Save(imageNumber.ToString() + ".png", options);
 
-                            do
-                            {
-                                // Read data from the image stream
-                                readed = imageStream.Read(buffer, 0, buffer.Length);
-
-                                if (readed > 0)
-                                {
-                                    // Write data to the file stream
-                                    destStream.Write(buffer, 0, readed);
-                                }
-                            }
-                            while (readed > 0);
-                        }
-
-                        imageNumber++;
-                    }
+                    imageNumber++;
                 }
             }
         }

@@ -11,8 +11,8 @@ namespace GroupDocs.Parser.Examples.CSharp
     internal static class Constants
     {
         public const string LicensePath = "C://licenses//GroupDocs.Parser.Net.lic";
-        public const string SamplesPath = "../../../Resources/SampleFiles";
-        public const string OutputPath = "../../Output/";
+        public const string SamplesPath = "./Resources/SampleFiles";
+        public const string OutputPath = "./Output/";
 
         public static readonly string SampleDocx = GetFilePath("sample.docx");
 

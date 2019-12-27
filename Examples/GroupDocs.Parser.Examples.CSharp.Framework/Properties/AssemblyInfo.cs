@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GroupDocs.Parser.Examples.CSharp")]
+[assembly: AssemblyTitle("GroupDocs.Parser.Examples.CSharp.Framework")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GroupDocs.Parser.Examples.CSharp")]
+[assembly: AssemblyProduct("GroupDocs.Parser.Examples.CSharp.Framework")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("da6bc6b2-b9e9-47f6-a17b-ceb6c97c5caf")]
+[assembly: Guid("5bfc49e8-b436-42f0-90c9-c82b239a43fb")]
 
 // Version information for an assembly consists of the following four values:
 //
