@@ -48,6 +48,12 @@
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\samplePassword.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\SampleWithToc.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\SampleWithToc.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sqlite.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -90,6 +96,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithText\ExtractTextAreas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithText\ExtractTextAreasFromPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithText\ExtractTextAreasWithOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithText\ExtractTextByTocItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithText\ExtractTextFromPageInAccurateMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithText\ExtractTextFromPageInRawMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithText\ExtractTextInAccurateMode.cs" />

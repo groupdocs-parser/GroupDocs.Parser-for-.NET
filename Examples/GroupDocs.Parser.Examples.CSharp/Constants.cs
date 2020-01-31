@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2019 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2020 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp
 {
@@ -42,7 +42,11 @@ namespace GroupDocs.Parser.Examples.CSharp
 
         public static readonly string SampleOutlook = GetFilePath("sample.ost");
 
-        public static readonly string SamplePdfPortfolio = GetFilePath("PortfolioWithFolder.pdf");             
+        public static readonly string SamplePdfPortfolio = GetFilePath("PortfolioWithFolder.pdf");
+
+        public static readonly string SampleDocxWithToc = GetFilePath("samplewithtoc.docx");
+
+        public static readonly string SamplePdfWithToc = GetFilePath("samplewithtoc.pdf");
 
         private static string GetFilePath(string fileName)
         {

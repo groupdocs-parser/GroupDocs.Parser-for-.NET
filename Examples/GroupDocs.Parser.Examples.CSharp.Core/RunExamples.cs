@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2019 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2020 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp
 {
@@ -98,6 +98,7 @@ namespace GroupDocs.Parser.Examples.CSharp
             //SearchTextByRegex.Run();
             //SearchTextWithHighlights.Run();
             //SearchTextByPages.Run();
+            //ExtractTextByTocItem.Run();
 
             #region Working With Formatted Text
 
