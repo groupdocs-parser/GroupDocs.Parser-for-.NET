@@ -13,7 +13,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.Te
     /// <summary>
     /// This example shows how to define a template table with the parameters.
     /// </summary>
-    public class WorkingWithTableParameters
+    static class WorkingWithTableParameters
     {
         public static void Run()
         {

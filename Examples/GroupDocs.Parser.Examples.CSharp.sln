@@ -7,10 +7,11 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GroupDocs.Parser.Examples.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupDocs.Parser.Examples.CSharp.Framework", "GroupDocs.Parser.Examples.CSharp.Framework\GroupDocs.Parser.Examples.CSharp.Framework.csproj", "{5BFC49E8-B436-42F0-90C9-C82B239A43FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupDocs.Parser.Examples.CSharp.Core", "GroupDocs.Parser.Examples.CSharp.Core\GroupDocs.Parser.Examples.CSharp.Core.csproj", "{029BFB9C-20A4-4CAC-BE28-4D13D9FC5B1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupDocs.Parser.Examples.CSharp.Core", "GroupDocs.Parser.Examples.CSharp.Core\GroupDocs.Parser.Examples.CSharp.Core.csproj", "{029BFB9C-20A4-4CAC-BE28-4D13D9FC5B1E}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems*{029bfb9c-20a4-4cac-be28-4d13d9fc5b1e}*SharedItemsImports = 5
 		GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems*{5bfc49e8-b436-42f0-90c9-c82b239a43fb}*SharedItemsImports = 4
 		GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems*{66aa31fe-ad7d-46c1-abab-7d048da1aa75}*SharedItemsImports = 13
 	EndGlobalSection

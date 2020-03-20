@@ -18,6 +18,12 @@
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\images.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\images.pptx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\images.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\invoice.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -36,16 +42,31 @@
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sample.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sample.one">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sample.ost">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sample.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sample.pptx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sample.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sample.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\SampleCarWash.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\samplePassword.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\SampleWithImages.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\SampleWithToc.docx">
@@ -62,23 +83,77 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sample.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\utf8.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDatabase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractEmails.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromDatabases.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Email\ExtractImages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Email\ExtractMetadata.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Email\ExtractText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Email\ExtractTextAsHtml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Email\SearchTextByKeyword.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Email\SearchTextByRegularExpression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\EPUB\ExtractTableOfContents.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\EPUB\ExtractText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\EPUB\ExtractTextAsHtml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\EPUB\ExtractTextFromPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\EPUB\SearchTextByKeyword.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\EPUB\SearchTextByRegularExpression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Excel\ExtractImages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Excel\ExtractMetadata.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Excel\ExtractText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Excel\ExtractTextAsHtml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Excel\ExtractTextFromSheet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Excel\SearchTextByKeyword.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Excel\SearchTextByRegularExpression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\OneNote\ExtractText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\OneNote\ExtractTextFromPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\OneNote\SearchTextByKeyword.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\OneNote\SearchTextByRegularExpression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\HTML\ExtractText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\HTML\SearchTextByKeyword.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\HTML\SearchTextByRegularExpression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\PowerPoint\ExtractImages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\PowerPoint\ExtractMetadata.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\PowerPoint\ExtractText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\PowerPoint\ExtractTextAsHtml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\PowerPoint\ExtractTextFromSlide.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\PowerPoint\SearchTextByKeyword.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\PowerPoint\SearchTextByRegularExpression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Word\ExtractHyperlinks.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Word\ExtractImages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Word\ExtractMetadata.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Word\ExtractTableOfContents.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Word\ExtractTables.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Word\ExtractText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Word\ExtractTextAsHtml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Word\ExtractTextFromPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Word\SearchTextByKeyword.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Word\SearchTextByRegularExpression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\ExtractDataFromPdfForms.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Email\ExtractEmailsFromRemoveServer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\ExtractImages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\ExtractMetadata.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\ExtractText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\ExtractTextFromPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\ParseDataFromDocuments.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\SearchTextByKeyword.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\SearchTextByRegularExpression.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadDocumentFromLocalDisk.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadDocumentFromStream.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\PasswordProtectedDocuments.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\SpecifyFileFormat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadingSpecificFileFormats.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Logging.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithContainersAndAttachments\IterateThroughContainerItems.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithContainersAndAttachments\WorkWithEmailAttachments.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithContainersAndAttachments\WorkWithOutlookStorage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithContainersAndAttachments\WorkWithPdfPortfolios.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithContainersAndAttachments\WorkWithZipArchives.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithZipArchivesAndAttachments\IterateThroughContainerItems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Email\ExtractAttachmentsFromEmails.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Email\ExtractEmailsFromOutlookStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\ExtractAttachmentsFromPdfPortfolios.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Zip\ExtractTextFromZipArchiveFiles.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithDataExtractedByTemplate\GetFieldByName.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithDataExtractedByTemplate\IterateThroughFields.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithDataExtractedByTemplate\WorkingWithTables.cs" />
@@ -111,21 +186,24 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithText\WorkingWithFormattedText\Html.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithText\WorkingWithFormattedText\Markdown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithText\WorkingWithFormattedText\PlainText.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractContainersAndAttachments.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractFormattedText.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractImages.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractMetadata.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractDataFromAttachmentsAndZipArchives.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractFormattedTextFromDocuments.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractImagesFromDocuments.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractMetadataFromDocuments.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractTableOfContents.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractTextFromDocuments.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\GetDocumentInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\GetSupportedFeatures.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\GetSupportedFileFormats.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ParseDocumentByTemplate.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ParseFormData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ParseDataFromDocuments.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractDataFromPdfForms.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)QuickStart\HelloWorld.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)QuickStart\SetLicenseFromFile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)QuickStart\SetLicenseFromStream.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)QuickStart\SetMeteredLicense.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Zip\" />
   </ItemGroup>
 </Project>

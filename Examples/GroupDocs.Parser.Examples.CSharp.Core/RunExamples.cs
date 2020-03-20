@@ -25,7 +25,7 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             // NOTE: Please uncomment the example you want to try out
 
-            #region Quick Start
+            #region Quick start
 
             SetLicenseFromFile.Run();
             //SetLicenseFromStream.Run();
@@ -34,46 +34,41 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #endregion
 
-            #region Basic Usage
+            #region Basic usage
 
-            //ExtractContainersAndAttachments.Run();
-            //ExtractFormattedText.Run();
+            //ExtractDataFromAttachmentsAndZipArchives.Run();
+            //ExtractFormattedTextFromDocuments.Run();
             //ExtractImages.Run();
-            //ExtractMetadata.Run();
+            //ExtractImagesFromDocuments.Run();
             //ExtractTableOfContents.Run();
-            //ExtractText.Run();
+            //ExtractTextFromDocuments.Run();
             //GetDocumentInfo.Run();
             //GetSupportedFeatures.Run();
             //GetSupportedFileFormats.Run();
-            //ParseDocumentByTemplate.Run();
+            //ParseDataFromDocuments.Run();
 
             #endregion
 
-            #region Advanced Usage
+            #region Advanced usage
 
             //Logging.Run();
-            //ExtractEmails.Run();
 
             #region Loading
 
             //PasswordProtectedDocuments.Run();
-            //SpecifyFileFormat.Run();
+            //LoadingSpecificFileFormats.Run();
             //LoadDocumentFromStream.Run();
             //LoadDocumentFromLocalDisk.Run();
 
             #endregion
 
-            #region Working With Containers and Attachments
+            #region Working with Zip archives and attachments
 
             //IterateThroughContainerItems.Run();
-            //WorkWithEmailAttachments.Run();
-            //WorkWithOutlookStorage.Run();
-            //WorkWithPdfPortfolios.Run();
-            //WorkWithZipArchives.Run();
 
             #endregion
 
-            #region Working With Images
+            #region Working with images
 
             //ExtractImagesFormDocumentPageArea.Run();
             //ExtractImagesFromDocument.Run();
@@ -82,7 +77,7 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #endregion
 
-            #region Working With Text
+            #region Working with text
 
             //DetectEncoding.Run();
             //ExtractHighlight.Run();
@@ -112,9 +107,9 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #endregion
 
-            #region Working With Templates
+            #region Working with templates
 
-            #region Template Fields
+            #region Template fields
 
             //WorkingWithTemplateFixedPosition.Run();
             //WorkingWithTemplateRegexPosition.Run();
@@ -122,7 +117,7 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #endregion
 
-            #region Template Tables
+            #region Template tables
 
             //WorkingWithTableLayout.Run();
             //WorkingWithTableParameters.Run();
@@ -131,11 +126,116 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #endregion
 
-            #region Working With Data Extracted By Template
+            #region Working with data extracted by template
 
             //GetFieldByName.Run();
             //IterateThroughFields.Run();
             //WorkingWithTables.Run();
+
+            #endregion
+
+            #region Extract data from various formats
+
+            #region Word
+
+            //AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractHyperlinks.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractImages.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractMetadata.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractTableOfContents.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractTables.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractText.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractTextAsHtml.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractTextFromPage.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Word.SearchTextByKeyword.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Word.SearchTextByRegularExpression.Run();
+
+            #endregion
+
+            #region Excel
+
+            //AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractImages.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractMetadata.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractText.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractTextAsHtml.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractTextFromSheet.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Excel.SearchTextByKeyword.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Excel.SearchTextByRegularExpression.Run();
+
+            #endregion
+
+            #region PowerPoint
+
+            //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractImages.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractMetadata.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractText.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractTextAsHtml.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractTextFromSlide.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.SearchTextByKeyword.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.SearchTextByRegularExpression.Run();
+
+            #endregion
+
+            #region PDF
+
+            //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractDataFromPdfForms.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractImages.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractMetadata.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractText.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractTextFromPage.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.SearchTextByKeyword.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.SearchTextByRegularExpression.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractAttachmentsFromPdfPortfolios.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ParseDataFromDocuments.Run();
+
+            #endregion
+
+            #region Email
+
+            //AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractEmailsFromOutlookStorage.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractAttachmentsFromEmails.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractEmailsFromRemoveServer.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractMetadata.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractText.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractTextAsHtml.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractImages.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Email.SearchTextByKeyword.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Email.SearchTextByRegularExpression.Run();
+
+            #endregion
+
+            #region EPUB
+
+            //AdvancedUsage.ExtractDataFromVariousFormats.EPUB.ExtractTableOfContents.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.EPUB.ExtractText.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.EPUB.ExtractTextAsHtml.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.EPUB.ExtractTextFromPage.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.EPUB.SearchTextByKeyword.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.EPUB.SearchTextByRegularExpression.Run();
+
+            #endregion
+
+            #region Zip
+
+            //AdvancedUsage.ExtractDataFromVariousFormats.Zip.ExtractTextFromZipArchiveFiles.Run();
+
+            #endregion
+
+            #region HTML
+
+            //AdvancedUsage.ExtractDataFromVariousFormats.HTML.ExtractText.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.HTML.SearchTextByKeyword.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.HTML.SearchTextByRegularExpression.Run();
+
+            #endregion
+
+            #region OneNote
+
+            //AdvancedUsage.ExtractDataFromVariousFormats.OneNote.ExtractText.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.OneNote.SearchTextByKeyword.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.OneNote.SearchTextByRegularExpression.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.OneNote.ExtractTextFromPage.Run();
+
+            #endregion
 
             #endregion
 

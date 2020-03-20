@@ -16,7 +16,17 @@ namespace GroupDocs.Parser.Examples.CSharp
 
         public static readonly string SampleDocx = GetFilePath("sample.docx");
 
+        public static readonly string SampleWithImagesDocx = GetFilePath("SampleWithImages.docx");
+
         public static readonly string SampleHyperlinksDocx = GetFilePath("Hyperlinks.docx");
+
+        public static readonly string SampleXlsx = GetFilePath("sample.xlsx");
+
+        public static readonly string SampleWithImagesXlsx = GetFilePath("images.xlsx");
+
+        public static readonly string SamplePptx = GetFilePath("sample.pptx");
+
+        public static readonly string SampleWithImagesPptx = GetFilePath("images.pptx");
 
         public static readonly string SamplePdf = GetFilePath("sample.pdf");
 
@@ -24,13 +34,19 @@ namespace GroupDocs.Parser.Examples.CSharp
 
         public static readonly string SampleFormsPdf = GetFilePath("forms.pdf");
 
+        public static readonly string SampleCarWashPdf = GetFilePath("SampleCarWash.pdf");
+
         public static readonly string SampleInvoicePdf = GetFilePath("invoice.pdf");
 
         public static readonly string SamplePassword = GetFilePath("samplePassword.pdf");
 
         public static readonly string SampleMd = GetFilePath("sample.md");
 
+        public static readonly string SampleHtml = GetFilePath("sample.htm");
+
         public static readonly string SampleEpub = GetFilePath("sample.epub");
+
+        public static readonly string SampleOne = GetFilePath("sample.one");
 
         public static readonly string SampleZip = GetFilePath("sample.zip");
 
