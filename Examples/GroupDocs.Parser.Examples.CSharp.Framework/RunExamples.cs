@@ -53,6 +53,7 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             //Logging.Run();
             //ExtractDataFromDatabases.Run();
+            //ExtractDataFromDatabasesWithDbConnection.Run();
 
             #region Loading
 
@@ -159,6 +160,7 @@ namespace GroupDocs.Parser.Examples.CSharp
             //AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractText.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractTextAsHtml.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractTextFromSheet.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractTextFromSheetInRawMode.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.Excel.SearchTextByKeyword.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.Excel.SearchTextByRegularExpression.Run();
 
@@ -171,6 +173,7 @@ namespace GroupDocs.Parser.Examples.CSharp
             //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractText.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractTextAsHtml.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractTextFromSlide.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractTextFromSlideInRawMode.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.SearchTextByKeyword.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.SearchTextByRegularExpression.Run();
 
@@ -183,6 +186,7 @@ namespace GroupDocs.Parser.Examples.CSharp
             //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractMetadata.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractText.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractTextFromPage.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractTextFromPageInRawMode.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.SearchTextByKeyword.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.SearchTextByRegularExpression.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractAttachmentsFromPdfPortfolios.Run();

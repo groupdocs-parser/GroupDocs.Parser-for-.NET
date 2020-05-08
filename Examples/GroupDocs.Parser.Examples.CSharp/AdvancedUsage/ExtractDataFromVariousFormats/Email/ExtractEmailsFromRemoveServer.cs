@@ -17,15 +17,14 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.ExtractDataFromVariousF
     {
         public static void Run()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("mode = exchange");
-            sb.AppendLine("MailboxUri = https://outlook.office365.com/ews/exchange.asmx");
-            sb.AppendLine("Username = email@server");
-            sb.AppendLine("Password = password");
+            // Create the connection object for Exchange Web Services protocol 
+            EmailConnection connection = new EmailEwsConnection(
+                "https://outlook.office365.com/ews/exchange.asmx",
+                "email@server",
+                "password");
 
             // Create an instance of Parser class to extract emails from the remote server
-            // As filePath connection parameters are passed; LoadOptions is set to Email file format
-            using (Parser parser = new Parser(sb.ToString(), new LoadOptions(FileFormat.Email)))
+            using (Parser parser = new Parser(connection))
             {
                 // Check if container extraction is supported
                 if (!parser.Features.Container)
