@@ -9,9 +9,9 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithZipArchivesA
     using GroupDocs.Parser.Data;
 
     /// <summary>
-    /// This example shows how to iterate through container items.
+    /// This example shows how to detect file type of container item.
     /// </summary>
-    static class IterateThroughContainerItems
+    static class DetectFileType
     {
         public static void Run()
         {
@@ -29,8 +29,11 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithZipArchivesA
                 // Iterate over attachments
                 foreach (ContainerItem item in attachments)
                 {
-                    // Print an item name and size
-                    Console.WriteLine(string.Format("{0}: {1}", item.Name, item.Size));
+                    // Detect the file type
+                    Options.FileType fileType = item.DetectFileType(Options.FileTypeDetectionMode.Default);
+                    
+                    // Print the name and file type
+                    Console.WriteLine(string.Format("{0}: {1}", item.Name, fileType));
                 }
             }
         }

@@ -6,13 +6,15 @@ namespace GroupDocs.Parser.Examples.CSharp
     using System;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.Loading;
-    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithContainersAndAttachments;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithDataExtractedByTemplate;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithHyperlinks;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithImages;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTables;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateFields;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateTables;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText.WorkingWithFormattedText;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithZipArchivesAndAttachments;
     using GroupDocs.Parser.Examples.CSharp.BasicUsage;
     using GroupDocs.Parser.Examples.CSharp.QuickStart;
 
@@ -67,6 +69,7 @@ namespace GroupDocs.Parser.Examples.CSharp
             #region Working with Zip archives and attachments
 
             //IterateThroughContainerItems.Run();
+            //DetectFileType.Run();
 
             #endregion
 
@@ -76,6 +79,21 @@ namespace GroupDocs.Parser.Examples.CSharp
             //ExtractImagesFromDocument.Run();
             //ExtractImagesFromDocumentPage.Run();
             //ExtractImagesToFiles.Run();
+
+            #endregion
+
+            #region Working with tables
+
+            //ExtractTablesFromDocument.Run();
+            //ExtractTablesFromDocumentPage.Run();
+
+            #endregion
+
+            #region Working with hyperlinks
+
+            //ExtractHyperlinksFromDocument.Run();
+            //ExtractHyperlinksFromDocumentPage.Run();
+            //ExtractHyperlinksFromDocumentPageArea.Run();
 
             #endregion
 

@@ -32,11 +32,15 @@ namespace GroupDocs.Parser.Examples.CSharp
 
         public static readonly string SampleImagesPdf = GetFilePath("images.pdf");
 
+        public static readonly string HyperlinksPdf = GetFilePath("Hyperlinks.pdf");
+
         public static readonly string SampleFormsPdf = GetFilePath("forms.pdf");
 
         public static readonly string SampleCarWashPdf = GetFilePath("SampleCarWash.pdf");
 
         public static readonly string SampleInvoicePdf = GetFilePath("invoice.pdf");
+       
+        public static readonly string SampleInvoicePagesPdf = GetFilePath("invoice_pages.pdf");
 
         public static readonly string SamplePassword = GetFilePath("samplePassword.pdf");
 
