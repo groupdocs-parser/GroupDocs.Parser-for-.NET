@@ -10,9 +10,7 @@ hideChildren: False
 ---
 GroupDocs.Parser allows to parse form data from PDF documents.
 
-# Extract data from PDF forms
-
- To extract PDF form data please call the [ParseForm](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/parseform) method:
+To extract PDF form data please call the [ParseForm](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/parseform) method:
 
 ```csharp
 DocumentData ParseForm()

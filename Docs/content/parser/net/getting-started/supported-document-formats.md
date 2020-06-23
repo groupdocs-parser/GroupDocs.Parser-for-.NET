@@ -8,8 +8,6 @@ keywords:
 productName: GroupDocs.Parser for .NET
 hideChildren: False
 ---
-# Supported Document Formats
-
 The following table indicates the file formats from which GroupDocs.Parser for .NET can extract data.
 
 | Document Type | Parse Document by Template | Extract Text (Accurate) | Extract Text (Raw) | Extract Structured Text and Formatted Text | Extract Text Areas | Extract Metadata | Extract Images | Extract Containers and Attachments | Parse Form Data | Extract Table of Contents |

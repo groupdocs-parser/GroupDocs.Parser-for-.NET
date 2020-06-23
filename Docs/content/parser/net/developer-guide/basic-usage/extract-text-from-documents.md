@@ -14,7 +14,7 @@ GroupDocs.Parser's text extractor is easy to use and powerful at the same time (
 
 This article demonstrates how to implement the simplest scenario - extract text from any supported format without additional settings.
 
-# Extract text from documents
+## Extract text from documents
 
 To extract text from documents simply call [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method:
 

@@ -12,7 +12,7 @@ GroupDocs.Parser allows to extract formatted text from documents for those cases
 
 This feature allows to extract text with integrated HTML tags, or Markdown syntax. Even PlainText mode allows to convert your documents to high quality text with integrated ASCII formatting symbols for tables, lists etc.
 
-# Extract formatted text from documents
+## Extract formatted text from documents
 
 To extract a formatted text from documents simply call the [GetFormattedText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getformattedtext) method:
 

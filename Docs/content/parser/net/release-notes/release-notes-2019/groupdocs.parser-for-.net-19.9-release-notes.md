@@ -20,7 +20,7 @@ hideChildren: False
 | --- | --- | --- |
 | PARSERNET-1218 | New public API | Feature |
 
-# Public API and Backward Incompatible Changes
+## Public API and Backward Incompatible Changes
 
 #### All public types from GroupDocs.Parser namespace 
 

@@ -14,7 +14,7 @@ GroupDocs.Parser's allows to easily implement simple and complex image extractio
 
 In this article you can see how to extract images from any supported format without additional settings.
 
-# Extract images from documents
+## Extract images from documents
 
 To extract images from documents simply call [GetImages](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getimages) method:
 

@@ -14,7 +14,7 @@ With Document Parsing feature you can easily solve business automation tasks wit
 
 Using this feature is straightforward. Simply define a template programmatically and apply it.
 
-# Parse data from documents
+## Parse data from documents
 
 GroupDocs.Parser provides [Template](https://apireference.groupdocs.com/net/parser/groupdocs.parser.templates/template) object to define a template and [ParseByTemplate](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/parsebytemplate) method to apply the template to existing document.
 

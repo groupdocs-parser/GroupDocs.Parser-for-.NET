@@ -8,8 +8,6 @@ keywords:
 productName: GroupDocs.Parser for .NET
 hideChildren: False
 ---
-# Search text in Microsoft OneNote sections
-
 To extract a text from Microsoft OneNote Sections [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) and [GetText(pageIndex)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.parser/gettext/methods/2) methods are used. These methods allow to extract a text from the entire document or a text from the selected page. Raw mode is not supported for Microsoft OneNote.
 
 Here are the steps to extract a text from Microsoft OneNote Section:

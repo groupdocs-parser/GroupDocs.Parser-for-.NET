@@ -10,7 +10,7 @@ hideChildren: False
 ---
 GroupDocs.Parser allows to extract table of contents from Microsoft Word (DOC, DOCX etc), PDF documents and Ebooks.
 
-# Extract table of contents
+## Extract table of contents
 
 To extract TOC from documents, please use the [GetToc](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettoc) method:
 

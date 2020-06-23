@@ -309,8 +309,6 @@ using (var extractor = new FictionBookTextExtractor(stream)) {
 }
 ```
 
-####   
-
 #### Implement the ability to extract a structured text from fb2 files
 
 This feature allows to extract a text with its structure from fb2 (FictionBook) documents.
@@ -401,8 +399,6 @@ using (FictionBookTextExtractor extractor = new FictionBookTextExtractor(File.Op
 }
 ```
 
-####   
-
 #### Implement the support for Dynabic.Metered
 
 This feature allows to use metered keys.
@@ -419,8 +415,6 @@ Added **Metered** class.
 Metered matered = new Metered();
 matered.SetMeteredKey("PublicKey", "PrivateKey");
 ```
-
-####   
 
 #### Implement the media type detector for fb2 documents
 
