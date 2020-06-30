@@ -27,7 +27,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithHyperlinks
                 }
 
                 // Extract hyperlinks from the document
-                IEnumerable<PageHyperlinkArea> hyperlinks = parser.GetHypelinks();
+                IEnumerable<PageHyperlinkArea> hyperlinks = parser.GetHyperlinks();
 
                 // Iterate over hyperlinks
                 foreach (PageHyperlinkArea h in hyperlinks)

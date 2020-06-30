@@ -30,7 +30,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithHyperlinks
                 PageAreaOptions options = new PageAreaOptions(new Rectangle(new Point(380, 90), new Size(150, 50)));
 
                 // Extract hyperlinks from the document page area
-                IEnumerable<PageHyperlinkArea> hyperlinks = parser.GetHypelinks(options);
+                IEnumerable<PageHyperlinkArea> hyperlinks = parser.GetHyperlinks(options);
 
                 // Iterate over hyperlinks
                 foreach (PageHyperlinkArea h in hyperlinks)

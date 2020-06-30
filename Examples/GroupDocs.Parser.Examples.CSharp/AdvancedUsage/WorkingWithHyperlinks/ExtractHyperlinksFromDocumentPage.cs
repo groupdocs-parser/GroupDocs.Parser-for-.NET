@@ -42,7 +42,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithHyperlinks
                     Console.WriteLine(string.Format("Page {0}/{1}", pageIndex + 1, documentInfo.PageCount));
 
                     // Extract hyperlinks from the document page
-                    IEnumerable<PageHyperlinkArea> hyperlinks = parser.GetHypelinks(pageIndex);
+                    IEnumerable<PageHyperlinkArea> hyperlinks = parser.GetHyperlinks(pageIndex);
 
                     // Iterate over hyperlinks
                     foreach (PageHyperlinkArea h in hyperlinks)
