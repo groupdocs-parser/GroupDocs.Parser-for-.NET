@@ -40,7 +40,7 @@ GroupDocs.Parser.Data.ContainerItem public class was updated with changes as fol
 
 The following types were added:
 
-*     FileTypeDetectionMode enumeration into GroupDocs.Parser.Options namespace.
+*    FileTypeDetectionMode enumeration into GroupDocs.Parser.Options namespace.
 
 #### Usage
 
