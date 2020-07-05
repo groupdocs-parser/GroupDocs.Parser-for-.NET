@@ -56,7 +56,7 @@
 												<asp:Literal ID="litDownloadNow" runat="server"></asp:Literal>
 											</span>
 											<div class="clearfix">&nbsp;</div>
-											<a href="/parser/total" class="btn btn-link refresh-c"><%=Resources["ParseAnotherFile"]%> <i class="fa-refresh fa "></i></a>
+											<a href="/" class="btn btn-link refresh-c"><%=Resources["ParseAnotherFile"]%> <i class="fa-refresh fa "></i></a>
                                             <a class="btn btn-link" target="_blank" href="https://products.groupdocs.cloud/parser/family">Parse more data with <strong>Cloud API</strong> &nbsp;<i class="fa-cloud fa"></i></a>
 										</div>
 
