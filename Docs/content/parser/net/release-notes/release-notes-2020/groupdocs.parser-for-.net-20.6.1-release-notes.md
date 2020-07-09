@@ -19,24 +19,33 @@ hideChildren: False
 
 ## Public API and Backward Incompatible Changes
 
-### Misspelling in GetHyperlinks method name
+### Misspelling in GetHyperlinks method name {#GroupDocs.Parserfor.NET20.6.1-MisspellinginGetHyperlinksmethodname}
 
-#### Description
+#### Description {#GroupDocs.Parserfor.NET20.6.1-Description}
 
-This hot-fix fixes misspelling in GetHyperlinks methods name in Parser class.
+This hot-fix fixes misspelling in GetHyperlinks methods name in Parser
+class.
 
-#### Public API changes
+#### Public API changes {#GroupDocs.Parserfor.NET20.6.1-PublicAPIchanges}
 
-GroupDocs.Parser.Parser public class was updated with changes as follows:
+[GroupDocs.Parser.Parser ](https://apireference.groupdocs.com/parser/net/groupdocs.parser/parser)public
+class was updated with changes as follows:
 
-*    Renamed GetHyperlinks method
-*    Renamed GetHyperlinks(Int32) method
-*    Renamed GetHyperlinks(PageAreaOptions) method
-*    Renamed GetHyperlinks(Int32, PageAreaOptions) method
+*   Renamed
+    [GetHyperlinks](https://apireference.groupdocs.com/parser/net/groupdocs.parser/parser/methods/gethyperlinks)
+    method
+*   Renamed [GetHyperlinks(Int32)](https://apireference.groupdocs.com/parser/net/groupdocs.parser.parser/gethyperlinks/methods/2)
+    method
+*   Renamed [GetHyperlinks(PageAreaOptions)](https://apireference.groupdocs.com/parser/net/groupdocs.parser.parser/gethyperlinks/methods/1)
+    method
+*   Renamed [GetHyperlinks(Int32,
+    PageAreaOptions)](https://apireference.groupdocs.com/parser/net/groupdocs.parser.parser/gethyperlinks/methods/3)
+    method
 
-#### Usage
+#### Usage {#GroupDocs.Parserfor.NET20.6.1-Usage}
 
-The following example shows how to extract hyperlinks from the document page area:
+The following example shows how to extract hyperlinks from the document
+page area:
 
 ```csharp
 // Create an instance of Parser class
@@ -63,4 +72,3 @@ using (Parser parser = new Parser(filePath))
     }
 }
 ```
-
