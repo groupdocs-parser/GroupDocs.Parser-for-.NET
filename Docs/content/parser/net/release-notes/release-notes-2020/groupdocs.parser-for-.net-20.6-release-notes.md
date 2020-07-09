@@ -26,25 +26,28 @@ There are the following improvements in this release:
 
 ## Public API and Backward Incompatible Changes
 
-### Implement the ability to detect media types for Zip container
+### Implement the ability to detect media types for Zip container 
 
-#### Description
+#### Description 
 
-This feature provides the functionality to detect a file type of container items.
+This feature provides the functionality to detect a file type of
+container items.
 
 #### Public API changes
 
-GroupDocs.Parser.Data.ContainerItem public class was updated with changes as follows:
+[GroupDocs.Parser.Data.ContainerItem](https://apireference.groupdocs.com/parser/net/groupdocs.parser.data/containeritem)
+public class was updated with changes as follows:
 
-*    Added DetectFileType method
+*   Added    [DetectFileType](https://apireference.groupdocs.com/parser/net/groupdocs.parser.data/containeritem/methods/detectfiletype) method
 
 The following types were added:
 
-*    FileTypeDetectionMode enumeration into GroupDocs.Parser.Options namespace.
+*   [FileTypeDetectionMode](https://apireference.groupdocs.com/parser/net/groupdocs.parser.options/filetypedetectionmode)enumeration into GroupDocs.Parser.Options namespace.
 
 #### Usage
 
-The following example shows how to extract a raw text from a document page:
+The following example shows how to detect a file type of container
+items:
 
 ```csharp
 // Create an instance of Parser class
@@ -62,47 +65,64 @@ using (Parser parser = new Parser(filePath))
     {
         // Detect the file type
         Options.FileType fileType = item.DetectFileType(Options.FileTypeDetectionMode.Default);
-          
+         
         // Print the name and file type
         Console.WriteLine(string.Format("{0}: {1}", item.Name, fileType));
     }
 }
 ```
 
-### Implement the API to extract data from documents
+### Implement the API to extract data from documents 
 
-#### Description
+#### Description 
 
-This feature provides the functionality to extract tables and hyperlinks from the following document types:
+This feature provides the functionality to extract tables and hyperlinks
+from the following document types:
 
-*    PDF
-*    Presentation
-*    Spreadsheet
-*    Word Processing document
+*   PDF
+*   Presentation
+*   Spreadsheet
+*   Word Processing document
 
-#### Public API changes
+#### Public API changes 
 
 The following types were added:
 
-*    PageHyperlinkArea class into GroupDocs.Parser.Data namespace
-*    PageTableAreaOptions class into GroupDocs.Parser.Options namespace
+*   [PageHyperlinkArea](https://apireference.groupdocs.com/parser/net/groupdocs.parser.data/pagehyperlinkarea)
+    class into GroupDocs.Parser.Data namespace
+*   [PageTableAreaOptions](https://apireference.groupdocs.com/parser/net/groupdocs.parser.options/pagetableareaoptions)
+    class into GroupDocs.Parser.Options namespace
 
-GroupDocs.Parser.Data.PageTableAreaCell public class was updated with changes as follows:
+[GroupDocs.Parser.Data.PageTableAreaCell](https://apireference.groupdocs.com/parser/net/groupdocs.parser.data/pagetableareacell)
+public class was updated with changes as follows:
 
-*    Added Text property
+*   Added
+    [Text](https://apireference.groupdocs.com/parser/net/groupdocs.parser.data/pagetableareacell/properties/text)
+    property
 
-GroupDocs.Parser.Parser public class was updated with changes as follows:
+[GroupDocs.Parser.Parser ](https://apireference.groupdocs.com/parser/net/groupdocs.parser/parser)public
+class was updated with changes as follows:
 
-*    Added GetHypelinks method
-*    Added GetHypelinks(Int32) method
-*    Added GetHypelinks(PageAreaOptions) method
-*    Added GetHypelinks(Int32, PageAreaOptions) method
-*    Added GetTables(PageTableAreaOptions) method
-*    Added GetTables(Int32, PageTableAreaOptions) method
+*   Added
+    [GetHypelinks](https://apireference.groupdocs.com/parser/net/groupdocs.parser/parser/methods/gethypelinks)
+    method
+*   Added [GetHypelinks(Int32)](https://apireference.groupdocs.com/parser/net/groupdocs.parser.parser/gethypelinks/methods/2)
+    method
+*   Added [GetHypelinks(PageAreaOptions)](https://apireference.groupdocs.com/parser/net/groupdocs.parser.parser/gethypelinks/methods/1)
+    method
+*   Added [GetHypelinks(Int32,
+    PageAreaOptions)](https://apireference.groupdocs.com/parser/net/groupdocs.parser.parser/gethypelinks/methods/3)
+    method
+*   Added [GetTables(PageTableAreaOptions)](https://apireference.groupdocs.com/parser/net/groupdocs.parser/parser/methods/gettables)
+    method
+*   Added [GetTables(Int32,
+    PageTableAreaOptions)](https://apireference.groupdocs.com/parser/net/groupdocs.parser.parser/gettables/methods/1)
+    method
 
-#### Usage
+#### Usage 
 
-The following example shows how to extract hyperlinks from the document page area:
+The following example shows how to extract hyperlinks from the document
+page area:
 
 ```csharp
 // Create an instance of Parser class
@@ -130,7 +150,8 @@ using (Parser parser = new Parser(filePath))
 }
 ```
 
-The following example shows how to extract tables from the whole document:
+The following example shows how to extract tables from the whole
+document:
 
 ```csharp
 // Create an instance of Parser class
