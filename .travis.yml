@@ -1,6 +1,10 @@
 git:
   submodules: false
 
+branches:
+  only:
+  - master
+  
 env:
   global:
     - PRODUCT=parser
