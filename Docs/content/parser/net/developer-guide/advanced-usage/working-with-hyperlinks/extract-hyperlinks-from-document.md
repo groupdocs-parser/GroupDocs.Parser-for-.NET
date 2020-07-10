@@ -11,7 +11,7 @@ hideChildren: False
 
 GroupDocs.Parser provides the functionality to extract hyperlinks from documents by the [GetHyperlinks](https://apireference.groupdocs.com/parser/net/groupdocs.parser/parser/methods/gethyperlinks) method:
 
-```
+```csharp
 IEnumerable<PageHyperlinkArea> GetHyperlinks();
 ```
 

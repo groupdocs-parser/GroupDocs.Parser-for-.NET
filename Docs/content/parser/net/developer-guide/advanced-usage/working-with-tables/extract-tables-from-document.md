@@ -11,7 +11,7 @@ hideChildren: False
 
 GroupDocs.Parser provides the functionality to extract tables from documents by the [GetTables(PageTableAreaOptions)](https://apireference.groupdocs.com/parser/net/groupdocs.parser/parser/methods/gettables) method:
 
-```
+```csharp
 IEnumerable<PageTableArea> GetTables(PageTableAreaOptions options);
 ```
 

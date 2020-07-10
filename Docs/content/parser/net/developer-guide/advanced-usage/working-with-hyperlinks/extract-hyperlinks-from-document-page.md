@@ -11,8 +11,8 @@ hideChildren: False
 
 GroupDocs.Parser provides the functionality to extract hyperlinks from document page by the [GetHyperlinks(Int32)](https://apireference.groupdocs.com/parser/net/groupdocs.parser.parser/gethyperlinks/methods/2) method:
 
-```
-IEnumerable<PageHyperlinkArea> GetHyperlinks(``int` `pageIndex);
+```csharp
+IEnumerable<PageHyperlinkArea> GetHyperlinks(int pageIndex);
 ```
 
 This method returns a collection of [PageHyperlinkArea](https://apireference.groupdocs.com/parser/net/groupdocs.parser.data/pagehyperlinkarea) object:
