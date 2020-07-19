@@ -23,34 +23,24 @@ using (TextReader reader = tocItem.GetText())
     Console.WriteLine(reader.ReadToEnd());
 }
 ```
-
 This method returns a text from the chapter to which table of contents item refers (without sub-chapters). For example, "Heading 1.2" from the page
-
 ![](parser/net/images/extract-text-by-table-of-contents-item.png)
-
 returns the following text:
-
 ![](parser/net/images/extract-text-by-table-of-contents-item_1.png)
-
 "Heading 2" from the page:
-
 ![](parser/net/images/extract-text-by-table-of-contents-item_2.png)
-
 returns the following text:
-
 ![](parser/net/images/extract-text-by-table-of-contents-item_3.png)
-
-{{< alert style="warning" >}}InvalidOperationException is thrown if tocItem.PageIndex is null.{{< /alert >}}
-
+{{< alert style="warning" >}}
+[InvalidOperationException](https://docs.microsoft.com/en-us/dotnet/api/system.invalidoperationexception?view=netframework-2.0) is thrown if [tocItem.PageIndex](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/tocitem/properties/pageindex) is *null*.
+{{< /alert >}}
 Here are the steps to extract a text by an item of table of contents:
-
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial document;
 *   Call [GetToc](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettoc) method and obtain the collection of [TocItem](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/tocitem) objects;
 *   Check if *collection* isn't *null* (table of contents extraction is supported for the document);
 *   Iterate through the collection and extract a text by [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/tocitem/methods/gettext) method.  
       
     
-
 ```csharp
 // Create an instance of Parser class
 using (Parser parser = new Parser(Constants.SampleDocxWithToc))

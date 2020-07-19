@@ -9,17 +9,14 @@ productName: GroupDocs.Parser for .NET
 hideChildren: False
 ---
 To extract a text from PDF documents [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) and [GetText(pageIndex)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.parser/gettext/methods/2) method is used. These methods allow to extract a text from the entire document or a text from the selected page.
-
 Here are the steps to extract a text from PDF document:
-
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial document;
 *   Call [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method and obtain [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) object;
 *   Read a text from *reader*.
-
-{{< alert style="warning" >}}GetText method returns null value if text extraction isn't supported for the document. For example, text extraction isn't supported for Zip archive. Therefore, for Zip archive GetText method returns null. For empty PDF document GetText method returns an empty TextReader object (reader.ReadToEnd method returns an empty string).{{< /alert >}}
-
+{{< alert style="warning" >}}
+[GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method returns *null* value if text extraction isn't supported for the document. For example, text extraction isn't supported for Zip archive. Therefore, for Zip archive [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method returns *null*. For empty PDF document [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method returns an empty [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) object ([reader.ReadToEnd](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader.readtoend?view=netframework-2.0) method returns an empty string).
+{{< /alert >}}
 The following example demonstrates how to extract a text from PDF document:
-
 ```csharp
 // Create an instance of Parser class
 using(Parser parser = new Parser(filePath))
@@ -64,22 +61,18 @@ using(Parser parser = new Parser(filePath))
     }
 }
 ```
-
 Raw mode allows to increase the speed of text extraction due to poor formatting accuracy. [GetText(TextOptions)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.parser/gettext/methods/1) and [GetText(pageIndex, TextOptions)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.parser/gettext/methods/3) methods are used to extract a text in raw mode.
-
-{{< alert style="warning" >}}Some documents may have different page numbers in raw and accurate modes. Use DocumentInfo.RawPageCount instead of IDocumentInfo.PageCount in raw mode.{{< /alert >}}
-
+{{< alert style="warning" >}}
+Some documents may have different page numbers in raw and accurate modes. Use [DocumentInfo.RawPageCount](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/documentinfo/properties/rawpagecount) instead of [IDocumentInfo.PageCount](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/idocumentinfo/properties/pagecount) in raw mode.
+{{< /alert >}}
 Here are the steps to extract a raw text from the page of PDF document:
-
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial document;
 *   Instantiate [TextOptions](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/textoptions) object with *true* parameter;
 *   Call [GetDocumentInfo](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getdocumentinfo) method and cast the result to [DocumentInfo](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/documentinfo) class;
 *   Use [RawPageCount](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/documentinfo/properties/rawpagecount) instead of [PageCount](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/idocumentinfo/properties/pagecount) to avoid extra calculations;
 *   Call [GetText(pageIndex, TextOptions)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.parser/gettext/methods/3) method with the sheet index and obtain [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) object;
 *   Read a text from *reader*.
-
 The following example demonstrates how to extract a raw text from the page of PDF document:
-
 ```csharp
 // Create an instance of Parser class
 using (Parser parser = new Parser(filePath))

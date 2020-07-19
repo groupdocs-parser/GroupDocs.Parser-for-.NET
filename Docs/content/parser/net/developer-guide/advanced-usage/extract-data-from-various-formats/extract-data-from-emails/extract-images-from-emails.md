@@ -10,7 +10,9 @@ hideChildren: False
 ---
 To extract images from emails [GetImages](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getimages) method is used. By default images are extracted with its original format. With using [ImageOptions](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/imageoptions) class it is possible to extract images from emails as bmp, gif, jpeg, png and webp formats.
 
-{{< alert style="warning" >}}GetImages method returns null value if image extraction isn't supported for the document. For example, image extraction isn't supported for TXT files. Therefore, for TXT file GetImages method returns null. If an email has no images, GetImages method returns an empty collection.{{< /alert >}}
+{{< alert style="warning" >}}
+[GetImages](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getimages)[ ](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getmetadata) method returns *null* value if image extraction isn't supported for the document. For example, image extraction isn't supported for TXT files. Therefore, for TXT file [GetImages](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getimages) method returns *null*. If an email has no images, [GetImages](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getimages) method returns an empty collection.
+{{< /alert >}}
 
 Here are the steps to extract images from an email to PNG-files:
 

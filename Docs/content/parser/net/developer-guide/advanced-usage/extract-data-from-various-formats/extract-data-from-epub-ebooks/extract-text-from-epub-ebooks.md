@@ -9,17 +9,14 @@ productName: GroupDocs.Parser for .NET
 hideChildren: False
 ---
 To extract a text from EPUB e-books [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) and [GetText(pageIndex)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.parser/gettext/methods/2) methods is used. These methods allow to extract a text from the entire document or a text from the selected page. Raw mode is not supported for EPUB.
-
 Here are the steps to extract a text from EPUB e-book:
-
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial e-book;
 *   Call [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method and obtain [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) object;
 *   Read a text from *reader*.
-
-{{< alert style="warning" >}}GetText method returns null value if text extraction isn't supported for the document. For example, text extraction isn't supported for Zip archive. Therefore, for Zip archive GetText method returns null. For empty EPUB e-book GetText method returns an empty TextReader object (reader.ReadToEnd method returns an empty string).{{< /alert >}}
-
+{{< alert style="warning" >}}
+[GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method returns *null* value if text extraction isn't supported for the document. For example, text extraction isn't supported for Zip archive. Therefore, for Zip archive [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method returns *null*. For empty EPUB e-book [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method returns an empty [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) object ([reader.ReadToEnd](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader.readtoend?view=netframework-2.0) method returns an empty string).
+{{< /alert >}}
 The following example demonstrates how to extract a text from EPUB e-book:
-
 ```csharp
 // Create an instance of Parser class
 using(Parser parser = new Parser(filePath))

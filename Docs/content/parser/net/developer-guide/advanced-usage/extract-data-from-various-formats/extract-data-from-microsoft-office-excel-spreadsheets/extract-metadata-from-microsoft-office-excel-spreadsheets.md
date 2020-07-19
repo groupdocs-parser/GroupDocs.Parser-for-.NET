@@ -31,17 +31,14 @@ To extract metadata from Microsoft Office Excel spreadsheets [GetMetadata](https
 | last-printed-time | The time of the spreadsheet when it was last printed. |
 | revision-number | The spreadsheet revision number. |
 | total-editing-time | The total editing time in minutes. |
-
 Here are the steps to extract metadata from Microsoft Office Excel spreadsheet:
-
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial spreadsheet;
 *   Call [GetMetadata](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getmetadata) method and obtain collection of document metadata objects;
 *   Iterate through the collection and get metadata names and values.
-
-{{< alert style="warning" >}}GetMetadata method returns null value if metadata extraction isn't supported for the document. For example, metadata extraction isn't supported for CSV files. Therefore, for CSV file GetMetadata method returns null. If Microsoft Office Excel spreadsheet has no metadata, GetMetadata method returns an empty collection.{{< /alert >}}
-
+{{< alert style="warning" >}}
+[GetMetadata](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getmetadata) method returns *null* value if metadata extraction isn't supported for the document. For example, metadata extraction isn't supported for CSV files. Therefore, for CSV file [GetMetadata](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getmetadata) method returns *null*. If Microsoft Office Excel spreadsheet has no metadata, [GetMetadata](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getmetadata) method returns an empty collection.
+{{< /alert >}}
 The following example demonstrates how to extract metadata from Excel spreadsheet:
-
 ```csharp
 // Create an instance of Parser class
 using(Parser parser = new Parser(filePath))

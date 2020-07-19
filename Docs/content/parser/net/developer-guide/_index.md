@@ -8,4 +8,6 @@ keywords:
 productName: GroupDocs.Parser for .NET
 hideChildren: False
 ---
-{{< alert style="info" >}}This section describes some basic and advanced use cases of GroupDocs.Parser for .NET. Please refer to GitHub repository for more examples and samples.{{< /alert >}}
+{{< alert style="info" >}}
+This section describes some basic and advanced use cases of GroupDocs.Parser for .NET. Please refer to [GitHub repository](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET) for more examples and samples.
+{{< /alert >}}

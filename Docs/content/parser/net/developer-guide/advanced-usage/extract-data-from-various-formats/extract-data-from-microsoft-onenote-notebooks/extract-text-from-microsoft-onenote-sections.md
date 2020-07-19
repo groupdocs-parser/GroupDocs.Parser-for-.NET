@@ -8,18 +8,19 @@ keywords:
 productName: GroupDocs.Parser for .NET
 hideChildren: False
 ---
+# Search text in Microsoft OneNote sections
 To extract a text from Microsoft OneNote Sections [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) and [GetText(pageIndex)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.parser/gettext/methods/2) methods are used. These methods allow to extract a text from the entire document or a text from the selected page. Raw mode is not supported for Microsoft OneNote.
 
 Here are the steps to extract a text from Microsoft OneNote Section:
-
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial section;
 *   Call [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method and obtain [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) object;
 *   Read a text from *reader*.
 
-{{< alert style="warning" >}} GetText method returns null value if text extraction isn't supported for the document. For example, text extraction isn't supported for Zip archive. Therefore, for Zip archive GetText method returns null. For empty Microsoft OneNote Section GetText method returns an empty TextReader object (reader.ReadToEnd method returns an empty string).{{< /alert >}}
+{{< alert style="warning" >}}
+[GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method returns *null* value if text extraction isn't supported for the document. For example, text extraction isn't supported for Zip archive. Therefore, for Zip archive [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method returns *null*. For empty Microsoft OneNote Section [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method returns an empty [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) object ([reader.ReadToEnd](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader.readtoend?view=netframework-2.0) method returns an empty string).
+{{< /alert >}}
 
 The following example demonstrates how to extract a text from Microsoft OneNote Section:
-
 ```csharp
 // Create an instance of Parser class
 using(Parser parser = new Parser(filePath))

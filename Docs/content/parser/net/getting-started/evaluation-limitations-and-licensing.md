@@ -64,16 +64,15 @@ using (FileStream fileStream = File.OpenRead("GroupDocs.Parser.lic"))
     license.SetLicense(fileStream);
 }
 ```
-
-{{< alert style="info" >}}Calling License.SetLicense(String) multiple times is not harmful but simply wastes processor time. If you are developing a Windows Forms or console application, call License.SetLicense(String) in your startup code, before using GroupDocs.Parser classes.{{< /alert >}}
-
+{{< alert style="info" >}}
+Calling [License.SetLicense(String)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.license/setlicense/methods/1) multiple times is not harmful but simply wastes processor time. If you are developing a Windows Forms or console application, call [License.SetLicense(String)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.license/setlicense/methods/1) in your startup code, before using GroupDocs.Parser classes.
+{{< /alert >}}
 #### Setting Metered License
-
-{{< alert style="info" >}}You can also set Metered license as an alternative to license file. It is a new licensing mechanism that will be used along with existing licensing method. It is useful for the customers who want to be billed based on the usage of the API features. For more details, please refer to Metered Licensing FAQ section.{{< /alert >}}
-
+{{< alert style="info" >}}
+You can also set Metered license as an alternative to license file. It is a new licensing mechanism that will be used along with existing licensing method. It is useful for the customers who want to be billed based on the usage of the API features. For more details, please refer to Metered Licensing FAQ section.
+{{< /alert >}}
   
 Here are the simple steps to use the [Metered](https://apireference.groupdocs.com/net/parser/groupdocs.parser/metered) class.
-
 *       Create an instance of [Metered](https://apireference.groupdocs.com/net/parser/groupdocs.parser/metered) class.
 *       Pass public & private keys to [SetMeteredKey](https://apireference.groupdocs.com/net/parser/groupdocs.parser/metered/methods/setmeteredkey) method.
 *       Do processing (perform task).
