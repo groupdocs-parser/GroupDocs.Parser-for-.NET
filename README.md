@@ -1,13 +1,6 @@
-## GroupDocs.Parser for .NET 
+# Text, Metadata & Image Extractor API
 
-This package contains [Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples) for [GroupDocs.Parser for .NET](https://products.groupdocs.com/parser/net) that will help you in understanding the API's working and writing your own applications.
-
-GroupDocs.Parser is a powerful document data extraction API from over 50 document types in your applications.
-
-One of the most valuable features of GroupDocs.Parser is parsing documents with predefined templates. It's easy to define template and extract data from invoices, prices or other kinds of your typical documents.
-The API allows to easily extract text in accurate and quick modes. There are several advanced methods to extract text.
-The API also provides methods to extract images, extract metadata. You can do it with regular documents and containers like ZIP archives, OST/PST mail data files and PDF portfolios.
-If you want to extract PDF forms, GroupDocs.Parser also allows to do it.
+[Document Parser API](https://products.groupdocs.com/parser/net) works well to search & extract formatted text as well as the raw text from a variety of documents of [50+ supported file formats](https://docs.groupdocs.com/parser/net/supported-document-formats/).
 
 <p align="center">
 
@@ -18,28 +11,171 @@ If you want to extract PDF forms, GroupDocs.Parser also allows to do it.
 
 Directory | Description
 --------- | -----------
-[Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples)  | Contains the package of all .NET examples (C#) and sample files that will help you learn how to use product features. 
+[Demos](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Demos) | Source code for live demos hosted at https://products.groupdocs.app/parser/family.
+[Docs](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Docs)  | Product documentation containing the Developer's Guide, Release Notes and more.
+[Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples)  | C# examples and sample files that will help you learn how to use product features. 
 
-## How to Run the Examples
+## Document Parsing Features
 
-+ You can either clone the repository using your favorite GitHub client or download the ZIP file from the above button.
-+ Extract the contents of the ZIP file to any folder on your computer.
-+ In the extracted files and folders, you can see solution file for C# Project.
-+ The project is created in Visual Studio 2019.
-+ Open the solution file in Visual Studio and build the project.
-+ On the first run, the dependencies will automatically be downloaded via NuGet.
-+ Open RunExamples.cs file, all the examples are called from here.
-+ Uncomment the examples you want to run from within the project.
+- Parse documents by user-defined templates.
+- Extract plain and structured text.
+- Extract text areas with coordinates, text styles and other information.
+- Search text by a keyword or regular expression; extract text around that word.
+- Extract HTML or Markdown (MD) formatted text for a fast preview.
+- Increase performance by extracting raw text.
+- Extract formatted text, metadata, images, containers, and attachments.
+- Extract table of contents for some supported document formats.
+- Parse form data from PDF documents.
 
-Please find more details for how to run the examples [here](https://docs.groupdocs.com/display/parsernet/How+to+Run+Examples).
+## Parse Document by Template
 
-## Resources
+**Word Processing:** DOC, DOT, DOCX, DOCM, DOTX, DOTM, ODT, OTT, RTF, TXT\
+**Spreadsheet:** XLS, XLT, XLSX, XLSM, XLSB, XLTX, XLTM, ODS, OTS, CSV, XLA, XLAM, NUMBERS\
+**Presentation:** PPT, PPS, POT, PPTX, PPTM, POTX, POTM, PPSX, PPSM, ODP, OTP\
+**Portable:** PDF
 
-+ **Website:** [www.groupdocs.com](http://www.groupdocs.com)
-+ **Product Home:** [GroupDocs.Parser for .NET](https://products.groupdocs.com/parser/net)
-+ **Installation:** [GroupDocs.Parser for .NET NuGet Package](https://www.nuget.org/packages/GroupDocs.Parser/)
-+ **API Reference:** [GroupDocs.Parser for .NET API Reference Guide](https://apireference.groupdocs.com/net/parser)
-+ **Documentation:** [GroupDocs.Parser for .NET Documentation](https://docs.groupdocs.com/display/parsernet/Home)
-+ **Free Support:** [GroupDocs.Parser for .NET Free Support Forum](https://forum.groupdocs.com/c/parser)
-+ **Paid Support:** [GroupDocs.Parser for .NET Paid Support Helpdesk](https://helpdesk.groupdocs.com/)
-+ **Blog:** [GroupDocs.Parser for .NET Blog](https://blog.groupdocs.com/category/groupdocs-parser-product-family/)
+## Extract Text (Accurate)
+
+**Word Processing:** DOC, DOT, DOCX, DOCM, DOTX, DOTM, ODT, OTT, RTF, TXT\
+**Spreadsheet:** XLS, XLT, XLSX, XLSM, XLSB, XLTX, XLTM, ODS, OTS, CSV, XLA, XLAM, NUMBERS\
+**Presentation:** PPT, PPS, POT, PPTX, PPTM, POTX, POTM, PPSX, PPSM, ODP, OTP\
+**Email:** EML, EMLX, MSG\
+**Markup:** HTML, XHTML, MHTML, MD, XML\
+**eBooks:** CHM, EPUB, FB2\
+**Portable:** PDF\
+**Notes:** ONE\
+**Databases:** Databases are supported via ADO.NET. To work with the corresponding database format install its database provider.
+
+## Extract Text (Raw)
+
+**Spreadsheet:** XLS, XLT, XLSX, XLSM, XLSB, XLTX, XLTM, XLA, XLAM\
+**Presentation:** PPT, PPS, POT, PPTX, PPTM, POTX, POTM, PPSX, PPSM\
+**Portable:** PDF
+
+## Extract Structured & Formatted Text
+
+**Word Processing:** DOC, DOT, DOCX, DOCM, DOTX, DOTM, ODT, OTT, RTF\
+**Spreadsheet:** XLS, XLT, XLSX, XLSM, XLTX, XLTM, XLA, XLAM\
+**Presentation:** PPT, PPS, POT, PPTX, PPTM, POTX, POTM, PPSX, PPSM, ODP, OTP\
+**Email:** EML, EMLX, MSG\
+**Markup:** MD (Formatted Text is Not supported)\
+**eBooks:** CHM, EPUB, FB2
+
+## Extract Text Areas
+
+**Word Processing:** DOC, DOT, DOCX, DOCM, DOTX, DOTM, ODT, OTT, RTF\
+**Spreadsheet:** XLS, XLT, XLSX, XLSM, XLSB, XLTX, XLTM, ODS, OTS, XLA, XLAM, NUMBERS\
+**Presentation:** PPT, PPS, POT, PPTX, PPTM, POTX, POTM, PPSX, PPSM, ODP, OTP\
+**Portable:** PDF
+
+## Extract Metadata
+
+**Word Processing:** DOC, DOT, DOCX, DOCM, DOTX, DOTM, ODT, OTT, RTF\
+**Spreadsheet:** XLS, XLT, XLSX, XLSM, XLSB, XLTX, XLTM, ODS, OTS, XLA, XLAM\
+**Presentation:** PPT, PPS, POT, PPTX, PPTM, POTX, POTM, PPSX, PPSM, ODP, OTP\
+**Email:** EML, EMLX, MSG\
+**eBooks:** EPUB, FB2\
+**Portable:** PDF
+
+## Extract Images
+
+**Word Processing:** DOC, DOT, DOCX, DOCM, DOTX, DOTM, ODT, OTT, RTF\
+**Spreadsheet:** XLS, XLT, XLSX, XLSM, XLSB, XLTX, XLTM, ODS, OTS, XLA, XLAM, NUMBERS\
+**Presentation:** PPT, PPS, POT, PPTX, PPTM, POTX, POTM, PPSX, PPSM, ODP, OTP\
+**Email:** EML, EMLX, MSG\
+**Portable:** PDF\
+**Archive:** ZIP
+
+## Extract Containers and Attachments
+
+**Email:** PST, OST, EML, EMLX, MSG\
+**Portable:** PDF\
+**Archive:** ZIP
+
+## Parse Form Data
+
+**Portable:** PDF
+
+## Extract Table of Contents
+
+**Word Processing:** DOC, DOT, DOCX, DOCM, DOTX, DOTM, ODT, OTT, RTF\
+**eBooks:** CHM, EPUB\
+**Portable:** PDF\
+**Databases:** Databases are supported via ADO.NET. To work with the corresponding database format install its database provider.
+
+## Develop & Deploy GroupDocs.Parser Anywhere
+
+**Microsoft Windows:** Microsoft Windows Desktop & Server (x86, x64), Windows Azure\
+**macOS:** Mac OS X\
+**Linux:** Ubuntu, OpenSUSE, CentOS, and others\
+**Development Environments:** Microsoft Visual Studio, Xamarin.Android, Xamarin.IOS, Xamarin.Mac, MonoDevelop.\
+**Supported Frameworks:** NET Standard 2.0, .NET Framework 2.0 or higher, .NET Core 2.0 or higher, Mono Framework 1.2 or higher
+
+## Get Started with GroupDocs.Parser for .NET
+
+Are you ready to give GroupDocs.Parser for .NET a try? Simply execute `Install-Package GroupDocs.Parser` from Package Manager Console in Visual Studio to fetch & reference GroupDocs.Parser assembly in your project. If you already have GroupDocs.Parser for .Net and want to upgrade it, please execute `Update-Package GroupDocs.Parser` to get the latest version.
+
+## Extract Data from Database
+
+```csharp
+string connectionString = string.Format("Provider=System.Data.Sqlite;Data Source={0};Version=3;", "database.db");
+// create an instance of Parser class to extract tables from the database
+// as filePath connection parameters are passed; LoadOptions is set to Database file format
+using (Parser parser = new Parser(connectionString, new LoadOptions(FileFormat.Database)))
+{
+    // check if text extraction is supported
+    if (!parser.Features.Text)
+    {
+        Console.WriteLine("Text extraction isn't supported.");
+        return;
+    }
+    // check if toc extraction is supported
+    if (!parser.Features.Toc)
+    {
+        Console.WriteLine("Toc extraction isn't supported.");
+        return;
+    }
+    // get a list of tables
+    IEnumerable<TocItem> toc = parser.GetToc();
+    // iterate over tables
+    foreach (TocItem i in toc)
+    {
+        // print the table name
+        Console.WriteLine(i.Text);
+        // extract a table content as a text
+        using (TextReader reader = parser.GetText(i.PageIndex.Value))
+        {
+            Console.WriteLine(reader.ReadToEnd());
+        }
+    }
+}
+```
+
+## Extract & Save Images As PNG
+
+```csharp
+// create an instance of Parser class
+using (Parser parser = new Parser(Constants.SampleZip))
+{
+    // extract images from document
+    IEnumerable<PageImageArea> images = parser.GetImages();
+    // check if images extraction is supported
+    if (images == null)
+    {
+        Console.WriteLine("Page images extraction isn't supported");
+        return;
+    }
+    // create the options to save images in PNG format
+    ImageOptions options = new ImageOptions(ImageFormat.Png);
+    int imageNumber = 0;
+    // iterate over images
+    foreach (PageImageArea image in images)
+    {
+        // save the image to the png file
+        image.Save(imageNumber.ToString() + ".png", options);
+        imageNumber++;
+    }
+}
+```
+
+[Product Page](https://products.groupdocs.com/parser/net) | [Documentation](https://docs.groupdocs.com/parser/net/) | [Demo](https://products.groupdocs.app/parser/family) | [API Reference](https://apireference.groupdocs.com/net/parser) | [Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET) | [Blog](https://blog.groupdocs.com/category/parser/) | [Free Support](https://forum.groupdocs.com/c/parser) | [Temporary License](https://purchase.groupdocs.com/temporary-license)
