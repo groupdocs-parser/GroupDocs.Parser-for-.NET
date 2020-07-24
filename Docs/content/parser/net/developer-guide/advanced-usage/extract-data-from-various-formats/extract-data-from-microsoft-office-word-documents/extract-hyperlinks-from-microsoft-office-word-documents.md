@@ -8,7 +8,7 @@ keywords:
 productName: GroupDocs.Parser for .NET
 hideChildren: False
 ---
-To extract hyperlinks from Microsoft Office Word document [GetStructure](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getstructure) method is used. This method returns XML representation of the document. Hyperlinks are represented by "hyperlink" tag; "link" attribute contains hyperlink's URL. For more details, see [Extract hyperlinks from Microsoft Office Word documents]({{< ref "parser/net/developer-guide/advanced-usage/extract-data-from-various-formats/extract-data-from-microsoft-office-word-documents/extract-hyperlinks-from-microsoft-office-word-documents.md" >}}). Hyperlink can contain a text:
+To extract hyperlinks from Microsoft Office Word document [GetStructure](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getstructure) method is used. This method returns XML representation of the document. Hyperlinks are represented by "hyperlink" tag; "link" attribute contains hyperlink's URL. For more details, see [Extract text structure]({{< ref "parser/net/developer-guide/advanced-usage/working-with-text/extract-text-structure.md" >}}). Hyperlink can contain a text:
 ```csharp
 <hyperlink link="www.google.com">google.com</hyperlink>
 ```

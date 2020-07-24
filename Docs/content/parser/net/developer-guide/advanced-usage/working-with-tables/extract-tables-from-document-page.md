@@ -1,7 +1,7 @@
 ---
 id: extract-tables-from-document-page
 url: parser/net/extract-tables-from-document-page
-title: Extract tables from document
+title: Extract tables from document page
 weight: 4
 description: ""
 keywords: 
@@ -27,7 +27,7 @@ This method returns a collection of [PageTableArea](https://apireference.groupdo
 | double [GetRowHeight(int)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/pagetablearea/methods/getrowheight) | The the row height.                             |
 | double [GetColumnWidth(int)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/pagetablearea/methods/getcolumnwidth) | Returns the column width.                       |
 
-[GetTables(Int32, PageTableAreaOptions)](https://apireference.groupdocs.com/parser/net/groupdocs.parser.parser/gettables/methods/1) accepts [PageTableAreaOptions](https://apireference.groupdocs.com/parser/net/groupdocs.parser.options/pagetableareaoptions) object that contains [TemplateTableLayout](https://apireference.groupdocs.com/parser/net/groupdocs.parser.templates/templatetablelayout) object with table layout (see [this article](https://docs.groupdocs.com/display/parsernet/Working+with+templates#Workingwithtemplates-Templatetables) for more details).
+[GetTables(Int32, PageTableAreaOptions)](https://apireference.groupdocs.com/parser/net/groupdocs.parser.parser/gettables/methods/1) accepts [PageTableAreaOptions](https://apireference.groupdocs.com/parser/net/groupdocs.parser.options/pagetableareaoptions) object that contains [TemplateTableLayout](https://apireference.groupdocs.com/parser/net/groupdocs.parser.templates/templatetablelayout) object with table layout (see [this article]({{< ref "parser/net/developer-guide/advanced-usage/working-with-templates.md" >}}) for more details).
 
 Here are the steps to extract tables from the document page:
 

@@ -28,13 +28,13 @@ The following HTML tags are supported by the API:
 
 | Tag | Description |
 | --- | --- |
-| <p> | Paragraph is surrounded by <p> tag |
-| <a> | Hyperlinks |
-| <b> | Text with Bold font is surrounded by <b> tag |
-| <i> | Text with Italic font is surrounded by <i> tag |
-| <h1> - <h6> | If the heading has 'Heading X' style, it's surrounded by <hx> tag |
-| <ol>/<ul> | Numbering and bullets lists |
-| <table> | Tables |
+| &lt;p&gt; | Paragraph is surrounded by &lt;p&gt; tag |
+| &lt;a&gt; | Hyperlinks |
+| &lt;b&gt; | Text with Bold font is surrounded by &lt;b&gt; tag |
+| &lt;i&gt; | Text with Italic font is surrounded by &lt;i&gt; tag |
+| &lt;h1&gt; - &lt;h6&gt; | If the heading has 'Heading X' style, it's surrounded by &lt;hx&gt; tag |
+| &lt;ol&gt;/&lt;ul&gt; | Numbering and bullets lists |
+| &lt;table&gt; | Tables |
 
 The following Microsoft Word document is used as input document:
 

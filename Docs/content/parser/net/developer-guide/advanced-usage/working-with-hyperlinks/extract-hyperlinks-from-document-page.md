@@ -1,7 +1,7 @@
 ---
 id: extract-hyperlinks-from-document-page
 url: parser/net/extract-hyperlinks-from-document-page
-title: Extract hyperlinks from document
+title: Extract hyperlinks from document page
 weight: 4
 description: ""
 keywords: 

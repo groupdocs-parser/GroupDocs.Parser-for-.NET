@@ -8,7 +8,7 @@ keywords:
 productName: GroupDocs.Parser for .NET
 hideChildren: False
 ---
-GroupDocs.Parser provides the functionality to extract a text by an item of table of contents. This feature is supported for Word Processing, PDF, ePUB and CHM documents (for more details, see [Extract text by table of contents item]({{< ref "parser/net/developer-guide/advanced-usage/working-with-text/extract-text-by-table-of-contents-item.md" >}})).
+GroupDocs.Parser provides the functionality to extract a text by an item of table of contents. This feature is supported for Word Processing, PDF, ePUB and CHM documents (for more details, see [Supported Document Formats]({{< ref "parser/net/getting-started/supported-document-formats.md" >}})).
 
 Text is extracted by [TocItem.GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/tocitem/methods/gettext) method:
 
