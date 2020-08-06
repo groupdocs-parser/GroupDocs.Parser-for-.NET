@@ -11,8 +11,7 @@ hideChildren: False
 GroupDocs.Parser provides the functionality to extract items from containers by the [GetContainer](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getcontainer) method:
 
 ```csharp
-IEnumerable<ContainerItem> GetContainer()
-
+IEnumerable<ContainerItem> GetContainer();
 ```
 
 This method returns a collection of [ContainerItem](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/containeritem) objects:
@@ -57,7 +56,6 @@ using(Parser parser = new Parser(filePath))
         Console.WriteLine(string.Format("{0}: {1}", item.Name, item.Size));
     }
 }
-
 ```
 
 Container represents both container-only files (like zip archives, outlook storage) and documents with attachments (like emails, PDF Portfolios).
@@ -70,10 +68,8 @@ In case of outlook storage (ost/pst files) container consists of email documents
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

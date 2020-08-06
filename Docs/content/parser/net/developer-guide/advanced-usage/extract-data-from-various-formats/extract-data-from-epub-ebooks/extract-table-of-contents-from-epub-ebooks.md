@@ -9,14 +9,19 @@ productName: GroupDocs.Parser for .NET
 hideChildren: False
 ---
 To extract table of contents from EPUB e-books [GetToc](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettoc) method is used.
+
 {{< alert style="warning" >}}
 [GetToc](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettoc) method returns *null* value if table of contents extraction isn't supported for the document. For example, table of contents extraction isn't supported for TXT files. Therefore, for TXT file [GetToc](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettoc) method returns *null*. If EPUB e-book has no table of contents, [GetToc](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettoc) method returns an empty collection.
 {{< /alert >}}
+
 Here are the steps to extract extract table of contents from EPUB e-book:
+
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial e-book;
 *   Call [GetToc](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettoc) method and obtain collection of [TocItem](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/tocitem) objects;
 *   Iterate through the collection and get page index to extract a page text from the document.
+
 The following example shows how to extract table of contents from EPUB e-book:
+
 ```csharp
 // Create an instance of Parser class
 using (Parser parser = new Parser(filePath))
@@ -48,10 +53,8 @@ using (Parser parser = new Parser(filePath))
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

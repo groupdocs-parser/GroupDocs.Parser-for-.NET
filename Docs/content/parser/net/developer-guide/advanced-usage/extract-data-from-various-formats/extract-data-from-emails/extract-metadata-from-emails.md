@@ -18,6 +18,7 @@ To extract metadata from emails [GetMetadata](https://apireference.groupdocs.com
 | email-cc | The email "cc" field. May contain more than one address separated by semicolons. |
 
 Here are the steps to extract metadata from an email:
+
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial email;
 *   Call [GetMetadata](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getmetadata) method and obtain collection of document metadata objects;
 *   Iterate through the collection and get metadata names and values.
@@ -27,6 +28,7 @@ Here are the steps to extract metadata from an email:
 {{< /alert >}}
 
 The following example demonstrates how to extract metadata from an email:
+
 ```csharp
 // Create an instance of Parser class
 using(Parser parser = new Parser(filePath))
@@ -41,8 +43,6 @@ using(Parser parser = new Parser(filePath))
         Console.WriteLine(string.Format("{0}: {1}", item.Name, item.Value));
     }
 }
-
-
 ```
 
 ## More resources
@@ -51,10 +51,8 @@ using(Parser parser = new Parser(filePath))
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

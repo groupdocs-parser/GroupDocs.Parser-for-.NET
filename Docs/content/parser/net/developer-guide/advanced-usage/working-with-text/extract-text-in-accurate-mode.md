@@ -19,7 +19,6 @@ To extract a text from the document in the Accurate mode, [GetText](https://apir
 ```csharp
 TextReader GetText();
 TextReader GetText(int pageIndex);
-
 ```
 
 Methods return an instance of [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) class with the extracted text. The first method extracts text from the whole document. The second method extracts text from the document page. To retrieve the total number of document pages [GetDocumentIn](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getdocumentinfo)[fo](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getdocumentinfo)  method is used (see below).
@@ -47,7 +46,6 @@ using(Parser parser = new Parser(filePath))
         Console.WriteLine(reader == null ? "Text extraction isn't supported" : reader.ReadToEnd());
     }
 }
-
 ```
 
 ## Extract text from a document page
@@ -104,10 +102,8 @@ using(Parser parser = new Parser(filePath))
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

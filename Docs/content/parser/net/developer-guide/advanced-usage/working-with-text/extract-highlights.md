@@ -11,8 +11,7 @@ hideChildren: False
 GroupDocs.Parser provides the functionality to extract a highlight (a part of the text which is usually used to explain the context of the found text in the search functionality) from documents by the [GetHighlight](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gethighlight) method:
 
 ```csharp
-HighlightItem GetHighlight(int position, bool isDirect, HighlightOptions options)
-
+HighlightItem GetHighlight(int position, bool isDirect, HighlightOptions options);
 ```
 
 The *position* parameter defines the start position from which the highlight is extracted. The *isDirect* parameter indicates whether highlight extraction is direct: *true* if the highlight is extracted by the right of the position; otherwise, *false*. [HighlightOptions](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/highlightoptions) parameter is used to define the end of the highlight.
@@ -21,14 +20,13 @@ The *position* parameter defines the start position from which the highlight is 
 
 ```csharp
 // Highlight is limited to maxLength text length.
-HighlightOptions(int maxLength)
+HighlightOptions(int maxLength);
 // Highlight is limited to the start (or the end) of a text line (or maxLength text length - if set).
-HighlightOptions(int? maxLength, bool isLineLimited)
+HighlightOptions(int? maxLength, bool isLineLimited);
 // Highlight is limited to word count (or maxLength text length - if set).
-HighlightOptions(int? maxLength, int wordCount)
+HighlightOptions(int? maxLength, int wordCount);
 // General constructor
-HighlightOptions(int? maxLength, int? wordCount, bool isLineLimited)
-
+HighlightOptions(int? maxLength, int? wordCount, bool isLineLimited);
 ```
 
 [HighlightItem](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/highlightitem) class has the following members:
@@ -63,7 +61,6 @@ using (Parser parser = new Parser(filePath))
     // Print an extracted highlight
     Console.WriteLine(string.Format("At {0}: {1}", hl.Position, hl.Text));
 }
-
 ```
 
 ## More resources
@@ -72,10 +69,8 @@ using (Parser parser = new Parser(filePath))
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

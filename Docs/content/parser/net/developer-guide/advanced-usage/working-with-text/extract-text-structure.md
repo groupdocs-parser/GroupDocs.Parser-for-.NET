@@ -12,40 +12,25 @@ GroupDocs.Parser provides the functionality to extract the text structure from d
 
 ```csharp
 XmlReader GetStructure();
-
 ```
 
 This method returns XML representation of a document. A document has the following structure:
 
 ![](parser/net/images/extract-text-structure.png)
 
+
 | Tag | Description |
 | --- | --- |
 | document | The root tag |
-| section | Represents a section of the document. Depending on the document type, it can represent a worksheet, a slide and so on. Can contain the following attributes:
-*   style - the style of the section
-*   name - the name of the section (for example, the name of the sheet)
-
- |
-| p | Represents a text paragraph. Can contain the following attribute:
-
-*   style - the style of paragraph
-
- |
+| section | Represents a section of the document. Depending on the document type, it can represent a worksheet, a slide and so on. Can contain the following attributes:<ul><li>style - the style of the section</li><li>name - the name of the section (for example, the name of the sheet)</li></ul> |
+| p | Represents a text paragraph. Can contain the following attribute:<ul><li>style - the style of paragraph</li></ul> |
 | ul | Represents an unordered list |
 | ol | Represents an ordered list |
 | li | Represents a list item |
 | shape | Represents a shape object. |
 | table | Represents a table |
 | tr | Represents a table row |
-| td | Represents a table cell. Can contain the following attributes:
-
-*   rowIndex - the zero-based index of the row
-*   columnIndex - the zero-based index of the column
-*   rowSpan - the total number of rows that contain the table cell
-*   columnSpan - the total number of columns that contain the table cell
-
- |
+| td | Represents a table cell. Can contain the following attributes:<ul><li>rowIndex - the zero-based index of the row</li><li>columnIndex - the zero-based index of the column</li><li>rowSpan - the total number of rows that contain the table cell</li><li>columnSpan - the total number of columns that contain the table cell</li></ul> |
 
 Tags have the following relations:
 
@@ -61,10 +46,7 @@ The **p** and **li** tags can contain **hyperlink, strong, em** tags and the val
 
 | Tag | Description |
 | --- | --- |
-| hyperlink | Represents a hyperlink. Can contain the following attribute:
-*   link - URL
-
- |
+| hyperlink | Represents a hyperlink. Can contain the following attribute:<ul><li>link - URL</li></ul> |
 | strong | Represents a strong emphasis (bold text) |
 | em | Represents a regular emphasis (italic text) |
 | br | Represents a line break (empty tag) |
@@ -153,7 +135,7 @@ The following document:
 
 has the following text structure:
 
-```csharp
+```xml
 <?xml version="1.0"?>
 <document>
   <section>
@@ -249,10 +231,8 @@ has the following text structure:
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

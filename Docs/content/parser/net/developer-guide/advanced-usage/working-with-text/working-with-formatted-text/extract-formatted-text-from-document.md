@@ -12,14 +12,12 @@ GroupDocs.Parser provides the functionality to extract formatted text from docum
 
 ```csharp
 TextReader GetFormattedText(FormattedTextOptions options);
-
 ```
 
 Methods return an instance of [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) class with the extracted text. [FormattedTextOptions](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/formattedtextoptions) has the following constructor:
 
 ```csharp
-FormattedTextOptions(FormattedTextMode mode)
-
+FormattedTextOptions(FormattedTextMode mode);
 ```
 
 [FormattedTextMode](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/formattedtextmode) enumeration has the following members:
@@ -52,7 +50,6 @@ using (Parser parser = new Parser(filePath))
         Console.WriteLine(reader == null ? "Formatted text extraction isn't supported" : reader.ReadToEnd());
     }
 }
-
 ```
 
 ## More resources
@@ -61,10 +58,8 @@ using (Parser parser = new Parser(filePath))
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

@@ -31,8 +31,6 @@ using(Parser parser = new Parser(filePath))
         Console.WriteLine(reader.ReadToEnd());
     }
 }
-
-
 ```
 
 Here are the steps to extract a text from the sheet of Microsoft Office PowerPoint presentation:
@@ -69,14 +67,14 @@ using(Parser parser = new Parser(filePath))
 
 Raw mode allows to increase the speed of text extraction due to poor formatting accuracy. [GetText(TextOptions)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.parser/gettext/methods/1) and [GetText(pageIndex, TextOptions)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.parser/gettext/methods/3) methods are used to extract a text in raw mode.
 
-{{< alert style="warning" >}}Raw mode is not supported for password-protected presentations.{{< /alert >}}{{< alert style="warning" >}}Some presentations may have different slide numbers in raw and accurate modes. Use DocumentInfo.RawPageCount instead of IDocumentInfo.PageCount in raw mode.{{< /alert >}}
+{{< alert style="warning" >}}Raw mode is not supported for password-protected presentations.{{< /alert >}}{{< alert style="warning" >}}Some presentations may have different slide numbers in raw and accurate modes. Use [IDocumentInfo.RawPageCount](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/idocumentinfo/properties/rawpagecount) instead of [IDocumentInfo.PageCount](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/idocumentinfo/properties/pagecount) in raw mode.{{< /alert >}}
 
 Here are the steps to extract a raw text from the sheet of Microsoft Office PowerPoint presentation:
 
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial presentation;
 *   Instantiate [TextOptions](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/textoptions) object with *true* parameter;
-*   Call [GetDocumentInfo](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getdocumentinfo) method and cast the result to [DocumentInfo](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/documentinfo) class;
-*   Use [RawPageCount](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/documentinfo/properties/rawpagecount) instead of [PageCount](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/idocumentinfo/properties/pagecount) to avoid extra calculations;
+*   Call [GetDocumentInfo](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getdocumentinfo) method;
+*   Use [RawPageCount](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/idocumentinfo/properties/rawpagecount) instead of [PageCount](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/idocumentinfo/properties/pagecount) to avoid extra calculations;
 *   Call [GetText(pageIndex, TextOptions)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.parser/gettext/methods/3) method with the sheet index and obtain [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) object;
 *   Read a text from *reader*.
 
@@ -87,7 +85,7 @@ The following example demonstrates how to extract a raw text from the slide of M
 using (Parser parser = new Parser(filePath))
 {
     // Get the document info
-    DocumentInfo documentInfo = parser.GetDocumentInfo() as DocumentInfo;
+    IDocumentInfo documentInfo = parser.GetDocumentInfo();
     // Check if the document has slides
     if (documentInfo == null || documentInfo.RawPageCount == 0)
     {
@@ -107,8 +105,6 @@ using (Parser parser = new Parser(filePath))
         }
     }
 }
-
-
 ```
 
 GroupDocs.Parser also allows to extract a text from Microsoft Office PowerPoint presentations as HTML, Markdown and formatted plain text. For more details, see [Extract Formatted Text]({{< ref "parser/net/developer-guide/advanced-usage/working-with-text/working-with-formatted-text/extract-formatted-text-from-document.md" >}}).
@@ -140,10 +136,8 @@ using (Parser parser = new Parser(filePath))
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

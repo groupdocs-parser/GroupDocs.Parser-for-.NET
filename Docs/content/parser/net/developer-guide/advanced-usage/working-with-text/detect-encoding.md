@@ -16,13 +16,9 @@ GroupDocs.Parser provides the functionality to detect the encoding of a plain te
 *   UTF16 BE
 *   UTF8
 *   UTF7
-*   ANSI
+*   ANSI  
 
-  
-
-Encoding can be detected by BOM or by the content of the file (if BOM isn't presented).
-
-  
+Encoding can be detected by BOM or by the content of the file (if BOM isn't presented). 
 
 Here are the steps to detect the encoding of the document:
 
@@ -60,10 +56,8 @@ using (Parser parser = new Parser(Constants.SampleText, loadOptions))
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

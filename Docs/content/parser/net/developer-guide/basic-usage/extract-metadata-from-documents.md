@@ -31,9 +31,7 @@ Here are the steps to extract metadata from the document:
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial document;
 *   Call [GetMetadata](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getmetadata) method and obtain collection of document metadata objects;
 *   Check if *collection* isn't null (metadata extraction is supported for the document);
-*   Iterate through the collection and get metadata names and values.  
-      
-    
+*   Iterate through the collection and get metadata names and values.
 
 The following example shows how to extract metadata from a document:
 
@@ -69,10 +67,8 @@ To learn more about document data extraction features and get familiar how to ex
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online metadata extractor App
 

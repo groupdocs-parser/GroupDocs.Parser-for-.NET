@@ -16,7 +16,6 @@ The template field is set by [TemplateField](https://apireference.groupdocs.com/
 
 ```csharp
 TemplateField(TemplatePosition position, string name, int? pageIndex)
-
 ```
 
 | Parameter | Description |
@@ -36,11 +35,11 @@ TemplateField(TemplatePosition position, string name, int? pageIndex)
 This is simplest way to define the field position. It requires to set a rectangular area on the page that bounds the field value. All the text that is contained (even partially) into the rectangular area will be extracted as a value:
 
 ```csharp
-// Create a fixed template field with "Address" name which is bounded by a rectangle at the position (35, 160) and with the size (110, 20)
+// Create a fixed template field with "Address" name which is bounded by a rectangle
+// at the position (35, 160) and with the size (110, 20)
 TemplateField templateField = new TemplateField(
     new TemplateFixedPosition(new Rectangle(new Point(35, 160), new Size(110, 20))),
     "Address");
-
 ```
 
 It is recommended to define a rectangular area above (below) the center of the line that is below (above) the selected area, in order to avoid the excessive extraction of the text. For example:
@@ -67,7 +66,6 @@ This way to define the field position allows to find a field value by a regular 
 TemplateField templateField = new TemplateField(
     new TemplateRegexPosition("Invoice Number\\s+[A-Z0-9\\-]+"), 
     "InvoiceNumber");
-
 ```
 
 In this case as a value the entire string is extracted. To extract only a part of the string the regular expression group "value" is used:
@@ -77,7 +75,6 @@ In this case as a value the entire string is extracted. To extract only a part o
 TemplateField templateField = new TemplateField(
     new TemplateRegexPosition("Invoice Number\\s+(?<value>[A-Z0-9\\-]+)"),
     "InvoiceNumber");
-
 ```
 
 In this case as a value "INV-3337" string is extracted.
@@ -95,7 +92,6 @@ TemplateField invoice = new TemplateField(new TemplateRegexPosition("Invoice Num
 TemplateField invoiceNumber = new TemplateField(
     new TemplateLinkedPosition("invoice", new Size(100, 15), new TemplateLinkedPositionEdges(false, false, true, false)),
     "InvoiceNumber");
-
 ```
 
 | Template definition | Result |
@@ -111,7 +107,6 @@ TemplateField invoice = new TemplateField(new TemplateRegexPosition("Invoice Num
 TemplateField invoiceNumber = new TemplateField(
     new TemplateLinkedPosition("invoice", new Size(100, 15), new TemplateLinkedPositionEdges(false, false, true, false), true),
     "InvoiceNumber");
-
 ```
 
 | Template definition | Result |
@@ -125,7 +120,6 @@ Left: (LinkedField.Rectangle.Left - SearchAreaSize.Width; LinkedField.Rectangle.
 Top: (LinkedField.Rectangle.Left; LinkedField.Rectangle.Top - SearchAreaSize.Height)
 Right: (LinkedField.Rectangle.Right; LinkedField.Rectangle.Top)
 Bottom: (LinkedField.Rectangle.Left; LinkedField.Rectangle.Bottom)
-
 ```
 
 The related field can be any field which was previously defined in the template:
@@ -143,7 +137,6 @@ TemplateField addressField = new TemplateField(
     new TemplateLinkedPosition("FromCompany", new Size(100, 30), new TemplateLinkedPositionEdges(false, false, false, true)),
     "FromAddress", 
     0);
-
 ```
 
 | Template definition | Result |
@@ -160,7 +153,6 @@ An instance of [Template](https://apireference.groupdocs.com/net/parser/groupdoc
 
 ```csharp
 Template(IEnumerable<TemplateItem> items)
-
 ```
 
 This constructor accepts a collection of template items:
@@ -181,7 +173,6 @@ TemplateItem[] fields = new TemplateItem[]
 };
 // Create a document template
 Template template = new Template(fields);
-
 ```
 
 The field name is case-insensitive (Field and FIELD - the same names) and must be unique in the template. The related field must be associated with the early defined field. If these conditions don't meet, the exception is thrown.
@@ -193,7 +184,6 @@ Template table is set by [TemplateTable](https://apireference.groupdocs.com/net/
 ```csharp
 TemplateTable(TemplateTableLayout layout, string name, int? pageIndex)
 TemplateTable(TemplateTableParameters parameters, string name, int? pageIndex)
-
 ```
 
 Template table can be set by detector parameters or table layout. If the page index is omitted, tables are extracted from every document page. It's useful in the cases when the document contains pages with the same layout (pages differ only by data).
@@ -203,7 +193,6 @@ Template table can be set by detector parameters or table layout. If the page in
 ```csharp
 TemplateTableParameters(Rectangle rectangle, IEnumerable<double> verticalSeparators)
 TemplateTableParameters(Rectangle rectangle, IEnumerable<double> verticalSeparators, bool? hasMergedCells, int? minRowCount, int? minColumnCount, int? minVerticalSpace)
-
 ```
 
 Each of parameters is optional. The most easy way to define a table is to set the rectangular area of the table and columns separators:
@@ -212,7 +201,6 @@ Each of parameters is optional. The most easy way to define a table is to set th
 TemplateTableParameters parameters = new TemplateTableParameters(
     new Rectangle(new Point(175, 350), new Size(400, 200)),
     new double[] { 185, 370, 425, 485, 545 });
-
 ```
 
 If a template table is set by detector parameters, the table is detected automatically:
@@ -226,7 +214,6 @@ TemplateTable table = new TemplateTable(parameters, "Details", 0);
 
 // Create a document template
 Template template = new Template(new TemplateItem[] { table });
-
 ```
 
 Template table is set by table layout if the table can't be detected automatically:
@@ -238,18 +225,16 @@ TemplateTableLayout layout = new TemplateTableLayout(
 
 TemplateTable table = new TemplateTable(layout, "Details", null);
 Template template = new Template(new TemplateItem[] { table });
-
 ```
 
 These collections represent bounds of columns and rows. For example, for 2x2 table there are 3 vertical and 3 horizontal separators:
 
-```csharp
+```
 ---------
 |   |   |
 ---------
 |   |   |
 ---------
-
 ```
 
 [MoveTo](https://apireference.groupdocs.com/net/parser/groupdocs.parser.templates/templatetablelayout/methods/moveto) method is used to move Table Layout. 
@@ -324,8 +309,6 @@ TemplateItem[] templateItems = new TemplateItem[]
  
 // Create a document template
 Template template = new Template(templateItems); 
-
-
 ```
 
 ## More resources
@@ -334,10 +317,8 @@ Template template = new Template(templateItems);
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

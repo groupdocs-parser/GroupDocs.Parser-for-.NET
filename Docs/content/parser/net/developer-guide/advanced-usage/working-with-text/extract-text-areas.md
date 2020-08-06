@@ -15,7 +15,6 @@ IEnumerable<PageTextArea> GetTextAreas();
 IEnumerable<PageTextArea> GetTextAreas(PageTextAreaOptions options);
 IEnumerable<PageTextArea> GetTextAreas(int pageIndex);
 IEnumerable<PageTextArea> GetTextAreas(int pageIndex, PageTextAreaOptions options);
-
 ```
 
 The methods return a collection of [PageTextArea](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/pagetextarea) objects:
@@ -62,7 +61,6 @@ using(Parser parser = new Parser(filePath))
         Console.WriteLine(string.Format("Page: {0}, R: {1}, Text: {2}", a.Page.Index, a.Rectangle, a.Text));
     }
 }
-
 ```
 
 ## Extract text areas from a document page
@@ -112,7 +110,6 @@ using(Parser parser = new Parser(filePath))
         }
     }
 }
-
 ```
 
 ## Extract text areas with options
@@ -160,7 +157,6 @@ using(Parser parser = new Parser(filePath))
         Console.WriteLine(string.Format("Page: {0}, R: {1}, Text: {2}", a.Page.Index, a.Rectangle, a.Text));
     }
 }
-
 ```
 
 ## More resources
@@ -169,10 +165,8 @@ using(Parser parser = new Parser(filePath))
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

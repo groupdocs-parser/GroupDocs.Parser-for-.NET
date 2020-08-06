@@ -14,12 +14,22 @@ GroupDocs.Parser allows you to extract emails from remote servers and data from 
 *   Internet Message Access Protocol (IMAP)
 *   Exchange Web Services (EWS)
 
-To create an instance of [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) class to extract emails from a remote server the following constructor is used:
+To create an instance of [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) class to extract emails from a remote server the following constructors are used:
 
 ```csharp
-Parser(string filePath, LoadOptions loadOptions);
-
+Parser(EmailConnection connection);
+Parser(EmailConnection connection, ParserSettings parserSettings);
 ```
+
+The second constructor allows to use [ParserSettings](https://apireference.groupdocs.com/parser/net/groupdocs.parser.options/parsersettings) object to control the process; for example, by adding [logging functionality]({{< ref "parser/net/developer-guide/advanced-usage/logging.md" >}}).
+
+[EmailConnection](https://apireference.groupdocs.com/parser/net/groupdocs.parser.options/emailconnection) is a base class. The following connection classes are used:
+
+| Protocol | Class |
+| --- | --- |
+| POP | [EmailPopConnection](https://apireference.groupdocs.com/parser/net/groupdocs.parser.options/emailpopconnection) |
+| IMAP | [EmailImapConnection](https://apireference.groupdocs.com/parser/net/groupdocs.parser.options/emailimapconnection) |
+| Exchange Web Services | [EmailEwsConnection](https://apireference.groupdocs.com/parser/net/groupdocs.parser.options/emailewsconnection) |
 
 Here are the steps to extract emails from the remote server:
 
@@ -32,34 +42,33 @@ Here are the steps to extract emails from the remote server:
 The following example shows how to extract emails from Exchange Server:
 
 ```csharp
-StringBuilder sb = new StringBuilder();
-sb.AppendLine("mode = exchange");
-sb.AppendLine("MailboxUri = https://outlook.office365.com/ews/exchange.asmx");
-sb.AppendLine("Username = test@outlook.com");
-sb.AppendLine("Password = password");
-
+// Create the connection object for Exchange Web Services protocol 
+EmailConnection connection = new EmailEwsConnection(
+    "https://outlook.office365.com/ews/exchange.asmx",
+    "email@server",
+    "password");
+ 
 // Create an instance of Parser class to extract emails from the remote server
-// As filePath connection parameters are passed; LoadOptions is set to Email file format
-using(Parser parser = new Parser(sb.ToString(), new LoadOptions(FileFormat.Email)))
+using (Parser parser = new Parser(connection))
 {
     // Check if container extraction is supported
-    if(!parser.Features.Container)
+    if (!parser.Features.Container)
     {
         Console.WriteLine("Container extraction isn't supported.");
         return;
     }
-
+ 
     // Extract email messages from the server
     IEnumerable<ContainerItem> emails = parser.GetContainer();
-
+ 
     // Iterate over attachments
-    foreach(ContainerItem item in emails)
+    foreach (ContainerItem item in emails)
     {
         // Create an instance of Parser class for email message
-        using(Parser emailParser = item.OpenParser())
+        using (Parser emailParser = item.OpenParser())
         {
             // Extract the email text
-            using(TextReader reader = emailParser.GetText())
+            using (TextReader reader = emailParser.GetText())
             {
                 // Print the email text
                 Console.WriteLine(reader == null ? "Text extraction isn't supported." : reader.ReadToEnd());
@@ -67,32 +76,7 @@ using(Parser parser = new Parser(sb.ToString(), new LoadOptions(FileFormat.Email
         }
     }
 }
-
 ```
-
-The following connection parameters are used:
-
-| Protocol | Parameters |
-| --- | --- |
-| POP | mode = pop  
-Host = <url>  
-Port = <port>  
-Username = <user-name>  
-Password = <password>  
-  
- |
-| IMAP | mode = imap  
-Host = <url>  
-Port = <port>  
-Username = <user-name>  
-Password = <password>  
-  
- |
-| EWS | mode = exchange  
-MailboxUri = <url>  
-Username = <user-name>  
-Password = <password>
- |
 
 ## More resources
 
@@ -100,10 +84,8 @@ Password = <password>
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

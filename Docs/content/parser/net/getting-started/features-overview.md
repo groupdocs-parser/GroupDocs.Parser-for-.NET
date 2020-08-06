@@ -74,13 +74,13 @@ Following HTML tags are now supported when extracting text with this formatting 
 
 | Tag | Description |
 | --- | --- |
-| <p> | Paragraph is surrounded by <p> tag |
-| <a> | Hyperlinks |
-| <b> | Text with Bold font is surrounded by <b> tag |
-| <i> | Text with Italic font is surrounded by <i> tag |
-| <h1> – <h6> | If the heading has 'Heading X' style, it's surrounded by <hx> tag |
-| <ol>/<ul> | Numbering and bullets lists |
-| <table> | Tables |
+| `<p>` | Paragraph is surrounded by `<p>` tag |
+| `<a>` | Hyperlinks |
+| `<b>` | Text with Bold font is surrounded by `<b>` tag |
+| `<i>` | Text with Italic font is surrounded by `<i>` tag |
+| `<h1>` – `<h6>` | If the heading has 'Heading X' style, it's surrounded by `<hX>` tag |
+| `<ol>`/`<ul>` | Numbering and bullets lists |
+| `<table>` | Tables |
 
 ### Extract Structured Text
 

@@ -13,7 +13,6 @@ GroupDocs.Parser provides the functionality to search text from documents by the
 ```csharp
 IEnumerable<SearchResult> Search(string keyword);
 IEnumerable<SearchResult> Search(string keyword, SearchOptions options);
-
 ```
 
 The *keyword* parameter can contain a text or a regular expression. [SearchResult](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/searchresult) class contains every occurrence of the keyword in the document text. This class has the following members:
@@ -57,7 +56,6 @@ using(Parser parser = new Parser(filePath))
         Console.WriteLine(string.Format("At {0}: {1}", s.Position, s.Text));
     }
 }
-
 ```
 
 ## Search text by regular expression
@@ -103,7 +101,6 @@ using(Parser parser = new Parser(filePath))
         Console.WriteLine(string.Format("At {0}: {1}", s.Position, s.Text));
     }
 }
-
 ```
 
 ## Search text with highlights
@@ -181,10 +178,8 @@ using(Parser parser = new Parser(Constants.SamplePdf))
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

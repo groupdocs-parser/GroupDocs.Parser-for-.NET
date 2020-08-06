@@ -9,14 +9,19 @@ productName: GroupDocs.Parser for .NET
 hideChildren: False
 ---
 To extract a text from emails [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method is used. This method allows to extract a text from the entire document. Pagination and raw mode is not supported for emails.
+
 Here are the steps to extract a text from an email:
+
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial email;
 *   Call [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method and obtain [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) object;
 *   Read a text from *reader*.
+
 {{< alert style="warning" >}}
 [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method returns *null* value if text extraction isn't supported for the document. For example, text extraction isn't supported for Zip archive. Therefore, for Zip archive [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method returns *null*. For an empty email [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method returns an empty [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) object ([reader.ReadToEnd](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader.readtoend?view=netframework-2.0) method returns an empty string).
 {{< /alert >}}
+
 The following example demonstrates how to extract a text from the email:
+
 ```csharp
 // Create an instance of Parser class
 using(Parser parser = new Parser(filePath))
@@ -28,8 +33,6 @@ using(Parser parser = new Parser(filePath))
         Console.WriteLine(reader.ReadToEnd());
     }
 }
-
-
 ```
 
 GroupDocs.Parser also allows to extract a text from emails as HTML, Markdown and formatted plain text. For more details, see [Extract Formatted Text]({{< ref "parser/net/developer-guide/advanced-usage/working-with-text/working-with-formatted-text/extract-formatted-text-from-document.md" >}}).
@@ -61,10 +64,8 @@ using (Parser parser = new Parser(filePath))
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

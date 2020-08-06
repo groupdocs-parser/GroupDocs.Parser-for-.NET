@@ -62,3 +62,17 @@ Note that .NET Standard 2.0 version has external references:
 | System.Reflection.Emit    | 4.3.0 |
 | System.Reflection.Emit.ILGeneration | 4.3.0 |
 | SkiaSharp | 1.68.1 |
+
+## Linux environment
+
+For correct working of GroupDocs.Parser.Net on Linux the following packages need to be installed:
+
+* libgdiplus package
+* libc6-dev package
+* package with Microsoft compatible fonts: ttf-mscorefonts-installer. (e.g. sudo apt-get install ttf-mscorefonts-installer)
+
+Also GroupDocs.Parser.Net in Linux environment has external reference:
+
+| Package | Version |
+| --- | --- |
+| SkiaSharp.NativeAssets.Linux | 1.68.1.1 |

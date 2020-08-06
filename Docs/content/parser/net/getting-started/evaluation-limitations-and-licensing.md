@@ -23,16 +23,9 @@ You can easily download GroupDocs.Parser for evaluation. The evaluation download
 | --- | --- |
 |   | Only 100 files per session |
 |   | Only 5 pages (slides, sheets) of a document |
-| **Text extraction** | Only 20 lines per file  
-Only the first 1600 symbols  
-Only the first 5 pages (slides, sheets)  
-\+ Evaluation marks |
-| **Formatted text and text structure extraction  
-** | Only 20 rows for **spreadsheets**  
-Only the first 1600 symbols  
-Only the first 5 pages (slides, sheets)  
-\+ Evaluation marks |
-| **Metada****ta extraction** | Only 5 properties per file |
+| **Text extraction** | Only 20 lines per file<br/>Only the first 1600 symbols <br/>Only the first 5 pages (slides, sheets)<br/>\+ Evaluation marks |
+| **Formatted text and text structure extraction** | Only 20 rows for **spreadsheets**<br/>Only the first 1600 symbols<br/>Only the first 5 pages (slides, sheets)<br/>\+ Evaluation marks |
+| **Metadata extraction** | Only 5 properties per file |
 
 ## Licensing
 

@@ -20,14 +20,19 @@ To extract metadata from PDF documents [GetMetadata](https://apireference.groupd
 | application-version | The version number of the application that created the presentation. |
 | created-time | The time of the presentation creation. |
 | last-saved-time | The time of the the presentation when it was last saved. |
+
 Here are the steps to extract metadata from PDF document:
+
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial document;
 *   Call [GetMetadata](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getmetadata) method and obtain collection of document metadata objects;
 *   Iterate through the collection and get metadata names and values.
+
 {{< alert style="warning" >}}
 [GetMetadata](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getmetadata) method returns *null* value if metadata extraction isn't supported for the document. For example, metadata extraction isn't supported for TXT files. Therefore, for TXT file [GetMetadata](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getmetadata) method returns *null*. If PDF document has no metadata, [GetMetadata](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/getmetadata) method returns an empty collection.
 {{< /alert >}}
+
 The following example demonstrates how to extract metadata from PDF document:
+
 ```csharp
 // Create an instance of Parser class
 using(Parser parser = new Parser(filePath))
@@ -50,10 +55,8 @@ using(Parser parser = new Parser(filePath))
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

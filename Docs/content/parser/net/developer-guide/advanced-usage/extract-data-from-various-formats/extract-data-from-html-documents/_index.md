@@ -20,21 +20,19 @@ The following table provides the list of supported formats:
 | [MD](https://wiki.fileformat.com/word-processing/md/) | Markdown |
 | [XML](https://wiki.fileformat.com/web/xml/) | XML File |
 
-The following examples demonstrate how to extract data from HTML documents:
-
 ## More resources
 
 ### GitHub examples
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 
 Along with full featured .NET library we provide simple, but powerful free Apps.
 
 You are welcome to parse documents and extract data from PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX, Emails and more with our free online [Free Online Document Parser App](https://products.groupdocs.app/parser).
+
+The following examples demonstrate how to extract data from HTML documents:

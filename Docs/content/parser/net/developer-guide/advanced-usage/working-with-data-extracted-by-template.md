@@ -38,7 +38,6 @@ if(field.PageArea is PageTextArea)
     // Print the field value
     Console.WriteLine((field.PageArea as PageTextArea).Text);
 }
-
 ```
 
 [PageTextArea](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/pagetextarea) class represents a text block on the page. This class has the following members:
@@ -78,7 +77,6 @@ for (int i = 0; i < data.Count; i++) {
     PageTextArea area = data[i].PageArea as PageTextArea;
     Console.WriteLine(area == null ? "Not a template field" : area.Text);
 }
-
 ```
 
 ## Get field by name
@@ -106,7 +104,6 @@ else {
         }
     }
 }
-
 ```
 
 This functionality allows to iterate all data fields and select the most suitable of them. For example, if more than one text value meets the condition of the regular expression, a user can iterate over them and select the most suitable one.
@@ -154,10 +151,8 @@ for (int i = 0; i < data.Count; i++)
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 

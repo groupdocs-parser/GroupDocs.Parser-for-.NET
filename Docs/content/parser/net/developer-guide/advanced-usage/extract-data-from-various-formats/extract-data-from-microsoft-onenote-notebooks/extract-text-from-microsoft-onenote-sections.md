@@ -8,10 +8,10 @@ keywords:
 productName: GroupDocs.Parser for .NET
 hideChildren: False
 ---
-# Search text in Microsoft OneNote sections
 To extract a text from Microsoft OneNote Sections [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) and [GetText(pageIndex)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.parser/gettext/methods/2) methods are used. These methods allow to extract a text from the entire document or a text from the selected page. Raw mode is not supported for Microsoft OneNote.
 
 Here are the steps to extract a text from Microsoft OneNote Section:
+
 *   Instantiate [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the initial section;
 *   Call [GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser/methods/gettext) method and obtain [TextReader](https://docs.microsoft.com/en-us/dotnet/api/system.io.textreader?view=netframework-2.0) object;
 *   Read a text from *reader*.
@@ -21,6 +21,7 @@ Here are the steps to extract a text from Microsoft OneNote Section:
 {{< /alert >}}
 
 The following example demonstrates how to extract a text from Microsoft OneNote Section:
+
 ```csharp
 // Create an instance of Parser class
 using(Parser parser = new Parser(filePath))
@@ -72,10 +73,8 @@ using(Parser parser = new Parser(filePath))
 
 You may easily run the code above and see the feature in action in our GitHub examples:
 
-*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)
-    
-*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)
-    
+*   [GroupDocs.Parser for .NET examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET)    
+*   [GroupDocs.Parser for Java examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-Java)    
 
 ### Free online document parser App
 
