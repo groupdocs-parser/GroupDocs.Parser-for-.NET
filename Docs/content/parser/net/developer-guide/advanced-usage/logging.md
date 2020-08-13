@@ -2,7 +2,7 @@
 id: logging
 url: parser/net/logging
 title: Logging
-weight: 8
+weight: 103
 description: ""
 keywords: 
 productName: GroupDocs.Parser for .NET

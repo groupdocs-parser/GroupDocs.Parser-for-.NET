@@ -23,6 +23,7 @@ This method returns a collection of [ContainerItem](https://apireference.groupdo
 | [FilePath](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/containeritem/properties/filepath) | The full path of the item. |
 | [Size](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/containeritem/properties/size) | The size of the item in bytes. |
 | [Metadata](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/containeritem/properties/metadata) | The collection of item metadata. |
+| [DetectFileType](https://apireference.groupdocs.com/parser/net/groupdocs.parser.data/containeritem/methods/detectfiletype) | Detects a file type of the container item. |
 | Stream [OpenStream()](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/containeritem/methods/openstream) | Opens the stream of the item content. |
 | Parser [OpenParser()](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/containeritem/methods/openparser) | Creates the [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the item content. |
 | Parser [OpenParser(LoadOptions)](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data.containeritem/openparser/methods/1) | Creates the [Parser](https://apireference.groupdocs.com/net/parser/groupdocs.parser/parser) object for the item content with [LoadOptions](https://apireference.groupdocs.com/net/parser/groupdocs.parser.options/loadoptions). |

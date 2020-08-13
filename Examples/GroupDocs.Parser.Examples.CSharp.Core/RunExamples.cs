@@ -56,6 +56,8 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             //Logging.Run();
             //ExtractDataFromDatabasesWithDbConnection.Run();
+            //GenerateDocumentPagesPreview.Run();
+            //GenerateSpreadsheetPagesPreview.Run();
 
             #region Loading
 
