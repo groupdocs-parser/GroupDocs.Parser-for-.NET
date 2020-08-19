@@ -8,7 +8,7 @@
   <Import Project="..\GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="GroupDocs.Parser" Version="20.8.0-alpha-20200812125455" />
+    <PackageReference Include="GroupDocs.Parser" Version="20.8.0" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
   </ItemGroup>
 

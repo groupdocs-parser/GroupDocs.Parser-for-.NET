@@ -43,7 +43,7 @@
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="GroupDocs.Parser, Version=20.8.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\GroupDocs.Parser.20.8.0-alpha-20200812125455\lib\net20\GroupDocs.Parser.dll</HintPath>
+      <HintPath>..\packages\GroupDocs.Parser.20.8.0\lib\net20\GroupDocs.Parser.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
