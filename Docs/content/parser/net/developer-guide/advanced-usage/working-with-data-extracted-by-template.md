@@ -2,7 +2,7 @@
 id: working-with-data-extracted-by-template
 url: parser/net/working-with-data-extracted-by-template
 title: Working with data extracted by template
-weight: 4
+weight: 102
 description: ""
 keywords: 
 productName: GroupDocs.Parser for .NET

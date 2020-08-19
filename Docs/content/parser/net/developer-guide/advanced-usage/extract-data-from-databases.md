@@ -2,7 +2,7 @@
 id: extract-data-from-databases
 url: parser/net/extract-data-from-databases
 title: Extract data from databases
-weight: 2
+weight: 100
 description: ""
 keywords: 
 productName: GroupDocs.Parser for .NET
