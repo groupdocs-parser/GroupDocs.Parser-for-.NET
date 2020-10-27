@@ -2,7 +2,7 @@
 id: groupdocs-parser-for-net-20-6-1-release-notes
 url: parser/net/groupdocs-parser-for-net-20-6-1-release-notes
 title: GroupDocs.Parser for .NET 20.6.1 Release Notes
-weight: 2
+weight: 3
 description: ""
 keywords: 
 productName: GroupDocs.Parser for .NET
