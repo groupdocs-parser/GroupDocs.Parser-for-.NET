@@ -45,6 +45,15 @@ catch (InvalidPasswordException)
 
 If the password is incorrect or empty [InvalidPasswordException](https://apireference.groupdocs.com/net/parser/groupdocs.parser.exceptions/invalidpasswordexception) exception is thrown.
 
+The following code shows how to check whether a file is password-protected:
+
+```csharp
+// Get a file info
+Options.FileInfo info = Parser.GetFileInfo(document);
+// Check IsEncrypted property
+Console.WriteLine(info.IsEncrypted ? "Password is required" : "");
+```
+
 ## More resources
 
 ### GitHub examples
