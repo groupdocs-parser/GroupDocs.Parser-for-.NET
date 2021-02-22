@@ -52,7 +52,7 @@ using (Parser parser = new Parser(Constants.SampleDocxWithToc))
     foreach (TocItem tocItem in tocItems)
     {
         // Print the text of the chapter
-        using (TextReader reader = tocItem.GetText())
+        using (TextReader reader = tocItem.ExtractText())
         {
             Console.WriteLine("----");
             Console.WriteLine(reader.ReadToEnd());

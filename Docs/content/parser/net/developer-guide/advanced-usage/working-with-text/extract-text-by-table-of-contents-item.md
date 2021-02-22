@@ -10,14 +10,14 @@ hideChildren: False
 ---
 GroupDocs.Parser provides the functionality to extract a text by an item of table of contents. This feature is supported for Word Processing, PDF, ePUB and CHM documents (for more details, see [Supported Document Formats]({{< ref "parser/net/getting-started/supported-document-formats.md" >}})).
 
-Text is extracted by [TocItem.GetText](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/tocitem/methods/gettext) method:
+Text is extracted by [TocItem.ExtractText](https://apireference.groupdocs.com/net/parser/groupdocs.parser.data/tocitem/methods/extracttext) method:
 
 ```csharp
 // Get the first item of table of contents
 TocItem tocItem = parser.GetToc().First();
 
 // Print the text of the chapter
-using (TextReader reader = tocItem.GetText())
+using (TextReader reader = tocItem.ExtractText())
 {
     Console.WriteLine("----");
     Console.WriteLine(reader.ReadToEnd());
@@ -68,7 +68,7 @@ using (Parser parser = new Parser(Constants.SampleDocxWithToc))
     foreach (TocItem tocItem in tocItems)
     {
         // Print the text of the chapter
-        using (TextReader reader = tocItem.GetText())
+        using (TextReader reader = tocItem.ExtractText())
         {
             Console.WriteLine("----");
             Console.WriteLine(reader.ReadToEnd());
