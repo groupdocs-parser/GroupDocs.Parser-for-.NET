@@ -20,6 +20,7 @@ hideChildren: False
 | PARSERNET-1711 | Detected package downgrade: System.Reflection.Emit.ILGeneration | Bug |
 | PARSERNET-1724 | No results from landscape page of a Word document | Bug |
 | PARSERNET-1731 | Searching text with highlights is not showing all the occurrences in the DOCX file | Bug |
+| PARSERNET-1732 | Search returns wrong PageIndex for DOCX if Header/Footer | Bug |
 
 ## Public API and Backward Incompatible Changes
 
