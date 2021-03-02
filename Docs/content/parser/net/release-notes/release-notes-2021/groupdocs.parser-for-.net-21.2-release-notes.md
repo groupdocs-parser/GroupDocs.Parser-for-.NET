@@ -21,6 +21,10 @@ hideChildren: False
 | PARSERNET-1724 | No results from landscape page of a Word document | Bug |
 | PARSERNET-1731 | Searching text with highlights is not showing all the occurrences in the DOCX file | Bug |
 | PARSERNET-1732 | Search returns wrong PageIndex for DOCX if Header/Footer | Bug |
+| PARSERNET-1725 | Search returns null for PageIndex in DOCX documents | Bug |
+| PARSERNET-1726 | Parsing plain text without extension | Bug |
+| PARSERNET-1727 | Search results are less than as expected | Bug |
+| PARSERNET-1728 | API shows search results only from the first page | Bug |
 
 ## Public API and Backward Incompatible Changes
 
