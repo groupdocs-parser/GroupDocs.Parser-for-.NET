@@ -2,7 +2,7 @@
 id: groupdocs-parser-for-net-21-2-release-notes
 url: parser/net/groupdocs-parser-for-net-21-2-release-notes
 title: GroupDocs.Parser for .NET 21.2 Release Notes
-weight: 1
+weight: 2
 description: ""
 keywords: 
 productName: GroupDocs.Parser for .NET

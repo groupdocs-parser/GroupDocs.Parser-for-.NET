@@ -103,6 +103,10 @@ The following tables indicate the file formats from which GroupDocs.Parser for .
 | Document Type | Parse Document by Template | Extract Text (Accurate) | Extract Text (Raw) | Extract Structured Text and Formatted Text | Extract Text Areas | Extract Metadata | Extract Images | Extract Containers and Attachments | Parse Form Data | Extract Table of Contents |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | [ZIP](https://wiki.fileformat.com/compression/zip/)<br/><br/>Zipped File |   |   |   |   |   |   | ![(tick)](parser/net/images/check.png) | ![(tick)](parser/net/images/check.png) |   |   |
+| [RAR](https://wiki.fileformat.com/compression/rar/)<br/><br/>Rar File |   |   |   |   |   |   | ![(tick)](parser/net/images/check.png) | ![(tick)](parser/net/images/check.png) |   |   |
+| [TAR](https://wiki.fileformat.com/compression/tar/)<br/><br/>Tar File |   |   |   |   |   |   | ![(tick)](parser/net/images/check.png) | ![(tick)](parser/net/images/check.png) |   |   |
+| [GZ](https://wiki.fileformat.com/compression/gz/)<br/><br/>GZip file |   |   |   |   |   |   | ![(tick)](parser/net/images/check.png) | ![(tick)](parser/net/images/check.png) |   |   |
+| [BZ2](https://wiki.fileformat.com/compression/bz2/)<br/><br/>BZip2 File |   |   |   |   |   |   | ![(tick)](parser/net/images/check.png) | ![(tick)](parser/net/images/check.png) |   |   |
 
 
 ## Database
