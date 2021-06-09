@@ -12,7 +12,6 @@
 Directory | Description
 --------- | -----------
 [Demos](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Demos) | Source code for live demos hosted at https://products.groupdocs.app/parser/family.
-[Docs](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Docs)  | Product documentation containing the Developer's Guide, Release Notes and more.
 [Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET/tree/master/Examples)  | C# examples and sample files that will help you learn how to use product features. 
 
 ## Document Parsing Features
