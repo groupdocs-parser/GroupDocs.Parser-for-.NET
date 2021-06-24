@@ -177,4 +177,4 @@ using (Parser parser = new Parser(Constants.SampleZip))
 }
 ```
 
-[Home](https://www.groupdocs.com/) | [Product Page](https://products.groupdocs.com/parser/net) | [Documentation](https://docs.groupdocs.com/parser/net/) | [Demo](https://products.groupdocs.app/parser/family) | [API Reference](https://apireference.groupdocs.com/parser/net) | [Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET) | [Blog](https://blog.groupdocs.com/category/parser/) | [Free Support](https://forum.groupdocs.com/c/parser) | [Temporary License](https://purchase.groupdocs.com/temporary-license)
+[Home](https://www.groupdocs.com/) | [Product Page](https://products.groupdocs.com/parser/net) | [Documentation](https://docs.groupdocs.com/parser/net/) | [Demo](https://products.groupdocs.app/parser/family) | [API Reference](https://apireference.groupdocs.com/parser/net) | [Examples](https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET) | [Blog](https://blog.groupdocs.com/category/parser/) | [Search](https://search.groupdocs.com/) | [Free Support](https://forum.groupdocs.com/c/parser) | [Temporary License](https://purchase.groupdocs.com/temporary-license)
