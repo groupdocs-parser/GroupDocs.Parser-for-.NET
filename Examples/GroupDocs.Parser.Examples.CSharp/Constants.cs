@@ -68,6 +68,8 @@ namespace GroupDocs.Parser.Examples.CSharp
 
         public static readonly string SamplePdfWithToc = GetFilePath("samplewithtoc.pdf");
 
+        public static readonly string SamplePdfWithBarcodes = GetFilePath("Barcodes.pdf");
+
         private static string GetFilePath(string fileName)
         {
             return Path.Combine(SamplesPath, fileName);

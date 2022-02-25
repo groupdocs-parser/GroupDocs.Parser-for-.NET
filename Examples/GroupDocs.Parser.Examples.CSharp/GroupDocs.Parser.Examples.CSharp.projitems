@@ -9,6 +9,9 @@
     <Import_RootNamespace>GroupDocs.Parser.Examples.CSharp</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\Barcodes.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\Forms.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -161,11 +164,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\PasswordProtectedDocuments.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadingSpecificFileFormats.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Logging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithBarcodes\ExtractBarcodesFromDocumentPageArea.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithBarcodes\ExtractBarcodesFromDocumentPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithBarcodes\ExtractBarcodesFromDocument.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithHyperlinks\ExtractHyperlinksFromDocumentPageArea.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithHyperlinks\ExtractHyperlinksFromDocumentPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithHyperlinks\ExtractHyperlinksFromDocument.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithTables\ExtractTablesFromDocumentPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithTables\ExtractTablesFromDocument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithTemplates\TemplateBarcodes\WorkingWithBarcodes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithZipArchivesAndAttachments\DetectFileType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithZipArchivesAndAttachments\IterateThroughContainerItems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Email\ExtractAttachmentsFromEmails.cs" />

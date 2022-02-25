@@ -7,10 +7,12 @@ namespace GroupDocs.Parser.Examples.CSharp
     using System.Data.SQLite;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.Loading;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithBarcodes;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithDataExtractedByTemplate;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithHyperlinks;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithImages;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTables;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateBarcodes;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateFields;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateTables;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText;
@@ -99,6 +101,14 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #endregion
 
+            #region Working with barcodes
+
+            //ExtractBarcodesFromDocument.Run();
+            //ExtractBarcodesFromDocumentPage.Run();
+            //ExtractBarcodesFromDocumentPageArea.Run();
+
+            #endregion
+
             #region Working with text
 
             //DetectEncoding.Run();
@@ -143,6 +153,12 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             //WorkingWithTableLayout.Run();
             //WorkingWithTableParameters.Run();
+
+            #endregion
+
+            #region Template barcodes
+
+            WorkingWithBarcodes.Run();
 
             #endregion
 
