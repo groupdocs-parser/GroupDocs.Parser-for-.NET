@@ -95,6 +95,9 @@
     <Content Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sample.htm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\SampleScan.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\utf8.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -164,6 +167,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\PasswordProtectedDocuments.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadingSpecificFileFormats.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Logging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\UsingOcr\AsposeOcrOnPremise.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\UsingOcr\OcrUsageBasicsHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\UsingOcr\OcrUsageBasicsRectangle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\UsingOcr\OcrUsageBasicsText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\UsingOcr\OcrUsageBasicsTextAreas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithBarcodes\ExtractBarcodesFromDocumentPageArea.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithBarcodes\ExtractBarcodesFromDocumentPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithBarcodes\ExtractBarcodesFromDocument.cs" />

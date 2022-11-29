@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2020 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2022 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp
 {
@@ -10,9 +10,11 @@ namespace GroupDocs.Parser.Examples.CSharp
 
     internal static class Constants
     {
-        public const string LicensePath = "C://licenses//GroupDocs.Parser.Net.lic";
+        public const string LicensePath = "C:/Licenses/GroupDocs.Parser.NET.lic";
         public const string SamplesPath = "./Resources/SampleFiles";
         public const string OutputPath = "./Output/";
+
+        public const string AsposeOcrLicensePath = "C:/Licenses/Aspose.OCR.NET.lic";
 
         public static readonly string SampleDocx = GetFilePath("sample.docx");
 
@@ -69,6 +71,8 @@ namespace GroupDocs.Parser.Examples.CSharp
         public static readonly string SamplePdfWithToc = GetFilePath("samplewithtoc.pdf");
 
         public static readonly string SamplePdfWithBarcodes = GetFilePath("Barcodes.pdf");
+
+        public static readonly string SampleScan = GetFilePath("SampleScan.jpg");
 
         private static string GetFilePath(string fileName)
         {

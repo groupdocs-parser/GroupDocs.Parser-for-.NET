@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2020 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2022 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp
 {
@@ -7,6 +7,7 @@ namespace GroupDocs.Parser.Examples.CSharp
     using System.Data.SQLite;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.Loading;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.UsingOcr;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithBarcodes;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithDataExtractedByTemplate;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithHyperlinks;
@@ -169,6 +170,15 @@ namespace GroupDocs.Parser.Examples.CSharp
             //GetFieldByName.Run();
             //IterateThroughFields.Run();
             //WorkingWithTables.Run();
+
+            #endregion
+
+            #region Using OCR
+
+            //OcrUsageBasicsText.Run();
+            //OcrUsageBasicsTextAreas.Run();
+            //OcrUsageBasicsRectangle.Run();
+            OcrUsageBasicsHandler.Run();
 
             #endregion
 
