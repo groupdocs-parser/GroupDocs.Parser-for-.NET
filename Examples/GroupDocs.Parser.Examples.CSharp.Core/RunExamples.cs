@@ -178,7 +178,7 @@ namespace GroupDocs.Parser.Examples.CSharp
             //OcrUsageBasicsText.Run();
             //OcrUsageBasicsTextAreas.Run();
             //OcrUsageBasicsRectangle.Run();
-            OcrUsageBasicsHandler.Run();
+            //OcrUsageBasicsHandler.Run();
 
             #endregion
 
