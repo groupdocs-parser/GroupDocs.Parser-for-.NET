@@ -68,7 +68,7 @@ namespace GroupDocs.Parser.Examples.CSharp
             //LoadingSpecificFileFormats.Run();
             //LoadDocumentFromStream.Run();
             //LoadDocumentFromLocalDisk.Run();
-            HandleLoadingOfExternalResources.Run();
+            //HandleLoadingOfExternalResources.Run();
 
             #endregion
 
