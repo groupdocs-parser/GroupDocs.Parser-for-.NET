@@ -92,6 +92,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\installation.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\installation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\installation_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\installation_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\sample.htm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -162,6 +174,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\SearchTextByKeyword.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\SearchTextByRegularExpression.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\GenerateSpreadsheetPagesPreview.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\HandleLoadingOfExternalResources.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadDocumentFromLocalDisk.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadDocumentFromStream.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\PasswordProtectedDocuments.cs" />

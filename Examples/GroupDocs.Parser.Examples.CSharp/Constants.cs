@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2022 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp
 {
@@ -74,14 +74,16 @@ namespace GroupDocs.Parser.Examples.CSharp
 
         public static readonly string SampleScan = GetFilePath("SampleScan.jpg");
 
+        public static readonly string SampleHtmlWithImages = GetFilePath("installation.html");
+
         private static string GetFilePath(string fileName)
         {
-            return Path.Combine(SamplesPath, fileName);
+            return Path.Combine(Directory.GetCurrentDirectory(), SamplesPath, fileName);
         }
 
         public static string GetOutputFilePath(string fileName)
         {
-            string outputDirectory = Path.Combine(OutputPath, fileName);
+            string outputDirectory = Path.Combine(OutputPath, fileName).Replace("\\", "/");
 
             if (!Directory.Exists(outputDirectory))
                 Directory.CreateDirectory(outputDirectory);
