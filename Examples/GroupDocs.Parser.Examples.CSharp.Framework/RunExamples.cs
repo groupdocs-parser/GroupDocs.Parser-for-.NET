@@ -164,6 +164,8 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #endregion
 
+            //ParsePagesByTemplate.Run();
+
             #endregion
 
             #region Working with data extracted by template

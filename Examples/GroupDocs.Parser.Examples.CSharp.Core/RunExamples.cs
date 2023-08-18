@@ -13,6 +13,7 @@ namespace GroupDocs.Parser.Examples.CSharp
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithHyperlinks;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithImages;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTables;
+    using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateBarcodes;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateFields;
     using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateTables;
@@ -163,6 +164,8 @@ namespace GroupDocs.Parser.Examples.CSharp
             WorkingWithBarcodes.Run();
 
             #endregion
+
+            //ParsePagesByTemplate.Run();
 
             #endregion
 

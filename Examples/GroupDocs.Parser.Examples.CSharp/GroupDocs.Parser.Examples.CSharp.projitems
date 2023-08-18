@@ -193,6 +193,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithHyperlinks\ExtractHyperlinksFromDocument.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithTables\ExtractTablesFromDocumentPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithTables\ExtractTablesFromDocument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)advancedusage\workingwithtemplates\ParsePagesByTemplate.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithTemplates\TemplateBarcodes\WorkingWithBarcodes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithZipArchivesAndAttachments\DetectFileType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithZipArchivesAndAttachments\IterateThroughContainerItems.cs" />
