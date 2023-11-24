@@ -298,7 +298,7 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             Console.WriteLine();
             Console.WriteLine("All done.");
-            Console.ReadKey();
+            Console.Read();
         }
     }
 }
