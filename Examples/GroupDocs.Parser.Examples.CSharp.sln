@@ -5,9 +5,9 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GroupDocs.Parser.Examples.CSharp", "GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.shproj", "{66AA31FE-AD7D-46C1-ABAB-7D048DA1AA75}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupDocs.Parser.Examples.CSharp.Framework", "GroupDocs.Parser.Examples.CSharp.Framework\GroupDocs.Parser.Examples.CSharp.Framework.csproj", "{5BFC49E8-B436-42F0-90C9-C82B239A43FB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupDocs.Parser.Examples.CSharp.Core", "GroupDocs.Parser.Examples.CSharp.Core\GroupDocs.Parser.Examples.CSharp.Core.csproj", "{029BFB9C-20A4-4CAC-BE28-4D13D9FC5B1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupDocs.Parser.Examples.CSharp.Framework", "GroupDocs.Parser.Examples.CSharp.Framework\GroupDocs.Parser.Examples.CSharp.Framework.csproj", "{E564CD1A-A09B-4A99-9502-5198A23F0B54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,14 +15,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5BFC49E8-B436-42F0-90C9-C82B239A43FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BFC49E8-B436-42F0-90C9-C82B239A43FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BFC49E8-B436-42F0-90C9-C82B239A43FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BFC49E8-B436-42F0-90C9-C82B239A43FB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{029BFB9C-20A4-4CAC-BE28-4D13D9FC5B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{029BFB9C-20A4-4CAC-BE28-4D13D9FC5B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{029BFB9C-20A4-4CAC-BE28-4D13D9FC5B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{029BFB9C-20A4-4CAC-BE28-4D13D9FC5B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E564CD1A-A09B-4A99-9502-5198A23F0B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E564CD1A-A09B-4A99-9502-5198A23F0B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E564CD1A-A09B-4A99-9502-5198A23F0B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E564CD1A-A09B-4A99-9502-5198A23F0B54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,7 +32,7 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems*{029bfb9c-20a4-4cac-be28-4d13d9fc5b1e}*SharedItemsImports = 5
-		GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems*{5bfc49e8-b436-42f0-90c9-c82b239a43fb}*SharedItemsImports = 5
 		GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems*{66aa31fe-ad7d-46c1-abab-7d048da1aa75}*SharedItemsImports = 13
+		GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems*{e564cd1a-a09b-4a99-9502-5198a23f0b54}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal

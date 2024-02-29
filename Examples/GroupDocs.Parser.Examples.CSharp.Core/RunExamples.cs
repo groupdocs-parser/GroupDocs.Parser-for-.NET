@@ -1,5 +1,5 @@
-﻿// <copyright company="Aspose Pty Ltd">2011-2023
-//   Copyright (C) 2011-2023 GroupDocs. All Rights Reserved.
+﻿// <copyright company="Aspose Pty Ltd">2011-2024
+//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp
 {
@@ -67,6 +67,7 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             //PasswordProtectedDocuments.Run();
             //LoadingSpecificFileFormats.Run();
+            //LoadDocumentFromUrl.Run();
             //LoadDocumentFromStream.Run();
             //LoadDocumentFromLocalDisk.Run();
             //HandleLoadingOfExternalResources.Run();

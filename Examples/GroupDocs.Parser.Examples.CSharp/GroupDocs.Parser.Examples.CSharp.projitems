@@ -176,6 +176,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\GenerateSpreadsheetPagesPreview.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\HandleLoadingOfExternalResources.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadDocumentFromLocalDisk.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadDocumentFromUrl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadDocumentFromStream.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\PasswordProtectedDocuments.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadingSpecificFileFormats.cs" />
