@@ -76,6 +76,8 @@ namespace GroupDocs.Parser.Examples.CSharp
 
         public static readonly string SampleHtmlWithImages = GetFilePath("installation.html");
 
+        public static readonly string SampleCorruptedBarcodes = GetFilePath("corrupted.png");
+
         private static string GetFilePath(string fileName)
         {
             return Path.Combine(Directory.GetCurrentDirectory(), SamplesPath, fileName);

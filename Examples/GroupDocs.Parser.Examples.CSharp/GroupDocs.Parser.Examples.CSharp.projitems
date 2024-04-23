@@ -92,6 +92,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\corrupted.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\installation.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -186,6 +189,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\UsingOcr\OcrUsageBasicsRectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\UsingOcr\OcrUsageBasicsText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\UsingOcr\OcrUsageBasicsTextAreas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithBarcodes\ExtractBarcodesFromDocumentCorrupted.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithBarcodes\ExtractBarcodesFromDocumentWithOptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithBarcodes\ExtractBarcodesFromDocumentPageArea.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithBarcodes\ExtractBarcodesFromDocumentPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\WorkingWithBarcodes\ExtractBarcodesFromDocument.cs" />

@@ -108,6 +108,8 @@ namespace GroupDocs.Parser.Examples.CSharp
             #region Working with barcodes
 
             //ExtractBarcodesFromDocument.Run();
+            //ExtractBarcodesFromDocumentWithOptions.Run();
+            //ExtractBarcodesFromDocumentCorrupted.Run();
             //ExtractBarcodesFromDocumentPage.Run();
             //ExtractBarcodesFromDocumentPageArea.Run();
 

@@ -9,9 +9,9 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithBarcodes
     using System.Collections.Generic;
 
     /// <summary>
-    /// This example shows how to extract barcodes from the upper-right corner.
+    /// This example shows how to extract barcodes with additional options from a document.
     /// </summary>
-    static class ExtractBarcodesFromDocumentPageArea
+    static class ExtractBarcodesFromDocumentWithOptions
     {
         public static void Run()
         {
@@ -26,8 +26,9 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithBarcodes
                 }
 
                 // Create the options which are used for barcodes extraction
-                BarcodeOptions options = new BarcodeOptions(new Rectangle(new Point(590, 80), new Size(150, 150)));
-                // Extract barcodes from the upper-right corner.
+                BarcodeOptions options = new BarcodeOptions(QualityMode.Low, QualityMode.Low, "QR");
+
+                // Extract barcodes from the document.
                 IEnumerable<PageBarcodeArea> barcodes = parser.GetBarcodes(options);
 
                 // Iterate over barcodes
