@@ -1,6 +1,11 @@
 ﻿// <copyright company="Aspose Pty Ltd">
 //   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
 // </copyright>
+
+#if !NETCOREAPP
+extern alias OCR;
+#endif
+
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.UsingOcr
 {
     using System;
@@ -12,6 +17,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.UsingOcr
     using Aspose.OCR;
     using GroupDocs.Parser.Data;
     using GroupDocs.Parser.Options;
+
 
     /// <summary>
     /// This example shows how to integrate Aspose.OCR on-premise API.
@@ -35,6 +41,21 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.UsingOcr
                 // Create an instance of RecognitionSettings
                 RecognitionSettings settings = new RecognitionSettings();
 
+#if !NETCOREAPP
+                // Check if the rectangle is set
+                if (options != null && options.Rectangle != null)
+                {
+                    List<OCR::Aspose.Drawing.Rectangle> areas = new List<OCR::Aspose.Drawing.Rectangle>();
+                    areas.Add(new OCR::Aspose.Drawing.Rectangle(
+                        (int)options.Rectangle.Left,
+                        (int)options.Rectangle.Top,
+                        (int)options.Rectangle.Size.Width,
+                        (int)options.Rectangle.Size.Height));
+
+                    // Set recognition areas
+                    settings.RecognitionAreas = areas;
+                }
+#else
                 // Check if the rectangle is set
                 if (options != null && options.Rectangle != null)
                 {
@@ -48,6 +69,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.UsingOcr
                     // Set recognition areas
                     settings.RecognitionAreas = areas;
                 }
+#endif
 
                 // Perform the text recognition
                 RecognitionResult result = api.RecognizeImage(memoryStream, settings);
@@ -75,6 +97,21 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.UsingOcr
                 // Create recognition settings and set detect areas
                 RecognitionSettings settings = new RecognitionSettings(detectAreas: true);
 
+#if !NETCOREAPP
+                // Check if the rectangle is set
+                if (options != null && options.Rectangle != null)
+                {
+                    List<OCR::Aspose.Drawing.Rectangle> areas = new List<OCR::Aspose.Drawing.Rectangle>();
+                    areas.Add(new OCR::Aspose.Drawing.Rectangle(
+                        (int)options.Rectangle.Left,
+                        (int)options.Rectangle.Top,
+                        (int)options.Rectangle.Size.Width,
+                        (int)options.Rectangle.Size.Height));
+
+                    // Set recognition areas
+                    settings.RecognitionAreas = areas;
+                }
+#else
                 // Check if the rectangle is set
                 if (options != null && options.Rectangle != null)
                 {
@@ -88,6 +125,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.UsingOcr
                     // Set recognition areas
                     settings.RecognitionAreas = areas;
                 }
+#endif
 
                 // Perform the text recognition 
                 RecognitionResult r = api.RecognizeImage(memoryStream, settings);
