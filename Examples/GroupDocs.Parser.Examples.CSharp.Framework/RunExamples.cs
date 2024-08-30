@@ -216,6 +216,8 @@ namespace GroupDocs.Parser.Examples.CSharp
             //AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractTextFromSheetInRawMode.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.Excel.SearchTextByKeyword.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.Excel.SearchTextByRegularExpression.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractCells.Run();
+            //AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractCellsWithCustomization.Run();
 
             #endregion
 

@@ -119,6 +119,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)advancedusage\Export.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)advancedusage\extractdatafromvariousformats\excel\ExtractCells.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)advancedusage\extractdatafromvariousformats\excel\ExtractCellsWithCustomization.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\GenerateDocumentPagesPreview.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromDatabasesWithDbConnection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromDatabases.cs" />
