@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Aspose.OCR" Version="22.11.0" />
-    <PackageReference Include="GroupDocs.Parser" Version="24.12.0" />
+    <PackageReference Include="GroupDocs.Parser" Version="25.1.0" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
 
 	  <PackageReference Include="Aspose.Drawing.Common" Version="24.12.0">
