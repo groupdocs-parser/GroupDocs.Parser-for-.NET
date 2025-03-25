@@ -1,0 +1,281 @@
+﻿<Window x:Class="GroupDocs.Parser.Explorer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:utils="clr-namespace:GroupDocs.Parser.Explorer.Utils"
+        xmlns:ctrl="clr-namespace:GroupDocs.Parser.Explorer.Controls"
+        xmlns:vm="clr-namespace:GroupDocs.Parser.Explorer.ViewModels"
+        Title="{Binding Title, Mode=OneTime}"
+        WindowState="{Binding Settings.WindowState, Mode=TwoWay}"
+        Height="{Binding Settings.Height, Mode=TwoWay}"
+        Width="{Binding Settings.Width, Mode=TwoWay}"
+        Left="{Binding Settings.Left, Mode=TwoWay}"
+        Top="{Binding Settings.Top, Mode=TwoWay}"
+        RenderOptions.EdgeMode="Aliased"
+        SnapsToDevicePixels="True"
+        UseLayoutRounding="True"
+        RenderOptions.BitmapScalingMode="HighQuality"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GroupDocs.Parser.Explorer;component/Views/BusyAnimationStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <utils:BooleanConverter x:Key="TrueToVisibleConverter">
+                <utils:BooleanConverter.TrueValue>
+                    <Visibility>Visible</Visibility>
+                </utils:BooleanConverter.TrueValue>
+                <utils:BooleanConverter.FalseValue>
+                    <Visibility>Hidden</Visibility>
+                </utils:BooleanConverter.FalseValue>
+            </utils:BooleanConverter>
+
+            <utils:BooleanConverter x:Key="TrueToCollapsedConverter">
+                <utils:BooleanConverter.TrueValue>
+                    <Visibility>Collapsed</Visibility>
+                </utils:BooleanConverter.TrueValue>
+                <utils:BooleanConverter.FalseValue>
+                    <Visibility>Visible</Visibility>
+                </utils:BooleanConverter.FalseValue>
+            </utils:BooleanConverter>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+
+            <Border
+                Background="#E6E7EA">
+                <DockPanel
+                    Margin="{StaticResource CommonMargin}"
+                    LastChildFill="True">
+                    <Button
+                        DockPanel.Dock="Left"
+                        Content="Set License"
+                        Command="{Binding SetLicenseCommand}" />
+                    <Button
+                        DockPanel.Dock="Left"
+                        Content="Open File"
+                        Command="{Binding OpenFileCommand}" />
+                    <Label Content="{Binding FilePath}" />
+                </DockPanel>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                Background="#E6E7EA">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="{StaticResource CommonMargin}">
+                    <Button
+                        Style="{StaticResource SquareButtonStyle}"
+                        Content="+"
+                        FontSize="24"
+                        Command="{Binding ZoomInCommand}" />
+                    <Label
+                        HorizontalContentAlignment="Center"
+                        MinWidth="80"
+                        Content="{Binding ScaleText}"
+                        VerticalAlignment="Center" />
+                    <Button
+                        Style="{StaticResource SquareButtonStyle}"
+                        Content="−"
+                        FontSize="24"
+                        Command="{Binding ZoomOutCommand}" />
+                    <Button
+                        Content="Parse Text"
+                        Command="{Binding ParseTextCommand}" />
+                </StackPanel>
+            </Border>
+
+            <Border
+                HorizontalAlignment="Stretch"
+                Background="#F4F6F8"
+                Grid.Row="2"
+                Margin="0"
+                BorderBrush="Gray"
+                BorderThickness="0,1,0,0">
+                <ctrl:CustomScrollViewer
+                    PercentagePositionChanged="CustomScrollViewer_PercentagePositionChanged"
+                    HorizontalAlignment="Stretch"
+                    HorizontalScrollBarVisibility="Auto"
+                    VerticalScrollBarVisibility="Visible"
+                    Focusable="False">
+                    <ItemsControl
+                        Focusable="False"
+                        HorizontalAlignment="Center"
+                        ItemsSource="{Binding PageImages}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <StackPanel.Effect>
+                                        <DropShadowEffect
+                                            ShadowDepth="{StaticResource CommonMarginValue}"
+                                            RenderingBias="Performance"
+                                            Opacity="100"
+                                            Direction="315"
+                                            Color="#D3D5DE"
+                                            BlurRadius="{StaticResource CommonMarginValue}" />
+                                    </StackPanel.Effect>
+                                    <ItemsControl ItemsSource="{Binding Objects}">
+                                        <ItemsControl.Resources>
+                                            <DataTemplate DataType="{x:Type vm:ImageViewModel}">
+                                                <Image
+                                                    Source="{Binding BitmapImage}"
+                                                    Width="{Binding Width}"
+                                                    RenderOptions.BitmapScalingMode="HighQuality"
+                                                    Stretch="Uniform" />
+                                            </DataTemplate>
+                                            <DataTemplate DataType="{x:Type vm:FieldViewModel}">
+                                                <Canvas
+                                                    Width="{Binding Width}"
+                                                    Height="{Binding Height}">
+                                                    <Rectangle
+                                                        Canvas.Left="0"
+                                                        Canvas.Top="0"
+                                                        Width="{Binding Width}"
+                                                        Height="{Binding Height}"
+                                                        Cursor="SizeAll"
+                                                        Tag="0"
+                                                        utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
+                                                        utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
+                                                        utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
+                                                        Fill="#8CCC" />
+                                                    <Rectangle
+                                                        Canvas.Left="0"
+                                                        Canvas.Top="0"
+                                                        Width="10"
+                                                        Height="10"
+                                                        Cursor="SizeNWSE"
+                                                        Tag="1"
+                                                        utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
+                                                        utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
+                                                        utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
+                                                        Fill="#80679FFA" />
+                                                    <Rectangle
+                                                        Canvas.Top="0"
+                                                        Canvas.Right="0"
+                                                        Width="10"
+                                                        Height="10"
+                                                        Cursor="SizeNESW"
+                                                        Tag="2"
+                                                        utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
+                                                        utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
+                                                        utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
+                                                        Fill="#80679FFA" />
+                                                    <Rectangle
+                                                        Canvas.Right="0"
+                                                        Canvas.Bottom="0"
+                                                        Width="10"
+                                                        Height="10"
+                                                        Cursor="SizeNWSE"
+                                                        Tag="3"
+                                                        utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
+                                                        utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
+                                                        utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
+                                                        Fill="#80679FFA" />
+                                                    <Rectangle
+                                                        Canvas.Left="0"
+                                                        Canvas.Bottom="0"
+                                                        Width="10"
+                                                        Height="10"
+                                                        Cursor="SizeNESW"
+                                                        Tag="4"
+                                                        utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
+                                                        utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
+                                                        utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
+                                                        Fill="#80679FFA" />
+                                                </Canvas>
+                                            </DataTemplate>
+                                        </ItemsControl.Resources>
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <Canvas
+                                                    HorizontalAlignment="Center"
+                                                    Width="{Binding Width}"
+                                                    Height="{Binding Height}"
+                                                    Margin="{StaticResource CommonMargin}">
+                                                </Canvas>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemContainerStyle>
+                                            <Style TargetType="ContentPresenter">
+                                                <Setter Property="Canvas.Left" Value="{Binding Path=X}" />
+                                                <Setter Property="Canvas.Top" Value="{Binding Path=Y}" />
+                                            </Style>
+                                        </ItemsControl.ItemContainerStyle>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ctrl:CustomScrollViewer>
+            </Border>
+
+            <GridSplitter VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch"
+                          Background="DarkGray"
+                          Height="5"
+                          Grid.Row="3" />
+
+            <Grid Grid.Row="4"
+                  Margin="0">
+                <ctrl:CustomListView ItemsSource="{Binding Log}"
+                                     BorderThickness="0"
+                                     utils:AutoScrollBehavior.AutoScroll="True"
+                                     SelectedItem="{Binding SelectedLogItem}"
+                                     utils:GridViewColumnResize.Enabled="True">
+                    <ItemsControl.Resources>
+                        <Style x:Key="{x:Type GridViewColumnHeader}"
+                               TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </Style>
+                    </ItemsControl.Resources>
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Time"
+                                                Width="auto"
+                                                DisplayMemberBinding="{Binding Path=TimeText, Mode=OneTime}" />
+                                <GridViewColumn Header="Message"
+                                                utils:GridViewColumnResize.Width="*"
+                                                DisplayMemberBinding="{Binding Path=Message, Mode=OneWay}" />
+                                <GridViewColumn Header="Button">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Margin="0"
+                                                    MinHeight="16"
+                                                    Padding="0"
+                                                    Content="Expand"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Visibility="{Binding CanExpand, Converter={StaticResource TrueToVisibleConverter}}"
+                                                    Command="{Binding ExpandCommand}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ctrl:CustomListView>
+            </Grid>
+        </Grid>
+
+        <Control Style="{StaticResource BusyAnimationStyle}"
+                 Visibility="{Binding WindowEnabled, Mode=OneWay, Converter={StaticResource TrueToCollapsedConverter}}"
+                 Background="#90FFFFFF" />
+    </Grid>
+</Window>
