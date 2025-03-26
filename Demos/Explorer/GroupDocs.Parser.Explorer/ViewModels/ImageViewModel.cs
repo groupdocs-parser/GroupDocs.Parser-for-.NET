@@ -36,5 +36,9 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public double Width => bitmapImage.Width * scale;
 
         public double Height => bitmapImage.Height * scale;
+
+        public PageElementType ElementType => PageElementType.Image;
+
+        public string Name => string.Empty;
     }
 }

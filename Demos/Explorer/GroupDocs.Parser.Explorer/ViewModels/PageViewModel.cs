@@ -5,16 +5,21 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 {
     class PageViewModel : ViewModelBase
     {
+        private readonly int pageIndex;
         private readonly ObservableCollection<IPageElement> objects = new ObservableCollection<IPageElement>();
         private ImageViewModel imageViewModel;
 
         public PageViewModel(
+            int pageIndex,
             BitmapImage bitmapImage,
             double scale)
         {
+            this.pageIndex = pageIndex;
             imageViewModel = new ImageViewModel(bitmapImage, scale);
             objects.Add(imageViewModel);
         }
+
+        public int PageIndex => pageIndex;
 
         public ObservableCollection<IPageElement> Objects => objects;
 

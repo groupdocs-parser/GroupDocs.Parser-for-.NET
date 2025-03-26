@@ -12,6 +12,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         private double width;
         private double height;
         private double scale;
+        private readonly string name;
 
         private bool isMouseDown;
         private Point oldPoint;
@@ -27,13 +28,15 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             double y,
             double width,
             double height,
-            double scale)
+            double scale,
+            string name)
         {
             this.x = x;
             this.y = y;
             this.width = width;
             this.height = height;
             this.scale = scale;
+            this.name = name;
 
             MouseDownCommand = new RelayCommand<MouseArguments>(OnMouseDown);
             MouseMoveCommand = new RelayCommand<MouseArguments>(OnMouseMove);
@@ -303,5 +306,9 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                 }
             }
         }
+
+        public PageElementType ElementType => PageElementType.TextField;
+
+        public string Name => name;
     }
 }

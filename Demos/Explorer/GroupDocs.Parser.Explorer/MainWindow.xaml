@@ -92,8 +92,11 @@
                         FontSize="24"
                         Command="{Binding ZoomOutCommand}" />
                     <Button
-                        Content="Parse Text"
-                        Command="{Binding ParseTextCommand}" />
+                        Content="Add Text Field"
+                        Command="{Binding AddTextFieldCommand}" />
+                    <Button
+                        Content="Parse"
+                        Command="{Binding ParseCommand}" />
                 </StackPanel>
             </Border>
 

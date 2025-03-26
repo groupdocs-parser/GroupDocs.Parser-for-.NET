@@ -1,8 +1,12 @@
-﻿using GroupDocs.Parser.Explorer.Utils;
+﻿using GroupDocs.Parser.Data;
+using GroupDocs.Parser.Explorer.Utils;
 using GroupDocs.Parser.Options;
+using GroupDocs.Parser.Templates;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
@@ -13,6 +17,9 @@ namespace GroupDocs.Parser.Explorer.ViewModels
     class MainViewModel : ViewModelBase
     {
         private const int MaxLogItemCount = 1000;
+        private const int Dpi = 144;
+
+        private int fieldCounter;
 
         private readonly string tempFolder;
         private bool windowEnabled = true;
@@ -33,7 +40,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public RelayCommand OpenFileCommand { get; private set; }
         public RelayCommand ZoomInCommand { get; private set; }
         public RelayCommand ZoomOutCommand { get; private set; }
-        public RelayCommand ParseTextCommand { get; private set; }
+        public RelayCommand AddTextFieldCommand { get; private set; }
+        public RelayCommand ParseCommand { get; private set; }
 
         public MainViewModel(Settings settings)
         {
@@ -48,7 +56,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             OpenFileCommand = new RelayCommand(OnOpenFile);
             ZoomInCommand = new RelayCommand(OnZoomIn);
             ZoomOutCommand = new RelayCommand(OnZoomOut);
-            ParseTextCommand = new RelayCommand(OnParseText);
+            AddTextFieldCommand = new RelayCommand(OnAddTextField);
+            ParseCommand = new RelayCommand(OnParseAsync);
 
             Init();
         }
@@ -100,7 +109,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                         var pagePath = pagePaths[i];
                         var image = new BitmapImage(new Uri(pagePath));
                         image.Freeze();
-                        var page = new PageViewModel(image, Scale);
+                        var page = new PageViewModel(i, image, Scale);
                         images.Add(page);
                     }
                     PageImages = images;
@@ -142,12 +151,25 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
         private void AddLogEntryPrivate(LogItemViewModel item)
         {
-            while (Log.Count >= MaxLogItemCount)
+            Action action = () =>
             {
-                Log.RemoveAt(0);
-            }
+                while (Log.Count >= MaxLogItemCount)
+                {
+                    Log.RemoveAt(0);
+                }
 
-            Log.Add(item);
+                Log.Add(item);
+            };
+
+            var dispatcher = System.Windows.Application.Current.Dispatcher;
+            if (!dispatcher.CheckAccess())
+            {
+                dispatcher.Invoke(action);
+            }
+            else
+            {
+                action.Invoke();
+            }
         }
 
         private async void Init()
@@ -229,7 +251,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             Scale = newValue;
         }
 
-        private void OnParseText()
+        private void OnAddTextField()
         {
             if (pageImages == null || pageImages.Count == 0)
             {
@@ -248,8 +270,59 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             }
 
             var page = pageImages[pageIndex];
-            var field = new FieldViewModel(10, 10, 80, 40, Scale);
+            fieldCounter++;
+            int fieldNumber = fieldCounter;
+            var fieldName = "Field" + fieldNumber.ToString(CultureInfo.InvariantCulture);
+            var field = new FieldViewModel(10, 10, 80, 40, Scale, fieldName);
             page.Objects.Add(field);
+        }
+
+        private async void OnParseAsync()
+        {
+            AddLogEntry("Started parsing by template.");
+            Task task = Task.Factory.StartNew(() =>
+            {
+                if (string.IsNullOrEmpty(FilePath))
+                {
+                    return;
+                }
+
+                double factor = 1;//72 / Dpi;
+                var templateItems = new List<TemplateItem>();
+                foreach (var page in PageImages)
+                {
+                    foreach (var pageElement in page.Objects)
+                    {
+                        switch (pageElement.ElementType)
+                        {
+                            case PageElementType.TextField:
+                                var templateField = new TemplateField(
+                                    new TemplateFixedPosition(
+                                        new Rectangle(
+                                            new Point(pageElement.X * factor, pageElement.Y * factor),
+                                            new Size(pageElement.Width * factor, pageElement.Height * factor))),
+                                    pageElement.Name,
+                                    page.PageIndex);
+                                templateItems.Add(templateField);
+                                break;
+                        }
+                    }
+                }
+
+                Template template = new Template(templateItems);
+
+                using (Parser parser = new Parser(FilePath))
+                {
+                    DocumentData data = parser.ParseByTemplate(template);
+
+                    for (int i = 0; i < data.Count; i++)
+                    {
+                        AddLogEntry(data[i].Name + ": " + data[i].Text);
+                    }
+                }
+            });
+            await task;
+            AddLogEntry("Parsing by template is completed.");
         }
 
         private async Task GeneratePreviewAsync()
@@ -257,6 +330,11 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             AddLogEntry("Started generating preview.");
             Task task = Task.Factory.StartNew(() =>
             {
+                if (string.IsNullOrEmpty(FilePath))
+                {
+                    return;
+                }
+
                 var folderName = Path.GetFileName(FilePath).Replace('.', '_');
                 var folderPath = Path.Combine(tempFolder, folderName);
                 ClearFolder(folderPath);
@@ -273,7 +351,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                             return stream;
                         });
                     previewOptions.PreviewFormat = PreviewFormats.PNG;
-                    previewOptions.Dpi = 144;
+                    previewOptions.Dpi = Dpi;
                     parser.GeneratePreview(previewOptions);
                 }
                 PagePaths = paths;
