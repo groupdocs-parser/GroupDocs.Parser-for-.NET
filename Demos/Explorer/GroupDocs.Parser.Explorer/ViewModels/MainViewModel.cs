@@ -7,10 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
-using static GroupDocs.Parser.Options.PreviewOptions;
 
 namespace GroupDocs.Parser.Explorer.ViewModels
 {
@@ -21,7 +19,6 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
         private int fieldCounter;
 
-        private readonly string tempFolder;
         private bool windowEnabled = true;
         private readonly ObservableCollection<LogItemViewModel> log = new ObservableCollection<LogItemViewModel>();
         private LogItemViewModel selectedLogItem;
@@ -33,8 +30,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         private double scale = 1.0;
 
         private string filePath = string.Empty;
-        private ObservableCollection<string> pagePaths = new ObservableCollection<string>();
-        private ObservableCollection<PageViewModel> pageImages = new ObservableCollection<PageViewModel>();
+        private ObservableCollection<PageViewModel> pages = new ObservableCollection<PageViewModel>();
 
         public RelayCommand SetLicenseCommand { get; private set; }
         public RelayCommand OpenFileCommand { get; private set; }
@@ -45,9 +41,6 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
         public MainViewModel(Settings settings)
         {
-            tempFolder = Path.Combine(Path.GetTempPath(), "ParserExplorer");
-            Directory.CreateDirectory(tempFolder);
-
             this.settings = settings;
 
             version = new LoadOptions().GetType().Assembly.GetName().Version.ToString(3);
@@ -80,7 +73,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                 if (UpdateProperty(ref scale, value))
                 {
                     NotifyPropertyChanged(nameof(ScaleText));
-                    foreach (var page in pageImages)
+                    foreach (var page in pages)
                     {
                         page.Scale = scale;
                     }
@@ -96,31 +89,10 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             set => UpdateProperty(ref filePath, value);
         }
 
-        public ObservableCollection<string> PagePaths
+        public ObservableCollection<PageViewModel> Pages
         {
-            get => pagePaths;
-            set
-            {
-                if (UpdateProperty(ref pagePaths, value))
-                {
-                    var images = new ObservableCollection<PageViewModel>();
-                    for (int i = 0; i < pagePaths.Count; i++)
-                    {
-                        var pagePath = pagePaths[i];
-                        var image = new BitmapImage(new Uri(pagePath));
-                        image.Freeze();
-                        var page = new PageViewModel(i, image, Scale);
-                        images.Add(page);
-                    }
-                    PageImages = images;
-                }
-            }
-        }
-
-        public ObservableCollection<PageViewModel> PageImages
-        {
-            get => pageImages;
-            set => UpdateProperty(ref pageImages, value);
+            get => pages;
+            set => UpdateProperty(ref pages, value);
         }
 
         public ObservableCollection<LogItemViewModel> Log => log;
@@ -219,7 +191,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             }
         }
 
-        private async void OnOpenFile()
+        private void OnOpenFile()
         {
             var dialog = new OpenFileDialog();
             dialog.Title = "Select a document";
@@ -227,7 +199,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             {
                 FilePath = dialog.FileName;
                 AddLogEntry("Opened a file: " + FilePath);
-                await GeneratePreviewAsync();
+                GeneratePreview();
             }
         }
 
@@ -253,23 +225,23 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
         private void OnAddTextField()
         {
-            if (pageImages == null || pageImages.Count == 0)
+            if (pages == null || pages.Count == 0)
             {
                 return;
             }
 
-            int pageIndex = (int)(percentagePosition * pageImages.Count + 0.7);
+            int pageIndex = (int)(percentagePosition * pages.Count + 0.7);
             if (pageIndex < 0)
             {
                 return;
             }
 
-            if (pageIndex >= pageImages.Count)
+            if (pageIndex >= pages.Count)
             {
-                pageIndex = pageImages.Count - 1;
+                pageIndex = pages.Count - 1;
             }
 
-            var page = pageImages[pageIndex];
+            var page = pages[pageIndex];
             fieldCounter++;
             int fieldNumber = fieldCounter;
             var fieldName = "Field" + fieldNumber.ToString(CultureInfo.InvariantCulture);
@@ -289,7 +261,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
                 double factor = 1;//72 / Dpi;
                 var templateItems = new List<TemplateItem>();
-                foreach (var page in PageImages)
+                foreach (var page in Pages)
                 {
                     foreach (var pageElement in page.Objects)
                     {
@@ -325,67 +297,37 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             AddLogEntry("Parsing by template is completed.");
         }
 
-        private async Task GeneratePreviewAsync()
+        private void GeneratePreview()
         {
             AddLogEntry("Started generating preview.");
-            Task task = Task.Factory.StartNew(() =>
+
+            if (string.IsNullOrEmpty(FilePath))
             {
-                if (string.IsNullOrEmpty(FilePath))
-                {
-                    return;
-                }
+                return;
+            }
 
-                var folderName = Path.GetFileName(FilePath).Replace('.', '_');
-                var folderPath = Path.Combine(tempFolder, folderName);
-                ClearFolder(folderPath);
-
-                var paths = new ObservableCollection<string>();
-                using (Parser parser = new Parser(FilePath))
+            using (Parser parser = new Parser(FilePath))
+            {
+                var info = parser.GetDocumentInfo();
+                PagePreviewOptions options = new PagePreviewOptions(PagePreviewFormat.Png, Dpi);
+                Pages.Clear();
+                for (int pageIndex = 0; pageIndex < info.PageCount; pageIndex++)
                 {
-                    PreviewOptions previewOptions = new PreviewOptions(
-                        pageNumber =>
-                        {
-                            var imagePath = GetOutputPath(folderPath, $"preview_{pageNumber}.png");
-                            paths.Add(imagePath);
-                            var stream = File.Create(imagePath);
-                            return stream;
-                        });
-                    previewOptions.PreviewFormat = PreviewFormats.PNG;
-                    previewOptions.Dpi = Dpi;
-                    parser.GeneratePreview(previewOptions);
+                    var stream = parser.GetPagePreview(pageIndex, options);
+
+                    var bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.StreamSource = stream;
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.EndInit();
+                    bitmap.Freeze();
+
+                    var page = new PageViewModel(pageIndex, bitmap, Scale);
+                    Pages.Add(page);
                 }
-                PagePaths = paths;
-            });
-            await task;
+            }
+
             AddLogEntry("Generating preview is completed.");
-        }
-
-        private void ClearFolder(string folderPath)
-        {
-            try
-            {
-                if (Directory.Exists(folderPath))
-                {
-                    var files = Directory.GetFiles(folderPath);
-                    foreach (var file in files)
-                    {
-                        File.Delete(file);
-                    }
-                }
-                else
-                {
-                    Directory.CreateDirectory(folderPath);
-                }
-            }
-            catch (Exception e)
-            {
-                AddLogEntry(e.ToString());
-            }
-        }
-
-        private string GetOutputPath(string folder, string fileName)
-        {
-            return Path.Combine(folder, fileName);
         }
     }
 }

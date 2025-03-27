@@ -116,7 +116,7 @@
                     <ItemsControl
                         Focusable="False"
                         HorizontalAlignment="Center"
-                        ItemsSource="{Binding PageImages}">
+                        ItemsSource="{Binding Pages}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel />
