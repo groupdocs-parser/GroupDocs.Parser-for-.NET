@@ -259,7 +259,9 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                     return;
                 }
 
-                double factor = 1;//72 / Dpi;
+                double factor = 102.0 / Dpi;
+                double offsetX = 15;
+                double offsetY = 15;
                 var templateItems = new List<TemplateItem>();
                 foreach (var page in Pages)
                 {
@@ -271,8 +273,12 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                                 var templateField = new TemplateField(
                                     new TemplateFixedPosition(
                                         new Rectangle(
-                                            new Point(pageElement.X * factor, pageElement.Y * factor),
-                                            new Size(pageElement.Width * factor, pageElement.Height * factor))),
+                                            new Point(
+                                                offsetX + pageElement.X * factor,
+                                                offsetY + pageElement.Y * factor),
+                                            new Size(
+                                                pageElement.Width * factor,
+                                                pageElement.Height * factor))),
                                     pageElement.Name,
                                     page.PageIndex);
                                 templateItems.Add(templateField);
