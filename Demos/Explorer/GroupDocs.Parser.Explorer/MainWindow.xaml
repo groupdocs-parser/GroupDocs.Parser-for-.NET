@@ -50,7 +50,7 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
-                <RowDefinition Height="100" />
+                <RowDefinition Height="170" />
             </Grid.RowDefinitions>
 
             <Border
@@ -91,12 +91,21 @@
                         Content="−"
                         FontSize="24"
                         Command="{Binding ZoomOutCommand}" />
+                    <Separator
+                        Visibility="Hidden"
+                        Width="20" />
                     <Button
                         Content="Add Text Field"
                         Command="{Binding AddTextFieldCommand}" />
                     <Button
-                        Content="Parse"
-                        Command="{Binding ParseCommand}" />
+                        Content="Parse Fields"
+                        Command="{Binding ParseFieldsCommand}" />
+                    <Separator
+                        Visibility="Hidden"
+                        Width="20" />
+                    <Button
+                        Content="Parse Document"
+                        Command="{Binding ParseDocumentCommand}" />
                 </StackPanel>
             </Border>
 
@@ -106,7 +115,7 @@
                 Grid.Row="2"
                 Margin="0"
                 BorderBrush="Gray"
-                BorderThickness="0,1,0,0">
+                BorderThickness="0,1">
                 <ctrl:CustomScrollViewer
                     PercentagePositionChanged="CustomScrollViewer_PercentagePositionChanged"
                     HorizontalAlignment="Stretch"
@@ -147,6 +156,12 @@
                                                 <Canvas
                                                     Width="{Binding Width}"
                                                     Height="{Binding Height}">
+                                                    <TextBlock
+                                                        Canvas.Left="0"
+                                                        Canvas.Bottom="-18"
+                                                        Background="#86AF"
+                                                        Padding="3,0"
+                                                        Text="{Binding Name}" />
                                                     <Rectangle
                                                         Canvas.Left="0"
                                                         Canvas.Top="0"
@@ -159,49 +174,49 @@
                                                         utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
                                                         Fill="#8CCC" />
                                                     <Rectangle
-                                                        Canvas.Left="0"
-                                                        Canvas.Top="0"
-                                                        Width="10"
-                                                        Height="10"
+                                                        Canvas.Left="-6"
+                                                        Canvas.Top="-6"
+                                                        Width="6"
+                                                        Height="6"
                                                         Cursor="SizeNWSE"
                                                         Tag="1"
                                                         utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
                                                         utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
                                                         utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                        Fill="#80679FFA" />
+                                                        Fill="#679FFA" />
                                                     <Rectangle
-                                                        Canvas.Top="0"
-                                                        Canvas.Right="0"
-                                                        Width="10"
-                                                        Height="10"
+                                                        Canvas.Top="-6"
+                                                        Canvas.Right="-6"
+                                                        Width="6"
+                                                        Height="6"
                                                         Cursor="SizeNESW"
                                                         Tag="2"
                                                         utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
                                                         utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
                                                         utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                        Fill="#80679FFA" />
+                                                        Fill="#679FFA" />
                                                     <Rectangle
-                                                        Canvas.Right="0"
-                                                        Canvas.Bottom="0"
-                                                        Width="10"
-                                                        Height="10"
+                                                        Canvas.Right="-6"
+                                                        Canvas.Bottom="-6"
+                                                        Width="6"
+                                                        Height="6"
                                                         Cursor="SizeNWSE"
                                                         Tag="3"
                                                         utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
                                                         utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
                                                         utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                        Fill="#80679FFA" />
+                                                        Fill="#679FFA" />
                                                     <Rectangle
-                                                        Canvas.Left="0"
-                                                        Canvas.Bottom="0"
-                                                        Width="10"
-                                                        Height="10"
+                                                        Canvas.Left="-6"
+                                                        Canvas.Bottom="-6"
+                                                        Width="6"
+                                                        Height="6"
                                                         Cursor="SizeNESW"
                                                         Tag="4"
                                                         utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
                                                         utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
                                                         utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                        Fill="#80679FFA" />
+                                                        Fill="#679FFA" />
                                                 </Canvas>
                                             </DataTemplate>
                                         </ItemsControl.Resources>
@@ -231,13 +246,14 @@
 
             <GridSplitter VerticalAlignment="Center"
                           HorizontalAlignment="Stretch"
-                          Background="DarkGray"
+                          Background="#E6E7EA"
                           Height="5"
                           Grid.Row="3" />
 
             <Grid Grid.Row="4"
                   Margin="0">
                 <ctrl:CustomListView ItemsSource="{Binding Log}"
+                                     Background="#E6E7EA"
                                      BorderThickness="0"
                                      utils:AutoScrollBehavior.AutoScroll="True"
                                      SelectedItem="{Binding SelectedLogItem}"

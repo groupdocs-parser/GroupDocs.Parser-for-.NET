@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
@@ -37,7 +38,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public RelayCommand ZoomInCommand { get; private set; }
         public RelayCommand ZoomOutCommand { get; private set; }
         public RelayCommand AddTextFieldCommand { get; private set; }
-        public RelayCommand ParseCommand { get; private set; }
+        public RelayCommand ParseFieldsCommand { get; private set; }
+        public RelayCommand ParseDocumentCommand { get; private set; }
 
         public MainViewModel(Settings settings)
         {
@@ -50,7 +52,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             ZoomInCommand = new RelayCommand(OnZoomIn);
             ZoomOutCommand = new RelayCommand(OnZoomOut);
             AddTextFieldCommand = new RelayCommand(OnAddTextField);
-            ParseCommand = new RelayCommand(OnParseAsync);
+            ParseFieldsCommand = new RelayCommand(OnParseFieldsAsync);
+            ParseDocumentCommand = new RelayCommand(OnParseDocumentAsync);
 
             Init();
         }
@@ -249,7 +252,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             page.Objects.Add(field);
         }
 
-        private async void OnParseAsync()
+        private async void OnParseFieldsAsync()
         {
             AddLogEntry("Started parsing by template.");
             Task task = Task.Factory.StartNew(() =>
@@ -259,9 +262,9 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                     return;
                 }
 
-                double factor = 102.0 / Dpi;
-                double offsetX = 15;
-                double offsetY = 15;
+                double factor = 100.0 / Dpi;
+                double offsetX = 30;
+                double offsetY = 30;
                 var templateItems = new List<TemplateItem>();
                 foreach (var page in Pages)
                 {
@@ -303,6 +306,49 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             AddLogEntry("Parsing by template is completed.");
         }
 
+        private async void OnParseDocumentAsync()
+        {
+            AddLogEntry("Started parsing the document.");
+            Task task = Task.Factory.StartNew(() =>
+            {
+                if (string.IsNullOrEmpty(FilePath))
+                {
+                    return;
+                }
+
+                var dialog = new SaveFileDialog();
+                dialog.FileName = "Document";
+                dialog.DefaultExt = ".txt";
+                dialog.Filter = "Text documents (.txt)|*.txt";
+
+                var result = dialog.ShowDialog();
+                if (result == true)
+                {
+                    string filePath = dialog.FileName;
+
+                    using (Parser parser = new Parser(FilePath))
+                    {
+                        var reader = parser.GetText();
+                        using (var writer = File.CreateText(filePath))
+                        {
+                            while (true)
+                            {
+                                string line = reader.ReadLine();
+                                if (line == null)
+                                {
+                                    break;
+                                }
+
+                                writer.WriteLine(line);
+                            }
+                        }
+                    }
+                }
+            });
+            await task;
+            AddLogEntry("Parsing the document is completed.");
+        }
+
         private void GeneratePreview()
         {
             AddLogEntry("Started generating preview.");
@@ -320,16 +366,17 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                 for (int pageIndex = 0; pageIndex < info.PageCount; pageIndex++)
                 {
                     var stream = parser.GetPagePreview(pageIndex, options);
-
-                    var bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.StreamSource = stream;
-                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmap.EndInit();
-                    bitmap.Freeze();
-
-                    var page = new PageViewModel(pageIndex, bitmap, Scale);
-                    Pages.Add(page);
+                    if (stream != null)
+                    {
+                        var bitmap = new BitmapImage();
+                        bitmap.BeginInit();
+                        bitmap.StreamSource = stream;
+                        bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmap.EndInit();
+                        bitmap.Freeze();
+                        var page = new PageViewModel(pageIndex, bitmap, Scale);
+                        Pages.Add(page);
+                    }
                 }
             }
 
