@@ -109,140 +109,201 @@
                 </StackPanel>
             </Border>
 
-            <Border
-                HorizontalAlignment="Stretch"
-                Background="#F4F6F8"
-                Grid.Row="2"
-                Margin="0"
-                BorderBrush="Gray"
-                BorderThickness="0,1">
-                <ctrl:CustomScrollViewer
-                    PercentagePositionChanged="CustomScrollViewer_PercentagePositionChanged"
+            <Grid
+                Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="250" />
+                </Grid.ColumnDefinitions>
+
+                <Border
                     HorizontalAlignment="Stretch"
-                    HorizontalScrollBarVisibility="Auto"
-                    VerticalScrollBarVisibility="Visible"
-                    Focusable="False">
-                    <ItemsControl
-                        Focusable="False"
-                        HorizontalAlignment="Center"
-                        ItemsSource="{Binding Pages}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <StackPanel.Effect>
-                                        <DropShadowEffect
-                                            ShadowDepth="{StaticResource CommonMarginValue}"
-                                            RenderingBias="Performance"
-                                            Opacity="100"
-                                            Direction="315"
-                                            Color="#D3D5DE"
-                                            BlurRadius="{StaticResource CommonMarginValue}" />
-                                    </StackPanel.Effect>
-                                    <ItemsControl ItemsSource="{Binding Objects}">
-                                        <ItemsControl.Resources>
-                                            <DataTemplate DataType="{x:Type vm:ImageViewModel}">
-                                                <Image
-                                                    Source="{Binding BitmapImage}"
-                                                    Width="{Binding Width}"
-                                                    RenderOptions.BitmapScalingMode="HighQuality"
-                                                    Stretch="Uniform" />
-                                            </DataTemplate>
-                                            <DataTemplate DataType="{x:Type vm:FieldViewModel}">
-                                                <Canvas
-                                                    Width="{Binding Width}"
-                                                    Height="{Binding Height}">
-                                                    <TextBlock
-                                                        Canvas.Left="0"
-                                                        Canvas.Bottom="-18"
-                                                        Background="#86AF"
-                                                        Padding="3,0"
-                                                        Text="{Binding Name}" />
-                                                    <Rectangle
-                                                        Canvas.Left="0"
-                                                        Canvas.Top="0"
+                    Background="#F4F6F8"
+                    Margin="0"
+                    BorderBrush="Gray"
+                    BorderThickness="0,1,1,1">
+                    <ctrl:CustomScrollViewer
+                        PercentagePositionChanged="CustomScrollViewer_PercentagePositionChanged"
+                        HorizontalAlignment="Stretch"
+                        HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Visible"
+                        Focusable="False">
+                        <ItemsControl
+                            Focusable="False"
+                            HorizontalAlignment="Center"
+                            ItemsSource="{Binding Pages}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel.Effect>
+                                            <DropShadowEffect
+                                                ShadowDepth="{StaticResource CommonMarginValue}"
+                                                RenderingBias="Performance"
+                                                Opacity="100"
+                                                Direction="315"
+                                                Color="#D3D5DE"
+                                                BlurRadius="{StaticResource CommonMarginValue}" />
+                                        </StackPanel.Effect>
+                                        <ItemsControl ItemsSource="{Binding Objects}">
+                                            <ItemsControl.Resources>
+                                                <DataTemplate DataType="{x:Type vm:ImageViewModel}">
+                                                    <Image
+                                                        Source="{Binding BitmapImage}"
+                                                        Width="{Binding Width}"
+                                                        RenderOptions.BitmapScalingMode="HighQuality"
+                                                        Stretch="Uniform" />
+                                                </DataTemplate>
+                                                <DataTemplate DataType="{x:Type vm:FieldViewModel}">
+                                                    <Canvas
+                                                        Width="{Binding Width}"
+                                                        Height="{Binding Height}">
+                                                        <TextBlock
+                                                            Canvas.Left="0"
+                                                            Canvas.Bottom="-18"
+                                                            Background="#86AF"
+                                                            Padding="3,0"
+                                                            Text="{Binding Name}" />
+                                                        <Rectangle
+                                                            Canvas.Left="0"
+                                                            Canvas.Top="0"
+                                                            Width="{Binding Width}"
+                                                            Height="{Binding Height}"
+                                                            Cursor="SizeAll"
+                                                            Tag="0"
+                                                            utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
+                                                            utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
+                                                            utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
+                                                            StrokeThickness="{Binding StrokeThickness}"
+                                                            Stroke="CadetBlue"
+                                                            Fill="#8CCC" />
+                                                        <Rectangle
+                                                            Canvas.Left="-6"
+                                                            Canvas.Top="-6"
+                                                            Width="6"
+                                                            Height="6"
+                                                            Cursor="SizeNWSE"
+                                                            Tag="1"
+                                                            Visibility="{Binding Visibility}"
+                                                            utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
+                                                            utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
+                                                            utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
+                                                            Fill="#679FFA" />
+                                                        <Rectangle
+                                                            Canvas.Top="-6"
+                                                            Canvas.Right="-6"
+                                                            Width="6"
+                                                            Height="6"
+                                                            Cursor="SizeNESW"
+                                                            Tag="2"
+                                                            Visibility="{Binding Visibility}"
+                                                            utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
+                                                            utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
+                                                            utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
+                                                            Fill="#679FFA" />
+                                                        <Rectangle
+                                                            Canvas.Right="-6"
+                                                            Canvas.Bottom="-6"
+                                                            Width="6"
+                                                            Height="6"
+                                                            Cursor="SizeNWSE"
+                                                            Tag="3"
+                                                            Visibility="{Binding Visibility}"
+                                                            utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
+                                                            utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
+                                                            utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
+                                                            Fill="#679FFA" />
+                                                        <Rectangle
+                                                            Canvas.Left="-6"
+                                                            Canvas.Bottom="-6"
+                                                            Width="6"
+                                                            Height="6"
+                                                            Cursor="SizeNESW"
+                                                            Tag="4"
+                                                            Visibility="{Binding Visibility}"
+                                                            utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
+                                                            utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
+                                                            utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
+                                                            Fill="#679FFA" />
+                                                    </Canvas>
+                                                </DataTemplate>
+                                            </ItemsControl.Resources>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <Canvas
+                                                        HorizontalAlignment="Center"
                                                         Width="{Binding Width}"
                                                         Height="{Binding Height}"
-                                                        Cursor="SizeAll"
-                                                        Tag="0"
-                                                        utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
-                                                        utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
-                                                        utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                        Fill="#8CCC" />
-                                                    <Rectangle
-                                                        Canvas.Left="-6"
-                                                        Canvas.Top="-6"
-                                                        Width="6"
-                                                        Height="6"
-                                                        Cursor="SizeNWSE"
-                                                        Tag="1"
-                                                        utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
-                                                        utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
-                                                        utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                        Fill="#679FFA" />
-                                                    <Rectangle
-                                                        Canvas.Top="-6"
-                                                        Canvas.Right="-6"
-                                                        Width="6"
-                                                        Height="6"
-                                                        Cursor="SizeNESW"
-                                                        Tag="2"
-                                                        utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
-                                                        utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
-                                                        utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                        Fill="#679FFA" />
-                                                    <Rectangle
-                                                        Canvas.Right="-6"
-                                                        Canvas.Bottom="-6"
-                                                        Width="6"
-                                                        Height="6"
-                                                        Cursor="SizeNWSE"
-                                                        Tag="3"
-                                                        utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
-                                                        utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
-                                                        utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                        Fill="#679FFA" />
-                                                    <Rectangle
-                                                        Canvas.Left="-6"
-                                                        Canvas.Bottom="-6"
-                                                        Width="6"
-                                                        Height="6"
-                                                        Cursor="SizeNESW"
-                                                        Tag="4"
-                                                        utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
-                                                        utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
-                                                        utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                        Fill="#679FFA" />
-                                                </Canvas>
-                                            </DataTemplate>
-                                        </ItemsControl.Resources>
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <Canvas
-                                                    HorizontalAlignment="Center"
-                                                    Width="{Binding Width}"
-                                                    Height="{Binding Height}"
-                                                    Margin="{StaticResource CommonMargin}">
-                                                </Canvas>
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                        <ItemsControl.ItemContainerStyle>
-                                            <Style TargetType="ContentPresenter">
-                                                <Setter Property="Canvas.Left" Value="{Binding Path=X}" />
-                                                <Setter Property="Canvas.Top" Value="{Binding Path=Y}" />
-                                            </Style>
-                                        </ItemsControl.ItemContainerStyle>
-                                    </ItemsControl>
+                                                        Margin="{StaticResource CommonMargin}">
+                                                    </Canvas>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemContainerStyle>
+                                                <Style TargetType="ContentPresenter">
+                                                    <Setter Property="Canvas.Left" Value="{Binding Path=X}" />
+                                                    <Setter Property="Canvas.Top" Value="{Binding Path=Y}" />
+                                                </Style>
+                                            </ItemsControl.ItemContainerStyle>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ctrl:CustomScrollViewer>
+                </Border>
+
+                <GridSplitter
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Center"
+                    Background="#E6E7EA"
+                    Width="5"
+                    Grid.Column="1" />
+
+                <Border
+                    Grid.Column="2"
+                    HorizontalAlignment="Stretch"
+                    Background="#FAFBFE"
+                    Margin="0"
+                    BorderBrush="Gray"
+                    BorderThickness="1,1,0,1">
+                    <ListBox
+                        Margin="0"
+                        BorderThickness="0"
+                        SelectedItem="{Binding SelectedField}"
+                        ItemsSource="{Binding Fields}">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Label
+                                        HorizontalAlignment="Stretch"
+                                        Style="{StaticResource TemplateListLabel}"
+                                        Content="{Binding Name}" />
+                                    <Label
+                                        Visibility="{Binding TextShortVisibility}"
+                                        HorizontalAlignment="Stretch"
+                                        Style="{StaticResource TemplateTextLabel}"
+                                        Content="{Binding TextShort}" />
                                 </StackPanel>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ctrl:CustomScrollViewer>
-            </Border>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+            </Grid>
 
             <GridSplitter VerticalAlignment="Center"
                           HorizontalAlignment="Stretch"

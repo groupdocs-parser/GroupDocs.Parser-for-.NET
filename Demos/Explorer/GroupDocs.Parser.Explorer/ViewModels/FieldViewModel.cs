@@ -5,14 +5,19 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 {
     class FieldViewModel : ViewModelBase, IPageElement
     {
-        private static readonly Point MinSize = new Point(30, 30);
+        private static readonly Point MinSize = new Point(5, 5);
 
+        private readonly ISelectedFieldHost selectedFieldHost;
         private double x;
         private double y;
         private double width;
         private double height;
         private double scale;
         private readonly string name;
+
+        private bool isSelected;
+
+        private string text;
 
         private bool isMouseDown;
         private Point oldPoint;
@@ -24,6 +29,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public RelayCommand<MouseArguments> MouseUpCommand { get; private set; }
 
         public FieldViewModel(
+            ISelectedFieldHost selectedFieldHost,
             double x,
             double y,
             double width,
@@ -31,6 +37,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             double scale,
             string name)
         {
+            this.selectedFieldHost = selectedFieldHost;
             this.x = x;
             this.y = y;
             this.width = width;
@@ -49,6 +56,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             oldPoint = new Point(X, Y);
             oldSize = new Point(Width, Height);
             startMovePoint = args.Point;
+            selectedFieldHost.SelectedField = this;
         }
 
         private void OnMouseMove(MouseArguments args)
@@ -310,5 +318,58 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public PageElementType ElementType => PageElementType.TextField;
 
         public string Name => name;
+
+        public bool IsSelected
+        {
+            get => isSelected;
+            set
+            {
+                if (UpdateProperty(ref isSelected, value))
+                {
+                    NotifyPropertyChanged(nameof(Visibility));
+                    NotifyPropertyChanged(nameof(StrokeThickness));
+                }
+            }
+        }
+
+        public Visibility Visibility
+        {
+            get => isSelected ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public double StrokeThickness
+        {
+            get => isSelected ? 1 : 0;
+        }
+
+        public string Text
+        {
+            get => text;
+            set
+            {
+                if (UpdateProperty(ref text, value))
+                {
+                    NotifyPropertyChanged(nameof(TextShort));
+                    NotifyPropertyChanged(nameof(TextShortVisibility));
+                }
+            }
+        }
+
+        public string TextShort
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(text))
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return text.Length < 30 ? text : text.Substring(0, 30) + " ...";
+                }
+            }
+        }
+
+        public Visibility TextShortVisibility => string.IsNullOrEmpty(text) ? Visibility.Collapsed : Visibility.Visible;
     }
 }

@@ -44,20 +44,58 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Label">
                     <Border
-                        CornerRadius="6" 
+                        CornerRadius="6"
                         Background="#FAFBFE"
-                        BorderThickness="0" >
+                        BorderThickness="0">
                         <ContentPresenter
-                            x:Name="contentPresenter" 
-                            ContentTemplate="{TemplateBinding ContentTemplate}" 
-                            Content="{TemplateBinding Content}" 
+                            x:Name="contentPresenter"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Content="{TemplateBinding Content}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            Margin="{TemplateBinding Padding}" 
+                            Margin="{TemplateBinding Padding}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Label}"
+           x:Key="TemplateListLabel">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="Padding"
+                Value="5,0" />
+        <Setter Property="Background"
+                Value="#F2F3F5" />
+        <Setter Property="MinHeight"
+                Value="32" />
+        <Setter Property="Margin"
+                Value="{StaticResource CommonMargin}" />
+    </Style>
+
+    <Style TargetType="{x:Type Label}"
+           x:Key="TemplateTextLabel">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="Padding"
+                Value="5,0" />
+        <Setter Property="MinHeight"
+                Value="28" />
+        <Setter Property="Margin"
+                Value="5,-5,5,5" />
     </Style>
 
     <Style TargetType="{x:Type TextBox}"

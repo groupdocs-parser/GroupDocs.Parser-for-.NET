@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 
 namespace GroupDocs.Parser.Explorer.ViewModels
 {
-    class MainViewModel : ViewModelBase
+    class MainViewModel : ViewModelBase, ISelectedFieldHost
     {
         private const int MaxLogItemCount = 1000;
         private const int Dpi = 144;
@@ -32,6 +32,9 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
         private string filePath = string.Empty;
         private ObservableCollection<PageViewModel> pages = new ObservableCollection<PageViewModel>();
+        private readonly ObservableCollection<FieldViewModel> fields = new ObservableCollection<FieldViewModel>();
+
+        private FieldViewModel selectedField;
 
         public RelayCommand SetLicenseCommand { get; private set; }
         public RelayCommand OpenFileCommand { get; private set; }
@@ -60,8 +63,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
         public bool WindowEnabled
         {
-            get { return windowEnabled; }
-            set { UpdateProperty(ref windowEnabled, value); }
+            get => windowEnabled;
+            set => UpdateProperty(ref windowEnabled, value);
         }
 
         public string Title => "GroupDocs.Parser.Explorer " + version;
@@ -98,12 +101,35 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             set => UpdateProperty(ref pages, value);
         }
 
+        public ObservableCollection<FieldViewModel> Fields => fields;
+
+        public FieldViewModel SelectedField
+        {
+            get => selectedField;
+            set
+            {
+                if (selectedField != value)
+                {
+                    if (selectedField != null)
+                    {
+                        selectedField.IsSelected = false;
+                    }
+                    selectedField = value;
+                    if (selectedField != null)
+                    {
+                        selectedField.IsSelected = true;
+                    }
+                    NotifyPropertyChanged(nameof(SelectedField));
+                }
+            }
+        }
+
         public ObservableCollection<LogItemViewModel> Log => log;
 
         public LogItemViewModel SelectedLogItem
         {
-            get { return selectedLogItem; }
-            set { UpdateProperty(ref selectedLogItem, value); }
+            get => selectedLogItem;
+            set => UpdateProperty(ref selectedLogItem, value);
         }
 
         public void SetPercentagePosition(double percentagePosition)
@@ -248,8 +274,14 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             fieldCounter++;
             int fieldNumber = fieldCounter;
             var fieldName = "Field" + fieldNumber.ToString(CultureInfo.InvariantCulture);
-            var field = new FieldViewModel(10, 10, 80, 40, Scale, fieldName);
+            var field = new FieldViewModel(this, 10, 10, 80, 40, Scale, fieldName);
+            AddField(page, field);
+        }
+
+        private void AddField(PageViewModel page, FieldViewModel field)
+        {
             page.Objects.Add(field);
+            fields.Add(field);
         }
 
         private async void OnParseFieldsAsync()
@@ -283,7 +315,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                                                 pageElement.Width * factor,
                                                 pageElement.Height * factor))),
                                     pageElement.Name,
-                                    page.PageIndex);
+                                    page.PageIndex,
+                                    false);
                                 templateItems.Add(templateField);
                                 break;
                         }
@@ -296,14 +329,62 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                 {
                     DocumentData data = parser.ParseByTemplate(template);
 
+                    ClearParsedText();
                     for (int i = 0; i < data.Count; i++)
                     {
-                        AddLogEntry(data[i].Name + ": " + data[i].Text);
+                        var fieldData = data[i];
+                        SetParsedText(fieldData);
+                        AddLogEntry(fieldData.Name + ": " + fieldData.Text);
                     }
                 }
             });
             await task;
             AddLogEntry("Parsing by template is completed.");
+        }
+
+        private void ClearParsedText()
+        {
+            Action action = () =>
+            {
+                foreach (var field in Fields)
+                {
+                    field.Text = string.Empty;
+                }
+            };
+
+            var dispatcher = System.Windows.Application.Current.Dispatcher;
+            if (!dispatcher.CheckAccess())
+            {
+                dispatcher.Invoke(action);
+            }
+            else
+            {
+                action.Invoke();
+            }
+        }
+        private void SetParsedText(FieldData fieldData)
+        {
+            Action action = () =>
+            {
+                foreach (var field in Fields)
+                {
+                    if (field.Name == fieldData.Name)
+                    {
+                        field.Text = fieldData.Text;
+                        break;
+                    }
+                }
+            };
+
+            var dispatcher = System.Windows.Application.Current.Dispatcher;
+            if (!dispatcher.CheckAccess())
+            {
+                dispatcher.Invoke(action);
+            }
+            else
+            {
+                action.Invoke();
+            }
         }
 
         private async void OnParseDocumentAsync()
@@ -363,6 +444,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                 var info = parser.GetDocumentInfo();
                 PagePreviewOptions options = new PagePreviewOptions(PagePreviewFormat.Png, Dpi);
                 Pages.Clear();
+                Fields.Clear();
+                SelectedField = null;
                 for (int pageIndex = 0; pageIndex < info.PageCount; pageIndex++)
                 {
                     var stream = parser.GetPagePreview(pageIndex, options);
