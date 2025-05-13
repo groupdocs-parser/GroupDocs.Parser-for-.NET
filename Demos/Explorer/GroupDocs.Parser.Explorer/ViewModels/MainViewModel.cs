@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace GroupDocs.Parser.Explorer.ViewModels
@@ -43,6 +44,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public RelayCommand AddTextFieldCommand { get; private set; }
         public RelayCommand ParseFieldsCommand { get; private set; }
         public RelayCommand ParseDocumentCommand { get; private set; }
+        public RelayCommand SaveTemplatesCommand { get; private set; }
+        public RelayCommand LoadTemplatesCommand { get; private set; }
 
         public MainViewModel(Settings settings)
         {
@@ -57,6 +60,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             AddTextFieldCommand = new RelayCommand(OnAddTextField);
             ParseFieldsCommand = new RelayCommand(OnParseFieldsAsync);
             ParseDocumentCommand = new RelayCommand(OnParseDocumentAsync);
+            SaveTemplatesCommand = new RelayCommand(OnSaveTemplates);
+            LoadTemplatesCommand = new RelayCommand(OnLoadTemplates);
 
             Init();
         }
@@ -294,37 +299,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                     return;
                 }
 
-                double factor = 100.0 / Dpi;
-                double offsetX = 30;
-                double offsetY = 30;
-                var templateItems = new List<TemplateItem>();
-                foreach (var page in Pages)
-                {
-                    foreach (var pageElement in page.Objects)
-                    {
-                        switch (pageElement.ElementType)
-                        {
-                            case PageElementType.TextField:
-                                var templateField = new TemplateField(
-                                    new TemplateFixedPosition(
-                                        new Rectangle(
-                                            new Point(
-                                                offsetX + pageElement.X * factor,
-                                                offsetY + pageElement.Y * factor),
-                                            new Size(
-                                                pageElement.Width * factor,
-                                                pageElement.Height * factor))),
-                                    pageElement.Name,
-                                    page.PageIndex,
-                                    false);
-                                templateItems.Add(templateField);
-                                break;
-                        }
-                    }
-                }
-
-                Template template = new Template(templateItems);
-
+                Template template = GetTemplate(100.0 / Dpi, 30, 30);
                 using (Parser parser = new Parser(FilePath))
                 {
                     DocumentData data = parser.ParseByTemplate(template);
@@ -340,6 +315,37 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             });
             await task;
             AddLogEntry("Parsing by template is completed.");
+        }
+
+        private Template GetTemplate(double factor, double offsetX, double offsetY)
+        {
+            var templateItems = new List<TemplateItem>();
+            foreach (var page in Pages)
+            {
+                foreach (var pageElement in page.Objects)
+                {
+                    switch (pageElement.ElementType)
+                    {
+                        case PageElementType.TextField:
+                            var templateField = new TemplateField(
+                                new TemplateFixedPosition(
+                                    new Rectangle(
+                                        new Point(
+                                            offsetX + pageElement.X * factor,
+                                            offsetY + pageElement.Y * factor),
+                                        new Size(
+                                            pageElement.Width * factor,
+                                            pageElement.Height * factor))),
+                                pageElement.Name,
+                                page.PageIndex,
+                                false);
+                            templateItems.Add(templateField);
+                            break;
+                    }
+                }
+            }
+            Template template = new Template(templateItems);
+            return template;
         }
 
         private void ClearParsedText()
@@ -430,6 +436,73 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             AddLogEntry("Parsing the document is completed.");
         }
 
+        private void OnSaveTemplates()
+        {
+            Template template = GetTemplate(1, 0, 0);
+
+            var dialog = new SaveFileDialog();
+            dialog.FileName = "Templates";
+            dialog.DefaultExt = ".xml";
+            dialog.Filter = "Templates (.xml)|*.xml";
+
+            var result = dialog.ShowDialog();
+            if (result == true)
+            {
+                AddLogEntry("Saved a file: " + dialog.FileName);
+                template.Save(dialog.FileName);
+            }
+        }
+
+        private void OnLoadTemplates()
+        {
+            var dialog = new OpenFileDialog();
+            dialog.Title = "Select template file";
+            if (dialog.ShowDialog() == true)
+            {
+                AddLogEntry("Opened a file: " + dialog.FileName);
+                ApplayTemplates(dialog.FileName);
+            }
+        }
+
+        private void ApplayTemplates(string filePath)
+        {
+            Template template = Template.Load(filePath);
+            ClearTemplate();
+            foreach (TemplateField templateField in template)
+            {
+                var position = templateField.Position as TemplateFixedPosition;
+                var field = new FieldViewModel(
+                    this,
+                    position.Rectangle.Left,
+                    position.Rectangle.Top,
+                    position.Rectangle.Size.Width,
+                    position.Rectangle.Size.Height,
+                    Scale,
+                    templateField.Name);
+                if (pages.Count > templateField.PageIndex)
+                {
+                    var page = pages[templateField.PageIndex.Value];
+                    AddField(page, field);
+                }
+            }
+        }
+
+        private void ClearTemplate()
+        {
+            Fields.Clear();
+            SelectedField = null;
+            foreach (var page in pages)
+            {
+                for (int i = page.Objects.Count - 1; i >= 0; i--)
+                {
+                    if (page.Objects[i] is FieldViewModel)
+                    {
+                        page.Objects.RemoveAt(i);
+                    }
+                }
+            }
+        }
+
         private void GeneratePreview()
         {
             AddLogEntry("Started generating preview.");
@@ -443,9 +516,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             {
                 var info = parser.GetDocumentInfo();
                 PagePreviewOptions options = new PagePreviewOptions(PagePreviewFormat.Png, Dpi);
-                Pages.Clear();
-                Fields.Clear();
-                SelectedField = null;
+                Clear();
                 for (int pageIndex = 0; pageIndex < info.PageCount; pageIndex++)
                 {
                     var stream = parser.GetPagePreview(pageIndex, options);
@@ -464,6 +535,13 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             }
 
             AddLogEntry("Generating preview is completed.");
+        }
+
+        private void Clear()
+        {
+            Pages.Clear();
+            Fields.Clear();
+            SelectedField = null;
         }
     }
 }

@@ -66,7 +66,9 @@
                         DockPanel.Dock="Left"
                         Content="Open File"
                         Command="{Binding OpenFileCommand}" />
-                    <Label Content="{Binding FilePath}" />
+                    <Label
+                        Content="{Binding FilePath}"
+                        Style="{StaticResource ToolboxLabel}" />
                 </DockPanel>
             </Border>
 
@@ -84,6 +86,7 @@
                     <Label
                         HorizontalContentAlignment="Center"
                         MinWidth="80"
+                        Style="{StaticResource ToolboxLabel}"
                         Content="{Binding ScaleText}"
                         VerticalAlignment="Center" />
                     <Button
@@ -271,37 +274,57 @@
                     Margin="0"
                     BorderBrush="Gray"
                     BorderThickness="1,1,0,1">
-                    <ListBox
-                        Margin="0"
-                        BorderThickness="0"
-                        SelectedItem="{Binding SelectedField}"
-                        ItemsSource="{Binding Fields}">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel />
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <Label
-                                        HorizontalAlignment="Stretch"
-                                        Style="{StaticResource TemplateListLabel}"
-                                        Content="{Binding Name}" />
-                                    <Label
-                                        Visibility="{Binding TextShortVisibility}"
-                                        HorizontalAlignment="Stretch"
-                                        Style="{StaticResource TemplateTextLabel}"
-                                        Content="{Binding TextShort}" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label
+                                Style="{StaticResource ToolboxLabel}">
+                                <Label.Content>
+                                    <TextBlock>
+                                        <Run Text="Templates" />
+                                        <Run Text="{Binding Fields.Count, Mode=OneWay}" />
+                                    </TextBlock>
+                                </Label.Content>
+                            </Label>
+                            <Button
+                                Content="Save"
+                                Command="{Binding SaveTemplatesCommand}" />
+                            <Button
+                                Content="Load"
+                                Command="{Binding LoadTemplatesCommand}" />
+                        </StackPanel>
+
+                        <ListBox
+                            Margin="0"
+                            BorderThickness="0"
+                            SelectedItem="{Binding SelectedField}"
+                            ItemsSource="{Binding Fields}">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Label
+                                            HorizontalAlignment="Stretch"
+                                            Style="{StaticResource TemplateListLabel}"
+                                            Content="{Binding Name}" />
+                                        <Label
+                                            Visibility="{Binding TextShortVisibility}"
+                                            HorizontalAlignment="Stretch"
+                                            Style="{StaticResource TemplateTextLabel}"
+                                            Content="{Binding TextShort}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
                 </Border>
             </Grid>
 

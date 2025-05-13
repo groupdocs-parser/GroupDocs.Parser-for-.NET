@@ -20,6 +20,24 @@
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="Padding"
+                Value="5,0" />
+        <Setter Property="MinHeight"
+                Value="32" />
+        <Setter Property="Margin"
+                Value="5" />
+    </Style>
+
+    <Style TargetType="{x:Type Label}"
+           x:Key="ToolboxLabel">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="FontSize"
                 Value="{StaticResource CommonFontSizeValue}" />
         <Setter Property="Padding"
                 Value="5,0" />
