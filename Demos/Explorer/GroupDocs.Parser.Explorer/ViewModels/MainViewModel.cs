@@ -9,8 +9,8 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Xml.Linq;
 
 namespace GroupDocs.Parser.Explorer.ViewModels
 {
@@ -46,12 +46,13 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public RelayCommand ParseDocumentCommand { get; private set; }
         public RelayCommand SaveTemplatesCommand { get; private set; }
         public RelayCommand LoadTemplatesCommand { get; private set; }
+        public RelayCommand SaveResultsCommand { get; private set; }
 
         public MainViewModel(Settings settings)
         {
             this.settings = settings;
 
-            version = new LoadOptions().GetType().Assembly.GetName().Version.ToString(3);
+            version = new Options.LoadOptions().GetType().Assembly.GetName().Version.ToString(3);
 
             SetLicenseCommand = new RelayCommand(OnSetLicense);
             OpenFileCommand = new RelayCommand(OnOpenFile);
@@ -62,6 +63,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             ParseDocumentCommand = new RelayCommand(OnParseDocumentAsync);
             SaveTemplatesCommand = new RelayCommand(OnSaveTemplates);
             LoadTemplatesCommand = new RelayCommand(OnLoadTemplates);
+            SaveResultsCommand = new RelayCommand(OnSaveResults);
 
             Init();
         }
@@ -464,6 +466,36 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             }
         }
 
+        private void OnSaveResults()
+        {
+            var dialog = new SaveFileDialog();
+            dialog.FileName = "Results";
+            dialog.DefaultExt = ".xml";
+            dialog.Filter = "Results (.xml)|*.xml";
+
+            var result = dialog.ShowDialog();
+            if (result == true)
+            {
+                AddLogEntry("Saved a file: " + dialog.FileName);
+                SaveParsingResults(dialog.FileName);
+            }
+        }
+
+        private void SaveParsingResults(string fileName)
+        {
+            XElement fieldsElement = new XElement("fields");
+            foreach (var field in fields)
+            {
+                XElement fieldElement = new XElement("field", field.Text);
+                XAttribute nameAttr = new XAttribute("name", field.Name);
+                fieldElement.Add(nameAttr);
+                fieldsElement.Add(fieldElement);
+            }
+            XDocument xdoc = new XDocument();
+            xdoc.Add(fieldsElement);
+            xdoc.Save(fileName);
+        }
+
         private void ApplayTemplates(string filePath)
         {
             Template template = Template.Load(filePath);
@@ -542,6 +574,19 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             Pages.Clear();
             Fields.Clear();
             SelectedField = null;
+        }
+
+        public void Remove(FieldViewModel field)
+        {
+            if (SelectedField == field)
+            {
+                SelectedField = null;
+            }
+            foreach (var page in pages)
+            {
+                page.Objects.Remove(field);
+            }
+            fields.Remove(field);
         }
     }
 }

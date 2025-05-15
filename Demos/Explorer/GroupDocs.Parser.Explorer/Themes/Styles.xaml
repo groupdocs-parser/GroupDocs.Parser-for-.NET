@@ -20,7 +20,7 @@
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="FontSize"
-                Value="14" />
+                Value="{StaticResource CommonFontSizeValue}" />
         <Setter Property="Padding"
                 Value="5,0" />
         <Setter Property="MinHeight"
@@ -78,8 +78,8 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type Label}"
-           x:Key="TemplateListLabel">
+    <Style TargetType="{x:Type TextBox}"
+           x:Key="TemplateListTextBox">
         <Setter Property="VerticalAlignment"
                 Value="Center" />
         <Setter Property="VerticalContentAlignment"
@@ -213,6 +213,44 @@
                 <ControlTemplate TargetType="Button">
                     <Border
                         CornerRadius="6" 
+                        Background="#FAFBFE"
+                        BorderThickness="0" >
+                        <ContentPresenter
+                            x:Name="contentPresenter" 
+                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                            Content="{TemplateBinding Content}" 
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Margin="{TemplateBinding Padding}" 
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Button}"
+           x:Key="SidebarButtonStyle">
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="FontSize"
+                Value="{StaticResource CommonFontSizeValue}" />
+        <Setter Property="Background"
+                Value="#FAFBFE" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="Margin"
+                Value="{StaticResource CommonMargin}" />
+        <Setter Property="MinWidth"
+                Value="36" />
+        <Setter Property="MinHeight"
+                Value="36" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        CornerRadius="0" 
                         Background="#FAFBFE"
                         BorderThickness="0" >
                         <ContentPresenter

@@ -1,4 +1,5 @@
 ﻿using GroupDocs.Parser.Explorer.Utils;
+using System;
 using System.Windows;
 
 namespace GroupDocs.Parser.Explorer.ViewModels
@@ -13,7 +14,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         private double width;
         private double height;
         private double scale;
-        private readonly string name;
+        private string name;
 
         private bool isSelected;
 
@@ -27,6 +28,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public RelayCommand<MouseArguments> MouseDownCommand { get; private set; }
         public RelayCommand<MouseArguments> MouseMoveCommand { get; private set; }
         public RelayCommand<MouseArguments> MouseUpCommand { get; private set; }
+        public RelayCommand<MouseArguments> RemoveCommand { get; private set; }
 
         public FieldViewModel(
             ISelectedFieldHost selectedFieldHost,
@@ -48,6 +50,12 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             MouseDownCommand = new RelayCommand<MouseArguments>(OnMouseDown);
             MouseMoveCommand = new RelayCommand<MouseArguments>(OnMouseMove);
             MouseUpCommand = new RelayCommand<MouseArguments>(OnMouseUp);
+            RemoveCommand = new RelayCommand<MouseArguments>(OnRemove);
+        }
+
+        private void OnRemove(MouseArguments arguments)
+        {
+            selectedFieldHost.Remove(this);
         }
 
         private void OnMouseDown(MouseArguments args)
@@ -317,7 +325,11 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
         public PageElementType ElementType => PageElementType.TextField;
 
-        public string Name => name;
+        public string Name
+        {
+            get => name;
+            set => UpdateProperty(ref name, value);
+        }
 
         public bool IsSelected
         {

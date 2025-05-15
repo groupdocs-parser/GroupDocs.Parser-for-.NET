@@ -7,8 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\ic_save_black_36dp.png" />
+    <None Remove="Images\load.png" />
+    <None Remove="Images\remove.png" />
+    <None Remove="Images\save.png" />
+    <None Remove="Images\save_results.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="GroupDocs.Parser" Version="25.2.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\load.png" />
+    <Resource Include="Images\remove.png" />
+    <Resource Include="Images\save.png" />
+    <Resource Include="Images\save_results.png" />
   </ItemGroup>
 
 </Project>
