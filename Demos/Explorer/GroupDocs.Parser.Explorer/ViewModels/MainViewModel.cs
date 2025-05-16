@@ -301,7 +301,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                     return;
                 }
 
-                Template template = GetTemplate(100.0 / Dpi, 30, 30);
+                Template template = GetTemplate(108.0 / Dpi, 0, 0);
                 using (Parser parser = new Parser(FilePath))
                 {
                     DocumentData data = parser.ParseByTemplate(template);
