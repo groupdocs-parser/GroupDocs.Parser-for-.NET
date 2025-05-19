@@ -304,7 +304,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                 Template template = GetTemplate(108.0 / Dpi, 0, 0);
                 using (Parser parser = new Parser(FilePath))
                 {
-                    DocumentData data = parser.ParseByTemplate(template);
+                    var options = new ParseByTemplateOptions(true);
+                    DocumentData data = parser.ParseByTemplate(template, options);
 
                     ClearParsedText();
                     for (int i = 0; i < data.Count; i++)
@@ -417,7 +418,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
                     using (Parser parser = new Parser(FilePath))
                     {
-                        var reader = parser.GetText();
+                        var options = new TextOptions(false, true);
+                        var reader = parser.GetText(options);
                         using (var writer = File.CreateText(filePath))
                         {
                             while (true)
