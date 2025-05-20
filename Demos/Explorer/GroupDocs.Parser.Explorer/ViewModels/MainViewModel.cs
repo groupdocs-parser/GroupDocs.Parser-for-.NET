@@ -25,6 +25,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         private readonly ObservableCollection<LogItemViewModel> log = new ObservableCollection<LogItemViewModel>();
         private LogItemViewModel selectedLogItem;
         private double percentagePosition;
+        private bool isOcrUsed;
 
         private readonly Settings settings;
         private readonly string version;
@@ -77,6 +78,12 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public string Title => "GroupDocs.Parser.Explorer " + version;
 
         public Settings Settings => settings;
+
+        public bool IsOcrUsed
+        {
+            get => isOcrUsed;
+            set => UpdateProperty(ref isOcrUsed, value);
+        }
 
         public double Scale
         {
@@ -304,7 +311,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                 Template template = GetTemplate(108.0 / Dpi, 0, 0);
                 using (Parser parser = new Parser(FilePath))
                 {
-                    var options = new ParseByTemplateOptions(true);
+                    var options = new ParseByTemplateOptions(IsOcrUsed);
                     DocumentData data = parser.ParseByTemplate(template, options);
 
                     ClearParsedText();
@@ -418,7 +425,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
                     using (Parser parser = new Parser(FilePath))
                     {
-                        var options = new TextOptions(false, true);
+                        var options = new TextOptions(false, IsOcrUsed);
                         var reader = parser.GetText(options);
                         using (var writer = File.CreateText(filePath))
                         {

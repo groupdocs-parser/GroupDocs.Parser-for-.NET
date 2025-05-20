@@ -96,16 +96,22 @@
                         Command="{Binding ZoomOutCommand}" />
                     <Separator
                         Visibility="Hidden"
-                        Width="20" />
+                        Width="30" />
                     <Button
                         Content="Add Text Field"
                         Command="{Binding AddTextFieldCommand}" />
+                    <Separator
+                        Visibility="Hidden"
+                        Width="30" />
+                    <CheckBox
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        FontSize="{StaticResource CommonFontSizeValue}"
+                        Content="Use OCR"
+                        IsChecked="{Binding IsOcrUsed}" />
                     <Button
                         Content="Parse Fields"
                         Command="{Binding ParseFieldsCommand}" />
-                    <Separator
-                        Visibility="Hidden"
-                        Width="20" />
                     <Button
                         Content="Parse Document"
                         Command="{Binding ParseDocumentCommand}" />
