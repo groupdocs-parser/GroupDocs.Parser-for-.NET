@@ -30,7 +30,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         private readonly Settings settings;
         private readonly string version;
 
-        private double scale = 1.0;
+        private double scale = 0.7;
 
         private string filePath = string.Empty;
         private ObservableCollection<PageViewModel> pages = new ObservableCollection<PageViewModel>();
@@ -308,7 +308,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                     return;
                 }
 
-                Template template = GetTemplate(108.0 / Dpi, 0, 0);
+                double factor = IsOcrUsed ? 1 : 0.5;
+                Template template = GetTemplate(factor, 0, 0);
                 using (Parser parser = new Parser(FilePath))
                 {
                     var options = new ParseByTemplateOptions(IsOcrUsed);
@@ -341,11 +342,11 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                                 new TemplateFixedPosition(
                                     new Rectangle(
                                         new Point(
-                                            offsetX + pageElement.X * factor,
-                                            offsetY + pageElement.Y * factor),
+                                            offsetX + pageElement.OriginalX * factor,
+                                            offsetY + pageElement.OriginalY * factor),
                                         new Size(
-                                            pageElement.Width * factor,
-                                            pageElement.Height * factor))),
+                                            pageElement.OriginalWidth * factor,
+                                            pageElement.OriginalHeight * factor))),
                                 pageElement.Name,
                                 page.PageIndex,
                                 false);
@@ -569,7 +570,10 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                         bitmap.CacheOption = BitmapCacheOption.OnLoad;
                         bitmap.EndInit();
                         bitmap.Freeze();
-                        var page = new PageViewModel(pageIndex, bitmap, Scale);
+                        AddLogEntry($"Width={bitmap.Width}, Height={bitmap.Height}");
+
+                        const double factor = 1.5;
+                        var page = new PageViewModel(pageIndex, bitmap, factor, Scale);
                         Pages.Add(page);
                     }
                 }

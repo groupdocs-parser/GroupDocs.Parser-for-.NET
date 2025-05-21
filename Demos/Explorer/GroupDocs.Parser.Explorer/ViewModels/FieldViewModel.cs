@@ -268,6 +268,14 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             }
         }
 
+        public double OriginalX => x;
+
+        public double OriginalY => y;
+
+        public double OriginalWidth => width;
+
+        public double OriginalHeight => height;
+
         public double X
         {
             get => x * scale;
