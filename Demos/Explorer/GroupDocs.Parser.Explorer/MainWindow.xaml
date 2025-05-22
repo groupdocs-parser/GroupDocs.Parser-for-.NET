@@ -109,6 +109,19 @@
                         FontSize="{StaticResource CommonFontSizeValue}"
                         Content="Use OCR"
                         IsChecked="{Binding IsOcrUsed}" />
+                    <CheckBox
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        FontSize="{StaticResource CommonFontSizeValue}"
+                        Content="Use Factor"
+                        IsChecked="{Binding IsFactorUsed}" />
+                    <TextBox
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Width="60"
+                        IsEnabled="{Binding IsFactorUsed}"
+                        FontSize="{StaticResource CommonFontSizeValue}"
+                        Text="{Binding Coefficient}" />
                     <Button
                         Content="Parse Fields"
                         Command="{Binding ParseFieldsCommand}" />

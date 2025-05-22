@@ -26,6 +26,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         private LogItemViewModel selectedLogItem;
         private double percentagePosition;
         private bool isOcrUsed;
+        private bool isFactorUsed;
+        private string coefficient = "1.0";
 
         private readonly Settings settings;
         private readonly string version;
@@ -83,6 +85,18 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         {
             get => isOcrUsed;
             set => UpdateProperty(ref isOcrUsed, value);
+        }
+
+        public bool IsFactorUsed
+        {
+            get => isFactorUsed;
+            set => UpdateProperty(ref isFactorUsed, value);
+        }
+
+        public string Coefficient
+        {
+            get => coefficient;
+            set => UpdateProperty(ref coefficient, value);
         }
 
         public double Scale
@@ -308,7 +322,22 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                     return;
                 }
 
-                double factor = IsOcrUsed ? 1 : 0.5;
+                var extension = Path.GetExtension(FilePath).ToLowerInvariant();
+                double factor;
+                if (!double.TryParse(Coefficient, CultureInfo.InvariantCulture, out double coef))
+                {
+                    coef = 1.0;
+                }
+                switch (extension)
+                {
+                    case ".pdf":
+                        factor = IsFactorUsed ? coef : (IsOcrUsed ? 1 : 0.5);
+                        break;
+                    default:
+                        factor = IsFactorUsed ? coef : 1;
+                        break;
+                }
+                AddLogEntry("Scaling Factor: " + factor);
                 Template template = GetTemplate(factor, 0, 0);
                 using (Parser parser = new Parser(FilePath))
                 {
@@ -570,7 +599,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                         bitmap.CacheOption = BitmapCacheOption.OnLoad;
                         bitmap.EndInit();
                         bitmap.Freeze();
-                        AddLogEntry($"Width={bitmap.Width}, Height={bitmap.Height}");
+                        AddLogEntry($"Page {pageIndex}: Width={bitmap.Width}, Height={bitmap.Height}");
 
                         const double factor = 1.5;
                         var page = new PageViewModel(pageIndex, bitmap, factor, Scale);
