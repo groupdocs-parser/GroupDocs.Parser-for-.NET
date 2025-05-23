@@ -1,5 +1,4 @@
 ﻿using GroupDocs.Parser.Explorer.Utils;
-using System;
 using System.Windows;
 
 namespace GroupDocs.Parser.Explorer.ViewModels
@@ -28,7 +27,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public RelayCommand<MouseArguments> MouseDownCommand { get; private set; }
         public RelayCommand<MouseArguments> MouseMoveCommand { get; private set; }
         public RelayCommand<MouseArguments> MouseUpCommand { get; private set; }
-        public RelayCommand<MouseArguments> RemoveCommand { get; private set; }
+        public RelayCommand RemoveCommand { get; private set; }
 
         public FieldViewModel(
             ISelectedFieldHost selectedFieldHost,
@@ -50,10 +49,10 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             MouseDownCommand = new RelayCommand<MouseArguments>(OnMouseDown);
             MouseMoveCommand = new RelayCommand<MouseArguments>(OnMouseMove);
             MouseUpCommand = new RelayCommand<MouseArguments>(OnMouseUp);
-            RemoveCommand = new RelayCommand<MouseArguments>(OnRemove);
+            RemoveCommand = new RelayCommand(OnRemove);
         }
 
-        private void OnRemove(MouseArguments arguments)
+        private void OnRemove()
         {
             selectedFieldHost.Remove(this);
         }

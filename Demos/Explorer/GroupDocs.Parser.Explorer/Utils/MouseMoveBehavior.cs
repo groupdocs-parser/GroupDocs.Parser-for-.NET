@@ -17,7 +17,7 @@ namespace GroupDocs.Parser.Explorer.Utils
             inUIElement.SetValue(MouseMoveCommandProperty, inCommand);
         }
 
-        private static ICommand GetMouseMoveCommand(UIElement inUIElement)
+        public static ICommand GetMouseMoveCommand(UIElement inUIElement)
         {
             return (ICommand)inUIElement.GetValue(MouseMoveCommandProperty);
         }

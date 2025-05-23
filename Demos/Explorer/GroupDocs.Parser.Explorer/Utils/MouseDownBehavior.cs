@@ -18,7 +18,7 @@ namespace GroupDocs.Parser.Explorer.Utils
             inUIElement.SetValue(MouseDownCommandProperty, inCommand);
         }
 
-        private static ICommand GetMouseDownCommand(UIElement inUIElement)
+        public static ICommand GetMouseDownCommand(UIElement inUIElement)
         {
             return (ICommand)inUIElement.GetValue(MouseDownCommandProperty);
         }

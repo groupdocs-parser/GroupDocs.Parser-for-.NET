@@ -21,6 +21,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/GroupDocs.Parser.Explorer;component/Views/BusyAnimationStyle.xaml" />
+                <ResourceDictionary Source="/GroupDocs.Parser.Explorer;component/Views/FieldDataTemplate.xaml" />
+                <ResourceDictionary Source="/GroupDocs.Parser.Explorer;component/Views/ImageDataTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <utils:BooleanConverter x:Key="TrueToVisibleConverter">
@@ -108,12 +110,14 @@
                         VerticalContentAlignment="Center"
                         FontSize="{StaticResource CommonFontSizeValue}"
                         Content="Use OCR"
+                        ToolTip="Applicable if the document consists of images"
                         IsChecked="{Binding IsOcrUsed}" />
                     <CheckBox
                         VerticalAlignment="Center"
                         VerticalContentAlignment="Center"
                         FontSize="{StaticResource CommonFontSizeValue}"
                         Content="Use Factor"
+                        ToolTip="Use a custom scaling factor when applying templates"
                         IsChecked="{Binding IsFactorUsed}" />
                     <TextBox
                         VerticalAlignment="Center"
@@ -173,88 +177,6 @@
                                                 BlurRadius="{StaticResource CommonMarginValue}" />
                                         </StackPanel.Effect>
                                         <ItemsControl ItemsSource="{Binding Objects}">
-                                            <ItemsControl.Resources>
-                                                <DataTemplate DataType="{x:Type vm:ImageViewModel}">
-                                                    <Image
-                                                        Source="{Binding BitmapImage}"
-                                                        Width="{Binding Width}"
-                                                        RenderOptions.BitmapScalingMode="HighQuality"
-                                                        Stretch="Uniform" />
-                                                </DataTemplate>
-                                                <DataTemplate DataType="{x:Type vm:FieldViewModel}">
-                                                    <Canvas
-                                                        Width="{Binding Width}"
-                                                        Height="{Binding Height}">
-                                                        <TextBlock
-                                                            Canvas.Left="0"
-                                                            Canvas.Bottom="-18"
-                                                            Background="#86AF"
-                                                            Padding="3,0"
-                                                            Text="{Binding Name}" />
-                                                        <Rectangle
-                                                            Canvas.Left="0"
-                                                            Canvas.Top="0"
-                                                            Width="{Binding Width}"
-                                                            Height="{Binding Height}"
-                                                            Cursor="SizeAll"
-                                                            Tag="0"
-                                                            utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
-                                                            utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
-                                                            utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                            StrokeThickness="{Binding StrokeThickness}"
-                                                            Stroke="CadetBlue"
-                                                            Fill="#8CCC" />
-                                                        <Rectangle
-                                                            Canvas.Left="-6"
-                                                            Canvas.Top="-6"
-                                                            Width="6"
-                                                            Height="6"
-                                                            Cursor="SizeNWSE"
-                                                            Tag="1"
-                                                            Visibility="{Binding Visibility}"
-                                                            utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
-                                                            utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
-                                                            utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                            Fill="#679FFA" />
-                                                        <Rectangle
-                                                            Canvas.Top="-6"
-                                                            Canvas.Right="-6"
-                                                            Width="6"
-                                                            Height="6"
-                                                            Cursor="SizeNESW"
-                                                            Tag="2"
-                                                            Visibility="{Binding Visibility}"
-                                                            utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
-                                                            utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
-                                                            utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                            Fill="#679FFA" />
-                                                        <Rectangle
-                                                            Canvas.Right="-6"
-                                                            Canvas.Bottom="-6"
-                                                            Width="6"
-                                                            Height="6"
-                                                            Cursor="SizeNWSE"
-                                                            Tag="3"
-                                                            Visibility="{Binding Visibility}"
-                                                            utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
-                                                            utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
-                                                            utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                            Fill="#679FFA" />
-                                                        <Rectangle
-                                                            Canvas.Left="-6"
-                                                            Canvas.Bottom="-6"
-                                                            Width="6"
-                                                            Height="6"
-                                                            Cursor="SizeNESW"
-                                                            Tag="4"
-                                                            Visibility="{Binding Visibility}"
-                                                            utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
-                                                            utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
-                                                            utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                                                            Fill="#679FFA" />
-                                                    </Canvas>
-                                                </DataTemplate>
-                                            </ItemsControl.Resources>
                                             <ItemsControl.ItemsPanel>
                                                 <ItemsPanelTemplate>
                                                     <Canvas
