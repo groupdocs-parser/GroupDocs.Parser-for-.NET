@@ -304,9 +304,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             }
 
             var page = pages[pageIndex];
-            fieldCounter++;
-            int fieldNumber = fieldCounter;
-            var fieldName = "Text" + fieldNumber.ToString(CultureInfo.InvariantCulture);
+            var fieldName = GetFieldName("Text");
             var field = new FieldViewModel(this, 10, 10, 80, 40, Scale, fieldName);
             AddField(page, field);
         }
@@ -330,9 +328,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             }
 
             var page = pages[pageIndex];
-            fieldCounter++;
-            int fieldNumber = fieldCounter;
-            var fieldName = "Table" + fieldNumber.ToString(CultureInfo.InvariantCulture);
+            var fieldName = GetFieldName("Table");
             var field = new TableViewModel(this, 10, 10, 80, 40, Scale, fieldName);
             AddField(page, field);
         }
@@ -356,11 +352,23 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             }
 
             var page = pages[pageIndex];
-            fieldCounter++;
-            int fieldNumber = fieldCounter;
-            var fieldName = "Barcode" + fieldNumber.ToString(CultureInfo.InvariantCulture);
+            var fieldName = GetFieldName("Barcode");
             var field = new BarcodeViewModel(this, 10, 10, 80, 40, Scale, fieldName);
             AddField(page, field);
+        }
+
+        private string GetFieldName(string prefix)
+        {
+            while (true)
+            {
+                fieldCounter++;
+                int fieldNumber = fieldCounter;
+                var fieldName = prefix + fieldNumber.ToString(CultureInfo.InvariantCulture);
+                if (fields.All(f => f.Name != fieldName))
+                {
+                    return fieldName;
+                }
+            }
         }
 
         private void AddField(PageViewModel page, IFieldViewModel field)
