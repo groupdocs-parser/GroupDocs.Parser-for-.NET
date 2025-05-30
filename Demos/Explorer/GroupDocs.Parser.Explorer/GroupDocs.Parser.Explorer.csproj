@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModels\Parts\**" />
+    <EmbeddedResource Remove="ViewModels\Parts\**" />
+    <None Remove="ViewModels\Parts\**" />
+    <Page Remove="ViewModels\Parts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Images\ic_save_black_36dp.png" />
     <None Remove="Images\load.png" />
     <None Remove="Images\remove.png" />

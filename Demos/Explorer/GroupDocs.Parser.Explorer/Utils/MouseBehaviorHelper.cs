@@ -21,24 +21,26 @@ namespace GroupDocs.Parser.Explorer.Utils
             }
 
             tag = uiElement.Tag as string;
-            Canvas body = VisualTreeHelper.GetParent(uiElement) as Canvas;
-            if (null == body)
+
+            DependencyObject child = uiElement;
+            while (true)
             {
-                canvas = null;
-                return false;
+                DependencyObject parent = VisualTreeHelper.GetParent(child);
+                if (parent == null)
+                {
+                    canvas = null;
+                    return false;
+                }
+
+                var localCanvas = parent as Canvas;
+                if (localCanvas != null && localCanvas.Name == "Canvas")
+                {
+                    canvas = localCanvas;
+                    return true;
+                }
+
+                child = parent;
             }
-
-            UIElement presenter = VisualTreeHelper.GetParent(body) as UIElement;
-            if (null == presenter)
-            {
-                canvas = null;
-                return false;
-            }
-
-            canvas = VisualTreeHelper.GetParent(presenter) as Canvas;
-            if (canvas == null) return false;
-
-            return true;
         }
     }
 }

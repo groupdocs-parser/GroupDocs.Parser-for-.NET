@@ -229,6 +229,48 @@
     </Style>
 
     <Style TargetType="{x:Type Button}"
+           x:Key="CanvasButtonStyle">
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="FontSize"
+                Value="{StaticResource CommonFontSizeValue}" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="MinWidth"
+                Value="12" />
+        <Setter Property="MinHeight"
+                Value="12" />
+        <Setter Property="Width"
+                Value="12" />
+        <Setter Property="Height"
+                Value="12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        CornerRadius="0" 
+                        Background="Transparent"
+                        BorderThickness="0" >
+                        <ContentPresenter
+                            x:Name="contentPresenter" 
+                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                            Content="{TemplateBinding Content}" 
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Margin="0" 
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Button}"
            x:Key="SidebarButtonStyle">
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />

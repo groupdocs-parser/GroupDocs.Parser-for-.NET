@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace GroupDocs.Parser.Explorer.ViewModels
 {
-    class FieldViewModel : ViewModelBase, IFieldViewModel, IPageElement
+    class BarcodeViewModel : ViewModelBase, IFieldViewModel, IPageElement
     {
         private static readonly Point MinSize = new Point(5, 5);
 
@@ -29,7 +29,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public RelayCommand<MouseArguments> MouseUpCommand { get; private set; }
         public RelayCommand RemoveCommand { get; private set; }
 
-        public FieldViewModel(
+        public BarcodeViewModel(
             ISelectedFieldHost selectedFieldHost,
             double x,
             double y,
@@ -330,7 +330,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             }
         }
 
-        public PageElementType ElementType => PageElementType.TextField;
+        public PageElementType ElementType => PageElementType.BarcodeField;
 
         public string Name
         {

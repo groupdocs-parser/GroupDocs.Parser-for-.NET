@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Xml.Linq;
@@ -36,15 +37,17 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
         private string filePath = string.Empty;
         private ObservableCollection<PageViewModel> pages = new ObservableCollection<PageViewModel>();
-        private readonly ObservableCollection<FieldViewModel> fields = new ObservableCollection<FieldViewModel>();
+        private readonly ObservableCollection<IFieldViewModel> fields = new ObservableCollection<IFieldViewModel>();
 
-        private FieldViewModel selectedField;
+        private IFieldViewModel selectedField;
 
         public RelayCommand SetLicenseCommand { get; private set; }
         public RelayCommand OpenFileCommand { get; private set; }
         public RelayCommand ZoomInCommand { get; private set; }
         public RelayCommand ZoomOutCommand { get; private set; }
         public RelayCommand AddTextFieldCommand { get; private set; }
+        public RelayCommand AddTableFieldCommand { get; private set; }
+        public RelayCommand AddBarcodeFieldCommand { get; private set; }
         public RelayCommand ParseFieldsCommand { get; private set; }
         public RelayCommand ParseDocumentCommand { get; private set; }
         public RelayCommand SaveTemplatesCommand { get; private set; }
@@ -62,6 +65,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             ZoomInCommand = new RelayCommand(OnZoomIn);
             ZoomOutCommand = new RelayCommand(OnZoomOut);
             AddTextFieldCommand = new RelayCommand(OnAddTextField);
+            AddTableFieldCommand = new RelayCommand(OnAddTableField);
+            AddBarcodeFieldCommand = new RelayCommand(OnAddBarcodeField);
             ParseFieldsCommand = new RelayCommand(OnParseFieldsAsync);
             ParseDocumentCommand = new RelayCommand(OnParseDocumentAsync);
             SaveTemplatesCommand = new RelayCommand(OnSaveTemplates);
@@ -129,9 +134,9 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             set => UpdateProperty(ref pages, value);
         }
 
-        public ObservableCollection<FieldViewModel> Fields => fields;
+        public ObservableCollection<IFieldViewModel> Fields => fields;
 
-        public FieldViewModel SelectedField
+        public IFieldViewModel SelectedField
         {
             get => selectedField;
             set
@@ -301,20 +306,72 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             var page = pages[pageIndex];
             fieldCounter++;
             int fieldNumber = fieldCounter;
-            var fieldName = "Field" + fieldNumber.ToString(CultureInfo.InvariantCulture);
+            var fieldName = "Text" + fieldNumber.ToString(CultureInfo.InvariantCulture);
             var field = new FieldViewModel(this, 10, 10, 80, 40, Scale, fieldName);
             AddField(page, field);
         }
 
-        private void AddField(PageViewModel page, FieldViewModel field)
+        private void OnAddTableField()
         {
-            page.Objects.Add(field);
+            if (pages == null || pages.Count == 0)
+            {
+                return;
+            }
+
+            int pageIndex = (int)(percentagePosition * pages.Count + 0.7);
+            if (pageIndex < 0)
+            {
+                return;
+            }
+
+            if (pageIndex >= pages.Count)
+            {
+                pageIndex = pages.Count - 1;
+            }
+
+            var page = pages[pageIndex];
+            fieldCounter++;
+            int fieldNumber = fieldCounter;
+            var fieldName = "Table" + fieldNumber.ToString(CultureInfo.InvariantCulture);
+            var field = new TableViewModel(this, 10, 10, 80, 40, Scale, fieldName);
+            AddField(page, field);
+        }
+
+        private void OnAddBarcodeField()
+        {
+            if (pages == null || pages.Count == 0)
+            {
+                return;
+            }
+
+            int pageIndex = (int)(percentagePosition * pages.Count + 0.7);
+            if (pageIndex < 0)
+            {
+                return;
+            }
+
+            if (pageIndex >= pages.Count)
+            {
+                pageIndex = pages.Count - 1;
+            }
+
+            var page = pages[pageIndex];
+            fieldCounter++;
+            int fieldNumber = fieldCounter;
+            var fieldName = "Barcode" + fieldNumber.ToString(CultureInfo.InvariantCulture);
+            var field = new BarcodeViewModel(this, 10, 10, 80, 40, Scale, fieldName);
+            AddField(page, field);
+        }
+
+        private void AddField(PageViewModel page, IFieldViewModel field)
+        {
+            page.Objects.Add((IPageElement)field);
             fields.Add(field);
         }
 
         private async void OnParseFieldsAsync()
         {
-            AddLogEntry("Started parsing by template.");
+            AddLogEntry("Started parsing text fields.");
             Task task = Task.Factory.StartNew(() =>
             {
                 if (string.IsNullOrEmpty(FilePath))
@@ -322,21 +379,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                     return;
                 }
 
-                var extension = Path.GetExtension(FilePath).ToLowerInvariant();
-                double factor;
-                if (!double.TryParse(Coefficient, CultureInfo.InvariantCulture, out double coef))
-                {
-                    coef = 1.0;
-                }
-                switch (extension)
-                {
-                    case ".pdf":
-                        factor = IsFactorUsed ? coef : (IsOcrUsed ? 1 : 0.5);
-                        break;
-                    default:
-                        factor = IsFactorUsed ? coef : 1;
-                        break;
-                }
+                double factor = GetFactor();
                 AddLogEntry("Scaling Factor: " + factor);
                 Template template = GetTemplate(factor, 0, 0);
                 using (Parser parser = new Parser(FilePath))
@@ -354,7 +397,27 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                 }
             });
             await task;
-            AddLogEntry("Parsing by template is completed.");
+            AddLogEntry("Parsing text fields is completed.");
+        }
+
+        private double GetFactor()
+        {
+            var extension = Path.GetExtension(FilePath).ToLowerInvariant();
+            double factor;
+            if (!double.TryParse(Coefficient, CultureInfo.InvariantCulture, out double coef))
+            {
+                coef = 1.0;
+            }
+            switch (extension)
+            {
+                case ".pdf":
+                    factor = IsFactorUsed ? coef : (IsOcrUsed ? 1 : 0.5);
+                    break;
+                default:
+                    factor = IsFactorUsed ? coef : 1;
+                    break;
+            }
+            return factor;
         }
 
         private Template GetTemplate(double factor, double offsetX, double offsetY)
@@ -380,6 +443,40 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                                 page.PageIndex,
                                 false);
                             templateItems.Add(templateField);
+                            break;
+                        case PageElementType.TableField:
+                            var table = (TableViewModel)pageElement;
+                            double left = offsetX + pageElement.OriginalX * factor;
+                            double right = left + pageElement.OriginalWidth * factor;
+                            var verticalSeparators = new double[] { left }
+                                .Concat(table.Separators.Select(svm => svm.Position + left))
+                                .Append(right)
+                                .ToArray();
+                            double top = offsetY + pageElement.OriginalY * factor;
+                            double bottom = top + pageElement.OriginalHeight * factor;
+                            var horizontalSeparators = new double[] { top, bottom, };
+                            var templateTable = new TemplateTable(
+                                new TemplateTableLayout(
+                                    verticalSeparators,
+                                    horizontalSeparators),
+                                pageElement.Name,
+                                page.PageIndex,
+                                false);
+                            templateItems.Add(templateTable);
+                            break;
+                        case PageElementType.BarcodeField:
+                            var templateBarcode = new TemplateBarcode(
+                                new Rectangle(
+                                    new Point(
+                                        offsetX + pageElement.OriginalX * factor,
+                                        offsetY + pageElement.OriginalY * factor),
+                                    new Size(
+                                        pageElement.OriginalWidth * factor,
+                                        pageElement.OriginalHeight * factor)),
+                                pageElement.Name,
+                                page.PageIndex,
+                                false);
+                            templateItems.Add(templateBarcode);
                             break;
                     }
                 }
@@ -408,6 +505,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                 action.Invoke();
             }
         }
+
         private void SetParsedText(FieldData fieldData)
         {
             Action action = () =>
@@ -416,7 +514,22 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                 {
                     if (field.Name == fieldData.Name)
                     {
-                        field.Text = fieldData.Text;
+                        var pageArea = fieldData.PageArea;
+                        if (pageArea is PageTextArea)
+                        {
+                            var pageTextArea = (PageTextArea)pageArea;
+                            field.Text = pageTextArea.Text;
+                        }
+                        else if (pageArea is PageTableArea)
+                        {
+                            var pageTableArea = (PageTableArea)pageArea;
+                            field.Text = string.Join('\t', pageTableArea.Cells.Select(c => c.Text));
+                        }
+                        else if (pageArea is PageBarcodeArea)
+                        {
+                            var pageBarcodeArea = (PageBarcodeArea)pageArea;
+                            field.Text = pageBarcodeArea.Value;
+                        }
                         break;
                     }
                 }
@@ -539,21 +652,65 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         {
             Template template = Template.Load(filePath);
             ClearTemplate();
-            foreach (TemplateField templateField in template)
+            foreach (TemplateItem templateItem in template)
             {
-                var position = templateField.Position as TemplateFixedPosition;
-                var field = new FieldViewModel(
-                    this,
-                    position.Rectangle.Left,
-                    position.Rectangle.Top,
-                    position.Rectangle.Size.Width,
-                    position.Rectangle.Size.Height,
-                    Scale,
-                    templateField.Name);
-                if (pages.Count > templateField.PageIndex)
+                if (templateItem is TemplateField)
                 {
-                    var page = pages[templateField.PageIndex.Value];
-                    AddField(page, field);
+                    var templateField = (TemplateField)templateItem;
+                    var position = templateField.Position as TemplateFixedPosition;
+                    var field = new FieldViewModel(
+                        this,
+                        position.Rectangle.Left,
+                        position.Rectangle.Top,
+                        position.Rectangle.Size.Width,
+                        position.Rectangle.Size.Height,
+                        Scale,
+                        templateField.Name);
+                    if (pages.Count > templateField.PageIndex)
+                    {
+                        var page = pages[templateField.PageIndex.Value];
+                        AddField(page, field);
+                    }
+                }
+                else if (templateItem is TemplateTable)
+                {
+                    var templateTable = (TemplateTable)templateItem;
+                    var layout = templateTable.Layout;
+                    var table = new TableViewModel(
+                        this,
+                        layout.Rectangle.Left,
+                        layout.Rectangle.Top,
+                        layout.Rectangle.Size.Width,
+                        layout.Rectangle.Size.Height,
+                        Scale,
+                        templateTable.Name);
+                    foreach (var position in layout.VerticalSeparators.Skip(1).SkipLast(1))
+                    {
+                        var separator = new SeparatorViewModel(table, position - layout.Rectangle.Left);
+                        table.Separators.Add(separator);
+                    }
+                    if (pages.Count > templateTable.PageIndex)
+                    {
+                        var page = pages[templateTable.PageIndex.Value];
+                        AddField(page, table);
+                    }
+                }
+                else if (templateItem is TemplateBarcode)
+                {
+                    var templateBarcode = (TemplateBarcode)templateItem;
+                    var barcode = new BarcodeViewModel(
+                        this,
+                        templateBarcode.Rectangle.Left,
+                        templateBarcode.Rectangle.Top,
+                        templateBarcode.Rectangle.Size.Width,
+                        templateBarcode.Rectangle.Size.Height,
+                        Scale,
+                        templateBarcode.Name);
+                    if (pages.Count > templateBarcode.PageIndex)
+                    {
+                        var page = pages[templateBarcode.PageIndex.Value];
+                        AddField(page, barcode);
+                    }
                 }
             }
         }
@@ -566,7 +723,8 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             {
                 for (int i = page.Objects.Count - 1; i >= 0; i--)
                 {
-                    if (page.Objects[i] is FieldViewModel)
+                    var obj = page.Objects[i];
+                    if (obj is IFieldViewModel)
                     {
                         page.Objects.RemoveAt(i);
                     }
@@ -618,7 +776,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             SelectedField = null;
         }
 
-        public void Remove(FieldViewModel field)
+        public void Remove(IFieldViewModel field)
         {
             if (SelectedField == field)
             {
@@ -626,7 +784,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             }
             foreach (var page in pages)
             {
-                page.Objects.Remove(field);
+                page.Objects.Remove((IPageElement)field);
             }
             fields.Remove(field);
         }

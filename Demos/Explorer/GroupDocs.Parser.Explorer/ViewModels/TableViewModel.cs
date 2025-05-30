@@ -1,9 +1,11 @@
 ﻿using GroupDocs.Parser.Explorer.Utils;
+using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace GroupDocs.Parser.Explorer.ViewModels
 {
-    class FieldViewModel : ViewModelBase, IFieldViewModel, IPageElement
+    class TableViewModel : ViewModelBase, IFieldViewModel, IPageElement
     {
         private static readonly Point MinSize = new Point(5, 5);
 
@@ -24,12 +26,18 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         private Point oldSize;
         private Point startMovePoint;
 
+        private readonly ObservableCollection<SeparatorViewModel> separators = new ObservableCollection<SeparatorViewModel>();
+
+        public event Action HeightChanged;
+        public event Action VisibilityChanged;
+
         public RelayCommand<MouseArguments> MouseDownCommand { get; private set; }
         public RelayCommand<MouseArguments> MouseMoveCommand { get; private set; }
         public RelayCommand<MouseArguments> MouseUpCommand { get; private set; }
         public RelayCommand RemoveCommand { get; private set; }
+        public RelayCommand AddSeparatorCommand { get; private set; }
 
-        public FieldViewModel(
+        public TableViewModel(
             ISelectedFieldHost selectedFieldHost,
             double x,
             double y,
@@ -50,11 +58,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             MouseMoveCommand = new RelayCommand<MouseArguments>(OnMouseMove);
             MouseUpCommand = new RelayCommand<MouseArguments>(OnMouseUp);
             RemoveCommand = new RelayCommand(OnRemove);
-        }
-
-        private void OnRemove()
-        {
-            selectedFieldHost.Remove(this);
+            AddSeparatorCommand = new RelayCommand(OnAddSeparator);
         }
 
         private void OnMouseDown(MouseArguments args)
@@ -78,6 +82,18 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         {
             isMouseDown = false;
             ChangePosition(args);
+        }
+
+        private void OnRemove()
+        {
+            selectedFieldHost.Remove(this);
+        }
+
+        private void OnAddSeparator()
+        {
+            double pos = width > 40 ? 20 : width / 2;
+            var separator = new SeparatorViewModel(this, pos);
+            separators.Add(separator);
         }
 
         private void ChangePosition(MouseArguments args)
@@ -267,6 +283,11 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             }
         }
 
+        public void Remove(SeparatorViewModel separatorViewModel)
+        {
+            separators.Remove(separatorViewModel);
+        }
+
         public double OriginalX => x;
 
         public double OriginalY => y;
@@ -312,8 +333,12 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             {
                 height = value / scale;
                 NotifyPropertyChanged(nameof(Height));
+                NotifyPropertyChanged(nameof(HalfHeight));
+                HeightChanged?.Invoke();
             }
         }
+
+        public double HalfHeight => Height / 2 - 4;
 
         public double Scale
         {
@@ -330,7 +355,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             }
         }
 
-        public PageElementType ElementType => PageElementType.TextField;
+        public PageElementType ElementType => PageElementType.TableField;
 
         public string Name
         {
@@ -347,6 +372,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                 {
                     NotifyPropertyChanged(nameof(Visibility));
                     NotifyPropertyChanged(nameof(StrokeThickness));
+                    VisibilityChanged?.Invoke();
                 }
             }
         }
@@ -390,5 +416,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         }
 
         public Visibility TextShortVisibility => string.IsNullOrEmpty(text) ? Visibility.Collapsed : Visibility.Visible;
+
+        public ObservableCollection<SeparatorViewModel> Separators => separators;
     }
 }

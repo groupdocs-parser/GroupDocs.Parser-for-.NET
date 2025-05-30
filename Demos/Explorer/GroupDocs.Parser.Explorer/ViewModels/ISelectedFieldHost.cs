@@ -2,8 +2,8 @@
 {
     internal interface ISelectedFieldHost
     {
-        FieldViewModel SelectedField { get; set; }
+        IFieldViewModel SelectedField { get; set; }
 
-        void Remove(FieldViewModel field);
+        void Remove(IFieldViewModel field);
     }
 }

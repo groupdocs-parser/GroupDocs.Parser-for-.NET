@@ -4,5 +4,7 @@
     {
         Image,
         TextField,
+        TableField,
+        BarcodeField,
     }
 }

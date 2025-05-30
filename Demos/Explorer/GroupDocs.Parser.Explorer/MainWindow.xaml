@@ -22,6 +22,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/GroupDocs.Parser.Explorer;component/Views/BusyAnimationStyle.xaml" />
                 <ResourceDictionary Source="/GroupDocs.Parser.Explorer;component/Views/FieldDataTemplate.xaml" />
+                <ResourceDictionary Source="/GroupDocs.Parser.Explorer;component/Views/TableDataTemplate.xaml" />
+                <ResourceDictionary Source="/GroupDocs.Parser.Explorer;component/Views/BarcodeDataTemplate.xaml" />
                 <ResourceDictionary Source="/GroupDocs.Parser.Explorer;component/Views/ImageDataTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
@@ -100,8 +102,14 @@
                         Visibility="Hidden"
                         Width="30" />
                     <Button
-                        Content="Add Text Field"
+                        Content="Text"
                         Command="{Binding AddTextFieldCommand}" />
+                    <Button
+                        Content="Table"
+                        Command="{Binding AddTableFieldCommand}" />
+                    <Button
+                        Content="Barcode"
+                        Command="{Binding AddBarcodeFieldCommand}" />
                     <Separator
                         Visibility="Hidden"
                         Width="30" />
@@ -180,6 +188,7 @@
                                             <ItemsControl.ItemsPanel>
                                                 <ItemsPanelTemplate>
                                                     <Canvas
+                                                        Name="Canvas"
                                                         HorizontalAlignment="Center"
                                                         Width="{Binding Width}"
                                                         Height="{Binding Height}"
