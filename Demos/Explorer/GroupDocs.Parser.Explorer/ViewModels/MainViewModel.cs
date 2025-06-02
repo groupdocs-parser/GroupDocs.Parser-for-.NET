@@ -10,6 +10,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 
@@ -33,7 +34,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         private readonly Settings settings;
         private readonly string version;
 
-        private double scale = 0.7;
+        private double scale = 1.0;
 
         private string filePath = string.Empty;
         private ObservableCollection<PageViewModel> pages = new ObservableCollection<PageViewModel>();
@@ -387,9 +388,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                     return;
                 }
 
-                double factor = GetFactor();
-                AddLogEntry("Scaling Factor: " + factor);
-                Template template = GetTemplate(factor, 0, 0);
+                Template template = GetTemplate(true, 0, 0);
                 using (Parser parser = new Parser(FilePath))
                 {
                     var options = new ParseByTemplateOptions(IsOcrUsed);
@@ -408,31 +407,43 @@ namespace GroupDocs.Parser.Explorer.ViewModels
             AddLogEntry("Parsing text fields is completed.");
         }
 
-        private double GetFactor()
+        private double GetFactor(PageViewModel page, PageInfo pageInfo)
         {
-            var extension = Path.GetExtension(FilePath).ToLowerInvariant();
-            double factor;
-            if (!double.TryParse(Coefficient, CultureInfo.InvariantCulture, out double coef))
+            if (IsFactorUsed)
             {
-                coef = 1.0;
+                if (double.TryParse(Coefficient, CultureInfo.InvariantCulture, out double coef))
+                {
+                    return coef;
+                }
+                else
+                {
+                    return 1.0;
+                }
             }
-            switch (extension)
+            else
             {
-                case ".pdf":
-                    factor = IsFactorUsed ? coef : (IsOcrUsed ? 1 : 0.5);
-                    break;
-                default:
-                    factor = IsFactorUsed ? coef : 1;
-                    break;
+                var extension = Path.GetExtension(FilePath).ToLowerInvariant();
+                if (extension == ".pdf" && IsOcrUsed)
+                {
+                    return 1.5;
+                }
+                else
+                {
+                    return pageInfo.Width / page.OriginalWidth;
+                }
             }
-            return factor;
         }
 
-        private Template GetTemplate(double factor, double offsetX, double offsetY)
+        private Template GetTemplate(bool useFactor, double offsetX, double offsetY)
         {
             var templateItems = new List<TemplateItem>();
+            using var parser = new Parser(FilePath);
             foreach (var page in Pages)
             {
+                var pageInfo = parser.GetDocumentInfo().Pages[page.PageIndex];
+                double factor = useFactor ? GetFactor(page, pageInfo) : 1.0;
+                AddLogEntry($"Page {page.PageIndex} factor: {factor:F4}");
+
                 foreach (var pageElement in page.Objects)
                 {
                     switch (pageElement.ElementType)
@@ -600,7 +611,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
         private void OnSaveTemplates()
         {
-            Template template = GetTemplate(1, 0, 0);
+            Template template = GetTemplate(false, 0, 0);
 
             var dialog = new SaveFileDialog();
             dialog.FileName = "Templates";
@@ -767,8 +778,7 @@ namespace GroupDocs.Parser.Explorer.ViewModels
                         bitmap.Freeze();
                         AddLogEntry($"Page {pageIndex}: Width={bitmap.Width}, Height={bitmap.Height}");
 
-                        const double factor = 1.5;
-                        var page = new PageViewModel(pageIndex, bitmap, factor, Scale);
+                        var page = new PageViewModel(pageIndex, bitmap, Scale);
                         Pages.Add(page);
                     }
                 }

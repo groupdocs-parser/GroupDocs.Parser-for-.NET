@@ -5,16 +5,13 @@ namespace GroupDocs.Parser.Explorer.ViewModels
     class ImageViewModel : ViewModelBase, IPageElement
     {
         private readonly BitmapImage bitmapImage;
-        private double factor;
         private double scale;
 
         public ImageViewModel(
             BitmapImage bitmapImage,
-            double factor,
             double scale)
         {
             this.bitmapImage = bitmapImage;
-            this.factor = factor;
             this.scale = scale;
         }
 
@@ -36,17 +33,17 @@ namespace GroupDocs.Parser.Explorer.ViewModels
 
         public double OriginalY => 0;
 
-        public double OriginalWidth => bitmapImage.Width * factor;
+        public double OriginalWidth => bitmapImage.Width;
 
-        public double OriginalHeight => bitmapImage.Height * factor;
+        public double OriginalHeight => bitmapImage.Height;
 
         public double X => 0;
 
         public double Y => 0;
 
-        public double Width => bitmapImage.Width * factor * scale;
+        public double Width => bitmapImage.Width * scale;
 
-        public double Height => bitmapImage.Height * factor * scale;
+        public double Height => bitmapImage.Height * scale;
 
         public PageElementType ElementType => PageElementType.Image;
 

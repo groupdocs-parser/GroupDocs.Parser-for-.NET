@@ -12,11 +12,10 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public PageViewModel(
             int pageIndex,
             BitmapImage bitmapImage,
-            double factor,
             double scale)
         {
             this.pageIndex = pageIndex;
-            imageViewModel = new ImageViewModel(bitmapImage, factor, scale);
+            imageViewModel = new ImageViewModel(bitmapImage, scale);
             objects.Add(imageViewModel);
         }
 
@@ -45,5 +44,9 @@ namespace GroupDocs.Parser.Explorer.ViewModels
         public double Width => imageViewModel.Width;
 
         public double Height => imageViewModel.Height;
+
+        public double OriginalWidth => imageViewModel.OriginalWidth;
+
+        public double OriginalHeight => imageViewModel.OriginalHeight;
     }
 }
