@@ -140,6 +140,10 @@
                     <Button
                         Content="Parse Document"
                         Command="{Binding ParseDocumentCommand}" />
+                    <Button
+                        Content="Export Templates"
+                        ToolTip="Export templates for direct use in a simple console application"
+                        Command="{Binding ExportTemplatesCommand}" />
                 </StackPanel>
             </Border>
 
@@ -242,7 +246,7 @@
                             </Label>
                             <Button
                                 Style="{StaticResource SidebarButtonStyle}"
-                                ToolTip="Save fields to XML file"
+                                ToolTip="Save templates to XML file"
                                 Command="{Binding SaveTemplatesCommand}">
                                 <Button.Content>
                                     <Image Source="Images/save.png" Width="36" Height="36"/>
@@ -250,7 +254,7 @@
                             </Button>
                             <Button
                                 Style="{StaticResource SidebarButtonStyle}"
-                                ToolTip="Load fields from XML file"
+                                ToolTip="Load templates from XML file"
                                 Command="{Binding LoadTemplatesCommand}">
                                 <Button.Content>
                                     <Image Source="Images/load.png" Width="36" Height="36"/>
@@ -258,7 +262,7 @@
                             </Button>
                             <Button
                                 Style="{StaticResource SidebarButtonStyle}"
-                                ToolTip="Save field parsing results to a file"
+                                ToolTip="Save template parsing results to a file"
                                 Command="{Binding SaveResultsCommand}">
                                 <Button.Content>
                                     <Image Source="Images/save_results.png" Width="36" Height="36"/>

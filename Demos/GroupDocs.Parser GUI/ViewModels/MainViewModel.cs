@@ -53,6 +53,7 @@ namespace GroupDocs.Parser.Gui.ViewModels
         public RelayCommand SaveTemplatesCommand { get; private set; }
         public RelayCommand LoadTemplatesCommand { get; private set; }
         public RelayCommand SaveResultsCommand { get; private set; }
+        public RelayCommand ExportTemplatesCommand { get; private set; }
 
         public MainViewModel(Settings settings)
         {
@@ -72,6 +73,7 @@ namespace GroupDocs.Parser.Gui.ViewModels
             SaveTemplatesCommand = new RelayCommand(OnSaveTemplates);
             LoadTemplatesCommand = new RelayCommand(OnLoadTemplates);
             SaveResultsCommand = new RelayCommand(OnSaveResults);
+            ExportTemplatesCommand = new RelayCommand(OnExportTemplates);
 
             Init();
         }
@@ -648,6 +650,23 @@ namespace GroupDocs.Parser.Gui.ViewModels
             {
                 AddLogEntry("Saved a file: " + dialog.FileName);
                 SaveParsingResults(dialog.FileName);
+            }
+        }
+
+        private void OnExportTemplates()
+        {
+            Template template = GetTemplate(true, 0, 0);
+
+            var dialog = new SaveFileDialog();
+            dialog.FileName = "Templates";
+            dialog.DefaultExt = ".xml";
+            dialog.Filter = "Templates (.xml)|*.xml";
+
+            var result = dialog.ShowDialog();
+            if (result == true)
+            {
+                AddLogEntry("Saved a file: " + dialog.FileName);
+                template.Save(dialog.FileName);
             }
         }
 
