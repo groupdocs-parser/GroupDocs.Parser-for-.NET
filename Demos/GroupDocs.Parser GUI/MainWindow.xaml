@@ -1,0 +1,364 @@
+﻿<Window x:Class="GroupDocs.Parser.Gui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:utils="clr-namespace:GroupDocs.Parser.Gui.Utils"
+        xmlns:ctrl="clr-namespace:GroupDocs.Parser.Gui.Controls"
+        xmlns:vm="clr-namespace:GroupDocs.Parser.Gui.ViewModels"
+        Title="{Binding Title, Mode=OneTime}"
+        WindowState="{Binding Settings.WindowState, Mode=TwoWay}"
+        Height="{Binding Settings.Height, Mode=TwoWay}"
+        Width="{Binding Settings.Width, Mode=TwoWay}"
+        Left="{Binding Settings.Left, Mode=TwoWay}"
+        Top="{Binding Settings.Top, Mode=TwoWay}"
+        RenderOptions.EdgeMode="Aliased"
+        SnapsToDevicePixels="True"
+        UseLayoutRounding="True"
+        RenderOptions.BitmapScalingMode="HighQuality"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GroupDocs.Parser.Gui;component/Views/BusyAnimationStyle.xaml" />
+                <ResourceDictionary Source="/GroupDocs.Parser.Gui;component/Views/FieldDataTemplate.xaml" />
+                <ResourceDictionary Source="/GroupDocs.Parser.Gui;component/Views/TableDataTemplate.xaml" />
+                <ResourceDictionary Source="/GroupDocs.Parser.Gui;component/Views/BarcodeDataTemplate.xaml" />
+                <ResourceDictionary Source="/GroupDocs.Parser.Gui;component/Views/ImageDataTemplate.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <utils:BooleanConverter x:Key="TrueToVisibleConverter">
+                <utils:BooleanConverter.TrueValue>
+                    <Visibility>Visible</Visibility>
+                </utils:BooleanConverter.TrueValue>
+                <utils:BooleanConverter.FalseValue>
+                    <Visibility>Hidden</Visibility>
+                </utils:BooleanConverter.FalseValue>
+            </utils:BooleanConverter>
+
+            <utils:BooleanConverter x:Key="TrueToCollapsedConverter">
+                <utils:BooleanConverter.TrueValue>
+                    <Visibility>Collapsed</Visibility>
+                </utils:BooleanConverter.TrueValue>
+                <utils:BooleanConverter.FalseValue>
+                    <Visibility>Visible</Visibility>
+                </utils:BooleanConverter.FalseValue>
+            </utils:BooleanConverter>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="170" />
+            </Grid.RowDefinitions>
+
+            <Border
+                Background="#E6E7EA">
+                <DockPanel
+                    Margin="{StaticResource CommonMargin}"
+                    LastChildFill="True">
+                    <Button
+                        DockPanel.Dock="Left"
+                        Content="Set License"
+                        Command="{Binding SetLicenseCommand}" />
+                    <Button
+                        DockPanel.Dock="Left"
+                        Content="Open File"
+                        Command="{Binding OpenFileCommand}" />
+                    <Label
+                        Content="{Binding FilePath}"
+                        Style="{StaticResource ToolboxLabel}" />
+                </DockPanel>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                Background="#E6E7EA">
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="{StaticResource CommonMargin}">
+                    <Button
+                        Style="{StaticResource SquareButtonStyle}"
+                        Content="+"
+                        FontSize="24"
+                        Command="{Binding ZoomInCommand}" />
+                    <Label
+                        HorizontalContentAlignment="Center"
+                        MinWidth="80"
+                        Style="{StaticResource ToolboxLabel}"
+                        Content="{Binding ScaleText}"
+                        VerticalAlignment="Center" />
+                    <Button
+                        Style="{StaticResource SquareButtonStyle}"
+                        Content="−"
+                        FontSize="24"
+                        Command="{Binding ZoomOutCommand}" />
+                    <Separator
+                        Visibility="Hidden"
+                        Width="30" />
+                    <Button
+                        Content="Text"
+                        Command="{Binding AddTextFieldCommand}" />
+                    <Button
+                        Content="Table"
+                        Command="{Binding AddTableFieldCommand}" />
+                    <Button
+                        Content="Barcode"
+                        Command="{Binding AddBarcodeFieldCommand}" />
+                    <Separator
+                        Visibility="Hidden"
+                        Width="30" />
+                    <CheckBox
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        FontSize="{StaticResource CommonFontSizeValue}"
+                        Content="Use OCR"
+                        ToolTip="Applicable if the document consists of images"
+                        IsChecked="{Binding IsOcrUsed}" />
+                    <CheckBox
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        FontSize="{StaticResource CommonFontSizeValue}"
+                        Content="Use Factor"
+                        ToolTip="Use a custom scaling factor when applying templates"
+                        IsChecked="{Binding IsFactorUsed}" />
+                    <TextBox
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Width="60"
+                        IsEnabled="{Binding IsFactorUsed}"
+                        FontSize="{StaticResource CommonFontSizeValue}"
+                        Text="{Binding Coefficient}" />
+                    <Button
+                        Content="Parse Fields"
+                        Command="{Binding ParseFieldsCommand}" />
+                    <Button
+                        Content="Parse Document"
+                        Command="{Binding ParseDocumentCommand}" />
+                </StackPanel>
+            </Border>
+
+            <Grid
+                Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="280" />
+                </Grid.ColumnDefinitions>
+
+                <Border
+                    HorizontalAlignment="Stretch"
+                    Background="#F4F6F8"
+                    Margin="0"
+                    BorderBrush="Gray"
+                    BorderThickness="0,1,1,1">
+                    <ctrl:CustomScrollViewer
+                        PercentagePositionChanged="CustomScrollViewer_PercentagePositionChanged"
+                        HorizontalAlignment="Stretch"
+                        HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Visible"
+                        Focusable="False">
+                        <ItemsControl
+                            Focusable="False"
+                            HorizontalAlignment="Center"
+                            ItemsSource="{Binding Pages}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel.Effect>
+                                            <DropShadowEffect
+                                                ShadowDepth="{StaticResource CommonMarginValue}"
+                                                RenderingBias="Performance"
+                                                Opacity="100"
+                                                Direction="315"
+                                                Color="#D3D5DE"
+                                                BlurRadius="{StaticResource CommonMarginValue}" />
+                                        </StackPanel.Effect>
+                                        <ItemsControl ItemsSource="{Binding Objects}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <Canvas
+                                                        Name="Canvas"
+                                                        HorizontalAlignment="Center"
+                                                        Width="{Binding Width}"
+                                                        Height="{Binding Height}"
+                                                        Margin="{StaticResource CommonMargin}">
+                                                    </Canvas>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemContainerStyle>
+                                                <Style TargetType="ContentPresenter">
+                                                    <Setter Property="Canvas.Left" Value="{Binding Path=X}" />
+                                                    <Setter Property="Canvas.Top" Value="{Binding Path=Y}" />
+                                                </Style>
+                                            </ItemsControl.ItemContainerStyle>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ctrl:CustomScrollViewer>
+                </Border>
+
+                <GridSplitter
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Center"
+                    Background="#E6E7EA"
+                    Width="5"
+                    Grid.Column="1" />
+
+                <Border
+                    Grid.Column="2"
+                    HorizontalAlignment="Stretch"
+                    Background="#FAFBFE"
+                    Margin="0"
+                    BorderBrush="Gray"
+                    BorderThickness="1,1,0,1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label
+                                MinWidth="120">
+                                <Label.Content>
+                                    <TextBlock>
+                                        <Run Text="Templates" />
+                                        <Run Text="{Binding Fields.Count, Mode=OneWay}" />
+                                    </TextBlock>
+                                </Label.Content>
+                            </Label>
+                            <Button
+                                Style="{StaticResource SidebarButtonStyle}"
+                                ToolTip="Save fields to XML file"
+                                Command="{Binding SaveTemplatesCommand}">
+                                <Button.Content>
+                                    <Image Source="Images/save.png" Width="36" Height="36"/>
+                                </Button.Content>
+                            </Button>
+                            <Button
+                                Style="{StaticResource SidebarButtonStyle}"
+                                ToolTip="Load fields from XML file"
+                                Command="{Binding LoadTemplatesCommand}">
+                                <Button.Content>
+                                    <Image Source="Images/load.png" Width="36" Height="36"/>
+                                </Button.Content>
+                            </Button>
+                            <Button
+                                Style="{StaticResource SidebarButtonStyle}"
+                                ToolTip="Save field parsing results to a file"
+                                Command="{Binding SaveResultsCommand}">
+                                <Button.Content>
+                                    <Image Source="Images/save_results.png" Width="36" Height="36"/>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+
+                        <ListBox
+                            Grid.Row="1"
+                            Margin="0"
+                            BorderThickness="0"
+                            SelectedItem="{Binding SelectedField}"
+                            ItemsSource="{Binding Fields}">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <DockPanel LastChildFill="True">
+                                            <Button
+                                                DockPanel.Dock="Right"
+                                                Style="{StaticResource SidebarButtonStyle}"
+                                                ToolTip="Remove field"
+                                                Command="{Binding RemoveCommand}">
+                                                <Button.Content>
+                                                    <Image Source="Images/remove.png" Width="36" Height="36"/>
+                                                </Button.Content>
+                                            </Button>
+                                            <TextBox
+                                                HorizontalAlignment="Stretch"
+                                                Style="{StaticResource TemplateListTextBox}"
+                                                Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                                        </DockPanel>
+                                        <Label
+                                            Visibility="{Binding TextShortVisibility}"
+                                            HorizontalAlignment="Stretch"
+                                            Style="{StaticResource TemplateTextLabel}"
+                                            Content="{Binding TextShort}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <GridSplitter VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch"
+                          Background="#E6E7EA"
+                          Height="5"
+                          Grid.Row="3" />
+
+            <Grid Grid.Row="4"
+                  Margin="0">
+                <ctrl:CustomListView ItemsSource="{Binding Log}"
+                                     Background="#E6E7EA"
+                                     BorderThickness="0"
+                                     utils:AutoScrollBehavior.AutoScroll="True"
+                                     SelectedItem="{Binding SelectedLogItem}"
+                                     utils:GridViewColumnResize.Enabled="True">
+                    <ItemsControl.Resources>
+                        <Style x:Key="{x:Type GridViewColumnHeader}"
+                               TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </Style>
+                    </ItemsControl.Resources>
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Time"
+                                                Width="auto"
+                                                DisplayMemberBinding="{Binding Path=TimeText, Mode=OneTime}" />
+                                <GridViewColumn Header="Message"
+                                                utils:GridViewColumnResize.Width="*"
+                                                DisplayMemberBinding="{Binding Path=Message, Mode=OneWay}" />
+                                <GridViewColumn Header="Button">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Margin="0"
+                                                    MinHeight="16"
+                                                    Padding="0"
+                                                    Content="Expand"
+                                                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                                                    Visibility="{Binding CanExpand, Converter={StaticResource TrueToVisibleConverter}}"
+                                                    Command="{Binding ExpandCommand}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ctrl:CustomListView>
+            </Grid>
+        </Grid>
+
+        <Control Style="{StaticResource BusyAnimationStyle}"
+                 Visibility="{Binding WindowEnabled, Mode=OneWay, Converter={StaticResource TrueToCollapsedConverter}}"
+                 Background="#90FFFFFF" />
+    </Grid>
+</Window>
