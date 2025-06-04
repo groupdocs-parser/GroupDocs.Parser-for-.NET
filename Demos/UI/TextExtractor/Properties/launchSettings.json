@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GroupDocs.Parser.TextExtractor": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\User\\Downloads\\Parser GUI\\invoice_ocr.pdf\"\r\n\"C:\\Users\\User\\Downloads\\Parser GUI\\Templates.xml\"\r\n\"C:\\Users\\User\\Downloads\\Parser GUI\\Result.txt\"\r\ntrue"
+    }
+  }
+}

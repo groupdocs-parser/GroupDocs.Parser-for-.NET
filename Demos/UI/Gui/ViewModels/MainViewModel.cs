@@ -381,7 +381,7 @@ namespace GroupDocs.Parser.Gui.ViewModels
 
         private async void OnParseFieldsAsync()
         {
-            AddLogEntry("Started parsing text fields.");
+            AddLogEntry("Started parsing by template.");
             Task task = Task.Factory.StartNew(() =>
             {
                 if (string.IsNullOrEmpty(FilePath))
@@ -405,7 +405,7 @@ namespace GroupDocs.Parser.Gui.ViewModels
                 }
             });
             await task;
-            AddLogEntry("Parsing text fields is completed.");
+            AddLogEntry("Parsing by template is completed.");
         }
 
         private double GetFactor(PageViewModel page, PageInfo pageInfo)
