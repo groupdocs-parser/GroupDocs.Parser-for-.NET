@@ -1,4 +1,6 @@
-﻿namespace GroupDocs.Parser.TextExtractor
+﻿using System;
+
+namespace GroupDocs.Parser.TextExtractor
 {
     internal class Program
     {

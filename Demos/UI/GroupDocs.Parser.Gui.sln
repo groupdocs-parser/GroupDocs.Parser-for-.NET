@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupDocs.Parser.Gui", "GroupDocs.Parser.Gui\GroupDocs.Parser.Gui.csproj", "{D34164E9-426A-4493-9EC1-4E57F1169F35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupDocs.Parser.Gui", "Gui\GroupDocs.Parser.Gui.csproj", "{D34164E9-426A-4493-9EC1-4E57F1169F35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupDocs.Parser.TextExtractor", "GroupDocs.Parser.TextExtractor\GroupDocs.Parser.TextExtractor.csproj", "{B66BE196-88E2-48E8-B286-C82E5C448559}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupDocs.Parser.TextExtractor", "TextExtractor\GroupDocs.Parser.TextExtractor.csproj", "{B66BE196-88E2-48E8-B286-C82E5C448559}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
