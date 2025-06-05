@@ -2,7 +2,7 @@
   "profiles": {
     "GroupDocs.Parser.TextExtractor": {
       "commandName": "Project",
-      "commandLineArgs": "\"C:\\Users\\User\\Downloads\\Parser GUI\\invoice_ocr.pdf\"\r\n\"C:\\Users\\User\\Downloads\\Parser GUI\\Templates.xml\"\r\n\"C:\\Users\\User\\Downloads\\Parser GUI\\Result.txt\"\r\ntrue"
+      "commandLineArgs": "\"C:\\Licenses\\GroupDocs.Search.lic\"\r\n\"E:\\ProjectsAspose\\ParserUI2\\docs\\Commercial Inv USD 3.tif\"\r\n\"E:\\ProjectsAspose\\ParserUI2\\out\\Templates.xml\"\r\n\"E:\\ProjectsAspose\\ParserUI2\\out\\Result.txt\"\r\nfalse"
     }
   }
 }
