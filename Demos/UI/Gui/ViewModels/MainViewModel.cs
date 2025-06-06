@@ -294,7 +294,7 @@ namespace GroupDocs.Parser.Gui.ViewModels
                 return;
             }
 
-            int pageIndex = (int)(percentagePosition * pages.Count + 0.7);
+            int pageIndex = (int)(percentagePosition * pages.Count);
             if (pageIndex < 0)
             {
                 return;
@@ -306,8 +306,10 @@ namespace GroupDocs.Parser.Gui.ViewModels
             }
 
             var page = pages[pageIndex];
+            double position = percentagePosition * pages.Count % 1.0 * page.OriginalHeight;
+
             var fieldName = GetFieldName("Text");
-            var field = new FieldViewModel(this, 10, 10, 80, 40, Scale, fieldName);
+            var field = new FieldViewModel(this, 10, position, 80, 40, Scale, fieldName);
             AddField(page, field);
         }
 
@@ -318,7 +320,7 @@ namespace GroupDocs.Parser.Gui.ViewModels
                 return;
             }
 
-            int pageIndex = (int)(percentagePosition * pages.Count + 0.7);
+            int pageIndex = (int)(percentagePosition * pages.Count);
             if (pageIndex < 0)
             {
                 return;
@@ -330,8 +332,10 @@ namespace GroupDocs.Parser.Gui.ViewModels
             }
 
             var page = pages[pageIndex];
+            double position = percentagePosition * pages.Count % 1.0 * page.OriginalHeight;
+
             var fieldName = GetFieldName("Table");
-            var field = new TableViewModel(this, 10, 10, 80, 40, Scale, fieldName);
+            var field = new TableViewModel(this, 10, position, 80, 40, Scale, fieldName);
             AddField(page, field);
         }
 
@@ -342,7 +346,7 @@ namespace GroupDocs.Parser.Gui.ViewModels
                 return;
             }
 
-            int pageIndex = (int)(percentagePosition * pages.Count + 0.7);
+            int pageIndex = (int)(percentagePosition * pages.Count);
             if (pageIndex < 0)
             {
                 return;
@@ -354,8 +358,10 @@ namespace GroupDocs.Parser.Gui.ViewModels
             }
 
             var page = pages[pageIndex];
+            double position = percentagePosition * pages.Count % 1.0 * page.OriginalHeight;
+
             var fieldName = GetFieldName("Barcode");
-            var field = new BarcodeViewModel(this, 10, 10, 80, 40, Scale, fieldName);
+            var field = new BarcodeViewModel(this, 10, position, 80, 40, Scale, fieldName);
             AddField(page, field);
         }
 
