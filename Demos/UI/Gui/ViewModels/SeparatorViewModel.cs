@@ -1,5 +1,6 @@
 ﻿using GroupDocs.Parser.Gui.Utils;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace GroupDocs.Parser.Gui.ViewModels
 {
@@ -7,6 +8,7 @@ namespace GroupDocs.Parser.Gui.ViewModels
     {
         private readonly TableViewModel host;
         private double position;
+        private double scale;
 
         private bool isMouseDown;
         private double oldPosition;
@@ -19,13 +21,15 @@ namespace GroupDocs.Parser.Gui.ViewModels
 
         public SeparatorViewModel(
             TableViewModel host,
-            double position)
+            double position,
+            double scale)
         {
             this.host = host;
             this.host.HeightChanged += OnHostHeightChanged;
             this.host.VisibilityChanged += OnHostVisibilityChanged;
 
             this.position = position;
+            this.scale = scale;
 
             MouseDownCommand = new RelayCommand<MouseArguments>(OnMouseDown);
             MouseMoveCommand = new RelayCommand<MouseArguments>(OnMouseMove);
@@ -79,10 +83,28 @@ namespace GroupDocs.Parser.Gui.ViewModels
 
         public Visibility Visibility => host.Visibility;
 
+        public double OriginalPosition => position;
+
         public double Position
         {
-            get => position;
-            set => UpdateProperty(ref position, value);
+            get => position * scale;
+            set
+            {
+                position = value / scale;
+                NotifyPropertyChanged(nameof(Position));
+            }
+        }
+
+        public double Scale
+        {
+            get => scale;
+            set
+            {
+                if (UpdateProperty(ref scale, value))
+                {
+                    NotifyPropertyChanged(string.Empty);
+                }
+            }
         }
     }
 }

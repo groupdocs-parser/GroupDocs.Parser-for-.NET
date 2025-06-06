@@ -475,7 +475,7 @@ namespace GroupDocs.Parser.Gui.ViewModels
                             double left = offsetX + pageElement.OriginalX * factor;
                             double right = left + pageElement.OriginalWidth * factor;
                             var verticalSeparators = new double[] { left }
-                                .Concat(table.Separators.Select(svm => svm.Position + left))
+                                .Concat(table.Separators.Select(svm => svm.OriginalPosition + left))
                                 .Append(right)
                                 .ToArray();
                             double top = offsetY + pageElement.OriginalY * factor;
@@ -729,7 +729,7 @@ namespace GroupDocs.Parser.Gui.ViewModels
                         templateTable.Name);
                     foreach (var position in layout.VerticalSeparators.Skip(1).SkipLast(1))
                     {
-                        var separator = new SeparatorViewModel(table, position - layout.Rectangle.Left);
+                        var separator = new SeparatorViewModel(table, position - layout.Rectangle.Left, Scale);
                         table.Separators.Add(separator);
                     }
                     if (pages.Count > templateTable.PageIndex)

@@ -92,7 +92,7 @@ namespace GroupDocs.Parser.Gui.ViewModels
         private void OnAddSeparator()
         {
             double pos = width > 40 ? 20 : width / 2;
-            var separator = new SeparatorViewModel(this, pos);
+            var separator = new SeparatorViewModel(this, pos, Scale);
             separators.Add(separator);
         }
 
@@ -347,10 +347,11 @@ namespace GroupDocs.Parser.Gui.ViewModels
             {
                 if (UpdateProperty(ref scale, value))
                 {
-                    NotifyPropertyChanged(nameof(X));
-                    NotifyPropertyChanged(nameof(Y));
-                    NotifyPropertyChanged(nameof(Width));
-                    NotifyPropertyChanged(nameof(Height));
+                    foreach (var separator in separators)
+                    {
+                        separator.Scale = scale;
+                    }
+                    NotifyPropertyChanged(string.Empty);
                 }
             }
         }

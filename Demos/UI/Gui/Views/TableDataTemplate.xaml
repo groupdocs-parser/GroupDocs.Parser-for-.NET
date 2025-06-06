@@ -112,14 +112,49 @@
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Rectangle
-                            Width="2"
-                            Height="{Binding Height}"
-                            Cursor="SizeWE"
-                            utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
-                            utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
-                            utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
-                            Fill="#679FFA" />
+                        <Canvas
+                            Width="0"
+                            Height="0">
+                            <Rectangle
+                                Canvas.Left="-1"
+                                Canvas.Top="0"
+                                Width="4"
+                                Height="{Binding Height}"
+                                Cursor="SizeWE"
+                                utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
+                                utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
+                                utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
+                                Fill="#01FFFFFF" />
+                            <Rectangle
+                                Canvas.Left="0"
+                                Canvas.Top="0"
+                                Width="2"
+                                Height="{Binding Height}"
+                                Cursor="SizeWE"
+                                utils:MouseDownBehavior.MouseDownCommand="{Binding MouseDownCommand}"
+                                utils:MouseMoveBehavior.MouseMoveCommand="{Binding MouseMoveCommand}"
+                                utils:MouseUpBehavior.MouseUpCommand="{Binding MouseUpCommand}"
+                                Fill="#679FFA" />
+                            <Button
+                                Canvas.Left="-5"
+                                Canvas.Top="-13"
+                                Style="{StaticResource CanvasButtonStyle}"
+                                Cursor="Hand"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                Visibility="{Binding Visibility}"
+                                Command="{Binding RemoveCommand}"
+                                BorderThickness="0"
+                                Background="Transparent">
+                                <Button.Content>
+                                    <Viewbox>
+                                        <Path
+                                            Data="M 10 0 l 15 15 l 15 -15 l 10 10 l -15 15 l 15 15 l -10 10 l -15 -15 l -15 15 l -10 -10 l 15 -15 l -15 -15 z"
+                                            Fill="#679FFA" />
+                                    </Viewbox>
+                                </Button.Content>
+                            </Button>
+                        </Canvas>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
