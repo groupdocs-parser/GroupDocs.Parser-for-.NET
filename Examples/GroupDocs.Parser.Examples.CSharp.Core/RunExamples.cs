@@ -165,7 +165,7 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #region Template barcodes
 
-            WorkingWithBarcodes.Run();
+            //WorkingWithBarcodes.Run();
 
             #endregion
 
