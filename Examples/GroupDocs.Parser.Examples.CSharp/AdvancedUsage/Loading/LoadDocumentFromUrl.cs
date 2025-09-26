@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.Loading
 {
@@ -16,6 +16,10 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.Loading
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # LoadDocumentFromUrl : This example shows how to load a document from the url.\n");
+
+
             Uri uri = new Uri("https://www.bu.edu/csmet/files/2021/03/Getting-Started-with-SQLite.pdf");
 
             // Create an instance of Parser class with the url

@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.ExtractDataFromVariousFormats.Email
 {
@@ -17,6 +17,10 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.ExtractDataFromVariousF
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # ExtractEmailsFromOutlookStorage : This example shows how to extract a text from Outlook Storage.\n");
+
+
             // Create an instance of Parser class
             using (Parser parser = new Parser(Constants.SampleOutlook))
             {

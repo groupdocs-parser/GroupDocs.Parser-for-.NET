@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText
 {
@@ -15,6 +15,10 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # DetectEncoding : This example shows how to detect the encoding of the document.\n");
+
+
             // Create an instance of LoadOptions class with the default ANSI encoding.
             // This encoding is returned for ANSI text documents.
             LoadOptions loadOptions = new LoadOptions(FileFormat.WordProcessing, null, null, Encoding.GetEncoding(1251));

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupDocs.Parser.Examples.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupDocs.Parser.Examples.CSharp.Framework", "GroupDocs.Parser.Examples.CSharp.Framework\GroupDocs.Parser.Examples.CSharp.Framework.csproj", "{E564CD1A-A09B-4A99-9502-5198A23F0B54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupDocs.Parser.Examples.CSharp.Net", "GroupDocs.Parser.Examples.CSharp.Net\GroupDocs.Parser.Examples.CSharp.Net.csproj", "{1612269E-1CDF-43C2-80B7-A87DF22D93A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{E564CD1A-A09B-4A99-9502-5198A23F0B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E564CD1A-A09B-4A99-9502-5198A23F0B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E564CD1A-A09B-4A99-9502-5198A23F0B54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1612269E-1CDF-43C2-80B7-A87DF22D93A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1612269E-1CDF-43C2-80B7-A87DF22D93A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1612269E-1CDF-43C2-80B7-A87DF22D93A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1612269E-1CDF-43C2-80B7-A87DF22D93A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems*{029bfb9c-20a4-4cac-be28-4d13d9fc5b1e}*SharedItemsImports = 5
+		GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems*{1612269e-1cdf-43c2-80b7-a87df22d93a6}*SharedItemsImports = 5
 		GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems*{66aa31fe-ad7d-46c1-abab-7d048da1aa75}*SharedItemsImports = 13
 		GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems*{e564cd1a-a09b-4a99-9502-5198a23f0b54}*SharedItemsImports = 4
 	EndGlobalSection

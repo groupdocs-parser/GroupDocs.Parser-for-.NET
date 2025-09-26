@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.Loading
 {
@@ -16,6 +16,10 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.Loading
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # LoadingSpecificFileFormats : This example how to specify the file format when loading the document.\n");
+
+
             using (Stream stream = File.OpenRead(Constants.SampleMd))
             {
                 // Create an instance of Parser class for markdown document

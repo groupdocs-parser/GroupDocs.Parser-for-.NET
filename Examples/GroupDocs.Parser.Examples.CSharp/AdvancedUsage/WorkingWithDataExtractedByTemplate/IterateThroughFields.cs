@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithDataExtractedByTemplate
 {
@@ -17,6 +17,10 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithDataExtracte
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # IterateThroughFields : This example shows how to iterate over extracted field data.\n");
+
+
             // Define a "price" field
             TemplateField priceField = new TemplateField(
                 new TemplateRegexPosition("\\$\\d+(.\\d+)?"),

@@ -1,12 +1,13 @@
 // <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Collections.Generic;
+
     using GroupDocs.Parser.Data;
     using GroupDocs.Parser.Templates;
 
@@ -17,6 +18,10 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # ParsePagesByTemplate : This example shows how to parse document pages by template.\n");
+
+
             // Define a barcode field
             TemplateBarcode barcode = new TemplateBarcode(
                 new Rectangle(new Point(405, 55), new Size(100, 50)),

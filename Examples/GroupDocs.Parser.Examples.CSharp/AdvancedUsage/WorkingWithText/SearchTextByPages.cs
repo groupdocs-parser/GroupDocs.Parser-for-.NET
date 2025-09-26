@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText
 {
@@ -17,6 +17,10 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # SearchTextByPages : This example shows how to search a text by pages\n");
+
+
             // Create an instance of Parser class
             using (Parser parser = new Parser(Constants.SamplePdf))
             {

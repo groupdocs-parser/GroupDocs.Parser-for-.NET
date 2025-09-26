@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateTables
 {
@@ -17,6 +17,10 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.Te
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # WorkingWithTableLayout : This example shows how to define a template table with the layout.\n");
+
+
             // Create a table template with the layout
             TemplateTable table = new TemplateTable(
                 new TemplateTableLayout(new double[] { 30, 100, 320, 400, 480, 550 }, new double[] { 320, 345, 375 }),

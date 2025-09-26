@@ -3,15 +3,17 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <Import Project="..\GroupDocs.Parser.Examples.CSharp\GroupDocs.Parser.Examples.CSharp.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="Aspose.OCR" Version="22.11.0" />
     <PackageReference Include="GroupDocs.Parser" Version="25.8.0" />
-    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
-    <PackageReference Include="Aspose.Drawing.Common" Version="24.12.0">
+	<PackageReference Include="Aspose.OCR" Version="22.11.0" />
+	<PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
+	<PackageReference Include="Aspose.Drawing.Common" Version="24.12.0">
       <Aliases>AsposeDrawingCommon</Aliases>
     </PackageReference>
   </ItemGroup>
@@ -22,4 +24,5 @@
       <Aliases>OCR</Aliases>
     </Reference>
   </ItemGroup>
+
 </Project>

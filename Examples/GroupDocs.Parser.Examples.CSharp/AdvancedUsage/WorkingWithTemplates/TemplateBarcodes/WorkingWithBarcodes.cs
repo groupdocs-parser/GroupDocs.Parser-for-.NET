@@ -1,7 +1,7 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
-namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateBarcodes
+namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates
 {
     using GroupDocs.Parser.Data;
     using GroupDocs.Parser.Templates;
@@ -14,6 +14,10 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.Te
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # WorkingWithBarcodes : This example shows how to define a template barcode field.\n");
+
+
             // Define a barcode field
             TemplateBarcode barcode = new TemplateBarcode(
                 new Rectangle(new Point(590, 80), new Size(150, 150)),

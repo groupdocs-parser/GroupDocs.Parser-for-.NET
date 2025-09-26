@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage
 {
@@ -19,6 +19,14 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # ExtractDataFromDatabasesWithDbConnection : This example shows how to extract data from Sqlite database.\n");
+
+            if(!File.Exists(Constants.LicensePath))
+            {
+                Console.WriteLine($"This example: ExtractDataFromDatabasesWithDbConnection requires license {Constants.LicensePath} to proceed document with more than 5 pages document!");
+                return;
+            }
             // Create DbConnection object
             DbConnection connection = new SQLiteConnection(string.Format("Data Source={0};Version=3;", Constants.SampleDatabase));
             // Create an instance of Parser class to extract tables from the database

@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.QuickStart
 {
@@ -20,6 +20,10 @@ namespace GroupDocs.Parser.Examples.CSharp.QuickStart
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Quick Start] # SetLicenseFromFile : This example demonstrates how to set license from file.\n");
+
+
             if (File.Exists(Constants.LicensePath))
             {
                 License license = new License();

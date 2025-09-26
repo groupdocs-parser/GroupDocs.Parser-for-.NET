@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.TemplateFields
 {
@@ -17,6 +17,10 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithTemplates.Te
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # WorkingWithTemplateFixedPosition : This example shows how to define a template field with the fixed position.\n");
+
+
             // Define a field with the fixed position
             TemplateField field = new TemplateField(
                 new TemplateFixedPosition(new Rectangle(new Point(35, 135), new Size(100, 10))),

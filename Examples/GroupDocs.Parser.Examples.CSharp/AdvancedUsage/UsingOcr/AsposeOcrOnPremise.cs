@@ -1,8 +1,8 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 
-#if !NETCOREAPP
+#if !NETCOREAPP || NET6_0_OR_GREATER
 extern alias OCR;
 #endif
 
@@ -41,7 +41,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.UsingOcr
                 // Create an instance of RecognitionSettings
                 RecognitionSettings settings = new RecognitionSettings();
 
-#if !NETCOREAPP
+#if !NETCOREAPP || NET6_0_OR_GREATER
                 // Check if the rectangle is set
                 if (options != null && options.Rectangle != null)
                 {
@@ -59,8 +59,8 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.UsingOcr
                 // Check if the rectangle is set
                 if (options != null && options.Rectangle != null)
                 {
-                    List<Aspose.Drawing.Rectangle> areas = new List<Aspose.Drawing.Rectangle>();
-                    areas.Add(new Aspose.Drawing.Rectangle(
+                    List<OCR::Aspose.Drawing.Rectangle> areas = new List<OCR::Aspose.Drawing.Rectangle>();
+                    areas.Add(new OCR::Aspose.Drawing.Rectangle(
                         (int)options.Rectangle.Left,
                         (int)options.Rectangle.Top,
                         (int)options.Rectangle.Size.Width,
@@ -97,7 +97,7 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.UsingOcr
                 // Create recognition settings and set detect areas
                 RecognitionSettings settings = new RecognitionSettings(detectAreas: true);
 
-#if !NETCOREAPP
+#if !NETCOREAPP || NET6_0_OR_GREATER
                 // Check if the rectangle is set
                 if (options != null && options.Rectangle != null)
                 {
@@ -115,8 +115,8 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.UsingOcr
                 // Check if the rectangle is set
                 if (options != null && options.Rectangle != null)
                 {
-                    List<Aspose.Drawing.Rectangle> areas = new List<Aspose.Drawing.Rectangle>();
-                    areas.Add(new Aspose.Drawing.Rectangle(
+                    List<OCR::Aspose.Drawing.Rectangle> areas = new List<OCR::Aspose.Drawing.Rectangle>();
+                    areas.Add(new OCR::Aspose.Drawing.Rectangle(
                         (int)options.Rectangle.Left,
                         (int)options.Rectangle.Top,
                         (int)options.Rectangle.Size.Width,

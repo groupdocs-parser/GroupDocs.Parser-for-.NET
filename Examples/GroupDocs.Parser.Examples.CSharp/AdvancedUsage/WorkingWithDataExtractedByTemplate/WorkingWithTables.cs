@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithDataExtractedByTemplate
 {
@@ -13,10 +13,13 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithDataExtracte
     /// <summary>
     /// This example shows how to get data from the table.
     /// </summary>
-    public class WorkingWithTables
+    static class WorkingWithTables
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # WorkingWithTables : This example shows how to get data from the table.\n");
+
             // Create a table template with the parameters
             TemplateTable table = new TemplateTable(
                 new TemplateTableParameters(new Rectangle(new Point(35, 320), new Size(530, 55)), null),

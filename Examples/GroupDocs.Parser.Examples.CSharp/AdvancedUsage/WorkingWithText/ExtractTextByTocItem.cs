@@ -13,6 +13,10 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.WorkingWithText
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # ExtractTextByTocItem : This example how to extract a text by the an item of table of contents.\n");
+
+
             // Create an instance of Parser class
             using (Parser parser = new Parser(Constants.SamplePdfWithToc))
             {

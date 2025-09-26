@@ -1,5 +1,5 @@
 ﻿// <copyright company="Aspose Pty Ltd">
-//   Copyright (C) 2011-2024 GroupDocs. All Rights Reserved.
+//   Copyright (C) 2011-2025 GroupDocs. All Rights Reserved.
 // </copyright>
 namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.ExtractDataFromVariousFormats.Email
 {
@@ -13,10 +13,13 @@ namespace GroupDocs.Parser.Examples.CSharp.AdvancedUsage.ExtractDataFromVariousF
     /// <summary>
     /// This example shows how to extract emails from Exchange Server.
     /// </summary>
-    class ExtractEmailsFromRemoveServer
+    static class ExtractEmailsFromRemoveServer
     {
         public static void Run()
         {
+            Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("[Example Advanced Usage] # ExtractEmailsFromRemoveServer : This example shows how to extract emails from Exchange Server.\n");
+
             // Create the connection object for Exchange Web Services protocol 
             EmailConnection connection = new EmailEwsConnection(
                 "https://outlook.office365.com/ews/exchange.asmx",
