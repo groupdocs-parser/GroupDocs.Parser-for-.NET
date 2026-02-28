@@ -23,7 +23,6 @@ namespace GroupDocs.Parser.Examples.CSharp.QuickStart
             Console.WriteLine("\n--------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("[Example Quick Start] # SetLicenseFromFile : This example demonstrates how to set license from file.\n");
 
-
             if (File.Exists(Constants.LicensePath))
             {
                 License license = new License();
@@ -38,6 +37,13 @@ namespace GroupDocs.Parser.Examples.CSharp.QuickStart
                                   "\nLearn more about licensing at https://purchase.groupdocs.com/faqs/licensing. " +
                                   "\nLear how to request temporary license at https://purchase.groupdocs.com/temporary-license.");
             }
+        }
+
+        public static void TraceLibraryVersion()
+        {
+            string version = typeof(GroupDocs.Parser.Parser).Assembly.GetName().Version.ToString(3);
+            Console.WriteLine("GroupDocs.Parser for .NET " + version);
+            Console.WriteLine();
         }
     }
 }

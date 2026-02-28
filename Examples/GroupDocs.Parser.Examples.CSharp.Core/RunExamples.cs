@@ -29,6 +29,7 @@ namespace GroupDocs.Parser.Examples.CSharp
         {
             Console.WriteLine("Open RunExamples.cs." + Environment.NewLine + "In Main() method uncomment the example that you want to run.");
             Console.WriteLine("=====================================================");
+            SetLicenseFromFile.TraceLibraryVersion();
 
             // NOTE: Please uncomment the example you want to try out
 

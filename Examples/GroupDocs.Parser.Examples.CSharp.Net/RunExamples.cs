@@ -24,6 +24,7 @@ using GroupDocs.Parser.Examples.CSharp.QuickStart;
 
 Console.WriteLine("Open RunExamples.cs." + Environment.NewLine + "In Main() method uncomment the example that you want to run.");
 Console.WriteLine("=====================================================");
+SetLicenseFromFile.TraceLibraryVersion();
 
 #region Quick start
 
