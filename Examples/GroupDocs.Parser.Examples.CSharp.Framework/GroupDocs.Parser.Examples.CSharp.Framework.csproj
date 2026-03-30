@@ -56,8 +56,8 @@
       <HintPath>..\packages\Aspose.OCR.22.11.1\lib\netstandard2.0\Aspose.Drawing.dll</HintPath>
       <Aliases>OCR</Aliases>
     </Reference>
-    <Reference Include="Aspose.Drawing.Common, Version=24.12.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Drawing.Common.24.12.0\lib\net20\Aspose.Drawing.Common.dll</HintPath>
+    <Reference Include="Aspose.Drawing.Common, Version=26.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Drawing.Common.26.2.0\lib\net40\Aspose.Drawing.Common.dll</HintPath>
     </Reference>
     <Reference Include="Aspose.OCR, Version=22.11.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\Aspose.OCR.22.11.1\lib\netstandard2.0\Aspose.OCR.dll</HintPath>
@@ -68,8 +68,8 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="GroupDocs.Parser, Version=26.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\GroupDocs.Parser.NETFramework.26.2.0\lib\net462\GroupDocs.Parser.dll</HintPath>
+    <Reference Include="GroupDocs.Parser, Version=26.3.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\GroupDocs.Parser.NETFramework.26.3.0\lib\net462\GroupDocs.Parser.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.7.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
