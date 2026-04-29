@@ -50,6 +50,8 @@ namespace GroupDocs.Parser.Examples.CSharp
 
         public static readonly string SampleHtml = GetFilePath("sample.htm");
 
+        public static readonly string TablesHtml = GetFilePath("Tables.html");
+
         public static readonly string SampleEpub = GetFilePath("sample.epub");
 
         public static readonly string SampleOne = GetFilePath("sample.one");

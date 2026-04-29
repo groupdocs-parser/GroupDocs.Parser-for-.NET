@@ -292,6 +292,7 @@ namespace GroupDocs.Parser.Examples.CSharp
 
             #region HTML
 
+            //AdvancedUsage.ExtractDataFromVariousFormats.HTML.ExtractTables.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.HTML.ExtractText.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.HTML.SearchTextByKeyword.Run();
             //AdvancedUsage.ExtractDataFromVariousFormats.HTML.SearchTextByRegularExpression.Run();

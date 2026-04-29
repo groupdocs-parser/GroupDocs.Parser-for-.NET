@@ -92,6 +92,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\Tables.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\corrupted.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -121,6 +124,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)advancedusage\Export.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)advancedusage\extractdatafromvariousformats\excel\ExtractCells.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)advancedusage\extractdatafromvariousformats\excel\ExtractCellsWithCustomization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\HTML\ExtractTables.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\GenerateDocumentPagesPreview.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromDatabasesWithDbConnection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromDatabases.cs" />
