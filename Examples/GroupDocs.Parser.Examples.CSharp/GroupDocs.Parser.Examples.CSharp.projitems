@@ -12,6 +12,9 @@
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\Barcodes.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\FormFields.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="$(MSBuildThisFileDirectory)Resources\SampleFiles\Forms.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -257,6 +260,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\GetSupportedFileFormats.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ParseDataFromDocuments.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractDataFromPdfForms.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BasicUsage\ExtractAllPdfFormFields.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)QuickStart\HelloWorld.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)QuickStart\SetLicenseFromFile.cs" />
