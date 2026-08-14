@@ -68,6 +68,7 @@ ExtractAllPdfFormFields.Run();
 //LoadDocumentFromStream.Run();
 //LoadDocumentFromLocalDisk.Run();
 //HandleLoadingOfExternalResources.Run();
+//ExternalResourcesInEmailMessages.Run();
 
 #endregion
 

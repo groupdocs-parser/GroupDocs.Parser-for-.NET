@@ -73,6 +73,7 @@ namespace GroupDocs.Parser.Examples.CSharp
             //LoadDocumentFromStream.Run();
             //LoadDocumentFromLocalDisk.Run();
             //HandleLoadingOfExternalResources.Run();
+            //ExternalResourcesInEmailMessages.Run();
 
             #endregion
 

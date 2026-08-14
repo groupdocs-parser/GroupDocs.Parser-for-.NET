@@ -187,6 +187,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\SearchTextByKeyword.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\ExtractDataFromVariousFormats\Pdf\SearchTextByRegularExpression.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\GenerateSpreadsheetPagesPreview.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\ExternalResourcesInEmailMessages.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\HandleLoadingOfExternalResources.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadDocumentFromLocalDisk.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AdvancedUsage\Loading\LoadDocumentFromUrl.cs" />
