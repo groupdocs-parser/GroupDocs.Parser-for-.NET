@@ -38,7 +38,7 @@ HelloWorld.Run();
 #region Basic usage
 
 //ExtractDataFromAttachmentsAndZipArchives.Run();
-ExtractAllPdfFormFields.Run();
+//ExtractAllPdfFormFields.Run();
 //ExtractFormattedTextFromDocuments.Run();
 //ExtractImages.Run();
 //ExtractImagesFromDocuments.Run();
