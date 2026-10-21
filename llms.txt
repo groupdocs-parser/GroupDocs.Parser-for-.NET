@@ -1,0 +1,5 @@
+# GroupDocs.Parser for .NET examples
+Repo: https://github.com/groupdocs-parser/GroupDocs.Parser-for-.NET
+Docs: https://docs.groupdocs.com/parser/net/
+Formats: 65+
+Package: https://www.nuget.org/packages/GroupDocs.Parser/
