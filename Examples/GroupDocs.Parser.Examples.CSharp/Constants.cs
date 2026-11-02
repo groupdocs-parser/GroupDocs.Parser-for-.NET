@@ -10,7 +10,7 @@ namespace GroupDocs.Parser.Examples.CSharp
 
     internal static class Constants
     {
-        public const string LicensePath = "C:/Licenses/GroupDocs.Parser.NET.lic";
+        public const string LicensePath = "C:/Work/License/Conholdate.Total.Product.Family.lic";
         public const string SamplesPath = "./Resources/SampleFiles";
         public const string OutputPath = "./Output/";
 

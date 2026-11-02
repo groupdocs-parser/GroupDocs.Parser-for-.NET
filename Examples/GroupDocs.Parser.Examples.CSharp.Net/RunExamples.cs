@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using GroupDocs.Parser.Examples.CSharp;
 using GroupDocs.Parser.Examples.CSharp.AdvancedUsage;
 using GroupDocs.Parser.Examples.CSharp.AdvancedUsage.Loading;
@@ -21,124 +21,113 @@ using AdvancedUsage = GroupDocs.Parser.Examples.CSharp.AdvancedUsage;
 using GroupDocs.Parser.Examples.CSharp.BasicUsage;
 using GroupDocs.Parser.Examples.CSharp.QuickStart;
 
-
 Console.WriteLine("Open RunExamples.cs." + Environment.NewLine + "In Main() method uncomment the example that you want to run.");
 Console.WriteLine("=====================================================");
 SetLicenseFromFile.TraceLibraryVersion();
 
 #region Quick start
 
-SetLicenseFromFile.Run();
+//SetLicenseFromFile.Run();
 //SetLicenseFromStream.Run();
 //SetMeteredLicense.Run();
-HelloWorld.Run();
+//HelloWorld.Run();
 
 #endregion
 
 #region Basic usage
 
-//ExtractDataFromAttachmentsAndZipArchives.Run();
-//ExtractAllPdfFormFields.Run();
-//ExtractFormattedTextFromDocuments.Run();
-//ExtractImages.Run();
-//ExtractImagesFromDocuments.Run();
-//ExtractTableOfContents.Run();
-//ExtractTextFromDocuments.Run();
-//GetDocumentInfo.Run();
-//GetSupportedFeatures.Run();
-//GetSupportedFileFormats.Run();
-//ParseDataFromDocuments.Run();
-
+ExtractDataFromAttachmentsAndZipArchives.Run();
+ExtractAllPdfFormFields.Run();
+ExtractFormattedTextFromDocuments.Run();
+ExtractImages.Run();
+ExtractImagesFromDocuments.Run();
+ExtractTableOfContents.Run();
+ExtractTextFromDocuments.Run();
+GetDocumentInfo.Run();
+GetSupportedFeatures.Run();
+GetSupportedFileFormats.Run();
+ParseDataFromDocuments.Run();
 #endregion
 
 #region Advanced usage
 
-//Logging.Run();
-//ExtractDataFromDatabases.Run();
-//ExtractDataFromDatabasesWithDbConnection.Run();
-//GenerateDocumentPagesPreview.Run();
-//GenerateSpreadsheetPagesPreview.Run();
-//Export.Run();
-
+Logging.Run();
+ExtractDataFromDatabases.Run();
+ExtractDataFromDatabasesWithDbConnection.Run();
+GenerateDocumentPagesPreview.Run();
+GenerateSpreadsheetPagesPreview.Run();
+Export.Run();
 #region Loading
 
-//PasswordProtectedDocuments.Run();
-//LoadingSpecificFileFormats.Run();
+PasswordProtectedDocuments.Run();
+LoadingSpecificFileFormats.Run();
 //LoadDocumentFromUrl.Run();
-//LoadDocumentFromStream.Run();
-//LoadDocumentFromLocalDisk.Run();
-//HandleLoadingOfExternalResources.Run();
-//ExternalResourcesInEmailMessages.Run();
-
+LoadDocumentFromStream.Run();
+LoadDocumentFromLocalDisk.Run();
+HandleLoadingOfExternalResources.Run();
+ExternalResourcesInEmailMessages.Run();
 #endregion
 
 #region Working with Zip archives and attachments
 
-//IterateThroughContainerItems.Run();
-//DetectFileType.Run();
-
+IterateThroughContainerItems.Run();
+DetectFileType.Run();
 #endregion
 
 #region Working with images
 
-//ExtractImagesFormDocumentPageArea.Run();
-//ExtractImagesFromDocument.Run();
-//ExtractImagesFromDocumentPage.Run();
-//ExtractImagesToFiles.Run();
-
+ExtractImagesFormDocumentPageArea.Run();
+ExtractImagesFromDocument.Run();
+ExtractImagesFromDocumentPage.Run();
+ExtractImagesToFiles.Run();
 #endregion
 
 #region Working with tables
 
-//ExtractTablesFromDocument.Run();
-//ExtractTablesFromDocumentPage.Run();
-
+ExtractTablesFromDocument.Run();
+ExtractTablesFromDocumentPage.Run();
 #endregion
 
 #region Working with hyperlinks
 
-//ExtractHyperlinksFromDocument.Run();
-//ExtractHyperlinksFromDocumentPage.Run();
-//ExtractHyperlinksFromDocumentPageArea.Run();
-
+ExtractHyperlinksFromDocument.Run();
+ExtractHyperlinksFromDocumentPage.Run();
+ExtractHyperlinksFromDocumentPageArea.Run();
 #endregion
 
 #region Working with barcodes
 
-//ExtractBarcodesFromDocument.Run();
-//ExtractBarcodesFromDocumentWithOptions.Run();
-//ExtractBarcodesFromDocumentCorrupted.Run();
-//ExtractBarcodesFromDocumentPage.Run();
-//ExtractBarcodesFromDocumentPageArea.Run();
-
+ExtractBarcodesFromDocument.Run();
+ExtractBarcodesFromDocumentWithOptions.Run();
+ExtractBarcodesFromDocumentCorrupted.Run();
+ExtractBarcodesFromDocumentPage.Run();
+ExtractBarcodesFromDocumentPageArea.Run();
 #endregion
 
 #region Working with text
 
-//DetectEncoding.Run();
-//ExtractHighlight.Run();
-//ExtractTextAreas.Run();
-//ExtractTextAreasFromPage.Run();
-//ExtractTextAreasWithOptions.Run();
-//ExtractTextFromPageInAccurateMode.Run();
-//ExtractTextInRawMode.Run();
-//ExtractTextInAccurateMode.Run();
-//ExtractTextFromPageInRawMode.Run();
-//ExtractTextStructure.Run();
-//SearchTextByKeyword.Run();
-//SearchTextByRegex.Run();
-//SearchTextWithHighlights.Run();
-//SearchTextByPages.Run();
-//ExtractTextByTocItem.Run();
-
+DetectEncoding.Run();
+ExtractHighlight.Run();
+ExtractTextAreas.Run();
+ExtractTextAreasFromPage.Run();
+ExtractTextAreasWithOptions.Run();
+ExtractTextFromPageInAccurateMode.Run();
+ExtractTextInRawMode.Run();
+ExtractTextInAccurateMode.Run();
+ExtractTextFromPageInRawMode.Run();
+ExtractTextStructure.Run();
+SearchTextByKeyword.Run();
+SearchTextByRegex.Run();
+SearchTextWithHighlights.Run();
+SearchTextByPages.Run();
+ExtractTextByTocItem.Run();
 #region Working With Formatted Text
 
-//ExtractFormattedTextFromDocument.Run();
-//ExtractFormattedTextFromDocumentPage.Run();
-//Html.Run();
-//Markdown.Run();
-//PlainText.Run();
-
+ExtractFormattedTextFromDocument.Run();
+ExtractFormattedTextFromDocumentPage.Run();
+Html.Run();
+Markdown.Run();
+PlainText.Run();
 #endregion
 
 #endregion
@@ -147,45 +136,40 @@ HelloWorld.Run();
 
 #region Template fields
 
-//WorkingWithTemplateFixedPosition.Run();
-//WorkingWithTemplateRegexPosition.Run();
-//WorkingWithTemplateLinkedPosition.Run();
-
+WorkingWithTemplateFixedPosition.Run();
+WorkingWithTemplateRegexPosition.Run();
+WorkingWithTemplateLinkedPosition.Run();
 #endregion
 
 #region Template tables
 
-//WorkingWithTableLayout.Run();
-//WorkingWithTableParameters.Run();
-
+WorkingWithTableLayout.Run();
+WorkingWithTableParameters.Run();
 #endregion
 
 #region Template barcodes
 
-//WorkingWithBarcodes.Run();
-
+WorkingWithBarcodes.Run();
 #endregion
 
-//ParsePagesByTemplate.Run();
-
+ParsePagesByTemplate.Run();
 #endregion
 
 #region Working with data extracted by template
 
-//GetFieldByName.Run();
-//IterateThroughFields.Run();
-//WorkingWithTables.Run();
-
+GetFieldByName.Run();
+IterateThroughFields.Run();
+WorkingWithTables.Run();
 #endregion
 
 #region Using OCR
 
 if (File.Exists(Constants.AsposeOcrLicensePath))
 {
-    //OcrUsageBasicsText.Run();
-    //OcrUsageBasicsTextAreas.Run();
-    //OcrUsageBasicsRectangle.Run();
-    //OcrUsageBasicsHandler.Run();
+    OcrUsageBasicsText.Run();
+    OcrUsageBasicsTextAreas.Run();
+    OcrUsageBasicsRectangle.Run();
+    OcrUsageBasicsHandler.Run();
 }
 else
 {
@@ -199,109 +183,100 @@ else
 
 #region Word
 
-//AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractHyperlinks.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractImages.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractMetadata.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractTableOfContents.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractTables.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractText.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractTextAsHtml.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractTextFromPage.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Word.SearchTextByKeyword.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Word.SearchTextByRegularExpression.Run();
-
+AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractHyperlinks.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractImages.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractMetadata.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractTableOfContents.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractTables.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractText.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractTextAsHtml.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Word.ExtractTextFromPage.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Word.SearchTextByKeyword.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Word.SearchTextByRegularExpression.Run();
 #endregion
 
 #region Excel
 
-//AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractImages.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractMetadata.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractText.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractTextAsHtml.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractTextFromSheet.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractTextFromSheetInRawMode.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Excel.SearchTextByKeyword.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Excel.SearchTextByRegularExpression.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractCells.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractCellsWithCustomization.Run();
-
+AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractImages.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractMetadata.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractText.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractTextAsHtml.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractTextFromSheet.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractTextFromSheetInRawMode.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Excel.SearchTextByKeyword.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Excel.SearchTextByRegularExpression.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractCells.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Excel.ExtractCellsWithCustomization.Run();
 #endregion
 
 #region PowerPoint
 
-//AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractImages.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractMetadata.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractText.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractTextAsHtml.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractTextFromSlide.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractTextFromSlideInRawMode.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.SearchTextByKeyword.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.SearchTextByRegularExpression.Run();
-
+AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractImages.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractMetadata.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractText.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractTextAsHtml.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractTextFromSlide.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.ExtractTextFromSlideInRawMode.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.SearchTextByKeyword.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.PowerPoint.SearchTextByRegularExpression.Run();
 #endregion
 
 #region PDF
 
-//AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractDataFromPdfForms.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractImages.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractMetadata.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractText.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractTextFromPage.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractTextFromPageInRawMode.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Pdf.SearchTextByKeyword.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Pdf.SearchTextByRegularExpression.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractAttachmentsFromPdfPortfolios.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ParseDataFromDocuments.Run();
-
+AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractDataFromPdfForms.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractImages.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractMetadata.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractText.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractTextFromPage.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractTextFromPageInRawMode.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Pdf.SearchTextByKeyword.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Pdf.SearchTextByRegularExpression.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ExtractAttachmentsFromPdfPortfolios.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Pdf.ParseDataFromDocuments.Run();
 #endregion
 
 #region Email
 
-//AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractEmailsFromOutlookStorage.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractAttachmentsFromEmails.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractEmailsFromOutlookStorage.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractAttachmentsFromEmails.Run();
 //AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractEmailsFromRemoveServer.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractMetadata.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractText.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractTextAsHtml.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractImages.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Email.SearchTextByKeyword.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.Email.SearchTextByRegularExpression.Run();
-
+AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractMetadata.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractText.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractTextAsHtml.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Email.ExtractImages.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Email.SearchTextByKeyword.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.Email.SearchTextByRegularExpression.Run();
 #endregion
 
 #region EPUB
 
-//AdvancedUsage.ExtractDataFromVariousFormats.EPUB.ExtractTableOfContents.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.EPUB.ExtractText.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.EPUB.ExtractTextAsHtml.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.EPUB.ExtractTextFromPage.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.EPUB.SearchTextByKeyword.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.EPUB.SearchTextByRegularExpression.Run();
-
+AdvancedUsage.ExtractDataFromVariousFormats.EPUB.ExtractTableOfContents.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.EPUB.ExtractText.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.EPUB.ExtractTextAsHtml.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.EPUB.ExtractTextFromPage.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.EPUB.SearchTextByKeyword.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.EPUB.SearchTextByRegularExpression.Run();
 #endregion
 
 #region Zip
 
-//AdvancedUsage.ExtractDataFromVariousFormats.Zip.ExtractTextFromZipArchiveFiles.Run();
-
+AdvancedUsage.ExtractDataFromVariousFormats.Zip.ExtractTextFromZipArchiveFiles.Run();
 #endregion
 
 #region HTML
 
-//AdvancedUsage.ExtractDataFromVariousFormats.HTML.ExtractTables.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.HTML.ExtractText.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.HTML.SearchTextByKeyword.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.HTML.SearchTextByRegularExpression.Run();
-
+AdvancedUsage.ExtractDataFromVariousFormats.HTML.ExtractTables.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.HTML.ExtractText.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.HTML.SearchTextByKeyword.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.HTML.SearchTextByRegularExpression.Run();
 #endregion
 
 #region OneNote
 
-//AdvancedUsage.ExtractDataFromVariousFormats.OneNote.ExtractText.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.OneNote.SearchTextByKeyword.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.OneNote.SearchTextByRegularExpression.Run();
-//AdvancedUsage.ExtractDataFromVariousFormats.OneNote.ExtractTextFromPage.Run();
-
+AdvancedUsage.ExtractDataFromVariousFormats.OneNote.ExtractText.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.OneNote.SearchTextByKeyword.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.OneNote.SearchTextByRegularExpression.Run();
+AdvancedUsage.ExtractDataFromVariousFormats.OneNote.ExtractTextFromPage.Run();
 #endregion
 
 #endregion
@@ -311,3 +286,4 @@ else
 Console.WriteLine();
 Console.WriteLine("All done.");
 Console.ReadKey();
+
